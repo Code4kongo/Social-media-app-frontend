@@ -60,12 +60,14 @@ const UpdateUserModal = props => {
         axios.patch(`http://localhost:8080/user/${userId}`, updateduser)
              .then(res => {
                  setOnSuccess(true)
+                 setTimeout(() => setOnSuccess(false), 15000)
                 //  const data = res.data
                 //  console.log(data)
              })
              .catch(error => {
                  console.log(error)
                  setOnFailure(true)
+                 setTimeout(() => setOnFailure(false), 15000)
              })
         
     }

@@ -69,6 +69,7 @@ const  AddPostModal = (props) => {
                                 setTimeout(() => setUploadPourcentage(0),50000)}  
                         })
                     setOnSuccess(true)
+                    setTimeout(() => setOnSuccess(false), 15000)
             fetch(`http://localhost:8080/${result.data.createdPost.post_postImage}`).then(res => {
             console.log(res)
         })
@@ -84,6 +85,7 @@ const  AddPostModal = (props) => {
         } catch(error){
             console.log(error)
             setOnFailure(true)
+            setTimeout(() => setOnFailure(false), 15000)
         }   
     }
     

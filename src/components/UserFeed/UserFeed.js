@@ -6,13 +6,13 @@ import IconUs from '../../images/resources/us-pc2.png'
 import IconClock from '../../images/clock.png'
 import PostCommments from "../PostComments/PostComments";
 import UpdatePostModal from '../../modals/UpdatePostModal/UpdatePostModal'
+import DeletePostModal from '../../modals/DeleteConfirmModal/Post/DeletePostConfirmModal'
 import LoadingSpinner from '../../feedback/LoadingSpinner/LoadingSpinner'
 import axios from 'axios'
 
 const UserFeed = (props) => {
 
-//   const { email } = props
-const email = 'jordy@test.com'
+  const { email } = props
   
   const [posts, setPosts] = useState([
     {
@@ -31,6 +31,7 @@ const email = 'jordy@test.com'
 
   const [ showComment, setShowComment ] = useState(false)
   const [ showModal, setShowModal] = useState(false)
+  const [ showDeleteModal, setShowDeleteModal] = useState(false)
   
   
 
@@ -38,8 +39,12 @@ const email = 'jordy@test.com'
 const openModal = () => {
       setShowModal(true)
     }
+const openDeleteModal = () => {
+  setShowDeleteModal(true)
+}
 const closeModal = () => {
       setShowModal(false)
+      setShowDeleteModal(false)
     }
 
   const toggleShowComment = () => {
@@ -78,7 +83,7 @@ const closeModal = () => {
                       </div>
                     <div className="ed-opts">
                         <button className="btn btn-info" style={{borderRadius : '100%'}} onClick={openModal}><i className="fa fa-pencil fa-fw"></i> </button>
-                        <button className="btn btn-danger" style={{borderRadius : '100%'}}><i className="fa fa-trash-o fa-lg"></i></button>
+                        <button className="btn btn-danger" style={{borderRadius : '100%'}} onClick={openDeleteModal}><i className="fa fa-trash-o fa-lg"></i></button>
                         <UpdatePostModal  
                             showModal={showModal} 
                             closeModal={closeModal}
@@ -90,6 +95,11 @@ const closeModal = () => {
                             content={post.content}
                             postImage={post.postImage}
                             />
+                        <DeletePostModal 
+                            showModal={showDeleteModal}
+                            closeModal={closeModal}
+                            postId={post._id}
+                        />
                     </div>
                     </div>
                     <div className="epi-sec">

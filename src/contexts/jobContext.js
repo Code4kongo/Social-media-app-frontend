@@ -65,8 +65,10 @@ const JobContextProvider = (props) => {
         axios.post('http://localhost:8080/jobs', newJob)
             .then(res => {
                 setOnSuccess(true)
+                setTimeout(() => setOnSuccess(false), 15000)
             }).catch(error => {
                 setOnFailure(true)
+                setTimeout(() => setOnFailure(false), 15000)
             })
     }
     const updateJob = (jobId,job_title, job_jobType, job_salary, job_country, job_author, job_email, job_phone, job_content, job_address,job_overview , job_total_employee) => {
@@ -89,6 +91,7 @@ const JobContextProvider = (props) => {
         axios.patch(`http://localhost:8080/jobs/${jobId}`, updatedJob)
              .then(res => {
                  setOnSuccess(true)
+                 setTimeout(() => setOnSuccess(false), 15000)
                 const message = res.data.job
                 console.log(message)
                 
@@ -96,6 +99,7 @@ const JobContextProvider = (props) => {
              .catch(error => {
                  console.log(error)
                  setOnFailure(true)
+                 setTimeout(() => setOnFailure(false), 15000)
              })
     }
     const deleteJob = () => {

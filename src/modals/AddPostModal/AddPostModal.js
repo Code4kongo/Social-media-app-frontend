@@ -5,6 +5,7 @@ import axios from 'axios'
 import UploadBar from '../../components/FeedBack/UploadBar/UploadBar'
 import OnSuccessMessage from '../../feedback/SuccessMeesgae/SuccessMeesgae'
 import OnFailureMessage from '../../feedback/FailureMeesage/FailureMeesage'
+import { Redirect } from 'react-router-dom'
 
 Modal.setAppElement('#root')
 
@@ -33,6 +34,7 @@ const  AddPostModal = (props) => {
     const [uploadPourcentage, setUploadPourcentage ] = useState(0)
     const [onSuccess, setOnSuccess ] = useState(false)
     const [onFailure, setOnFailure ] = useState(false)
+    const [redirect, setRedirect ] = useState(false)
     
     const onChange = event => {
 
@@ -61,7 +63,7 @@ const  AddPostModal = (props) => {
                                     onUploadProgress: (progressEvent) => {
                                         let percentCompleted = Math.round((progressEvent.loaded * 100) / progressEvent.total)
                                         setUploadPourcentage(percentCompleted)
-                                        setTimeout(() => setUploadPourcentage(0),50000)} 
+                                        setTimeout(() => setUploadPourcentage(0),5000)} 
                                 })
 
             setOnSuccess(true)
@@ -80,7 +82,10 @@ const  AddPostModal = (props) => {
 
         } catch(error){
             console.log(error)
+            setTimeout(() => setUploadPourcentage(0),5000)
             setOnFailure(true)
+            setTimeout(() => setOnFailure(false), 10000)
+            setTimeout(() => setRedirect(true), 15000)
         }   
     }
     
@@ -127,6 +132,9 @@ const  AddPostModal = (props) => {
                                     {
                                         onSuccess ?  <li><button className= "btn btn-primary danger" onClick={closeModal}>Close</button></li> : 
                                                 <li><button className= "btn btn-primary danger" onClick={closeModal}>Cancel</button></li>
+                                    }
+                                    {
+                                        redirect ? <Redirect to="/jobs"/> : null
                                     }
                                     </ul>
                                 </div>

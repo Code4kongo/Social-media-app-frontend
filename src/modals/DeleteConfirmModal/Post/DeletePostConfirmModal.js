@@ -1,8 +1,7 @@
 import React, { useState } from 'react'
 import Modal from 'react-modal'
 import axios from 'axios'
-import './DeleteConfirmModal.css'
-import { Redirect } from 'react-router-dom'
+import './DeletePostConfirmModal.css'
 import OnSuccessMessage from '../../../feedback/UpdateMessage/UpdateMessage'
 import OnFailureMessage from '../../../feedback/FailureMeesage/FailureMeesage'
 
@@ -20,10 +19,12 @@ const DeletePost = props => {
         axios.delete(`http://localhost:8080/posts/${postId}`)
                 .then(res => {
                     setOnSuccess(true) 
+                    setTimeout(() => setOnSuccess(false), 15000)
                 })
                 .catch(error => {
                     console.log(error)
                     setOnFailure(true)
+                    setTimeout(() => setOnFailure(false), 15000)
                 })
             }
         
@@ -46,9 +47,14 @@ const DeletePost = props => {
                             <button className="btn btn-danger" onClick={deletePost}>
                                 <p> <i className="fa fa-trash"></i> <i>Delete Post</i> </p>
                             </button>
-                            <button className="btn btn-secondary" onClick={closeModal}>
-                                <p><i>Cancel</i> </p>
-                            </button>
+                            {
+                                onSuccess ? <button className="btn btn-secondary" onClick={closeModal}>
+                                                <p><i>Cancel</i> </p>
+                                            </button> : 
+                                            <button className="btn btn-secondary" onClick={closeModal}>
+                                                <p><i>Cancel</i> </p>
+                                            </button>
+                            }
                         </div>
                 </Modal>
             )

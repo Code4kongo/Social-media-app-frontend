@@ -68,7 +68,7 @@ const SignIn = props => {
               <div className="col-lg-12 no-pdd">
               
                 <button type="submit"  value="submit" style={style}>
-                  <Link to="/home" style={style}>  Sign in as User </Link>
+                   Sign in as User 
                 </button>  
                  
               </div>
@@ -102,7 +102,7 @@ const SignIn = props => {
               </div>
               <div className="col-lg-12 no-pdd">
                 <button type="submit" style={style} value="submit"> 
-                  <Link to="/home" style={style}> Sign in as Company </Link>  
+                   Sign in as Company 
                 </button>
                 
               </div>
