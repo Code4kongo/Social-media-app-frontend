@@ -9,12 +9,10 @@ export class Footer extends Component {
 			    <div className="footy-sec mn no-margin">
 				    <div className="container">
 					    <ul>
-                            <li><a href="about.html" title="">About Page</a></li>
-                            <li><a href="/" title="">Privacy Policy</a></li>
-                            <li><a href="/" title="">Community Guidelines</a></li>
-                            <li><a href="/" title="">Cookies Policy</a></li>
-                            <li><a href="/" title="">Career</a></li>
-                            <li><a href="/" title="">Language</a></li>
+                            <li><a href="/about" title="">About Page</a></li>
+                            <li><a href="/privacy-policy" title="">Privacy Policy</a></li>
+                            <li><a href="/community-guide-line" title="">Community Guidelines</a></li>
+                            <li><a href="/about" title="">Language</a></li>
                             <li><a href="/" title="">Copyright Policy</a></li>
 					    </ul>
 					    <p><img src={CopyIcon2} alt=""/>Copyright 2020 code4kongo</p>

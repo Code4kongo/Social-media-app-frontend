@@ -5,7 +5,8 @@ export class AllPost extends Component {
     render() {
         return (
             <div>
-                These are all the post
+                <SinglePost/>
+                <SinglePost/>
                 <SinglePost/>
             </div>
         )
