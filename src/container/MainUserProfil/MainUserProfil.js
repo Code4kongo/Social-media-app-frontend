@@ -6,6 +6,7 @@ import UserInfo from "../../components/AnyUserInfo/AnyUserInfo";
 import UserNotification from "../../components/UserNotification/UserNotification";
 import UserPortfolio from "../../components/UserPortfolio/UserPortfolio";
 import UpdateUserModal from '../../modals/UpdateUserModal/UpdateUserModal'
+import DeleteAccountModal from '../../modals/DeleteConfirmModal/User/DeleteUserConfirmModal'
 import UserCover from '../../images/resources/cover-network.jpeg'
 import FeedIcon from '../../images/ic1.png'
 import InfoIcon from '../../images/ic2.png'
@@ -34,12 +35,17 @@ const MainUserProfil = ({userDetails}) => {
     
 
     const [showModal, setShowModal] = useState(false)
+    const [showModalDelete, setShowModalDelete] = useState(false)
 
     const openModal = () => {
       setShowModal(true)
     }
+    const openDeleteModal = () => {
+        setShowModalDelete(true)
+    }
     const closeModal = () => {
       setShowModal(false)
+      setShowModalDelete(false)
     }
 
 
@@ -167,9 +173,9 @@ const MainUserProfil = ({userDetails}) => {
                             <div className="col-lg-3">
 								<div className="right-sidebar">
 									<div className="message-btn">
-                                    <button className="btn btn-info" onClick={openModal}>
-                                        <i className="fa fa-pencil"></i> Edit Profil 
-                                    </button>
+                                        <button className="btn btn-info" onClick={openModal}>
+                                            <i className="fa fa-pencil"></i> Edit Profil 
+                                        </button>
                                     <UpdateUserModal
                                         showModal={showModal}
                                         closeModal={closeModal}
@@ -195,6 +201,16 @@ const MainUserProfil = ({userDetails}) => {
                                         />
 									</div>
                                     <UserPortfolio/>
+                                    <div className="message-btn">
+                                        <button className="btn btn-danger" onClick={openDeleteModal}>
+                                            <i className="fa fa-trash"></i> Delete Account 
+                                        </button>
+                                        <DeleteAccountModal 
+                                            showModal={showModalDelete}
+                                            closeModal={closeModal}
+                                            userId = { userDetails._id}
+                                        />
+                                    </div>
                                 </div>
                             </div>
                         </div>

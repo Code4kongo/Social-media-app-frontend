@@ -7,6 +7,7 @@ import CompanyJob from "../../components/UserJob/UserJob";
 import CompanyNotification from "../../components/UserNotification/UserNotification";
 import CompanyPortfolio from "../../components/UserPortfolio/UserPortfolio";
 import UpdateCompanyModal from "../../modals/UpdateCompany/UpdateCompany"
+import DeleteAccountModal from '../../modals/DeleteConfirmModal/Company/DeleteCompanyConfirmModal'
 import UserCover from '../../images/resources/cover-network.jpeg'
 import FeedIcon from '../../images/ic1.png'
 import InfoIcon from '../../images/ic2.png'
@@ -34,12 +35,17 @@ const MainCompanyProfil = ({companyDetails}) => {
     const [ jobToggle, setJobToggle ] = useState(false)
 
     const [showModal, setShowModal] = useState(false)
+    const [showModalDelete, setShowModalDelete] = useState(false)
 
     const openModal = () => {
       setShowModal(true)
     }
+    const openDeleteModal = () => {
+        setShowModalDelete(true)
+    }
     const closeModal = () => {
       setShowModal(false)
+      setShowModalDelete(false)
     }
 
 
@@ -198,6 +204,16 @@ const MainCompanyProfil = ({companyDetails}) => {
                                         />
 									</div>
                                     <CompanyPortfolio/>
+                                    <div className="message-btn">
+                                        <button className="btn btn-danger" onClick={openDeleteModal}>
+                                            <i className="fa fa-trash"></i> Delete Account 
+                                        </button>
+                                        <DeleteAccountModal 
+                                            showModal={showModalDelete}
+                                            closeModal={closeModal}
+                                            companyId = { companyDetails._id}
+                                        />
+                                    </div>
                                 </div>
                             </div>
                         </div>
