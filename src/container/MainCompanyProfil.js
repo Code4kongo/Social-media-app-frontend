@@ -12,9 +12,11 @@ export class MainCompanyProfil extends Component {
                     <div class="container">
                         <div class="main-section-data">
                             <div class="row">
+
                                 <CompanySocialMediaLink/>
                                 <CompanyFeed/>
                                 <CompanyInfo/>
+                                
                             </div>
                         </div>
                     </div>

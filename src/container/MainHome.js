@@ -14,7 +14,6 @@ export class Main extends Component {
                 <AllPost/>
                 <TopJobs/>
                 <MostViews/>
-
             </div>
         )
     }

@@ -42,7 +42,6 @@ export class NavBar extends Component {
                                 Notification
                             </a>
                         </li>
-
                     </ul>
                 </nav>
                 <div class="menu-btn">
