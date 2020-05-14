@@ -29,7 +29,7 @@ export class UserProfiction extends Component {
                                 <span>155</span>
                             </li>
                             <li>
-                                <a href="my-profile.html" title="">View Profile</a>
+                                <a href="/" title="">View Profile</a>
                             </li>
                         </ul>
                     </div>

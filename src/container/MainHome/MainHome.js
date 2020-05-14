@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
-import UserProfiction from '../components/UserProfiction/UserProfiction'
-import PostJob from "../components/PostJob/PostJob"
-import AllPost from '../components/AllPost/AllPost'
-import  TopJobs from '../components/TopJobs/TopJobs'
-import MostViews from '../components/MostViewd/MostView'
+import UserProfiction from '../../components/UserProfiction/UserProfiction'
+import PostJob from "../../components/PostJob/PostJob"
+import AllPost from '../../components/AllPost/AllPost'
+import  TopJobs from '../../components/TopJobs/TopJobs'
+import MostViews from '../../components/MostViewd/MostView'
 
 export class Main extends Component {
     render() {

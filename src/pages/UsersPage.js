@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import Header from '../container/Header'
+import Header from '../container/Header/Header'
 import MainUsers from '../container/MainCompaniesAndJobs'
-import Footer from '../container/Footer'
+import Footer from '../container/Footer/Footer'
 
 export class Users extends Component {
     render() {
