@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Header from '../container/Header/Header'
-import MainCompanies from '../container/MainCompaniesAndJobs'
+import MainCompanies from '../container/MainCompaniesAndJobs/MainCompaniesAndJobs'
 import Footer from '../container/Footer/Footer'
 
 export class Companies extends Component {

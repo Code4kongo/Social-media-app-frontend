@@ -1,5 +1,5 @@
 import React from 'react'
-import WebSiteInfo from '../components/WebSiteInfo/WebsiteInfo'
+import WebSiteInfo from '../../components/WebSiteInfo/WebsiteInfo'
 
 export default function WebSiteInfoContainer() {
     return (

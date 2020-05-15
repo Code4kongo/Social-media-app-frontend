@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import SingleJob from '../components/SingleJob/SingleJob'
-import ApplyJobSideBar from '../components/ApplyJobSideBar/ApplyJobSideBar'
+import SingleJob from '../../components/SingleJob/SingleJob'
+import ApplyJobSideBar from '../../components/ApplyJobSideBar/ApplyJobSideBar'
 
 
 export class MainApplyJob extends Component {
