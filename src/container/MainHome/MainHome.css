@@ -2,19 +2,18 @@ main {
 	float: left;
 	width: 100%;
   padding: 60px 0;
-  background-color: blue;
+  /* background-color: blue; */
 }
 .main-section {
 	float: left;
   width: 100%;
-  background-color: yellow;
+  /* background-color: yellow; */
 }
 
 .main-section-data {
 	float: left;
   width: 100%;
-  background-color: red;
-  padding-right : 0
+  /* background-color: red; */
 }
 
 .container {
