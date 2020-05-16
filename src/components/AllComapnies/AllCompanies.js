@@ -3,12 +3,19 @@ import SingleCompany from '../SingleElement/SingleElement'
 
 export class AllCompanies extends Component {
     render() {
-        return (
-            <div>
-                These are all the comapnies  
-                <SingleCompany/>
-                <SingleCompany/>
-                <SingleCompany/>
+        return (        
+            <div class="companies-list">
+                    <div class="row">
+                        <SingleCompany/>
+                        <SingleCompany/>
+                        <SingleCompany/>
+                        <SingleCompany/>
+                        <SingleCompany/>
+                        <SingleCompany/>
+                        <SingleCompany/>
+                        <SingleCompany/>
+                        <SingleCompany/>
+                    </div>
             </div>
         )
     }
