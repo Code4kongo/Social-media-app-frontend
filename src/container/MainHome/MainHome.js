@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./MainHome.css";
 import UserProfiction from "../../components/UserProfiction/UserProfiction";
 import PostJob from "../../components/PostJob/PostJob";
+import SinglePost from "../../components/SinglePost/SinglePost";
 import AllPost from "../../components/AllPost/AllPost";
 import TopJobs from "../../components/TopJobs/TopJobs";
 import MostViews from "../../components/MostViewd/MostView";
@@ -21,7 +22,7 @@ export class Main extends Component {
               <div className="col-lg-6 col-md-8 no-pd">
                 <div className="main-ws-sec">
                   <PostJob />
-
+                  <SinglePost />
                   <AllPost />
                 </div>
               </div>
