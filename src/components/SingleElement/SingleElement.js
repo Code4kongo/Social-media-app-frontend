@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Icon from '../../images/resources/cmp-icon1.png'
 
 export class SingleElement extends Component {
     render() {
@@ -6,7 +7,7 @@ export class SingleElement extends Component {
             <div className="col-lg-3 col-md-4 col-sm-6">
             <div className="company_profile_info">
                 <div className="company-up-info">
-                    <img src="images/resources/cmp-icon1.png" alt=""/>
+                    <img src={Icon} alt=""/>
                     <h3>Google Inc.</h3>
                     <h4>Establish Feb, 2004</h4>
                     <ul>

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import AllCompanies from '../../components/AllComapnies/AllCompanies'
-import AllUsers from '../../components/AllUsers/AllUser'
+// import AllUsers from '../../components/AllUsers/AllUser'
 
 
 export class MainCompaniesAndJobs extends Component {
