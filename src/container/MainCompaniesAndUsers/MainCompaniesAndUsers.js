@@ -6,11 +6,11 @@ import AllUsers from '../../components/AllUsers/AllUser'
 export class MainCompaniesAndJobs extends Component {
     render() {
         return (
-            <div style = {{backgroundColor : 'blue'}}>
+            <section className="companies-info">
+			<div className="container">
                 <AllCompanies/>
-                 ||
-                <AllUsers/>
             </div>
+            </section>
         )
     }
 }

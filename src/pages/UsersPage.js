@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Header from '../container/Header/Header'
-import MainUsers from '../container/MainCompaniesAndJobs/MainCompaniesAndJobs'
+import MainUsers from '../container/MainCompaniesAndUsers/MainCompaniesAndUsers'
 import Footer from '../container/Footer/Footer'
 
 export class Users extends Component {
@@ -8,7 +8,7 @@ export class Users extends Component {
         return (
             <div>
                 <Header/>
-                <MainUsers/>
+                    <MainUsers/>
                 <Footer/>
             </div>
         )
