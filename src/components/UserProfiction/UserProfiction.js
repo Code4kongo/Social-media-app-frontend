@@ -5,8 +5,7 @@ import './UserProfiction.css'
 export class UserProfiction extends Component {
     render() {
         return (
-            <div className="col-lg-3 col-md-4 pd-left-none no-pd">
-                <div className="main-left-sidebar no-margin">
+
                     <div className="user-data full-width">
                         <div className="user-profile">
                             <div className="username-dt">
@@ -29,12 +28,11 @@ export class UserProfiction extends Component {
                                 <span>155</span>
                             </li>
                             <li>
-                                <a href="my-profile.html" title="">View Profile</a>
+                                <a href="/" title="">View Profile</a>
                             </li>
                         </ul>
                     </div>
-                </div>
-            </div>
+                
         )
     }
 }

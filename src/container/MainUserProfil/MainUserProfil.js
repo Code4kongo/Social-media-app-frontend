@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import UsersSocialMediaLinks from '../components/SocialMediaLink/SocialMediaLink'
-import UserFeed from '../components/PersonalFeed/PersonalFeed'
-import UserInfo from '../components/PersonalInfo/PersonalInfo'
+import UsersSocialMediaLinks from '../../components/SocialMediaLink/SocialMediaLink'
+import UserFeed from '../../components/PersonalFeed/PersonalFeed'
+import UserInfo from '../../components/PersonalInfo/PersonalInfo'
 
 
 export class MainUserProfil extends Component {

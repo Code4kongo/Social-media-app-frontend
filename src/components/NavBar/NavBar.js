@@ -25,13 +25,13 @@ export class NavBar extends Component {
                             </a>
                         </li>
                         <li>
-                            <a href="/">
+                            <a href="/users">
                                 <span><img src={UserIcon} alt="UserIcon" /></span>
                                 Users
                             </a>
                         </li>
                         <li>
-                            <a href="/companies">
+                            <a href="/jobs">
                                 <span><img src={JobIcon} alt="homeIcon" /></span>
                                 Jobs
                             </a>
@@ -44,8 +44,8 @@ export class NavBar extends Component {
                         </li>
                     </ul>
                 </nav>
-                <div class="menu-btn">
-                    <a href="/" title=""><i class="fa fa-bars"></i></a>
+                <div className="menu-btn">
+                    <a href="/" title=""><i className="fa fa-bars"></i></a>
                 </div>
                 <div>
                    <UserAccount/>

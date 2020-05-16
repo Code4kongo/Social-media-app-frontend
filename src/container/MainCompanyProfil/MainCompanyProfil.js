@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import './MainHome.css'
-import CompanySocialMediaLink from '../components/SocialMediaLink/SocialMediaLink'
-import CompanyFeed from '../components/PersonalFeed/PersonalFeed'
-import CompanyInfo from '../components/PersonalInfo/PersonalInfo'
+import CompanySocialMediaLink from '../../components/SocialMediaLink/SocialMediaLink'
+import CompanyFeed from '../../components/PersonalFeed/PersonalFeed'
+import CompanyInfo from '../../components/PersonalInfo/PersonalInfo'
 
 export class MainCompanyProfil extends Component {
     render() {

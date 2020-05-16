@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Footer from '../container/Footer'
+import Footer from '../container/Footer/Footer'
 
 export class SignIn extends Component {
     render() {
