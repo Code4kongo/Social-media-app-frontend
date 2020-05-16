@@ -21,15 +21,20 @@ export class Main extends Component {
               </div>
               <div className="col-lg-6 col-md-8 no-pd">
                 <div className="main-ws-sec">
+<<<<<<< HEAD
                   <PostJob />
                   <SinglePost />
                   <AllPost />
+=======
+                  <PostJob/>
+                  <AllPost/>
+>>>>>>> 65382a29e8543368ec2357bab2aa082e413a7f61
                 </div>
               </div>
-
               <div className="col-lg-3 pd-right-none no-pd">
                 <div className="right-sidebar">
                   <TopJobs />
+                  <MostViews />
                   <MostViews />
                 </div>
               </div>
