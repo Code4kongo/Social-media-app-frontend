@@ -1,13 +1,9 @@
-import React, { Component } from 'react'
-
+import React, { Component } from "react";
+import "./PersonalInfo.css";
 export class UserInfo extends Component {
-    render() {
-        return (
-            <div>
-                This is the Element info 
-            </div>
-        )
-    }
+  render() {
+    return <div>Personal profile</div>;
+  }
 }
 
-export default UserInfo
+export default UserInfo;
