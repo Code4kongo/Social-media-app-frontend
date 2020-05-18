@@ -37,7 +37,7 @@ export class NavBar extends Component {
                             </a>
                         </li>
                         <li>
-                            <a href="/" className="">
+                            <a href="/my-profile" className="">
                                 <span><img src={NotificationIcon} alt="NotifictaionIcon"/></span>
                                 Notification
                             </a>
