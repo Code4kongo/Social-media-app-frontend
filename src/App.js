@@ -24,11 +24,11 @@ function App() {
           <Route exact path="/sign-in" component={SignInPage} />
           <Route exact path="/" component={Home} />
           <Route exact path="/companies" component={CompaniesPage} />
-          <Route exact path="/companies/:{someparams}" component={CompanyProfilPage}/>
+          <Route exact path="/company" component={CompanyProfilPage}/>
           <Route exact path="/users" component={UsersPage}/>
           <Route exact path="/user" component={AnyUserPage}/>
           <Route exact path="/jobs" component={JobsPage} />
-          <Route exact path="/apply-job/:{someparams}" component={ApplyJobPage}/>
+          <Route exact path="/apply-job" component={ApplyJobPage}/>
           <Route exact path="/my-profile" component={UserProfilPage}/>
           <Route exact path="/about" component={AboutPage} />
           <Route exact path="/privacy-policy" component={PrivacyPolicyPage} />

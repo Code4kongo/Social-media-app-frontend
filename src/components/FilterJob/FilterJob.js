@@ -27,21 +27,21 @@ export class FilterJob extends Component {
 											<ul className ="avail-checks">
 												<li>
 													<input type="radio" name="cc" id="c1"/>
-													<label for="c1">
+													<label htmlFor="c1">
 														<span></span>
 													</label>
 													<small>Hourly</small>
 												</li>
 												<li>
 													<input type="radio" name="cc" id="c2"/>
-													<label for="c2">
+													<label htmlFor="c2">
 														<span></span>
 													</label>
 													<small>Part Time</small>
 												</li>
 												<li>
 													<input type="radio" name="cc" id="c3"/>
-													<label for="c3">
+													<label htmlFor="c3">
 														<span></span>
 													</label>
 													<small>Full Time</small>

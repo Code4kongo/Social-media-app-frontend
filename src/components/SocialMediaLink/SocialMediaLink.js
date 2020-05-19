@@ -14,7 +14,7 @@ export class UserSocialMediaLink extends Component {
                         <img src={UserImage} alt=""/>
                         <div className="add-dp" id="OpenImgUpload">
                             <input type="file" id="file"/>
-                            <label for="file"><i className="fas fa-camera"></i></label>												
+                            <label htmlFor="file"><i className="fas fa-camera"></i></label>												
                         </div>
                     </div>
                     

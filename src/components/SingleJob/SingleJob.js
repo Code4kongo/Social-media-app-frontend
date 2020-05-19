@@ -3,11 +3,8 @@ import React, { Component } from 'react'
 export class SingleJob extends Component {
     render() {
         return (
-            
-            <div className="col-lg-6">
-                <div className="main-ws-sec">
-                    <div className="posts-section">
 
+                <div>
                         <div className="posty">
                             <div className="post-bar no-margin">
                                 <div className="post_topbar">
@@ -75,8 +72,6 @@ export class SingleJob extends Component {
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
         )
     }
 }

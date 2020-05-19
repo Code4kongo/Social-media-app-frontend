@@ -19,7 +19,7 @@ export class MainUserProfil extends Component {
                     <div className="row no-gutters">
                         <div className="col-lg-12 col-sm-12">					
                             <input type="file" id="file"/>
-                            <label for="file">Change Image</label>				
+                            <label htmlFor="file">Change Image</label>				
                         </div>
                     </div>
                 </div>
