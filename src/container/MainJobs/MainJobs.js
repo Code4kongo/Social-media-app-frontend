@@ -13,7 +13,14 @@ function MainJobs() {
                 <div className="main-section-data">
                     <div className="row">
                         <FilterJob/>
-                        <SingleJob/>
+                        <div className="col-lg-6">
+                            <div className="main-ws-sec">
+                                <div className="posts-section">
+                                    <SingleJob/>
+                                </div>
+                            </div>
+                        </div>
+                        
                         <div className="col-lg-3">
                         <div className="right-sidebar">
                             <TopJob/>

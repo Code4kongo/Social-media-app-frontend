@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Header from '../container/Header/Header'
-
+import MainAnyCopmany from "../container/MainCompanyProfil/MainCompanyProfil";
 import Footer from '../container/Footer/Footer'
 
 export class UserProfil extends Component {
@@ -8,7 +8,7 @@ export class UserProfil extends Component {
         return (
             <div>
                 <Header/>
-                
+                <MainAnyCopmany />
                 <Footer/>
             </div>
         )
