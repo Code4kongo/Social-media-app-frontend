@@ -4,6 +4,7 @@ import CompanyIcon from '../../images/icon2.png'
 import UserIcon from '../../images/icon4.png'
 import JobIcon from '../../images/icon5.png'
 import NotificationIcon from '../../images/icon7.png'
+import AddJobIcon from '../../images/icon3.png'
 import UserAccount from '../UserAccount/UserAccount'
 
 export class NavBar extends Component {
@@ -16,6 +17,12 @@ export class NavBar extends Component {
                             <a href="/">
                                 <span><img src={HomeIcon} alt="homeIcon" /></span>
                                 Home
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/post-job">
+                                <span><img src={AddJobIcon} alt="jobIcon" /></span>
+                                Post Job
                             </a>
                         </li>
                         <li>

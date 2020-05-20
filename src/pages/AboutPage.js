@@ -9,6 +9,9 @@ export class AboutPage extends Component {
             <div>
                 <Header/>
                 <WebsiteInfoContainer/>
+                <div class="video">
+                <iframe className="video-iframe"  src="https://www.youtube.com/embed/jzCwiu22C_c" ></iframe>
+            </div>
                 <Footer />
             </div>
         )
