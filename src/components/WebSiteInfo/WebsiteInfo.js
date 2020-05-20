@@ -39,6 +39,19 @@ export default function WebsiteInfo() {
           </div>
         </div>
       </section>
+      <section className="services">
+        <div className="container">
+          <div className="video">
+            <iframe
+              className="video-iframe"
+              title="vid"
+              src="https://www.youtube.com/watch?v=LqhwFh6lRwY&t=6s"
+              allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+            />
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
