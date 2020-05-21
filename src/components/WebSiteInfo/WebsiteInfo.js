@@ -9,21 +9,59 @@ export default function WebsiteInfo() {
         <div className="container">
           <div className="row">
             <div className="col-md-6 col-sm-12">
-              <h2>Company Overview</h2>
+              <h2>Network Overview</h2>
+              <p align="justify">
+                The Congolese Professionals Network is a platform that was
+                initiated by Young Congolese Professionals in direct response to
+                the growing need for collaboration and networking among young
+                professionals originally from Congo that have been going through
+                the same challenges without necessarily having people to consult
+                or get advice from, or good connections that could assist them
+                in their growing careers. The goal of the platform is to
+                identify the skills and service offering of the young
+                professionals within the community, connect them with other
+                professionals within similar fields and also with those having
+                similar interests in order to promote collaboration and
+                communication. The focus is slightly different at each level of
+                service and conversation, but the goal remains the same; empower
+                the young person to make positive changes in our community. The
+                Congolese Professionals Network, also known as “243Network” is a
+                community organization providing a platform for networking,
+                collaboration, mentorship as well as business ideation and
+                implementation for the young professionals from Congo based in
+                South Africa and extending beyond the South African borders. We
+                aim to promote unity among the Congolese community in South
+                Africa by fostering an environment where young professionals
+                work together, assist and refer each other and advise each
+                other, and ultimately consume each other products. A community
+                of people that is mentoring the younger generation, facilitating
+                a cross-pollination of ideas and projects that could benefit the
+                Congolese community in general and our country on the larger
+                scale of things. Your network is your net worth; it is with the
+                same mentality that we would like to increase the network of
+                young professionals within the community.
+              </p>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean
-                felis massa, commodo sed fringilla id, dignissim ut eros.
-                Aliquam at lacinia diam, eget scelerisque massa. Nunc ut porta
-                ante. Praesent blandit, neque nec hendrerit luctus, sem urna
-                imperdiet ligula, eu egestas purus massa dictum arcu. Integer
-                cursus enim nec magna dapibus laoreet. Donec egestas fringilla
-                risus quis volutpat. Aliquam semper massa ut sollicitudin
-                consectetur. Suspendisse ac iaculis ligula. Duis ut velit id
-                nisi vulputate dapibus.
+                The actions of the platform will be focused around 8 themes:
+              </p>
+              <br />
+              <p>
+                <p>1. Advertising of product and services</p>
+                <p>2. Posting of Job opportunities</p>
+                <p>3. Posting of Request for services or products</p>
+                <p>4. Posting of Job seeking requests</p>
+                <p>5. Professionals Mentorship Program</p>
+                <p>6. Business Ideation and Financing</p>
+                <p>7. Business Sponsoring and Mentoring.</p>
+                <p>8. Social Actions within the community</p>
+              </p>
+              <p>
+                We look forward to collaborating with each of you. United we are
+                stronger.
               </p>
             </div>
             <div className="col-md-6 col-sm-12">
-              <img src={AboutImage} alt="img" />
+              <img src={AboutImage} alt="img" className="aboutImg" />
             </div>
           </div>
         </div>
