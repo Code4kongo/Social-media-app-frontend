@@ -33,18 +33,18 @@ export class MainUserProfil extends Component {
 						<div className="row">
                             <UsersSocialMediaLinks />
 
-                        <div class="col-lg-9">
-                        <div class="main-ws-sec">
+                        <div className="col-lg-9">
+                        <div className="main-ws-sec">
 
-                            <div class="user-tab-sec rewivew">
+                            <div className="user-tab-sec rewivew">
                                     <h3>John Doe</h3>
-                                    <div class="star-descp">
+                                    <div className="star-descp">
                                         <span>Graphic Designer at Self Employed</span>
                                     </div>
                                     
-                                    <div class="tab-feed st2 settingjb">
+                                    <div className="tab-feed st2 settingjb">
                                         <ul>
-                                        <li data-tab="feed-dd" class="active">
+                                        <li data-tab="feed-dd" className="active">
                                             <a href="/" title="">
                                             <img src={FeedIcon} alt="" />
                                             <span>Feed</span>

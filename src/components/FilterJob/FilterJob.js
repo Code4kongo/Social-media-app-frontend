@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 export class FilterJob extends Component {
     render() {
         return (
-            <div class="col-lg-3">
+            <div className="col-lg-3">
 								<div className ="filter-secs">
 									<div className ="filter-heading">
 										<h3>Filters</h3>

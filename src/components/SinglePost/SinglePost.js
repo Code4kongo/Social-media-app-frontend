@@ -125,7 +125,7 @@ export class SinglePost extends Component {
               <ul className="like-com">
                 <li>
                   <a href="/">
-                    <i class="fas fa-heart"></i> Like
+                    <i className="fas fa-heart"></i> Like
                   </a>
                   <img src="images/liked-img.png" alt="" />
                   <span>25</span>
@@ -186,8 +186,8 @@ export class SinglePost extends Component {
                 </ul>
               </div>
             </div>
-            <div class="epi-sec">
-              <ul class="descp">
+            <div className="epi-sec">
+              <ul className="descp">
                 <li>
                   <img src="images/icon8.png" alt="" />
                   <span>Epic Coder</span>
@@ -405,7 +405,7 @@ export class SinglePost extends Component {
                 <ul className="like-com">
                   <li>
                     <a href="/">
-                      <i class="fas fa-heart"></i> Like
+                      <i className="fas fa-heart"></i> Like
                     </a>
                     <img src="images/liked-img.png" alt="" />
                     <span>25</span>

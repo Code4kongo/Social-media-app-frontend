@@ -4,8 +4,8 @@ import SingleCompany from '../SingleElement/SingleElement'
 export class AllCompanies extends Component {
     render() {
         return (        
-            <div class="companies-list">
-                    <div class="row">
+            <div className="companies-list">
+                    <div className="row">
                         <SingleCompany/>
                         <SingleCompany/>
                         <SingleCompany/>
