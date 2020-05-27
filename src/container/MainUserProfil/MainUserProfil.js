@@ -1,8 +1,8 @@
-import React, { Component } from "react";
+import React from "react";
 import UsersSocialMediaLinks from "../../components/SocialMediaLink/SocialMediaLink";
 import UserFeed from "../../components/PersonalFeed/PersonalFeed";
 import UserInfo from "../../components/PersonalInfo/PersonalInfo";
-import UserJob from "../../components/UserJob/UserJob";
+// import UserJob from "../../components/UserJob/UserJob";
 import UserNotification from "../../components/UserNotification/UserNotification";
 import UserPortfolio from "../../components/UserPortfolio/UserPortfolio";
 import UserCover from '../../images/resources/cover-img.jpg'
@@ -11,12 +11,10 @@ import InfoIcon from '../../images/ic2.png'
 import PortfolioIcon from '../../images/ic3.png'
 import NotificationIcon from '../../images/review.png'
 
-export class MainUserProfil extends Component {
-  render() {
+const MainUserProfil = () => {
     return (
 
         <React.Fragment>
-
         <section className="cover-sec">
             <img src={UserCover} alt=""/>
             <div className="add-pic-box">
@@ -93,7 +91,6 @@ export class MainUserProfil extends Component {
         </main>
         </React.Fragment>
     );
-  }
 }
-
+ 
 export default MainUserProfil;

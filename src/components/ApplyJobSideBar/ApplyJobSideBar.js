@@ -1,15 +1,13 @@
-import React, { Component } from 'react'
+import React from 'react'
 import FacebookIcon from '../../images/social1.png'
 import InstagramIcon from '../../images/social2.png'
 import GoogleIcon from '../../images/social3.png'
 import TwitterIcon from '../../images/social4.png'
 import PniterestIcon from '../../images/social5.png'
 
-
-export class ApplyJobSideBar extends Component {
-    render() {
-        return (
-            <div className="col-xl-3 col-lg-3 col-md-12">
+const  ApplyJobSideBar = () => {
+    return ( 
+        <div className="col-xl-3 col-lg-3 col-md-12">
             <div className="right-sidebar">
                 <div className="widget widget-about bid-place">
                     <button type="button" className="btn btn-primary" >Send email </button>
@@ -53,8 +51,7 @@ export class ApplyJobSideBar extends Component {
                 </div>
             </div>
         </div>
-        )
-    }
+      );
 }
-
-export default ApplyJobSideBar
+ 
+export default ApplyJobSideBar ;

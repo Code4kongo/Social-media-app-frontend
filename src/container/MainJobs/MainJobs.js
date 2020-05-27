@@ -1,37 +1,42 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import FilterJob from '../../components/FilterJob/FilterJob'
 import SingleJob from '../../components/SingleJob/SingleJob'
 import TopJob from '../../components/TopJobs/TopJobs'
 import MostViewed from '../../components/MostViewd/MostView'
+import {JobContext} from '../../contexts/jobContext'
 
 
 function MainJobs() {
+    
+    const { jobs } = useContext(JobContext)
+    console.log(jobs)
     return (
-    <main>
-        <div className="main-section">
-            <div className="container">
-                <div className="main-section-data">
-                    <div className="row">
-                        <FilterJob/>
-                        <div className="col-lg-6">
-                            <div className="main-ws-sec">
-                                <div className="posts-section">
-                                    <SingleJob/>
+
+        <main>
+            <div className="main-section">
+                <div className="container">
+                    <div className="main-section-data">
+                        <div className="row">
+                            <FilterJob/>
+                            <div className="col-lg-6">
+                                <div className="main-ws-sec">
+                                    <div className="posts-section">
+                                        <SingleJob/>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        
-                        <div className="col-lg-3">
-                        <div className="right-sidebar">
-                            <TopJob/>
-                            <MostViewed/>
-                        </div>
+                            
+                            <div className="col-lg-3">
+                            <div className="right-sidebar">
+                                <TopJob/>
+                                <MostViewed/>
+                            </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </main>
+        </main>
     )
 }
 

@@ -16,6 +16,8 @@ import SignInPage from "./pages/SignIn";
 import UserProfilPage from "./pages/UserProfilPage";
 import UsersPage from "./pages/UsersPage";
 import PostJobPage from './pages/PostJobPage'
+import JobContextProvider from "./contexts/jobContext";
+import UserContextProvider from "./contexts/userContext";
 
 
 function App() {
@@ -23,21 +25,29 @@ function App() {
     <React.Fragment>
       <div className="wrapper">
         <Switch>
+        <UserContextProvider>
           <Route exact path="/sign-in" component={SignInPage} />
           <Route exact path="/" component={Home} />
           <Route exact path="/companies" component={CompaniesPage} />
           <Route exact path="/company/:companyId" component={CompanyProfilPage}/>
           <Route exact path="/my-company" component={AnyCompanyProfilPage}/>
           <Route exact path="/users" component={UsersPage}/>
+
           <Route exact path="/post-job" component={PostJobPage}/>
           <Route exact path="/user" component={AnyUserPage}/>
-          <Route exact path="/jobs" component={JobsPage} />
+          <JobContextProvider>
+            <Route exact path="/jobs" component={JobsPage} />
+          </JobContextProvider>
+          
           <Route exact path="/apply-job" component={ApplyJobPage}/>
           <Route exact path="/my-profile" component={UserProfilPage}/>
           <Route exact path="/about" component={AboutPage} />
           <Route exact path="/privacy-policy" component={PrivacyPolicyPage} />
-          <Route exact path="/community-guide-line" component={CommunityGuideLinePage} />
+          <Route exact path="/community-guide-line" component={CommunityGuideLinePage}/>
+          
+          </UserContextProvider>
           <Route component={ErrorPage} />
+          
         </Switch>
       </div>
     </React.Fragment>

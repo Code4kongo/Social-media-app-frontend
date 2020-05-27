@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import UsersSocialMediaLinks from "../../components/SocialMediaLink/SocialMediaLink";
 import UserFeed from "../../components/PersonalFeed/PersonalFeed";
 import UserInfo from "../../components/PersonalInfo/PersonalInfo";
@@ -6,8 +6,7 @@ import UserCover from '../../images/resources/cover-img.jpg'
 import FeedIcon from '../../images/ic1.png'
 import InfoIcon from '../../images/ic2.png'
 
-export class MainUserProfil extends Component {
-  render() {
+const MainUserProfil = () => {
     return (
 
         <React.Fragment>
@@ -73,7 +72,6 @@ export class MainUserProfil extends Component {
         </main>
         </React.Fragment>
     );
-  }
 }
-
+ 
 export default MainUserProfil;

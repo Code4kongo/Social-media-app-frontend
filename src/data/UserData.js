@@ -15,10 +15,12 @@ export default
       "address": "324 Ross Street, Ripley, Indiana, 1300",
       "about": "Eu in cillum officia aute nisi laborum dolor. Laborum labore laborum quis ut officia nisi anim voluptate qui consectetur. Fugiat cupidatat fugiat veniam veniam deserunt exercitation. Ullamco ullamco eu officia excepteur Lorem id commodo minim.\r\n",
       "registered": "2018-05-01T11:39:48 -02:00",
+
       "info": [
         "{overview : Commodo dolore est sunt mollit culpa est veniam non id irure voluptate irure laboris laborum. Dolor pariatur magna tempor dolor. Excepteur consectetur adipisicing dolore dolore do ipsum ex ullamco ex excepteur minim ex. Esse commodo ullamco cillum minim non non in labore commodo. Et irure cillum do Lorem non anim nostrud culpa mollit fugiat velit reprehenderit in.\r\n",
         "experience : Labore mollit voluptate anim tempor ad sunt magna anim ullamco aliqua duis et. In aliquip labore velit laboris cupidatat occaecat. Do esse Lorem velit labore consequat ea enim aliqua ipsum. Consequat irure est tempor ad. Eu sunt magna duis aliqua reprehenderit ipsum sint velit ex minim. Occaecat laboris veniam in culpa eu.\r\n"
       ],
+
       "education": "Nulla laboris do ipsum enim dolor tempor reprehenderit sint esse consectetur velit reprehenderit officia velit. Ut ipsum nisi reprehenderit dolor exercitation ea velit esse ut exercitation ut. Commodo ex pariatur id dolore sit ut deserunt sunt. Tempor ea anim excepteur et excepteur. Sunt cupidatat ea reprehenderit esse enim.\r\n",
       "skills": [
         "exercitation",
@@ -29,6 +31,7 @@ export default
         "nulla",
         "aute"
       ],
+      
       "portfolio": [],
       "socialmedialink": [
         "aliqua",

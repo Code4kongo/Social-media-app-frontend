@@ -1,9 +1,7 @@
-import React, { Component } from 'react'
-
-export class TopJobs extends Component {
-    render() {
-        return (
-            <div className="widget widget-jobs">
+import React from 'react'
+const TopJobs = () => {
+	return ( 
+		<div className="widget widget-jobs">
 				<div className="sd-title">
 					<h3>Top Jobs</h3>
 						<i className="la la-ellipsis-v"></i>
@@ -56,8 +54,7 @@ export class TopJobs extends Component {
 					</div>
 				</div>
 			</div>
-        )
-    }
+	 );
 }
-
-export default TopJobs
+ 
+export default TopJobs ;

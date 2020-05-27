@@ -1,10 +1,9 @@
-import React, { Component } from 'react'
+import React from 'react'
 import Icon from '../../images/resources/cmp-icon1.png'
 
-export class SingleElement extends Component {
-    render() {
-        return (
-            <div className="col-lg-3 col-md-4 col-sm-6">
+const SingleElement = () => {
+    return ( 
+        <div className="col-lg-3 col-md-4 col-sm-6">
             <div className="company_profile_info">
                 <div className="company-up-info">
                     <img src={Icon} alt=""/>
@@ -17,8 +16,7 @@ export class SingleElement extends Component {
                 <a href="company-profile.html" title="" className="view-more-pro">View Profile</a>
             </div>
         </div>
-        )
-    }
+     );
 }
-
-export default SingleElement
+ 
+export default SingleElement;

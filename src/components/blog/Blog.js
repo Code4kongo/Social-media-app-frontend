@@ -9,7 +9,7 @@ export default function Blog() {
 		<section className="services">
     <div className="container">
       <div className="video">
-      <iframe classNameName="video-iframe"  src="https://www.youtube.com/embed/jzCwiu22C_c" ></iframe>
+      <iframe classNameName="video-iframe"  src="https://www.youtube.com/embed/jzCwiu22C_c" title="video-link"></iframe>
       </div>
       <div className="row">
         <div className="col-md-4 col-sm-12">

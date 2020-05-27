@@ -1,13 +1,11 @@
-import React, { Component } from 'react'
+import React  from 'react'
 import SingleJob from '../../components/SingleJob/SingleJob'
 import ApplyJobSideBar from '../../components/ApplyJobSideBar/ApplyJobSideBar'
 import ApplyJobHeader from '../../components/ApplyJobHeader/ApplyJobHeader'
 
-
-export class MainApplyJob extends Component {
-    render() {
-        return (
-            <main>
+const MainApplyJob = () => {
+    return ( 
+        <main>
             <div className="main-section">
                 <div className="container">
                     <div className="main-section-data">
@@ -22,9 +20,8 @@ export class MainApplyJob extends Component {
                     </div>
                 </div>
             </div>
-            </main>
-        )
-    }
+        </main>
+     );
 }
-
-export default MainApplyJob
+ 
+export default  MainApplyJob;

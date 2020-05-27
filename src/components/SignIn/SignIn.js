@@ -64,7 +64,7 @@ export default function SignIn() {
                             <div className="checky-sec">
                               <div className="fgt-sec">
                                 <input type="checkbox" name="cc" id="c1" />
-                                <label for="c1">
+                                <label htmlFor="c1">
                                   <span></span>
                                 </label>
                                 <small>Remember me</small>
@@ -103,7 +103,7 @@ export default function SignIn() {
                         <i className="fa fa-long-arrow-left"></i>
                         <h2>johndoe@example.com</h2>
                         <ul>
-                          <li data-tab="tab-3" class="current">
+                          <li data-tab="tab-3" className="current">
                             <a href="/" title="">
                               User
                             </a>
@@ -177,7 +177,7 @@ export default function SignIn() {
                               <div className="checky-sec st2">
                                 <div className="fgt-sec">
                                   <input type="checkbox" name="cc" id="c2" />
-                                  <label for="c2">
+                                  <label htmlFor="c2">
                                     <span></span>
                                   </label>
                                   <small>
@@ -242,7 +242,7 @@ export default function SignIn() {
                               <div className="checky-sec st2">
                                 <div className="fgt-sec">
                                   <input type="checkbox" name="cc" id="c3" />
-                                  <label for="c3">
+                                  <label htmlFor="c3">
                                     <span></span>
                                   </label>
                                   <small>
