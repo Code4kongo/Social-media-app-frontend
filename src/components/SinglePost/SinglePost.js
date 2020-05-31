@@ -63,7 +63,7 @@ const  SinglePost = () => {
             <ul className="bk-links">
               <li>
                 <a href="/" title="">
-                  <i claclassNamess="la la-bookmark"></i>
+                  <i className="la la-bookmark"></i>
                 </a>
               </li>
               <li>

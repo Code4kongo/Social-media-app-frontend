@@ -1,6 +1,5 @@
-import React, { createContext, useState, useEffect } from 'react';
-import jobData from '../data/JobsData'
-import axios from 'axios'
+import React, { createContext, useState } from 'react';
+// import jobData from '../data/JobsData'
 
 export const JobContext = createContext()
 
@@ -27,18 +26,7 @@ const JobContextProvider = (props) => {
                 ]  
         }
     ])
-    useEffect(()=>{
-        axios.get('http://www.mocky.io/v2/5ece30b53000008c00ea0ed3')
-        .then(res => {
-            setJobs([res.data])
-        })
-        .catch(error => console.log(error))
-    },[jobs])
-
-    // const getData = () => {
-    //   setJobs([jobs,jobData])
-       
-    // }
+    
     return ( 
         <JobContext.Provider value={{jobs }}>
             {props.children}
