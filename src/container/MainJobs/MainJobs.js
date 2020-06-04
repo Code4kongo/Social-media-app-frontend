@@ -1,15 +1,12 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import FilterJob from '../../components/FilterJob/FilterJob'
 import SingleJob from '../../components/SingleJob/SingleJob'
 import TopJob from '../../components/TopJobs/TopJobs'
 import MostViewed from '../../components/MostViewd/MostView'
-import {JobContext} from '../../contexts/jobContext'
 
 
 function MainJobs() {
     
-    const { jobs } = useContext(JobContext)
-    console.log(jobs)
     return (
 
         <main>

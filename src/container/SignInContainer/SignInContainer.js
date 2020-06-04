@@ -16,7 +16,7 @@ const SignInContainer  = () => {
     setToggle(toggle = false)
   }
 
-  const { signIn, signUpUser, signUpCompany } = useContext(UserContext)
+  const { signIn, signUpUser, signUpCompany , isAuth } = useContext(UserContext)
   
 
   return ( 
@@ -34,7 +34,7 @@ const SignInContainer  = () => {
                       <li data-tab="tab-1" className="current" onClick={handleToggleStateSignIn} ><a> Sign in </a> </li>
                       <li data-tab="tab-2"  onClick={handleToggleStateSignUp} > <a> Sign up </a> </li>
                     </ul>
-                    { toggle ? <SignIn handleSignIn = {signIn}/> : <SignUp handleSignUpUser = {signUpUser} handleSignUpCompany ={ signUpCompany }/>} 
+                    { toggle ? <SignIn handleSignIn = {signIn} isAuth={isAuth} /> : <SignUp handleSignUpUser = {signUpUser} handleSignUpCompany ={ signUpCompany } isAuth={isAuth}/>} 
                     </div>
                     </div>
             </div>

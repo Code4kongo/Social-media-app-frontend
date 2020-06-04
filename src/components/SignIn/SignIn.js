@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import { Redirect } from 'react-router-dom'
 
 
 const SignIn = props => {
@@ -9,6 +10,7 @@ const SignIn = props => {
   const handleSubmit = (event) => {
     event.preventDefault()
     props.handleSignIn(username, password)
+    console.log(props) 
   }
 
   return (
@@ -40,6 +42,7 @@ const SignIn = props => {
         </div>
         <div className="col-lg-12 no-pdd">
           <button type="submit" value="submit"> Sign in </button>
+          
         </div>
       </div>
     </form>

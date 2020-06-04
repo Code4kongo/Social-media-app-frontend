@@ -1,7 +1,9 @@
 import React from 'react'
 import ImageProfil from '../../images/resources/user-pic.png'
 import './UserProfiction.css'
-const UserProfiction = () => {
+const UserProfiction = (props) => {
+    const { name, company, email, registered } = props
+
     return ( 
         <div className="user-data full-width">
             <div className="user-profile">
@@ -11,18 +13,18 @@ const UserProfiction = () => {
                     </div>
                 </div>
                 <div className="user-specs">
-                    <h3>John Doe</h3>
-                    <span>Graphic Designer at Self Employed</span>
+                    <h3>{name}</h3>
+                    <span>{ company} </span>
                 </div>
              </div>
             <ul className="user-fw-status">
                 <li>
-                    <h4>Following</h4>
-                    <span>34</span>
+                    <h4>Email</h4>
+                    <span>{email}</span>
                 </li>
                 <li>
-                    <h4>Followers</h4>
-                    <span>155</span>
+                    <h4>registered</h4>
+                    <span>{registered}</span>
                 </li>
                 <li>
                     <a href="/" title="">View Profile</a>

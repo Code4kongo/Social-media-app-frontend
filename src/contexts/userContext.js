@@ -90,10 +90,14 @@ const UserContextProvider = props => {
             socialmedialink : []
         }
 
+
         
         
         axios.post('http://www.mocky.io/v2/5ed1479c350000d4f3ffa424', newUser)
-             .then(res => console.log(res))
+             .then(res => {
+                 console.log(res.data)
+                 
+            })
              .catch(error => console.log(error))
 
              console.log(newUser)
