@@ -1,6 +1,15 @@
 import React from 'react'
 
-const MostView = () => {
+const MostView = ({mostViewed}) => {
+
+    let textLimit = (string= "sometext") => {
+		let arrayTransform = string.split('')
+		let filterText = arrayTransform.slice(0, 100)
+		let resultText = filterText.join('')
+		let newString = resultText.toString()
+		return newString
+    }	
+
     return ( 
         <div className="widget widget-jobs">
             <div className="sd-title">
@@ -8,34 +17,26 @@ const MostView = () => {
                 <i className="la la-ellipsis-v"></i>
             </div>
             <div className="jobs-list">
-                <div className="job-info">
-                    <div className="job-details">
-                        <h3>Senior Product Designer</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit..</p>
-                     </div>
-                    <div className="hr-rate">
-                        <span>$25/hr</span>
-                    </div>
-                </div>
-            <div className="job-info">
-                <div className="job-details">
-                    <h3>Senior UI / UX Designer</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit..</p>
-                </div>
-                <div className="hr-rate">
-                    <span>$25/hr</span>
-                </div>
-             </div>
-            <div className="job-info">
-                <div className="job-details">
-                    <h3>Junior Seo Designer</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit..</p>
+                {
+                    mostViewed.map(job => {
+                        const filterOverview = textLimit(job.overview)
+                        return (
+                                <div className="job-info" key={job._id}>
+                                        <div className="job-details">
+                                            <h3> {job.title} </h3>
+                                                <p>{filterOverview} ...</p>
+                                        </div>
+                                    <div className="hr-rate">
+                                        <span>R{job.salary}</span>
+                                    </div>
+                                </div>
+                        )
+                    })
+                }
+
+
+
             </div>
-            <div className="hr-rate">
-                <span>$25/hr</span>
-            </div>
-            </div>
-        </div>
         </div>
      );
 }

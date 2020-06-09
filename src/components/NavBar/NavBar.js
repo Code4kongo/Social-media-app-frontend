@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import HomeIcon from '../../images/icon1.png'
 import CompanyIcon from '../../images/icon2.png'
 import UserIcon from '../../images/icon4.png'
@@ -13,45 +14,39 @@ const  NavBar = () => {
             <nav>
                 <ul>
                     <li>
-                        <a href="/">
-                            <span><img src={HomeIcon} alt="homeIcon" /></span>
-                            Home
-                        </a>
+                        <Link to="/">   
+                            <span><img src={HomeIcon} alt="homeIcon"/></span>  Home
+                        </Link>
                     </li>
                     <li>
-                        <a href="/post-job">
-                            <span><img src={AddJobIcon} alt="jobIcon" /></span>
-                            Post Job
-                        </a>
+                        <Link to="/post-job">
+                            <span><img src={AddJobIcon} alt="jobIcon" /></span> Post Job
+                        </Link>
                     </li>
                     <li>
-                        <a href="/companies">
-                            <span><img src={CompanyIcon} alt="companyIcon" /></span>
-                            Companies
-                        </a>
+                        <Link to="/companies">
+                            <span><img src={CompanyIcon} alt="companyIcon" /></span> Companies
+                        </Link>
                     </li>
                     <li>
-                        <a href="/users">
-                            <span><img src={UserIcon} alt="UserIcon" /></span>
-                            Users
-                        </a>
+                        <Link to="/users">
+                            <span><img src={UserIcon} alt="UserIcon" /></span> Users
+                        </Link>
                     </li>
                     <li>
-                        <a href="/jobs">
-                            <span><img src={JobIcon} alt="homeIcon" /></span>
-                            Jobs
-                        </a>
+                        <Link to="/jobs">
+                            <span><img src={JobIcon} alt="homeIcon" /></span>  Jobs
+                        </Link>
                     </li>
                     <li>
-                        <a href="/my-profile" className="">
-                            <span><img src={NotificationIcon} alt="NotifictaionIcon"/></span>
-                            Notification
-                        </a>
+                        <Link to="/my-profile" className="">
+                            <span><img src={NotificationIcon} alt="NotifictaionIcon"/></span> Notification
+                        </Link>
                     </li>
                 </ul>
             </nav>
             <div className="menu-btn">
-                <a href="/" title=""><i className="fa fa-bars"></i></a>
+                <Link to="/"><i className="fa fa-bars"></i></Link>
             </div>
             <div>
                 <UserAccount/>

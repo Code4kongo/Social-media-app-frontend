@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 
 export default function AsUser(props) {
 
-  const [fullname, setFullname] = useState('')
+  const [email, setEmail] = useState('')
   const [country, setCountry] = useState('')
   const [gender, setGender] = useState('')
   const [password, setPassword] = useState('')
@@ -15,7 +15,7 @@ export default function AsUser(props) {
       alert("Your password must match and agree term and conditon")
     }
     else{
-      props.handleSignUpUser(fullname, country, gender, password)
+      props.handleSignUpUser(email, country, gender, password)
     }
   }
 
@@ -25,7 +25,7 @@ export default function AsUser(props) {
           <div className="row">
             <div className="col-lg-12 no-pdd">
               <div className="sn-field">
-                <input type="text"  placeholder="Full Name" value={fullname} onChange={event => setFullname(event.target.value)}/>
+                <input type="email"  placeholder="email " value={email} onChange={event => setEmail(event.target.value)}/>
                 <i className="la la-user"></i>
               </div>
             </div>

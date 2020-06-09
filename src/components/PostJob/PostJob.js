@@ -1,5 +1,6 @@
 import React from "react";
 import "./PostJob.css";
+import { Link } from 'react-router-dom'
 import UserPic from "../../images/resources/user-pic.png";
 
 const  PostJob = () => {
@@ -12,9 +13,9 @@ const  PostJob = () => {
       <div className="post-st">
         <ul>
           <li>
-            <a className="post-jb active" href="/" title="">
+            <Link className="post-jb active" to="/" title="">
               Post a Job
-            </a>
+            </Link>
           </li>
         </ul>
       </div>

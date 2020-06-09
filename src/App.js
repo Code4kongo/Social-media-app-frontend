@@ -17,6 +17,9 @@ import UserProfilPage from "./pages/UserProfilPage";
 import UsersPage from "./pages/UsersPage";
 import PostJobPage from './pages/PostJobPage'
 import UserContextProvider from "./contexts/userContext";
+import CompanyContextProvider from "./contexts/companyContext";
+import JobContextProvider from "./contexts/jobContext";
+import PostContextProvider from "./contexts/postContext";
 
 
 function App() {
@@ -24,7 +27,11 @@ function App() {
     <React.Fragment>
       <div className="wrapper">
         <Switch>
+        <CompanyContextProvider>
         <UserContextProvider>
+        <PostContextProvider>
+        <JobContextProvider>
+        
           <Route exact path="/sign-in" component={SignInPage} />
           <Route exact path="/" component={Home} />
           <Route exact path="/companies" component={CompaniesPage} />
@@ -39,9 +46,12 @@ function App() {
           <Route exact path="/about" component={AboutPage} />
           <Route exact path="/privacy-policy" component={PrivacyPolicyPage} />
           <Route exact path="/community-guide-line" component={CommunityGuideLinePage}/>
-          </UserContextProvider>
-          <Route component={ErrorPage} />
-          
+
+        </JobContextProvider>  
+        </PostContextProvider>
+        </UserContextProvider>
+        </CompanyContextProvider>
+          <Route component={ErrorPage} />  
         </Switch>
       </div>
     </React.Fragment>

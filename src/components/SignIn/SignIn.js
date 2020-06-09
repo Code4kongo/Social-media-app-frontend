@@ -1,51 +1,108 @@
 import React, {useState} from "react";
-import { Redirect } from 'react-router-dom'
 
 
 const SignIn = props => {
 
-  const [username, setUsername] = useState('')
+  const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  let  [toggle, setToggle] = useState(true)
 
-  const handleSubmit = (event) => {
-    event.preventDefault()
-    props.handleSignIn(username, password)
-    console.log(props) 
+  const handleToggleStateUser = () => {
+    setToggle(toggle = true)
   }
+
+  const handleToggleStateCompany = () => {
+    setToggle(toggle = false)
+  }
+
+  const handleSubmitUser = (event) => {
+    event.preventDefault()
+    props.handleSignInUser(email, password)
+
+  }
+  const handleSubmitCompany = (event) => {
+    event.preventDefault()
+    props.handleSignInCompany(email, password)
+
+  }
+
+  let AsUser = (
+          <form onSubmit={handleSubmitUser} >
+            <div className="row">
+              <div className="col-lg-12 no-pdd">
+                <div className="sn-field">
+                  <input type="email" placeholder="email" required value={email} onChange={(event) => {setEmail(event.target.value)}}/>
+                  <i className="la la-user"></i>
+                </div>
+              </div>
+              <div className="col-lg-12 no-pdd">
+                <div className="sn-field">
+                  <input type="password"  placeholder="Password" required value={password} onChange={(event) => {setPassword(event.target.value)}}/>
+                  <i className="la la-lock"></i>
+                </div>
+              </div>
+              <div className="col-lg-12 no-pdd">
+                <div className="checky-sec">
+                  <div className="fgt-sec">
+                    <input type="checkbox"/>
+                    <label htmlFor="c1">  <span></span> </label>
+                    <small>Remember me</small>
+                  </div>
+                  <a href="/"> Forgot Password? </a>
+                </div>
+              </div>
+              <div className="col-lg-12 no-pdd">
+                <button type="submit" value="submit"> Sign in as User</button>
+                
+              </div>
+            </div>
+          </form>
+  )
+  let AsCompany = (
+          <form onSubmit={handleSubmitCompany} >
+            <div className="row">
+              <div className="col-lg-12 no-pdd">
+                <div className="sn-field">
+                  <input type="email" placeholder="email" required value={email} onChange={(event) => {setEmail(event.target.value)}}/>
+                  <i className="la la-user"></i>
+                </div>
+              </div>
+              <div className="col-lg-12 no-pdd">
+                <div className="sn-field">
+                  <input type="password"  placeholder="Password" required value={password} onChange={(event) => {setPassword(event.target.value)}}/>
+                  <i className="la la-lock"></i>
+                </div>
+              </div>
+              <div className="col-lg-12 no-pdd">
+                <div className="checky-sec">
+                  <div className="fgt-sec">
+                    <input type="checkbox"/>
+                    <label htmlFor="c1">  <span></span> </label>
+                    <small>Remember me</small>
+                  </div>
+                  <a href="/"> Forgot Password? </a>
+                </div>
+              </div>
+              <div className="col-lg-12 no-pdd">
+                <button type="submit" value="submit"> Sign in as Company</button>
+                
+              </div>
+            </div>
+          </form>
+  )
 
   return (
     <div className="sign_in_sec current" id="tab-1">
     <h3>Sign in</h3>
-    <form onSubmit={handleSubmit} >
-      <div className="row">
-        <div className="col-lg-12 no-pdd">
-          <div className="sn-field">
-            <input type="email" placeholder="email" required value={username} onChange={(event) => {setUsername(event.target.value)}}/>
-            <i className="la la-user"></i>
-          </div>
+    <div className="col-lg-6">
+        <div className="login-sec"> 
+          <ul className="sign-control">
+            <li data-tab="tab-1" className="current" onClick={handleToggleStateUser} ><a> User </a> </li>
+            <li data-tab="tab-2"  onClick={handleToggleStateCompany} > <a> Company </a> </li>
+          </ul>
+          { toggle ? AsUser : AsCompany} 
         </div>
-        <div className="col-lg-12 no-pdd">
-          <div className="sn-field">
-            <input type="password"  placeholder="Password" required value={password} onChange={(event) => {setPassword(event.target.value)}}/>
-            <i className="la la-lock"></i>
-          </div>
-        </div>
-        <div className="col-lg-12 no-pdd">
-          <div className="checky-sec">
-            <div className="fgt-sec">
-              <input type="checkbox"/>
-              <label htmlFor="c1">  <span></span> </label>
-              <small>Remember me</small>
-            </div>
-            <a href="/"> Forgot Password? </a>
-          </div>
-        </div>
-        <div className="col-lg-12 no-pdd">
-          <button type="submit" value="submit"> Sign in </button>
-          
-        </div>
-      </div>
-    </form>
+    </div>
     <div className="login-resources">
       <h4>Login Via Social Account</h4>
       <ul>

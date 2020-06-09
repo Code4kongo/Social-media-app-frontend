@@ -2,7 +2,7 @@ import React, {useState } from 'react'
 
 export default function AsComapny(props) {
 
-  const [companyName, setCompanyName] = useState('')
+  const [email, setEmail] = useState('')
   const [country, setCountry] = useState('')
   const [password, setPassword] = useState('')
   const [repeatPassword, setRepeatPassword] = useState('')
@@ -14,7 +14,7 @@ export default function AsComapny(props) {
       alert("Your password must match and agree term and conditon")
     }
     else{
-      props.handleSignUpCompany(companyName, country, password, 'any')
+      props.handleSignUpCompany(email, country, password)
     }
   }
 
@@ -24,7 +24,7 @@ export default function AsComapny(props) {
         <div className="row">
           <div className="col-lg-12 no-pdd">
             <div className="sn-field">
-              <input type="text" placeholder="Company Name" value={companyName} onChange={event => {setCompanyName(event.target.value)}}/>
+              <input type="email" placeholder="Company email" value={email} onChange={event => {setEmail(event.target.value)}}/>
               <i className="la la-building"></i>
             </div>
           </div>
