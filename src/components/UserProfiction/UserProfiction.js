@@ -1,6 +1,7 @@
 import React from 'react'
 import ImageProfil from '../../images/resources/user-pic.png'
 import './UserProfiction.css'
+import { Link } from 'react-router-dom'
 const UserProfiction = (props) => {
     const { name, company, email, registered } = props
 
@@ -9,7 +10,7 @@ const UserProfiction = (props) => {
             <div className="user-profile">
                 <div className="username-dt">
                     <div className="usr-pic">
-                        <img src={ImageProfil} alt=""/>
+                        <img src={ImageProfil} alt="myprofil"/>
                     </div>
                 </div>
                 <div className="user-specs">
@@ -27,7 +28,7 @@ const UserProfiction = (props) => {
                     <span>{registered}</span>
                 </li>
                 <li>
-                    <a href="/" title="">View Profile</a>
+                    <Link to="/my-profile">View Profile</Link>
                 </li>
             </ul>
         </div>

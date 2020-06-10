@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+// import { Link } from "react-router-dom";
 import AsComapny from './AsComapny'
 import AsUser from './AsUser'
 
@@ -26,7 +27,13 @@ const SignUp = (props) => {
                         <li data-tab="tab-4" onClick={handleToggleAccountCompany}>  <a> Company </a> </li>
                     </ul>
                 </div>
-                { toggleAccount ? <AsUser handleSignUpUser={props.handleSignUpUser}/> : <AsComapny handleSignUpCompany={props.handleSignUpCompany} />}
+                { toggleAccount ? 
+                      <AsUser 
+                          handleSignUpUser={props.handleSignUpUser}
+                      /> : 
+                      <AsComapny 
+                          handleSignUpCompany={props.handleSignUpCompany} 
+                      />}
             </div>
      );
 }

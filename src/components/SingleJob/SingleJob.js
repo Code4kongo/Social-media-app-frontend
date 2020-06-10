@@ -1,6 +1,8 @@
 import React  from 'react'
+import { Link } from 'react-router-dom'
 
-const SingleJob = () => {
+const SingleJob = (props) => {
+    let {address, applicants, author, content, country, date,email, jobType, overview, phone, salary, socialmedialink, title, total_employee, views  } = props
     return ( 
         <div>
             <div className="posty">
@@ -9,8 +11,8 @@ const SingleJob = () => {
                         <div className="usy-dt">
                             <img src="images/resources/us-pc2.png" alt=""/>
                             <div className="usy-name">
-                                <h3>John Doe</h3>
-                                <span><img src="images/clock.png" alt=""/>3 min ago</span>
+                                <h3>{author}</h3>
+                                <span><img src="images/clock.png" alt=""/> posted on : { date }</span>
                             </div>
                         </div>
                         <div className="ed-opts">
@@ -26,8 +28,8 @@ const SingleJob = () => {
                     </div>
                     <div className="epi-sec">
                         <ul className="descp">
-                            <li><img src="images/icon8.png" alt=""/><span>Epic Coder</span></li>
-                            <li><img src="images/icon9.png" alt=""/><span>India</span></li>
+                            <li><img src="images/icon8.png" alt=""/><span>{email}</span></li>
+                            <li><img src="images/icon9.png" alt=""/><span> { country }</span></li>
                         </ul>
                         <ul className="bk-links">
                             <li><a href="/" title=""><i className="la la-bookmark"></i></a></li>
@@ -35,42 +37,42 @@ const SingleJob = () => {
                         </ul>
                     </div>
                     <div className="job_descp">
-                        <h3>Senior Wordpress Developer</h3>
+                        <h3>{title}</h3>
                         <ul className="job-dt">
-                            <li><a href="/" title="">Full Time</a></li>
-                            <li><span>$30 / hr</span></li>
+                            <li><a href="/" title="">{jobType}</a></li>
+                            <li><span>R{salary}</span></li>
                         </ul>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam luctus hendrerit metus, ut ullamcorper quam finibus at. Etiam id magna sit amet... <a href="/" title="">view more</a></p>
+                        <p>{content} <a href="/">view more</a></p>
                         <ul className="skill-tags">
-                            <li><a href="/" title="">HTML</a></li>
-                            <li><a href="/" title="">PHP</a></li>
-                            <li><a href="/" title="">CSS</a></li>
-                            <li><a href="/" title="">Javascript</a></li>
-                            <li><a href="/" title="">Wordpress</a></li> 	
+                            {
+                                socialmedialink.map((socialLink,index) => {
+                                    return <li key={index}><Link to={socialLink}> {socialLink} </Link></li>
+                                })
+                            }
+                            
                         </ul>
                     </div>
                     <div className="job-status-bar">
                         <ul className="like-com">
                             <li>
-                                <a href="/" className="active"><i className="fas fa-heart"></i> Like</a>
-                                <img src="images/liked-img.png" alt=""/>
-                                <span>25</span>
+                                <a href="/" className="active"> Like </a>
                             </li>
-                            <li><a href="/" className="com"><i className="fas fa-comment-alt"></i> Comments 15</a></li>
+                            <li><a href="/" className="com"><i className="fas fa-eye"></i> view job</a></li>
                         </ul>
-                        <a href="/"><i className="fas fa-eye"></i>Views 50</a>
+                        <a href="/"><i className="fas fa-eye"></i>{views}</a>
                     </div>
                 </div>
             </div>
             <div className="process-comm">
-                <div className="spinner">
-                    <div className="bounce1"></div>
-                    <div className="bounce2"></div>
-                    <div className="bounce3"></div>
-                </div>
+                
             </div>
         </div>
      );
 }
  
 export default SingleJob ;
+
+
+
+
+ 

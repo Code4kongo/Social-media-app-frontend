@@ -10,6 +10,7 @@ import FeedIcon from '../../images/ic1.png'
 import InfoIcon from '../../images/ic2.png'
 import PortfolioIcon from '../../images/ic3.png'
 import NotificationIcon from '../../images/review.png'
+import { Link } from "react-router-dom";
 
 const MainUserProfil = () => {
     return (
@@ -48,28 +49,28 @@ const MainUserProfil = () => {
                                     <div className="tab-feed st2 settingjb">
                                         <ul>
                                         <li data-tab="feed-dd" className="active">
-                                            <a href="/" title="">
+                                            <Link to="/">
                                             <img src={FeedIcon} alt="" />
                                             <span>Feed</span>
-                                            </a>
+                                            </Link>
                                         </li>
                                         <li data-tab="info-dd">
-                                            <a href="/" title="">
+                                            <Link to="/">
                                             <img src={InfoIcon} alt="" />
                                             <span>Info</span>
-                                            </a>
+                                            </Link>
                                         </li>
                                         <li data-tab="portfolio-dd">
-                                            <a href="/" title="">
+                                            <Link to="/">
                                             <img src={PortfolioIcon} alt="" />
                                             <span>Portfolio</span>
-                                            </a>
+                                            </Link>
                                         </li>
                                         <li data-tab="rewivewdata">
-                                            <a href="/" title="">
+                                            <Link to="/">
                                             <img src={NotificationIcon} alt="" />
                                             <span>Notifications</span>
-                                            </a>
+                                            </Link>
                                         </li>
                                         </ul>
                                     </div>

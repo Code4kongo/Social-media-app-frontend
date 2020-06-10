@@ -3,6 +3,7 @@ import SignIn from "../../components/SignIn/SignIn";
 import SignUp from '../../components/SignUp/SignUp'
 import CompanyIntroDetails from '../../components/CompanyIntroDetails/CompanyIntroDetails'
 import { UserContext } from '../../contexts/userContext'
+import { CompanyContext } from "../../contexts/companyContext";
 
 const SignInContainer  = () => {
 
@@ -16,9 +17,10 @@ const SignInContainer  = () => {
     setToggle(toggle = false)
   }
 
-  const { signIn, signUpUser, signUpCompany , isAuth } = useContext(UserContext)
+  const {  signInCompany, signUpCompany } = useContext(CompanyContext)
+  const { signInUser, signUpUser } = useContext(UserContext)
   
-
+  
   return ( 
     <div className="sign-in">
       <div className="wrapper">
@@ -34,7 +36,16 @@ const SignInContainer  = () => {
                       <li data-tab="tab-1" className="current" onClick={handleToggleStateSignIn} ><a> Sign in </a> </li>
                       <li data-tab="tab-2"  onClick={handleToggleStateSignUp} > <a> Sign up </a> </li>
                     </ul>
-                    { toggle ? <SignIn handleSignIn = {signIn} isAuth={isAuth} /> : <SignUp handleSignUpUser = {signUpUser} handleSignUpCompany ={ signUpCompany } isAuth={isAuth}/>} 
+                    { toggle ? 
+                      <SignIn 
+                          handleSignInUser = {signInUser}
+                          handleSignInCompany = {signInCompany} 
+                          /> :
+                      <SignUp 
+                          handleSignUpUser = {signUpUser} 
+                          handleSignUpCompany ={ signUpCompany}
+                          />
+                    } 
                     </div>
                     </div>
             </div>

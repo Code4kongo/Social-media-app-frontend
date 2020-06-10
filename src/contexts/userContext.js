@@ -1,6 +1,5 @@
 import React, { useState, createContext } from 'react';
 import axios from 'axios'
-import { v4 as uuidv4} from 'uuid'
 
 export const  UserContext = createContext()
 
@@ -22,104 +21,105 @@ const UserContextProvider = props => {
         about : "",
         registered : "",
     })
-    const [ userInfo, setUserInfo ] = useState("") // to be change into an object 
+    const [ userInfo, setUserInfo ] = useState({
+        overview : "",
+        experience : ""
+    }) 
     const [ userEducation, setUserEducation] = useState("")
     const [ userSkills, setUserSkills] = useState([])
     const [ userPortfolio, setUserPortfolio] = useState([])
     const [ userSocialmedialink, setUserSocialmedialink] = useState([])
-
-
     const [isAuth, setAuth ] = useState(false)
     
 
-    const signIn = (email, password ) => {
+    const signInUser = (email, password ) => {
 
-        axios.get('http://www.mocky.io/v2/5ed1479c350000d4f3ffa424')
+        axios.post('http://localhost:8080/user/login', {email, password})
              .then(res => {
-                 let users = res.data
-                 const userExist = users.filter(user => user.email === email && user.password.toString() === password)
-                if(userExist < 1){
-                    alert('Please sign up') 
-                } else {
-                    const user = userExist[0]
-                    const {  id, username,password,picture, country , age ,name,gender, company,email,phone,address, about,registered,education } = user
-                    const { info } = user
-                    const { skills } = user
-                    const { portfolio } = user
-                    const { socialmedialink } = user
+                let user = res.data.user[0]
+                const {  _id, username,password,picture, country , age ,name,gender, company,email,phone,address, about,registered,education } = user
+                const { overview, experience } = user.info
+                const { skills } = user
+                const { portfolio } = user
+                const { socialmedialink } = user
 
                     setUserDetails(prevState => {
-                        return { ...prevState, id, username,password,picture, country , age ,name,gender, company,email,phone,address, about,registered}
+                        return { ...prevState, _id, username,password,picture, country , age ,name,gender, company,email,phone,address, about,registered}
                     })
-                    setUserInfo(info) 
+                    setUserInfo(prevState => {
+                        return {...prevState,overview,experience}
+                    }) 
                     setUserEducation(education)
                     setUserSkills([...userSkills, skills])
                     setUserPortfolio([...userPortfolio, portfolio]) 
                     setUserSocialmedialink([...userSocialmedialink,socialmedialink]) 
-
                     setAuth(true)
-                } 
              })
              .catch(error => console.log(error))
 
     }
+    const signUpUser = (email,country, gender, password) => {
 
-
-    const signUpUser = (fullname,country, gender, password) => {
-
-        // sign up user
-        const newUser = {
-            _id : uuidv4(),
-            username : fullname,
+        const newUser =  {
+            username: "",
             password,
-            picture : "",
+            picture: "",
             country,
-            age : 0,
-            name : "",
+            age: 0,
+            name: "",
             gender,
-            company : "",
-            email : "",
-            phone : "",
-            address : "",
-            about : "",
-            registered : Date(),
-            info : [],
-            education : "",
-            skills : [],
-            portfolio : [],
-            socialmedialink : []
-        }
-
+            company: "",
+            email,
+            phone: "",
+            address: "",
+            about:  "",
+            info: {
+                overview : "",
+                experience : ""
+            },
+            education: "",
+            skills: [],
+            portfolio: [],
+            socialmedialink: []
+          }
 
         
-        
-        axios.post('http://www.mocky.io/v2/5ed1479c350000d4f3ffa424', newUser)
-             .then(res => {
-                 console.log(res.data)
-                 
+        axios.post('http://localhost:8080/user/signup', newUser)
+            .then(res => {
+                let user = res.data.createduser
+                const {  _id, username,password,picture, country , age ,name,gender, company,email,phone,address, about,registered,education } = user
+                const { overview, experience } = user.info
+                const { skills } = user
+                const { portfolio } = user
+                const { socialmedialink } = user
+
+                    setUserDetails(prevState => {
+                        return { ...prevState, _id, username,password,picture, country , age ,name,gender, company,email,phone,address, about,registered}
+                    })
+                    setUserInfo(prevState => {
+                        return {...prevState,overview,experience}
+                    }) 
+                    setUserEducation(education)
+                    setUserSkills([...userSkills, skills])
+                    setUserPortfolio([...userPortfolio, portfolio]) 
+                    setUserSocialmedialink([...userSocialmedialink,socialmedialink]) 
             })
              .catch(error => console.log(error))
-
-             console.log(newUser)
         
     }
-    const signUpCompany = (companyName,counrty, password) => {
-        // sign up user
-        console.log(companyName,counrty,password)
-    }
-
     const updateUser = () => {
-        // update user 
+        
     }
-
-    const deleteUser = (id, email,password) => {
-        // delete user 
+    const deleteUser = (userId) => {
+        axios.delete(`http://localhost:8080/user/${userId}`)
+            .then(res => {
+                console.log("User detele imeediately signout")
+            })
+            .catch(error => console.log("An Error occured"))
     }
-
-
 
     return (
-        <UserContext.Provider value={{userDetails, userInfo, userEducation, userSkills, userPortfolio, userSocialmedialink, isAuth, signIn, signUpUser,signUpCompany, updateUser, deleteUser }}>
+        <UserContext.Provider value={{userDetails, userInfo, userEducation, userSkills, userPortfolio, userSocialmedialink, isAuthUser : isAuth, signInUser, signUpUser, updateUser, deleteUser }}>
             {props.children}
         </UserContext.Provider>
     )
