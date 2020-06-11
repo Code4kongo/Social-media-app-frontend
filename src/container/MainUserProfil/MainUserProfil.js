@@ -1,7 +1,7 @@
 import React from "react";
 import UsersSocialMediaLinks from "../../components/SocialMediaLink/SocialMediaLink";
-import UserFeed from "../../components/PersonalFeed/PersonalFeed";
-import UserInfo from "../../components/PersonalInfo/PersonalInfo";
+import UserFeed from "../../components/AnyUserFeed/AnyUserFeed";
+import UserInfo from "../../components/AnyUserInfo/AnyUserInfo";
 // import UserJob from "../../components/UserJob/UserJob";
 import UserNotification from "../../components/UserNotification/UserNotification";
 import UserPortfolio from "../../components/UserPortfolio/UserPortfolio";
@@ -29,7 +29,7 @@ const MainUserProfil = () => {
                 </div>
             </div>
         </section>
-
+dfddgg
 		<main>
 			<div className="main-section">
 				<div className="container">

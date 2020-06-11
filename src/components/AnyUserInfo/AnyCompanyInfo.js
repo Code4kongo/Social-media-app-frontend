@@ -1,5 +1,5 @@
 import React from "react";
-import "./PersonalInfo.css";
+// import "./PersonalInfo.css";
 
 const UserInfo = () => {
   return ( 

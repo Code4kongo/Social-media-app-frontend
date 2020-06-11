@@ -1,18 +1,23 @@
 import React from 'react'
+import Modal from 'react-modal'
+import './MainPostJob.css'
 
-function MainPostJob() {
+
+Modal.setAppElement('#root')
+function MainPostJob(props) {
+    const { showModal, closeModal } = props
     return (
     
-        
+    <Modal isOpen={showModal} onRequestClose={closeModal} className="modal-wrapper">
         <div className="post-project">
             <h3>Post a project</h3>
             <div className="post-project-fields">
                 <form>
-                    <div className="row justify-content-center">
-                        <div className="col-lg-8">
+                    <div className="row">
+                        <div className="col-lg-6">
                             <input type="text" name="title" placeholder="Title"/>
                         </div>
-                        <div className="col-lg-8">
+                        <div className="col-lg-6">
                             <div className="inp-field">
                                 <select>
                                     <option>Category</option>
@@ -22,10 +27,10 @@ function MainPostJob() {
                                 </select>
                             </div>
                         </div>
-                        <div className="col-lg-8">
+                        <div className="col-lg-6">
                             <input type="text" name="skills" placeholder="Skills"/>
                         </div>
-                        <div className="col-lg-8">
+                        <div className="col-lg-6">
                             <div className="price-sec">
                                 <div className="price-br">
                                     <input type="text" name="price1" placeholder="Price"/>
@@ -38,13 +43,13 @@ function MainPostJob() {
                                 </div>
                             </div>
                         </div>
-                        <div className="col-lg-8">
+                        <div className="col-lg-6">
                             <textarea name="description" placeholder="Description"></textarea>
                         </div>
-                        <div className="col-lg-8">
+                        <div className="col-lg-6">
                             <ul>
                                 <li><button className="active" type="submit" value="post">Post</button></li>
-                                <li><a href="/" title="">Cancel</a></li>
+                                <li><button className= "btn btn-primary danger" onClick={closeModal}>Cancel</button></li>
                             </ul>
                         </div>
                     </div>
@@ -52,6 +57,7 @@ function MainPostJob() {
             </div>
             <a href="/" title=""><i className="la la-times-circle-o"></i></a>
         </div>
+    </Modal>
     )
 }
 

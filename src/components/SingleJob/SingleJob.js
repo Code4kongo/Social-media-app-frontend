@@ -1,18 +1,25 @@
 import React  from 'react'
 import { Link } from 'react-router-dom'
+import IconUser from '../../images/resources/us-pc2.png'
+import IconClock from '../../images/clock.png'
+import IconEmai from '../../images/icon8.png'
+import IconCountry from '../../images/icon9.png'
+import IconLike from '../../images/liked-img.png'
+
+
 
 const SingleJob = (props) => {
-    let {address, applicants, author, content, country, date,email, jobType, overview, phone, salary, socialmedialink, title, total_employee, views  } = props
+    let {id, author, content, country, date,email, jobType, salary, socialmedialink, title, views  } = props
     return ( 
         <div>
             <div className="posty">
                 <div className="post-bar no-margin">
                     <div className="post_topbar">
                         <div className="usy-dt">
-                            <img src="images/resources/us-pc2.png" alt=""/>
+                            <img src={IconUser} alt=""/>
                             <div className="usy-name">
                                 <h3>{author}</h3>
-                                <span><img src="images/clock.png" alt=""/> posted on : { date }</span>
+                                <span><img src={IconClock} alt=""/> posted on : { date }</span>
                             </div>
                         </div>
                         <div className="ed-opts">
@@ -28,21 +35,29 @@ const SingleJob = (props) => {
                     </div>
                     <div className="epi-sec">
                         <ul className="descp">
-                            <li><img src="images/icon8.png" alt=""/><span>{email}</span></li>
-                            <li><img src="images/icon9.png" alt=""/><span> { country }</span></li>
+                            <li><img src={IconEmai} alt=""/><span>{email}</span></li>
+                            <li><img src={IconCountry} alt=""/><span> { country }</span></li>
                         </ul>
                         <ul className="bk-links">
-                            <li><a href="/" title=""><i className="la la-bookmark"></i></a></li>
-                            <li><a href="/" title=""><i className="la la-envelope"></i></a></li>
+                            <li><a href="/gmail.com" title=""><i className="la la-envelope"></i></a></li>
                         </ul>
                     </div>
                     <div className="job_descp">
                         <h3>{title}</h3>
                         <ul className="job-dt">
-                            <li><a href="/" title="">{jobType}</a></li>
-                            <li><span>R{salary}</span></li>
+                            <li><a href="/jobs" title="">{jobType}</a></li>
+                            <li><span>R {salary}</span></li>
                         </ul>
-                        <p>{content} <a href="/">view more</a></p>
+                        <p>
+                            {content} 
+                                <Link
+                                        to={{
+                                            pathname: `/apply-job/${id}`,
+                                            state: { fromDashboard: true }
+                                        }}>
+                                    view more
+                                </Link>
+                        </p>
                         <ul className="skill-tags">
                             {
                                 socialmedialink.map((socialLink,index) => {
@@ -55,11 +70,18 @@ const SingleJob = (props) => {
                     <div className="job-status-bar">
                         <ul className="like-com">
                             <li>
-                                <a href="/" className="active"> Like </a>
+                                <img src={IconLike} alt="liked"/>
+                                <span>Like </span>
                             </li>
-                            <li><a href="/" className="com"><i className="fas fa-eye"></i> view job</a></li>
+                            <li>
+                                <Link to={{ 
+                                    pathname: `/apply-job/${id}`,
+                                                state: { fromDashboard: true }
+                                            }} className="com">
+                                    <i className="fas fa-eye"></i> view job
+                                </Link></li>
                         </ul>
-                        <a href="/"><i className="fas fa-eye"></i>{views}</a>
+                        <Link to={"/jobs"}><i className="fas fa-eye"></i>{views}</Link>
                     </div>
                 </div>
             </div>

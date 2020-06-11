@@ -3,11 +3,13 @@ import Header from '../container/Header/Header'
 import MainApplyJob from '../container/MainApplyJob/MainApplyJob'
 import Footer from '../container/Footer/Footer'
 
-const AppyJob = () => {
+const AppyJob = props => {
+
+    const jobId = props.match.params.jobId
     return ( 
         <div>
             <Header/>
-            <MainApplyJob/>
+            <MainApplyJob jobId={jobId}/>
             <Footer/>
         </div>
      );

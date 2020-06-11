@@ -5,7 +5,6 @@ import CompanyIcon from '../../images/icon2.png'
 import UserIcon from '../../images/icon4.png'
 import JobIcon from '../../images/icon5.png'
 import NotificationIcon from '../../images/icon7.png'
-import AddJobIcon from '../../images/icon3.png'
 import UserAccount from '../UserAccount/UserAccount'
 
 const  NavBar = () => {
@@ -16,11 +15,6 @@ const  NavBar = () => {
                     <li>
                         <Link to="/">   
                             <span><img src={HomeIcon} alt="homeIcon"/></span>  Home
-                        </Link>
-                    </li>
-                    <li>
-                        <Link to="/post-job">
-                            <span><img src={AddJobIcon} alt="jobIcon" /></span> Post Job
                         </Link>
                     </li>
                     <li>

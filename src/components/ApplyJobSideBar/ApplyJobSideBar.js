@@ -5,7 +5,17 @@ import GoogleIcon from '../../images/social3.png'
 import TwitterIcon from '../../images/social4.png'
 import PniterestIcon from '../../images/social5.png'
 
-const  ApplyJobSideBar = () => {
+const  ApplyJobSideBar = (props) => {
+
+    let textLimit = (string= "sometext") => {
+        let arrayTransform = string.split('')
+        let filterText = arrayTransform.slice(0, 100)
+        let resultText = filterText.join('')
+        let newString = resultText.toString()
+        return newString
+    }	
+
+    const {jobId, country,total_employee, email, overview, phone, address } = props
     return ( 
         <div className="col-xl-3 col-lg-3 col-md-12">
             <div className="right-sidebar">
@@ -13,26 +23,37 @@ const  ApplyJobSideBar = () => {
                     <button type="button" className="btn btn-primary" >Send email </button>
                 </div>
                 <div className="widget widget-projectid">
-                    <h3>Job ID : 123456789</h3>
+                    <h3>Job ID  {jobId}</h3>
+                    <span></span>
                     <p>Report Job</p>
                 </div>
                 <div className="widget widget-jobs">
                     <div className="sd-title">
                         <h3>About the Company</h3>
+                        <p> {textLimit(overview)} </p>
                         <i className="la la-ellipsis-v"></i>
+
                     </div>
                 
                     <div className="sd-title">
-                        <h4>India</h4>                                            
-                        <p>SKS Nagar, Ludhiana 1 AM</p>
+                        <h4>{country}</h4>                                            
+                        <p> { Date() }</p>
                     </div>
                     <div className="sd-title">
-                        <h4>20 Projects Posted | 15 Jobs Posted</h4>                                            
-                        <p>85% Hire Rate, 15% Open Jobs</p>
+                        <h4>Total number of employee  {total_employee}</h4>                                            
+                        <p>{}</p>
                     </div>
                     <div className="sd-title">
-                        <h4>Member Since</h4>                                            
-                        <p>August 24, 2017</p>
+                        <h4>Company Email</h4>                                            
+                        <p>{email}</p>
+                    </div>
+                    <div className="sd-title">
+                        <h4>Company Phone</h4>                                            
+                        <p>{phone}</p>
+                    </div>
+                    <div className="sd-title">
+                        <h4>Company Address</h4>                                            
+                        <p>{address}</p>
                     </div>
                 </div>
                 <div className="widget widget-jobs">

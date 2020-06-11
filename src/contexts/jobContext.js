@@ -55,7 +55,7 @@ const JobContextProvider = (props) => {
     }
     
     return ( 
-        <JobContext.Provider value={{jobs, topJobs, mostViewed}}>
+        <JobContext.Provider value={{jobs, topJobs, mostViewed, addJob, updateJob, deleteJob }}>
             {props.children}
         </JobContext.Provider>
      );

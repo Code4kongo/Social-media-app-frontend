@@ -1,5 +1,5 @@
 import React from 'react'
-import Icon from '../../images/resources/cmp-icon1.png'
+
 
 const SingleElement = () => {
     return ( 

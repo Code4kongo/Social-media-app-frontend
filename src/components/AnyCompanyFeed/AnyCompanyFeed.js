@@ -1,9 +1,10 @@
 import React from 'react'
 
 const UserPosts = () => {
+  // to recive id 
   return ( 
     <div>
-    <div className="product-feed-tab current" id="feed-dd">
+    <div className="product-feed-tab current">
     <div className="posts-section">
       <div className="post-bar">
         <div className="post_topbar">
