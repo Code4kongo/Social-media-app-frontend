@@ -1,7 +1,7 @@
 import React from 'react'
-import CompanySocialMediaLink from '../../components/SocialMediaLink/SocialMediaLink'
-import CompanyFeed from '../../components/AnyUserFeed/AnyUserFeed'
-import CompanyInfo from '../../components/AnyUserInfo/AnyUserInfo'
+// import CompanySocialMediaLink from '../../components/SocialMediaLink/SocialMediaLink'
+// import CompanyFeed from '../../components/AnyUserFeed/AnyUserFeed'
+// import CompanyInfo from '../../components/AnyUserInfo/AnyUserInfo'
 // import CompanyPortfolio from '../../components/UserPortfolio/UserPortfolio'
 // import CompanyNotification from '../../components/UserNotification/UserNotification'
 import UserCover from '../../images/resources/cover-img.jpg'
@@ -32,7 +32,7 @@ const MainCompanyProfil = () => {
             <div className="container">
                 <div className="main-section-data">
                     <div className="row">
-                        <CompanySocialMediaLink />
+                        {/* {<CompanySocialMediaLink />} */}
 
                     <div className="col-lg-9">
                     <div className="main-ws-sec">
@@ -60,11 +60,6 @@ const MainCompanyProfil = () => {
                                     </ul>
                                 </div>
                                 </div>
-                        <CompanyInfo />
-                        <CompanyFeed />
-                        <CompanyFeed />
-                        <CompanyFeed />
-
                         </div>
                         </div>
                     </div>

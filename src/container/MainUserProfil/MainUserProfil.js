@@ -1,10 +1,10 @@
 import React from "react";
-import UsersSocialMediaLinks from "../../components/SocialMediaLink/SocialMediaLink";
-import UserFeed from "../../components/AnyUserFeed/AnyUserFeed";
-import UserInfo from "../../components/AnyUserInfo/AnyUserInfo";
-// import UserJob from "../../components/UserJob/UserJob";
-import UserNotification from "../../components/UserNotification/UserNotification";
-import UserPortfolio from "../../components/UserPortfolio/UserPortfolio";
+// import UsersSocialMediaLinks from "../../components/SocialMediaLink/SocialMediaLink";
+// import UserFeed from "../../components/AnyUserFeed/AnyUserFeed";
+// import UserInfo from "../../components/AnyUserInfo/AnyUserInfo";
+// // import UserJob from "../../components/UserJob/UserJob";
+// import UserNotification from "../../components/UserNotification/UserNotification";
+// import UserPortfolio from "../../components/UserPortfolio/UserPortfolio";
 import UserCover from '../../images/resources/cover-img.jpg'
 import FeedIcon from '../../images/ic1.png'
 import InfoIcon from '../../images/ic2.png'
@@ -35,7 +35,7 @@ dfddgg
 				<div className="container">
 					<div className="main-section-data">
 						<div className="row">
-                            <UsersSocialMediaLinks />
+                            {/* {<UsersSocialMediaLinks />} */}
 
                         <div className="col-lg-9">
                         <div className="main-ws-sec">
@@ -75,13 +75,13 @@ dfddgg
                                         </ul>
                                     </div>
                                     </div>
-                            <UserInfo />
+                           {/* { <UserInfo />
                             <UserPortfolio />
                             <UserNotification />
                             <UserFeed/>
                             <UserFeed />
                             <UserFeed />
-                            <UserFeed />
+                            <UserFeed />} */}
 
                             </div>
                             </div>
