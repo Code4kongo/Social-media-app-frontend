@@ -33,8 +33,8 @@ const SignInContainer  = () => {
             <div className="col-lg-6">
                   <div className="login-sec"> 
                     <ul className="sign-control">
-                      <li data-tab="tab-1" className="current" onClick={handleToggleStateSignIn} ><a> Sign in </a> </li>
-                      <li data-tab="tab-2"  onClick={handleToggleStateSignUp} > <a> Sign up </a> </li>
+                      <li data-tab="tab-1" className="current" ><button className="btn btn-info" onClick={handleToggleStateSignIn} > Sign in </button> </li>
+                      <li data-tab="tab-2" > <button className="btn btn-secondary" onClick={handleToggleStateSignUp}> Sign up </button> </li>
                     </ul>
                     { toggle ? 
                       <SignIn 

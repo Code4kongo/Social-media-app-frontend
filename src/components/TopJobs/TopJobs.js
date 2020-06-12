@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 const TopJobs = ({topJobs}) => {
 
 	let textLimit = (string= "sometext") => {
@@ -22,7 +23,15 @@ const TopJobs = ({topJobs}) => {
 									<div className="job-info">
 										<div className="job-details">
 											<h3>{topJob.title}</h3>
-												<p>{filteredInfo}... <a href="/">view more</a></p>
+												<p>{filteredInfo}... 
+													<Link
+															to={{
+																pathname: `/apply-job/${topJob._id}`,
+																state: { fromDashboard: true }
+															}}>
+														view more
+													</Link>
+												</p>
 										</div>
 										<div className="hr-rate">
 											<span>R{topJob.salary}</span>

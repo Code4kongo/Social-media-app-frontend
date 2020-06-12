@@ -43,7 +43,7 @@ const Main = () => {
                             likes = { likes}
                             comments = {comments}
                             postImage = {postImage}
-                          />
+                      />
                     )
                   })
                 }

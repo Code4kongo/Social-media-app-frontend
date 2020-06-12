@@ -1,14 +1,24 @@
-import React, { useContext} from 'react'
+import React, { useContext, useState} from 'react'
 import FilterJob from '../../components/FilterJob/FilterJob'
 import SingleJob from '../../components/SingleJob/SingleJob'
-import PostJob from '../../components/PostJob/PostJob'
+import PostJobModal from '../../modals/PostJobModal/MainPostJobModal'
 import TopJob from '../../components/TopJobs/TopJobs'
 import MostViewed from '../../components/MostViewd/MostView'
 import { JobContext } from '../../contexts/jobContext'
+import UserPic from "../../images/resources/user-pic.png";
 
 
 function MainJobs() {
+
+    const [showModal, setShowModal] = useState(false)
     const  { jobs, topJobs, mostViewed } = useContext(JobContext)
+
+    const openModal = () => {
+        setShowModal(true)
+    }
+    const closeModal = () => {
+        setShowModal(false)
+    }
     
     return (
 
@@ -20,16 +30,35 @@ function MainJobs() {
                             <FilterJob/>
                             <div className="col-lg-6">
                                 <div className="main-ws-sec">
-                                    <PostJob />
+                                    
+                                <div className="post-topbar">
+                                    <div className="user-picy">
+                                        <img src={UserPic} alt="" />
+                                    </div>
+                                    <div className="post-st">
+                                        <ul>
+                                            <li>
+                                                <button className="btn btn-outline-danger" onClick={openModal}>
+                                                    Post a Job
+                                                </button>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <PostJobModal 
+                                    showModal={showModal}
+                                    closeModal={closeModal}
+                                />
+
                                     <div className="posts-section">
                                         {
                                             jobs.map(job => {
                                                 
-                                                let {address, applicants, author, content, country, date,email, jobType, overview, phone, salary, socialmedialink, title, total_employee, views  } = job
+                                                let { _id, address, applicants, author, content, country, date,email, jobType, overview, phone, salary, socialmedialink, title, total_employee, views  } = job
                                                 return (
-                                                    <div>
                                                         <SingleJob 
                                                             key={job._id}
+                                                            id = { _id}
                                                             address = { address }
                                                             applicants = { applicants}
                                                             author = { author}
@@ -46,7 +75,6 @@ function MainJobs() {
                                                             total_employee = { total_employee}
                                                             views = { views}
                                                         />
-                                                    </div>
                                                 )
                                             })
                                         }

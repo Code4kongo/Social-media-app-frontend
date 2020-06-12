@@ -15,7 +15,6 @@ import PrivacyPolicyPage from "./pages/PrivacyPolicyPage";
 import SignInPage from "./pages/SignIn";
 import UserProfilPage from "./pages/UserProfilPage";
 import UsersPage from "./pages/UsersPage";
-import PostJobPage from './pages/PostJobPage'
 import UserContextProvider from "./contexts/userContext";
 import CompanyContextProvider from "./contexts/companyContext";
 import JobContextProvider from "./contexts/jobContext";
@@ -36,12 +35,11 @@ function App() {
           <Route exact path="/" component={Home} />
           <Route exact path="/companies" component={CompaniesPage} />
           <Route exact path="/company/:companyId" component={CompanyProfilPage}/>
-          <Route exact path="/my-company" component={AnyCompanyProfilPage}/>
+          <Route exact path="/companies/:companyId" component={AnyCompanyProfilPage}/>
           <Route exact path="/users" component={UsersPage}/>
-          <Route exact path="/post-job" component={PostJobPage}/>
           <Route exact path="/user" component={AnyUserPage}/>
           <Route exact path="/jobs" component={JobsPage} />
-          <Route exact path="/apply-job" component={ApplyJobPage}/>
+          <Route exact path="/apply-job/:jobId" component={ApplyJobPage}/>
           <Route exact path="/my-profile" component={UserProfilPage}/>
           <Route exact path="/about" component={AboutPage} />
           <Route exact path="/privacy-policy" component={PrivacyPolicyPage} />

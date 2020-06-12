@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const MostView = ({mostViewed}) => {
 
@@ -24,7 +25,15 @@ const MostView = ({mostViewed}) => {
                                 <div className="job-info" key={job._id}>
                                         <div className="job-details">
                                             <h3> {job.title} </h3>
-                                                <p>{filterOverview} ...</p>
+                                                <p>{filterOverview} ...
+                                                    <Link
+															to={{
+																pathname: `/apply-job/${job._id}`,
+																state: { fromDashboard: true }
+															}}>
+														view more
+													</Link>
+                                                </p>
                                         </div>
                                     <div className="hr-rate">
                                         <span>R{job.salary}</span>

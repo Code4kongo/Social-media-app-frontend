@@ -1,6 +1,6 @@
 import React from 'react'
 import Header from '../container/Header/Header'
-import MainUsers from '../container/MainCompaniesAndUsers/MainCompaniesAndUsers'
+import MainUsers from '../container/MainUsers/MainUsers'
 import Footer from '../container/Footer/Footer'
 
 const Users = () => {

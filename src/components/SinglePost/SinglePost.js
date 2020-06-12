@@ -6,7 +6,8 @@ import IconLike from '../../images/liked-img.png'
 import PostCommments from "../PostComments/PostComments";
 
 const  SinglePost = props => {
-  let {  title, country, author, content, date, likes, comments, postImage } = props
+  let {  title, country, author, content, date, likes, comments } = props
+  // postImage
   return (
     <div>
       <div className="posts-section">

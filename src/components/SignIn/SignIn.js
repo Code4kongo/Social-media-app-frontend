@@ -52,7 +52,7 @@ const SignIn = props => {
                 </div>
               </div>
               <div className="col-lg-12 no-pdd">
-                <button type="submit" value="submit"> Sign in as User</button>
+                <button type="submit" className="btn btn-info" value="submit"> Sign in as User</button>
                 
               </div>
             </div>
@@ -84,7 +84,7 @@ const SignIn = props => {
                 </div>
               </div>
               <div className="col-lg-12 no-pdd">
-                <button type="submit" value="submit"> Sign in as Company</button>
+                <button type="submit" className="btn btn-info" value="submit"> Sign in as Company</button>
                 
               </div>
             </div>
@@ -97,8 +97,8 @@ const SignIn = props => {
     <div className="col-lg-6">
         <div className="login-sec"> 
           <ul className="sign-control">
-            <li data-tab="tab-1" className="current" onClick={handleToggleStateUser} ><a> User </a> </li>
-            <li data-tab="tab-2"  onClick={handleToggleStateCompany} > <a> Company </a> </li>
+            <li data-tab="tab-1" className="current"><button className="btn btn-info" onClick={handleToggleStateUser}> User </button> </li>
+            <li data-tab="tab-2"> <button className="btn btn-secondary" onClick={handleToggleStateCompany}> Company </button> </li>
           </ul>
           { toggle ? AsUser : AsCompany} 
         </div>

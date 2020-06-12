@@ -1,6 +1,9 @@
 import React from 'react'
 
-function ApplyJobHeader() {
+function ApplyJobHeader(props) {
+
+    const { applicants, jobType, salary, views, date } = props
+
     return (
         <div className="bids-detail">    
             <div className="row">
@@ -9,26 +12,26 @@ function ApplyJobHeader() {
                         <li>
                             <h3>Applicants</h3>
                             <br/>
-                            <p>10</p>
+                            <p>{ applicants }</p>
                         </li>
                         <li>
                             <h3>Job Type</h3>
                             <br/>
-                            <p>Full Time</p>
+                            <p>{ jobType }</p>
                         </li>
                         <li>
                             <h3>Salary</h3>
                             <br/>
-                            <p>$600 - Mannual</p>
+                            <p>R { salary } </p>
                         </li>
                         <li>
                             <h3>Views</h3>
                             <br/>
-                            <p>195</p>
+                            <p>{ views }</p>
                         </li>
                     </ul>
                     <div className="bids-time">
-                        <h3>Posted : 5 Days Ago</h3>
+                        <h3>Posted : { date }</h3>
                             <br/>
                             <p>Open</p> 
                     </div>

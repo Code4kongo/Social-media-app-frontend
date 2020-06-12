@@ -23,8 +23,8 @@ const SignUp = (props) => {
                     <i className="fa fa-long-arrow-left"></i>
                     <h2>johndoe@example.com</h2>
                     <ul>
-                        <li data-tab="tab-3" className="current" onClick={handleToggleAccountUser}> <a> User </a> </li>
-                        <li data-tab="tab-4" onClick={handleToggleAccountCompany}>  <a> Company </a> </li>
+                        <li data-tab="tab-3" className="current"> <button className="btn btn-info" onClick={handleToggleAccountUser}> User </button> </li>
+                        <li data-tab="tab-4">  <button className="btn btn-secondary" onClick={handleToggleAccountCompany}> Company </button> </li>
                     </ul>
                 </div>
                 { toggleAccount ? 
