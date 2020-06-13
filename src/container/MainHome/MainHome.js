@@ -31,10 +31,11 @@ const Main = () => {
                 <PostJob />
                 {
                   posts.map(post => {
-                    let {  title, country, author, content, date, likes, comments, postImage } = post
+                    let {  _id, title, country, author, content, date, likes, comments, postImage } = post
                     return (
                       <SinglePost 
                             key={post._id}
+                            _id = {_id}
                             title={title}
                             country = {country}
                             author = {author}

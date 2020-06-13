@@ -28,7 +28,7 @@ const MainCompanyProfil = (props) => {
     })
     const [ companyInfo, setCompanyInfo ] = useState({
         overview : "",
-        awards : ""
+        awards : []
     }) 
     const [ companySkills, setCompanySkills] = useState([])
     const [ companyPortfolio, setCompanyPortfolio] = useState([])
