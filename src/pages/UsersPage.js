@@ -3,7 +3,8 @@ import Header from '../container/Header/Header'
 import MainUsers from '../container/MainUsers/MainUsers'
 import Footer from '../container/Footer/Footer'
 
-const Users = () => {
+const Users = props => {
+    
     return ( 
         <div>
             <Header/>

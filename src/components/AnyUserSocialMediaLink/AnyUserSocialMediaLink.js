@@ -1,7 +1,9 @@
 import React from 'react'
 import UserImage from '../../images/resources/user-pro-img.png'
 
-const UserSocialMediaLink = () => {
+const UserSocialMediaLink = props => {
+    const {   socialmedialink , picture , country , email, phone, address } = props
+
     return ( 
         <div className="col-lg-3">
 								
@@ -10,22 +12,25 @@ const UserSocialMediaLink = () => {
             <div className="user_profile">
                 
                 <div className="user-pro-img">
-                    <img src={UserImage} alt=""/>
+                    <img src={UserImage} alt={picture}/>
                     <div className="add-dp" id="OpenImgUpload">
                         <input type="file" id="file"/>
                         <label htmlFor="file"><i className="fas fa-camera"></i></label>												
                     </div>
                 </div>
-                
                 <div className="user_pro_status">
-                    <ul className="flw-status">
+                    <ul className="social_links" >
                         <li>
-                            <span>Following</span>
-                            <b>34</b>
+                            <h4> <b>Email : </b> {email}</h4>  
                         </li>
                         <li>
-                            <span>Followers</span>
-                            <b>155</b>
+                           <h4> <b>Country :</b> {country} </h4> 
+                        </li>
+                        <li>
+                            <h4> <b>Phone :</b> {phone} </h4> 
+                        </li>
+                        <li>
+                            <h4> <b>Address :</b> {address}</h4> 
                         </li>
                     </ul>
                 </div>

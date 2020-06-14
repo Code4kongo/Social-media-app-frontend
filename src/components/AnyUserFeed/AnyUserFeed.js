@@ -1,87 +1,129 @@
-import React from 'react'
+import React, { useState, useEffect} from 'react'
+import IconMeedia from '../../images/icon8.png'
+import IconCountry from '../../images/icon9.png'
+import IconLike from '../../images/liked-img.png'
+import IconUs from '../../images/resources/us-pc2.png'
+import IconClock from '../../images/clock.png'
+import PostCommments from "../PostComments/PostComments";
+import axios from 'axios'
+// import { Link } from "react-router-dom";
 
-const UserPosts = () => {
-  // to recive id 
-  return ( 
-    <div>
-    <div className="product-feed-tab current">
-    <div className="posts-section">
-      <div className="post-bar">
-        <div className="post_topbar">
-          <div className="usy-dt">
-            <img src="images/resources/us-pic.png" alt="" />
-            <div className="usy-name">
-              <h3>John Doe</h3>
-              <span><img src="images/clock.png" alt="" />3 min ago</span>
-            </div>
-          </div>
-          <div className="ed-opts">
-            <a href="/" title="" className="ed-opts-open"><i className="la la-ellipsis-v"></i></a>
-            <ul className="ed-options">
-              <li><a href="/" title="">Edit Post</a></li>
-              <li><a href="/" title="">Unsaved</a></li>
-              <li><a href="/" title="">Unbid</a></li>
-              <li><a href="/" title="">Close</a></li>
-              <li><a href="/" title="">Hide</a></li>
-            </ul>
-          </div>
-        </div>
-        <div className="epi-sec">
-          <ul className="descp">
-            <li>
-              <img src="images/icon8.png" alt="" /><span>Epic Coder</span>
-            </li>
-            <li>
-              <img src="images/icon9.png" alt="" /><span>India</span>
-            </li>
-          </ul>
-          <ul className="bk-links">
-            <li>
-              <a href="/" title=""><i className="la la-bookmark"></i></a>
-            </li>
-            <li>
-              <a href="/" title=""><i className="la la-envelope"></i></a>
-            </li>
-          </ul>
-        </div>
-        <div className="job_descp">
-          <h3>Senior Wordpress Developer</h3>
-          <ul className="job-dt">
-            <li><a href="/" title="">Full Time</a></li>
-            <li><span>$30 / hr</span></li>
-          </ul>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing
-            elit. Aliquam luctus hendrerit metus, ut
-            ullamcorper quam finibus at. Etiam id magna sit
-            amet... <a href="/" title="">view more</a>
-          </p>
-          <ul className="skill-tags">
-            <li><a href="/" title="">HTML</a></li>
-            <li><a href="/" title="">PHP</a></li>
-            <li><a href="/" title="">CSS</a></li>
-            <li><a href="/" title="">Javascript</a></li>
-            <li><a href="/" title="">Wordpress</a></li>
-          </ul>
-        </div>
-        <div className="job-status-bar">
-          <ul className="like-com">
-            <li>
-              <a href="/"><i className="fas fa-heart"></i> Like</a>
-              <img src="images/liked-img.png" alt="" />
-              <span>25</span>
-            </li>
-            <li>
-              <a href="/" className="com"><i className="fas fa-comment-alt"></i> Comment 15</a>
-            </li>
-          </ul>
-          <a href="/"><i className="fas fa-eye"></i>Views 50</a>
-        </div>
+const AnyUserFeed = (props) => {
+
+  const { email } = props
+  
+  const [posts, setPosts] = useState([
+    {
+        _id:"",
+        title: "",
+        country: "",
+        author: "",
+        content: "",
+        date: "",
+        likes: 0,
+        comments: [],
+        postImage: ""
+    }
+  ])
+  const [loading , setLoading] = useState(true)
+
+  const [ showComment, setShowComment ] = useState(false)
+
+  const toggleShowComment = () => {
+    setShowComment(!showComment)
+  }
+
+  useEffect(() => {
+
+    axios.get(`http://localhost:8080/posts/users/${email}`)
+          .then(res => {
+            const fetchedPosts = res.data.posts
+            setPosts(fetchedPosts)
+            setLoading(false)
+          })
+
+  }, [])
+
+  console.log(posts)
+  console.log(loading)
+  if(loading){
+    return <div>loading ...</div>
+  }else {
+    return (
+      <div>
+        {
+          posts.map((post, index) => {
+            return (
+              <div className="posts-section" key={index}>
+                <div className="posty">
+                  <div className="post-bar no-margin">
+                    <div className="post_topbar">
+                      <div className="usy-dt">
+                        <img src={IconUs} alt=""/>
+                        <div className="usy-name">
+                          <h3>{ post.author }</h3>
+                          <span>
+                            <img src={IconClock} alt="" />{post.date}
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="epi-sec">
+                      <ul className="descp">
+                        <li>
+                          <img src={IconMeedia} alt="" />
+                          <span>243CongoNetwork</span>
+                        </li>
+                        <li>
+                          <img src={IconCountry} alt="" />
+                          <span>{ post.country }</span>
+                        </li>
+                      </ul>
+                      <ul className="bk-links">
+                        <li>
+                          <a href="/" ><i className="la la-envelope"></i></a>
+                        </li>
+                      </ul>
+                    </div>
+                    <div className="job_descp">
+                      <h3> {post.title} </h3>
+                      <p>{post.content}</p>
+                      <ul className="skill-tags">
+                        <li><a href="/" > HTML </a></li>
+                        <li><a href="/" > PHP </a></li>
+                        <li><a href="/" > CSS </a></li>
+                        <li><a href="/" > Javascript </a></li>
+                        <li><a href="/" > Wordpress </a></li>
+                      </ul>
+                    </div>
+                    <div className="job-status-bar">
+                      <ul className="like-com">
+                        <li>
+                           <p><i className="fas fa-heart"></i> Like {post.likes}
+                            <img src={IconLike} alt="" /> </p>
+                        </li>
+                        <li >
+                            <p onClick={toggleShowComment}><i className="fas fa-comment-alt"></i> show Comment </p>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  {
+                    showComment ? <PostCommments postId={post._id} /> : null
+                  }
+                </div>
+        
+                <div className="process-comm">
+                </div>
+              </div>
+            )
+          })
+        }
       </div>
-    </div>
-  </div>
-    </div>
-   );
+    );
+  }
+
+  
 }
  
-export default UserPosts;
+export default AnyUserFeed;

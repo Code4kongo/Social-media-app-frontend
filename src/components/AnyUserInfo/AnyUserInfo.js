@@ -1,8 +1,8 @@
 import React from "react";
 
-const AnyCompanyInfo = (props) => {
+const AnyUserInfo = (props) => {
 
-    const { overview ,awards ,skills ,location, country  } = props 
+    const { overview ,experiences ,skills ,location, country, education  } = props 
 
   return ( 
     <React.Fragment>
@@ -17,20 +17,20 @@ const AnyCompanyInfo = (props) => {
     </div>
     <div className="user-profile-ov">
       <h3>
-        <a href="/" title="" className="ed-box-open">Awards </a>
+        <a href="/" title="" className="overview-open">Education</a>
+        <a href="/" title="" className="overview-open"
+          ><i className="fa fa-pencil"></i></a>
+      </h3>
+      <p>{education}</p>
+    </div>
+    <div className="user-profile-ov">
+      <h3>
+        <a href="/" title="" className="ed-box-open"> Experience </a>
         <a href="/" title="" className="ed-box-open"
           ><i className="fa fa-pencil"></i></a>
         <a href="/" title=""><i className="fa fa-plus-square"></i></a>
       </h3>
-        {
-          awards.map((award, index) => {
-            return (
-                    <div key={index}>
-                          <p> { award }</p>
-                    </div>
-            )
-          })
-        }
+        <p>{experiences}</p>
     </div>
     <div className="user-profile-ov">
       <h3>
@@ -60,4 +60,4 @@ const AnyCompanyInfo = (props) => {
    );
 }
  
-export default AnyCompanyInfo;
+export default AnyUserInfo;

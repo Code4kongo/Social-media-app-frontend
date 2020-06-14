@@ -3,11 +3,11 @@ import Header from "../container/Header/Header";
 import Footer from "../container/Footer/Footer";
 import MainAnyUser from "../container/MainAnyUser/MainAnyUser";
 
-const AnyUserPage  = () => {
+const AnyUserPage  = props => {
   return ( 
     <div>
       <Header />
-      <MainAnyUser />
+      <MainAnyUser {...props } />
       <Footer />
     </div>
    );

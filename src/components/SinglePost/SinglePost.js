@@ -9,7 +9,7 @@ import PostCommments from "../PostComments/PostComments";
 // import { Link } from "react-router-dom";
 
 const  SinglePost = props => {
-  let { _id, title, country, author, content, date, likes, comments } = props
+  let { _id, title, country, author, content, date, likes } = props
   const postId = _id
   
   const [ showComment, setShowComment ] = useState(false)

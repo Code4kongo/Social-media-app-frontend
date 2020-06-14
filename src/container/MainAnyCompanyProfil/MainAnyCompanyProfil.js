@@ -35,7 +35,7 @@ const MainCompanyProfil = (props) => {
     const [ companySocialmedialink, setCompanySocialmedialink] = useState([])
 
     const [ feedToggle, setFeedToggle ] = useState(false)
-    const [ infoToggle, setInfoToggle ] = useState(false)
+    const [ infoToggle, setInfoToggle ] = useState(true)
     const [ portfolioToggle, setPortfolioeedToggle ] = useState(false)
 
     useEffect(() => {
@@ -107,13 +107,14 @@ const MainCompanyProfil = (props) => {
                                         
                                         <div className="tab-feed st2 settingjb">
                                             <ul>
-                                            <li data-tab="feed-dd" className="active" onClick={showFeed}>
-                                                <img src={FeedIcon} alt="" />
-                                                <span>Feed</span>
-                                            </li>
                                             <li data-tab="info-dd" onClick={showInfo}>
                                                 <img src={InfoIcon} alt="" />
                                                 <span>Info</span>
+                                            </li>
+
+                                            <li data-tab="feed-dd"  onClick={showFeed}>
+                                                <img src={FeedIcon} alt="" />
+                                                <span>Feed</span>
                                             </li>
                                             <li data-tab="portfolio-dd" onClick={showPortfolio}>
                                                 <img src={PortfolioIcon} alt="" />
@@ -123,7 +124,6 @@ const MainCompanyProfil = (props) => {
                                         </div>
                                         </div>
                                 { 
-                                    feedToggle ? <CompanyFeed/> : 
                                     infoToggle  ? <CompanyInfo 
                                                         overview={ companyInfo.overview }
                                                         awards = { companyInfo.awards }
@@ -131,8 +131,9 @@ const MainCompanyProfil = (props) => {
                                                         location = { companyDetails.address }
                                                         country = { companyDetails.country}
                                                         /> : 
-                                    portfolioToggle ? <CompanyPortfolio/> :
-                                    <CompanyFeed/>
+                                    feedToggle ? <CompanyFeed email = { companyDetails.email } /> : 
+                                    portfolioToggle ? <CompanyPortfolio companyPortfolio={companyPortfolio}/> :
+                                    <CompanyFeed  email = { companyDetails.email }/>
                                 }
                                 
                                 </div>

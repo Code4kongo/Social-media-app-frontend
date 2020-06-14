@@ -37,7 +37,7 @@ function App() {
           <Route exact path="/company/:companyId" component={CompanyProfilPage}/>
           <Route exact path="/companies/:companyId" component={AnyCompanyProfilPage}/>
           <Route exact path="/users" component={UsersPage}/>
-          <Route exact path="/user" component={AnyUserPage}/>
+          <Route exact path="/users/:userId" component={AnyUserPage}/>
           <Route exact path="/jobs" component={JobsPage} />
           <Route exact path="/apply-job/:jobId" component={ApplyJobPage}/>
           <Route exact path="/my-profile" component={UserProfilPage}/>
