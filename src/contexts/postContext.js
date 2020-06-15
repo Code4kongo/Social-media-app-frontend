@@ -26,9 +26,6 @@ const PostContextProvider = (props) => {
             })
     }, [])
 
-    const addPost = () => {
-
-    }
     const updatePost = () => {
         
     }
@@ -37,7 +34,7 @@ const PostContextProvider = (props) => {
     }
     
     return ( 
-        <PostContext.Provider value={{posts, addPost, updatePost, deletePost}}>
+        <PostContext.Provider value={{posts, updatePost, deletePost}}>
             {props.children}
         </PostContext.Provider>
      );

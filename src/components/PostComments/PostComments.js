@@ -13,7 +13,30 @@ const  PostCommments = props => {
               email : "",
               post : ""
             }
-          ])
+        ])
+  const [commentAuthor, setCommentAuthor ] = useState("code4kongo") // to be set by the connected user
+  const [commentEmail, setCommentEmail ] = useState("code4kongo@gmail.com")
+  const [commentContent, setCommentContent ] = useState("")
+  
+  const hanldeCommentSubmit = event => {
+    event.preventDefault()
+
+    const newObject =  {
+            author : commentAuthor,
+            content : commentContent,
+            email : commentEmail,
+            post : postId
+    }
+
+    axios.post('http://localhost:8080/comments', newObject)
+          .then(res => {
+            console.log(res.data.createdcomment, "Comment added")
+          })
+          .catch(error => {
+            console.log(error)
+          })
+}
+
   useEffect(() =>{ 
         axios.get(`http://localhost:8080/posts/comments/${postId}`)
              .then(res => {
@@ -49,8 +72,8 @@ const  PostCommments = props => {
           <img src="images/resources/bg-img4.png" alt="" />
         </div>
         <div className="comment_box">
-          <form>
-            <input type="text" placeholder="Post a comment" />
+          <form onSubmit={hanldeCommentSubmit}>
+            <input type="text" placeholder="Post a comment" onChange={ event => setCommentContent(event.target.value)} />
             <button type="submit">Send</button>
           </form>
         </div>
