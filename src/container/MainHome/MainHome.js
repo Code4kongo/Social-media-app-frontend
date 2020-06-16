@@ -1,13 +1,14 @@
-import React, { useContext } from "react";
+import React, { useState, useContext } from "react";
 import "./MainHome.css";
 import UserProfiction from "../../components/UserProfiction/UserProfiction";
-import PostJob from "../../components/PostJob/PostJob";
+import PostJob from "../../modals/AddPostModal/AddPostModal"
 import SinglePost from "../../components/SinglePost/SinglePost";
 import TopJobs from "../../components/TopJobs/TopJobs";
 import MostViewed from "../../components/MostViewd/MostView";
 import { UserContext } from "../../contexts/userContext";
 import { JobContext } from '../../contexts/jobContext'
 import { PostContext } from "../../contexts/postContext";
+import UserPic from "../../images/resources/user-pic.png";
 
 
 const Main = () => {
@@ -15,6 +16,15 @@ const Main = () => {
   const { userDetails } = useContext(UserContext)
   const  { topJobs, mostViewed } = useContext(JobContext)
   const { posts } = useContext(PostContext)
+
+  const [showModal, setShowModal] = useState(false)
+
+  const openModal = () => {
+    setShowModal(true)
+  }
+  const closeModal = () => {
+    setShowModal(false)
+  }
   
   return (
     <main className="main-section">
@@ -28,7 +38,24 @@ const Main = () => {
             </div>
             <div className="col-lg-6 col-md-8 no-pd">
               <div className="main-ws-sec">
-                <PostJob />
+                  <div className="post-topbar">
+                            <div className="user-picy">
+                                <img src={UserPic} alt="" />
+                            </div>
+                            <div className="post-st">
+                                <ul>
+                                    <li>
+                                        <button className="btn btn-outline-danger" onClick={openModal}>
+                                            Post
+                                        </button>
+                                    </li>
+                                </ul>
+                            </div>
+                    </div>
+                                <PostJob 
+                                    showModal={showModal}
+                                    closeModal={closeModal}
+                                />
                 {
                   posts.map(post => {
                     let {  _id, title, country, author, content, date, likes, comments, postImage } = post

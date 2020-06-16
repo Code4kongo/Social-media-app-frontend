@@ -44,8 +44,19 @@ const JobContextProvider = (props) => {
 
     }, [])
 
-    const addJob = () => {
+    const addJob = (title, applicants, jobType,salary,views, country, author, email, phone, content, address,overview , total_employee) => {
 
+        const newJob = { 
+            title, 
+            applicants, 
+            jobType, salary, 
+            views, 
+            country, author, email, phone, content, address, overview , total_employee,
+        }
+        axios.post('http://localhost:8080/jobs', newJob)
+            .then(res => {
+                console.log(res)
+            })
     }
     const updateJob = () => {
         
@@ -55,7 +66,7 @@ const JobContextProvider = (props) => {
     }
     
     return ( 
-        <JobContext.Provider value={{jobs, topJobs, mostViewed, addJob, updateJob, deleteJob }}>
+        <JobContext.Provider value={{jobs, topJobs, mostViewed, addJob, updateJob, deleteJob }}> 
             {props.children}
         </JobContext.Provider>
      );
