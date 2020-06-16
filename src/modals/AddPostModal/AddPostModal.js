@@ -56,7 +56,7 @@ const  AddPostModal = (props) => {
                 setTimeout(() => setUploadPourcentage(0),50000)}  
         })
         .then(res => {
-            const newImageUrl = `http://localhost:8080/${res.data.createdPost.postImage}`
+            const newImageUrl = axios.get(`http://localhost:8080/${res.data.createdPost.postImage}`)
             console.log(newImageUrl)
             const ImageFetched = res.data.createdPost.postImage
             setUploadedFile({newImageUrl, ImageFetched })

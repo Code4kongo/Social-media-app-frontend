@@ -6,6 +6,7 @@ import IconLike from '../../images/liked-img.png'
 import IconUs from '../../images/resources/us-pc2.png'
 import IconClock from '../../images/clock.png'
 import PostCommments from "../PostComments/PostComments";
+import axios from 'axios'
 // import { Link } from "react-router-dom";
 
 const  SinglePost = props => {
@@ -13,10 +14,29 @@ const  SinglePost = props => {
   const postId = _id
   
   const [ showComment, setShowComment ] = useState(false)
+  const [likeAction, setLikeAction ] = useState(likes)
 
   const toggleShowComment = () => {
     setShowComment(!showComment)
+
   }
+
+  const updateLike = (event) => {
+    event.preventDefault()
+    const newPostObject = {
+      likes : likeAction
+    }
+    console.log(newPostObject)
+    axios.patch(`http://localhost:8080/posts/${postId}`, newPostObject)
+          .then(res => {
+            console.log(res.data)
+          })
+          .catch(error => {
+            console.log(error)
+          })
+  }
+  
+  console.log(likeAction)
   // postImage
   return (
     <div>
@@ -32,18 +52,6 @@ const  SinglePost = props => {
                     <img src={IconClock} alt="" />{date}
                   </span>
                 </div>
-              </div>
-              <div className="ed-opts">
-                <a href="/"  className="ed-opts-open">
-                  <i className="la la-ellipsis-v"></i>
-                </a>
-                <ul className="ed-options">
-                  <li><a href="/" >Edit Post</a></li>
-                  <li><a href="/" >Unsaved </a></li>
-                  <li><a href="/" >Unbid </a></li>
-                  <li><a href="/" >Close </a></li>
-                  <li><a href="/" >Hide</a></li>
-                </ul>
               </div>
             </div>
             <div className="epi-sec">
@@ -74,20 +82,28 @@ const  SinglePost = props => {
                 <li><a href="/" > Wordpress </a></li>
               </ul>
             </div>
-            <div className="job-status-bar">
+            <form className="job-status-bar" onSubmit={updateLike}>
               <ul className="like-com">
                 <li>
-                   <p><i className="fas fa-heart"></i> Like {likes}
-                    <img src={IconLike} alt="" /> </p>
+                   <p onClick = { () => { setLikeAction(likes + 1 )}}>
+                      <button type="submit" className="btn">
+                        <i className="fas fa-heart"></i>
+                        <i> { likeAction } </i>
+                       <img src={IconLike} alt=""/>  
+                      </button>  
+                    </p>
                 </li>
-                <li >
-                    <p onClick={toggleShowComment}><i className="fas fa-comment-alt"></i> show Comment </p>
+                <li>
+                    <p onClick={toggleShowComment}>
+                      <i className="fas fa-comment-alt"></i>
+                      <i> show Comment  </i>
+                    </p>
                 </li>
               </ul>
-            </div>
+            </form>
           </div>
           {
-            showComment ? <PostCommments postId={postId} /> : null
+            showComment ? <PostCommments postId={ postId} /> : null
           }
         </div>
 
