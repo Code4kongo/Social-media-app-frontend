@@ -71,7 +71,6 @@ const SingleJob = (props) => {
                         <ul className="like-com">
                             <li>
                                 <img src={IconLike} alt="liked"/>
-                                <span>Like </span>
                             </li>
                             <li>
                                 <Link to={{ 

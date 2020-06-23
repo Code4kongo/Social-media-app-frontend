@@ -35,9 +35,6 @@ const  SinglePost = props => {
             console.log(error)
           })
   }
-  
-  console.log(likeAction)
-  // postImage
   return (
     <div>
       <div className="posts-section">

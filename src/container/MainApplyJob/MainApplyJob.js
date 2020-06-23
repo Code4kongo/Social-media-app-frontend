@@ -99,10 +99,6 @@ const MainApplyJob = (props) => {
                                             </ul>
                                         </div>
                                         <div className="job-status-bar">
-                                            <ul className="like-com">
-                                                <li><Link to={'/jobs'} className="active"> Like </Link> </li>
-                                                <li><Link to={'/jobs'} className="com"><i className="fas fa-eye"></i> view job</Link></li>
-                                            </ul>
                                             <Link to={"/jobs"}><i className="fas fa-eye"></i>{job.views}</Link>
                                         </div>
                                     </div>

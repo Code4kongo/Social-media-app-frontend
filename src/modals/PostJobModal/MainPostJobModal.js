@@ -59,6 +59,7 @@ const  MainPostJob = (props) => {
                         <div className="col-lg-6">
                             <input type="text"  placeholder="Salary in ZAR" value={salary} onChange={(event)=>{setSalary(event.target.value)}} required/>
                         </div>
+
                         <div className="col-lg-6">
                             <input type="text"  placeholder="Country" value={country} onChange={(event)=>{setCountry(event.target.value)}} required/>
                         </div>

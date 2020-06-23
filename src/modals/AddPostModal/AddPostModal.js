@@ -32,7 +32,7 @@ const  AddPostModal = (props) => {
 
     
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault()
 
         const formData = new FormData()
@@ -43,29 +43,36 @@ const  AddPostModal = (props) => {
         formData.append('content',content)
         formData.append('email',email)
 
+        try {
+            
+            const result = await axios.post('http://localhost:8080/posts', formData, {
+                                    headers : {
+                                        'Accept': 'application/json',
+                                        'Content-Type': 'multipart/form-data',
+                                    },
+                                    onUploadProgress: (progressEvent) => {
+                                        let percentCompleted = Math.round((progressEvent.loaded * 100) / progressEvent.total)
+                                        setUploadPourcentage(percentCompleted)
+                                        
+                                        setTimeout(() => setUploadPourcentage(0),50000)}  
+                                })
+  fetch(`http://localhost:8080/${result.data.createdPost.postImage}`).then(res => {
+      console.log(res)
+  })
 
-        axios.post('http://localhost:8080/posts', formData, {
-            headers : {
-                'Accept': 'application/json',
-                'Content-Type': 'multipart/form-data',
-            },
-            onUploadProgress: function(progressEvent) {
-                let percentCompleted = Math.round((progressEvent.loaded * 100) / progressEvent.total)
-                setUploadPourcentage(percentCompleted)
-                
-                setTimeout(() => setUploadPourcentage(0),50000)}  
-        })
-        .then(res => {
-            const newImageUrl = axios.get(`http://localhost:8080/${res.data.createdPost.postImage}`)
-            console.log(newImageUrl)
-            const ImageFetched = res.data.createdPost.postImage
-            setUploadedFile({newImageUrl, ImageFetched })
-        })
-        .catch(error => {
+            const newImageUrl = await axios.get(`http://localhost:8080/${result.data.createdPost.postImage}`)
+            const ImageFetched = result.data.createdPost.postImage
+            
+            let newData = newImageUrl.data
+            console.log(newData)
+
+            setUploadedFile({newData, ImageFetched })
+
+        } catch(error){
             console.log(error)
-        })
+        }   
     }
-
+    
     return (
     
         <Modal isOpen={showModal} onRequestClose={closeModal} className="modal-wrapper-post">
@@ -106,17 +113,7 @@ const  AddPostModal = (props) => {
                         </div>
                     </div>
                 </form>
-                <div>
-                    {
-                        uploadedFile ? 
-                            <div className="row"> 
-                                <div className = "col-lg-6 mt-auto">
-                                    <h6 className="text-center"> { uploadedFile.ImageFetched }</h6>
-                                    <img style={{width : '100%'}} src={uploadedFile.newImageUrl} alt="image"/>
-                                </div> 
-                            </div> : null
-                    }
-                </div>
+               
                 
             </div>
         </div>
