@@ -56,7 +56,6 @@ const [isAuthUser, setAuth ] = useState(false)
 const signInUser = (email, password ) => {
     axios.post('http://localhost:8080/user/login', {email, password})
          .then(res => {
-            
             let user = res.data.user[0]
             const {  _id, username,password,picture, country , age ,name,gender, company,email,phone,address, about,registered,education } = user
             const { overview, experience } = user.info
@@ -90,7 +89,7 @@ console.log(isAuthUser)
         <JobContextProvider>
         
           <Route exact path="/"  signInUser = { signInUser } userDetails = { userDetails} render = {props => <SignInPage {...props} signInUser={signInUser} />}  />
-          <ProtectedRoute exact path="/home"   component={Home} />
+          <ProtectedRoute exact path="/home" isAuthUser = {isAuthUser}   userDetails = {userDetails}  component={Home} />
           <ProtectedRoute exact path="/companies" component={CompaniesPage} />
           <ProtectedRoute exact path="/company/:companyId" component={CompanyProfilPage}/>
           <ProtectedRoute exact path="/companies/:companyId" component={AnyCompanyProfilPage}/>
