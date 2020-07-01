@@ -1,33 +1,31 @@
-import React, { useContext, useState } from 'react'
-import Modal from 'react-modal'
-import './MainPostJob.css'
-import { JobContext } from '../../contexts/jobContext'
+import React, { useContext, useState } from "react";
+import Modal from "react-modal";
+import "./MainPostJob.css";
+import { JobContext } from "../../contexts/jobContext";
 
+Modal.setAppElement("#root");
 
-Modal.setAppElement('#root')
+const MainPostJob = (props) => {
+  const [title, setTitile] = useState("");
+  const [applicants, setApplicants] = useState(0);
+  const [jobType, setJobType] = useState("");
+  const [salary, setSalary] = useState("");
+  const [views, setViews] = useState(0);
+  const [country, setCountry] = useState("");
+  const [author, setAuthor] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [content, setContent] = useState("");
 
-const  MainPostJob = (props) => {
+  const [address, setAddress] = useState("");
+  const [overview, setOverview] = useState("");
+  const [total_employee, setTotal_employee] = useState("");
 
-    const [title, setTitile ] = useState("") 
-    const [applicants, setApplicants ] = useState(0)  
-    const [jobType, setJobType] = useState("") 
-    const [salary, setSalary ] = useState("") 
-    const [views, setViews ] = useState(0) 
-    const [country, setCountry ] = useState("") 
-    const [author, setAuthor ] = useState("") 
-    const [email, setEmail ] = useState("") 
-    const [phone, setPhone] = useState("") 
-    const [content, setContent ] = useState("")
-    
-    const [address, setAddress] = useState("") 
-    const [overview, setOverview ] = useState("")
-    const [total_employee, setTotal_employee ] = useState("") 
+  const { showModal, closeModal } = props;
 
+  const { addJob } = useContext(JobContext);
 
-    const { showModal, closeModal } = props
-
-    const { addJob }= useContext(JobContext)
-
+ 
     const handleSubmit = (event) => {
         event.preventDefault()
         addJob(title, applicants, jobType,salary,views, country, author, email, phone, content, address,overview , total_employee)
@@ -90,11 +88,13 @@ const  MainPostJob = (props) => {
                         </div>
                     </div>
                 </form>
-            </div>
-            <a href="/" title=""><i className="la la-times-circle-o"></i></a>
         </div>
+        <a href="/" title="">
+          <i className="la la-times-circle-o"></i>
+        </a>
+      </div>
     </Modal>
-    )
-}
+  );
+};
 
-export default MainPostJob
+export default MainPostJob;

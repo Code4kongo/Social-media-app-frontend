@@ -45,7 +45,7 @@ const Main = () => {
                             <div className="post-st">
                                 <ul>
                                     <li>
-                                        <button className="btn btn-outline-danger" onClick={openModal}>
+                                        <button className="btn btn-outline-info" onClick={openModal}>
                                             Post
                                         </button>
                                     </li>

@@ -1,6 +1,8 @@
 import React, {useState} from "react";
 
 
+
+
 const SignIn = props => {
 
   const [email, setEmail] = useState('')
@@ -52,8 +54,9 @@ const SignIn = props => {
                 </div>
               </div>
               <div className="col-lg-12 no-pdd">
-                <button type="submit" className="btn btn-info" value="submit"> Sign in as User</button>
-                
+                <button type="submit"  value="submit" className="btn btn-info">
+                    Sign in as User
+                </button>  
               </div>
             </div>
           </form>

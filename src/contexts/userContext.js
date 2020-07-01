@@ -29,7 +29,7 @@ const UserContextProvider = props => {
     const [ userSkills, setUserSkills] = useState([])
     const [ userPortfolio, setUserPortfolio] = useState([])
     const [ userSocialmedialink, setUserSocialmedialink] = useState([])
-    const [isAuth, setAuth ] = useState(false)
+    const [isAuthUser, setAuth ] = useState(false)
     
 
     const signInUser = (email, password ) => {
@@ -54,10 +54,15 @@ const UserContextProvider = props => {
                     setUserPortfolio([...userPortfolio, portfolio]) 
                     setUserSocialmedialink([...userSocialmedialink,socialmedialink]) 
                     setAuth(true)
+                    
+
              })
              .catch(error => console.log(error))
-
     }
+
+    // console.log(isAuthUser, "user Aurh")
+
+
     const signUpUser = (email,country, gender, password) => {
 
         const newUser =  {
@@ -119,7 +124,7 @@ const UserContextProvider = props => {
     }
 
     return (
-        <UserContext.Provider value={{userDetails, userInfo, userEducation, userSkills, userPortfolio, userSocialmedialink, isAuthUser : isAuth, signInUser, signUpUser, updateUser, deleteUser }}>
+        <UserContext.Provider value={{userDetails, userInfo, userEducation, userSkills, userPortfolio, userSocialmedialink, isAuthUser , signInUser, signUpUser, updateUser, deleteUser }}>
             {props.children}
         </UserContext.Provider>
     )

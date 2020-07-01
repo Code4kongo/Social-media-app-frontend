@@ -3,7 +3,8 @@ import Header from '../container/Header/Header'
 import MainHome from '../container/MainHome/MainHome'
 import Footer from '../container/Footer/Footer'
 
-const Home = () => {
+const Home = (props) => {
+     console.log(props)
     return ( 
         <React.Fragment>
             <Header />
