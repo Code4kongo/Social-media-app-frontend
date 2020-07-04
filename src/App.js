@@ -76,7 +76,10 @@ const signInUser = (email, password ) => {
                 setUserSocialmedialink([...userSocialmedialink,socialmedialink]) 
                 
          })
-         .catch(error => console.log(error))
+         .catch(error => {
+                setAuth(false)
+                console.log(error)
+          })
 }
 console.log(isAuthUser)
   return (
@@ -90,17 +93,17 @@ console.log(isAuthUser)
         
           <Route exact path="/"  signInUser = { signInUser } userDetails = { userDetails} render = {props => <SignInPage {...props} signInUser={signInUser} />}  />
           <ProtectedRoute exact path="/home" isAuthUser = {isAuthUser}   userDetails = {userDetails}  component={Home} />
-          <ProtectedRoute exact path="/companies" component={CompaniesPage} />
-          <ProtectedRoute exact path="/company/:companyId" component={CompanyProfilPage}/>
-          <ProtectedRoute exact path="/companies/:companyId" component={AnyCompanyProfilPage}/>
-          <ProtectedRoute exact path="/users" component={UsersPage}/>
-          <ProtectedRoute exact path="/users/:userId" component={AnyUserPage}/>
-          <ProtectedRoute exact path="/jobs" component={JobsPage} />
-          <ProtectedRoute exact path="/apply-job/:jobId" component={ApplyJobPage}/>
-          <ProtectedRoute exact path="/my-profile" component={UserProfilPage}/>
-          <ProtectedRoute exact path="/about" component={AboutPage} />
-          <ProtectedRoute exact path="/privacy-policy" component={PrivacyPolicyPage} />
-          <ProtectedRoute exact path="/community-guide-line" component={CommunityGuideLinePage}/>
+          <ProtectedRoute exact path="/companies" isAuthUser = {isAuthUser} userDetails = {userDetails}  component={CompaniesPage} />
+          <ProtectedRoute exact path="/company/:companyId" isAuthUser = {isAuthUser} userDetails = {userDetails}  component={CompanyProfilPage}/>
+          <ProtectedRoute exact path="/companies/:companyId" isAuthUser = {isAuthUser}  userDetails = {userDetails}  component={AnyCompanyProfilPage}/>
+          <ProtectedRoute exact path="/users" isAuthUser = {isAuthUser} userDetails = {userDetails}  component={UsersPage}/>
+          <ProtectedRoute exact path="/users/:userId" isAuthUser = {isAuthUser} userDetails = {userDetails}  component={AnyUserPage}/>
+          <ProtectedRoute exact path="/jobs" isAuthUser = {isAuthUser} userDetails = {userDetails}  component={JobsPage} />
+          <ProtectedRoute exact path="/apply-job/:jobId" isAuthUser = {isAuthUser} userDetails = {userDetails}  component={ApplyJobPage}/>
+          <ProtectedRoute exact path="/my-profile" isAuthUser = {isAuthUser} userDetails = {userDetails}  component={UserProfilPage}/>
+          <ProtectedRoute exact path="/about" isAuthUser = {isAuthUser}  userDetails = {userDetails}  component={AboutPage} />
+          <ProtectedRoute exact path="/privacy-policy" isAuthUser = {isAuthUser} userDetails = {userDetails}  component={PrivacyPolicyPage} />
+          <ProtectedRoute exact path="/community-guide-line" isAuthUser = {isAuthUser}  component={CommunityGuideLinePage}/>
           <Route exact path='/unauthorized' component={Unauthorized} />
 
         </JobContextProvider>  

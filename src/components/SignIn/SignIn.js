@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-
+import { Link } from "react-router-dom";
 
 
 
@@ -28,6 +28,12 @@ const SignIn = props => {
 
   }
 
+  const style = {
+    color: "#fff",
+    backgroundColor: "#17a2b8",
+    borderColor: "#17a2b8"
+  }
+
   let AsUser = (
           <form onSubmit={handleSubmitUser} >
             <div className="row">
@@ -54,9 +60,11 @@ const SignIn = props => {
                 </div>
               </div>
               <div className="col-lg-12 no-pdd">
-                <button type="submit"  value="submit" className="btn btn-info">
-                    Sign in as User
+              
+                <button type="submit"  value="submit" style={style}>
+                  <Link to="/home" style={style}>  Sign in as User </Link>
                 </button>  
+                 
               </div>
             </div>
           </form>
@@ -97,15 +105,20 @@ const SignIn = props => {
   return (
     <div className="sign_in_sec current" id="tab-1">
     <h3>Sign in</h3>
-    <div className="col-lg-6">
-        <div className="login-sec"> 
-          <ul className="sign-control">
-            <li data-tab="tab-1" className="current"><button className="btn btn-info" onClick={handleToggleStateUser}> User </button> </li>
-            <li data-tab="tab-2"> <button className="btn btn-secondary" onClick={handleToggleStateCompany}> Company </button> </li>
-          </ul>
+    <br/> 
+    <div className="signup-tab">
+                    <i className="fa fa-long-arrow-left"></i>
+                    <h2>johndoe@example.com</h2>
+                    <ul>
+                        <li data-tab="tab-3" className="current"> <button className="btn btn-info" onClick={handleToggleStateUser}> User </button> </li>
+                        <li data-tab="tab-4">  <button className="btn btn-secondary" onClick={handleToggleStateCompany}> Company </button> </li>
+                    </ul>
+                </div>
+                <div className="dff-tab current" id="tab-3">
+ 
           { toggle ? AsUser : AsCompany} 
         </div>
-    </div>
+  
     <div className="login-resources">
       <h4>Login Via Social Account</h4>
       <ul>

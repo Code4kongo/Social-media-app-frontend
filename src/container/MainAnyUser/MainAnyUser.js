@@ -46,7 +46,7 @@ const MainAnyUser = (props) => {
             .then(res => {
 
                 let user = res.data.user
-                const {  _id, username,password,picture, country , age ,name,gender, company,email,phone,address, about,registered,education } = user
+                const {  _id, username,picture, country , age ,name,gender, company,email,phone,address, about,registered,education } = user
                 const { overview, experience } = user.info
                 const { skills } = user
                 const { portfolio } = user
@@ -80,10 +80,6 @@ const MainAnyUser = (props) => {
         setInfoToggle(false)
         setPortfolioeedToggle(true)
     }
-
-    console.log(userDetails)
-    console.log(userInfo)
-    console.log(userEducation)
     
     return (
         <React.Fragment>

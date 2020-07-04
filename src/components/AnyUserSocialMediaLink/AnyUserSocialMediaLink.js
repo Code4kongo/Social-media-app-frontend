@@ -2,7 +2,7 @@ import React from 'react'
 import UserImage from '../../images/resources/user-pro-img.png'
 
 const UserSocialMediaLink = props => {
-    const {   socialmedialink , picture , country , email, phone, address } = props
+    const {  picture , country , email, phone, address } = props
 
     return ( 
         <div className="col-lg-3">

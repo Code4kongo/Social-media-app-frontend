@@ -18,8 +18,7 @@ const AnyUserInfo = (props) => {
     <div className="user-profile-ov">
       <h3>
         <a href="/" title="" className="overview-open">Education</a>
-        <a href="/" title="" className="overview-open"
-          ><i className="fa fa-pencil"></i></a>
+        <a href="/" title="" className="overview-open"><i className="fa fa-pencil"></i></a>
       </h3>
       <p>{education}</p>
     </div>

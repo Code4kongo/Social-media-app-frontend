@@ -73,6 +73,11 @@ const  AddPostModal = (props) => {
         }   
     }
     
+    const style = {
+        color: "#fff",
+        backgroundColor: "#17a2b8",
+        borderColor: "#17a2b8"
+      }
     return (
     
         <Modal isOpen={showModal} onRequestClose={closeModal} className="modal-wrapper-post">
@@ -107,7 +112,7 @@ const  AddPostModal = (props) => {
                     </div>
                         <div className="col-lg-6">
                             <ul>
-                                <li><button className="active" type="submit" value="post">Post</button></li>
+                                <li><button style={style} type="submit" value="post">Post</button></li>
                                 <li><button className= "btn btn-primary danger" onClick={closeModal}>Cancel</button></li>
                             </ul>
                         </div>

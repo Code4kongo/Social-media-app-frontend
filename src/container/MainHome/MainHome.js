@@ -5,15 +5,13 @@ import PostJob from "../../modals/AddPostModal/AddPostModal"
 import SinglePost from "../../components/SinglePost/SinglePost";
 import TopJobs from "../../components/TopJobs/TopJobs";
 import MostViewed from "../../components/MostViewd/MostView";
-import { UserContext } from "../../contexts/userContext";
 import { JobContext } from '../../contexts/jobContext'
 import { PostContext } from "../../contexts/postContext";
 import UserPic from "../../images/resources/user-pic.png";
 
 
-const Main = () => {
+const Main = ({userDetails}) => {
 
-  const { userDetails } = useContext(UserContext)
   const  { topJobs, mostViewed } = useContext(JobContext)
   const { posts } = useContext(PostContext)
 

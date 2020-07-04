@@ -13,7 +13,7 @@ const  NavBar = () => {
             <nav>
                 <ul>
                     <li>
-                        <Link to="/">   
+                        <Link to="/home">   
                             <span><img src={HomeIcon} alt="homeIcon"/></span>  Home
                         </Link>
                     </li>

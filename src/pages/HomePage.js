@@ -4,11 +4,11 @@ import MainHome from '../container/MainHome/MainHome'
 import Footer from '../container/Footer/Footer'
 
 const Home = (props) => {
-     console.log(props)
+     
     return ( 
         <React.Fragment>
             <Header />
-            <MainHome />
+            <MainHome {...props}/>
             <Footer/>
         </React.Fragment>
      );

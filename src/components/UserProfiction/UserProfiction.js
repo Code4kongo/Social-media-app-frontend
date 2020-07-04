@@ -2,8 +2,13 @@ import React from 'react'
 import ImageProfil from '../../images/resources/user-pic.png'
 import './UserProfiction.css'
 import { Link } from 'react-router-dom'
-const UserProfiction = (props) => {
-    const { name, company, email, registered } = props
+const UserProfiction = ({userDetails}) => {
+    const { name, company, email, registered } = userDetails
+
+    const style = {
+        color: "#17a2b8"
+    }
+
 
     return ( 
         <div className="user-data full-width">
@@ -15,20 +20,20 @@ const UserProfiction = (props) => {
                 </div>
                 <div className="user-specs">
                     <h3>{name}</h3>
-                    <span>{ company} </span>
+                    <small>{ company} </small>
                 </div>
              </div>
             <ul className="user-fw-status">
                 <li>
                     <h4>Email</h4>
-                    <span>{email}</span>
+                    <small><i>{email}</i></small>
                 </li>
                 <li>
                     <h4>registered</h4>
-                    <span>{registered}</span>
+                    <small><i>{registered}</i></small>
                 </li>
                 <li>
-                    <Link to="/my-profile">View Profile</Link>
+                    <Link to="/my-profile" style={style}>View Profile</Link>
                 </li>
             </ul>
         </div>
