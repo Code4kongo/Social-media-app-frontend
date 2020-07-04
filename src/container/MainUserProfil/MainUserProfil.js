@@ -17,8 +17,8 @@ import JobIcon from '../../images/ic6.png'
 
 const MainUserProfil = ({userDetails}) => {
 
-    // const userId = userDetails._id
-    const userId = "5eddcb2ed45871082f32d358"
+    const userId = userDetails._id
+    
     const [ userInfo, setUserInfo ] = useState({
         overview : "",
         experience : ""
