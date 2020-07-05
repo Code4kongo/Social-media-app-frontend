@@ -95,7 +95,9 @@ const SignIn = props => {
                 </div>
               </div>
               <div className="col-lg-12 no-pdd">
-                <button type="submit" className="btn btn-info" value="submit"> Sign in as Company</button>
+                <button type="submit" style={style} value="submit"> 
+                  <Link to="/home" style={style}> Sign in as Company </Link>  
+                </button>
                 
               </div>
             </div>

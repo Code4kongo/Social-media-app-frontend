@@ -10,7 +10,7 @@ import { PostContext } from "../../contexts/postContext";
 import UserPic from "../../images/resources/user-pic.png";
 
 
-const Main = ({userDetails}) => {
+const Main = ({userDetails, companyDetails}) => {
 
   const  { topJobs, mostViewed } = useContext(JobContext)
   const { posts } = useContext(PostContext)
@@ -31,7 +31,9 @@ const Main = ({userDetails}) => {
           <div className="row">
             <div className="col-lg-3 col-md-4 pd-left-none no-pd">
               <div>
-                <UserProfiction  userDetails={userDetails} />
+                <UserProfiction  
+                      userDetails={userDetails}
+                      companyDetails={companyDetails} />
               </div>
             </div>
             <div className="col-lg-6 col-md-8 no-pd">

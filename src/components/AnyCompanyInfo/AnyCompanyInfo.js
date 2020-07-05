@@ -23,6 +23,7 @@ const AnyCompanyInfo = (props) => {
         <a href="/" title=""><i className="fa fa-plus-square"></i></a>
       </h3>
         {
+          awards.length < 1 ? null : 
           awards.map((award, index) => {
             return (
                     <div key={index}>

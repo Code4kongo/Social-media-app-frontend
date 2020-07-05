@@ -41,47 +41,66 @@ const  App = () => {
     address : "",
     about : "",
     registered : "",
-})
-const [ userInfo, setUserInfo ] = useState({
-    overview : "",
-    experience : ""
-}) 
-const [ userEducation, setUserEducation] = useState("")
-const [ userSkills, setUserSkills] = useState([])
-const [ userPortfolio, setUserPortfolio] = useState([])
-const [ userSocialmedialink, setUserSocialmedialink] = useState([])
-const [isAuthUser, setAuth ] = useState(false)
-
-
-const signInUser = (email, password ) => {
-    axios.post('http://localhost:8080/user/login', {email, password})
+  })
+  const [ companyDetails, setCompanyDetails ] = useState({
+    _id : "",
+    company_name : "",
+    password : "",
+    company_picture : "",
+    company_country : "",
+    createdAt : "",
+    company_email : "",
+    company_phone : "",
+    company_address : "",
+    company_about : "",
+    company_registered : "",
+  })
+  const [isAuth, setAuth ] = useState(false)
+  const signInUser = (email, password ) => {
+      axios.post('http://localhost:8080/user/login', {email, password})
          .then(res => {
             let user = res.data.user[0]
-            const {  _id, username,password,picture, country , age ,name,gender, company,email,phone,address, about,registered,education } = user
-            const { overview, experience } = user.info
-            const { skills } = user
-            const { portfolio } = user
-            const { socialmedialink } = user
-
-                setAuth(true)
-                setUserDetails(prevState => {
-                    return { ...prevState, _id, username,password,picture, country , age ,name,gender, company,email,phone,address, about,registered}
-                })
-                setUserInfo(prevState => {
-                    return {...prevState,overview,experience}
-                }) 
-                setUserEducation(education)
-                setUserSkills([...userSkills, skills])
-                setUserPortfolio([...userPortfolio, portfolio]) 
-                setUserSocialmedialink([...userSocialmedialink,socialmedialink]) 
+            const {  _id, username,password,picture, country , age ,name,gender, company,email,phone,address, about,registered } = user
+              setAuth(true)
+              setUserDetails(prevState => {
+                  return { ...prevState, _id, username,password,picture, country , age ,name,gender, company,email,phone,address, about,registered}
+              })
                 
          })
          .catch(error => {
                 setAuth(false)
                 console.log(error)
           })
+  }
+  const signInCompany= (email, password ) => {
+    console.log(email, password)
+    axios.post('http://localhost:8080/company/login', {email, password})
+         .then(res => {
+            let ExistingCompany = res.data.company[0]
+            const {  _id, company,password,picture, country , createdAt, email, phone, address, about,registered } = ExistingCompany
+                
+                setCompanyDetails(prevState => {
+                    return { ...prevState, _id, password,createdAt ,
+                              company_name:  company,
+                              company_picture: picture, 
+                              company_country:  country , 
+                              company_email :  email,
+                              company_phone :  phone,
+                              company_address :  address, 
+                              company_about:  about,
+                              company_registered :  registered}
+                })
+                setAuth(true)
+         })
+         .catch(error => {
+          setAuth(false)
+          console.log(error)
+    })
+
 }
-console.log(isAuthUser)
+
+
+console.log(isAuth)
   return (
     <React.Fragment>
       <div className="wrapper">
@@ -91,19 +110,26 @@ console.log(isAuthUser)
         <PostContextProvider>
         <JobContextProvider>
         
-          <Route exact path="/"  signInUser = { signInUser } userDetails = { userDetails} render = {props => <SignInPage {...props} signInUser={signInUser} />}  />
-          <ProtectedRoute exact path="/home" isAuthUser = {isAuthUser}   userDetails = {userDetails}  component={Home} />
-          <ProtectedRoute exact path="/companies" isAuthUser = {isAuthUser} userDetails = {userDetails}  component={CompaniesPage} />
-          <ProtectedRoute exact path="/company/:companyId" isAuthUser = {isAuthUser} userDetails = {userDetails}  component={CompanyProfilPage}/>
-          <ProtectedRoute exact path="/companies/:companyId" isAuthUser = {isAuthUser}  userDetails = {userDetails}  component={AnyCompanyProfilPage}/>
-          <ProtectedRoute exact path="/users" isAuthUser = {isAuthUser} userDetails = {userDetails}  component={UsersPage}/>
-          <ProtectedRoute exact path="/users/:userId" isAuthUser = {isAuthUser} userDetails = {userDetails}  component={AnyUserPage}/>
-          <ProtectedRoute exact path="/jobs" isAuthUser = {isAuthUser} userDetails = {userDetails}  component={JobsPage} />
-          <ProtectedRoute exact path="/apply-job/:jobId" isAuthUser = {isAuthUser} userDetails = {userDetails}  component={ApplyJobPage}/>
-          <ProtectedRoute exact path="/my-profile" isAuthUser = {isAuthUser} userDetails = {userDetails}  component={UserProfilPage}/>
-          <ProtectedRoute exact path="/about" isAuthUser = {isAuthUser}  userDetails = {userDetails}  component={AboutPage} />
-          <ProtectedRoute exact path="/privacy-policy" isAuthUser = {isAuthUser} userDetails = {userDetails}  component={PrivacyPolicyPage} />
-          <ProtectedRoute exact path="/community-guide-line" isAuthUser = {isAuthUser}  component={CommunityGuideLinePage}/>
+          <Route exact path="/"  
+                    signInUser = { signInUser } userDetails = { userDetails} 
+                    signInCompany={signInCompany} companyDetails={companyDetails} 
+                    render = {  props => <SignInPage 
+                                              {...props} signInUser={signInUser} 
+                                                         signInCompany={signInCompany}/>}  
+          />
+
+          <ProtectedRoute exact path="/home" isAuth = {isAuth}   userDetails = {userDetails} companyDetails={companyDetails} component={Home} />
+          <ProtectedRoute exact path="/companies" isAuth = {isAuth} userDetails = {userDetails} companyDetails={companyDetails}  component={CompaniesPage} />
+          <ProtectedRoute exact path="/company-profil" isAuth = {isAuth} userDetails = {userDetails} companyDetails={companyDetails}  component={CompanyProfilPage}/>
+          <ProtectedRoute exact path="/companies/:companyId" isAuth = {isAuth}  userDetails = {userDetails} companyDetails={companyDetails}  component={AnyCompanyProfilPage}/>
+          <ProtectedRoute exact path="/users" isAuth = {isAuth} userDetails = {userDetails} companyDetails={companyDetails}  component={UsersPage}/>
+          <ProtectedRoute exact path="/users/:userId" isAuth = {isAuth} userDetails = {userDetails} companyDetails={companyDetails}  component={AnyUserPage}/>
+          <ProtectedRoute exact path="/jobs" isAuth = {isAuth} userDetails = {userDetails} companyDetails={companyDetails}  component={JobsPage} />
+          <ProtectedRoute exact path="/apply-job/:jobId" isAuth = {isAuth} userDetails = {userDetails} companyDetails={companyDetails}  component={ApplyJobPage}/>
+          <ProtectedRoute exact path="/my-profile" isAuth = {isAuth} userDetails = {userDetails} companyDetails={companyDetails}  component={UserProfilPage}/>
+          <ProtectedRoute exact path="/about" isAuth = {isAuth}  userDetails = {userDetails} companyDetails={companyDetails}  component={AboutPage} />
+          <ProtectedRoute exact path="/privacy-policy" isAuth = {isAuth} userDetails = {userDetails} companyDetails={companyDetails}  component={PrivacyPolicyPage} />
+          <ProtectedRoute exact path="/community-guide-line" isAuth = {isAuth} userDetails = {userDetails} companyDetails={companyDetails}  component={CommunityGuideLinePage}/>
           <Route exact path='/unauthorized' component={Unauthorized} />
 
         </JobContextProvider>  

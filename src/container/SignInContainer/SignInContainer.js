@@ -1,12 +1,10 @@
-import React , { useContext, useState  }from "react";
+import React , {  useState  }from "react";
 import SignIn from "../../components/SignIn/SignIn";
 import SignUp from '../../components/SignUp/SignUp'
 import CompanyIntroDetails from '../../components/CompanyIntroDetails/CompanyIntroDetails'
-import { UserContext } from '../../contexts/userContext'
-import { CompanyContext } from "../../contexts/companyContext";
 
 const SignInContainer  = (props) => {
-
+  
   let [toggle, setToggle ] = useState(true)
 
   const handleToggleStateSignIn = () => {
@@ -35,12 +33,9 @@ const SignInContainer  = (props) => {
                     { toggle ? 
                       <SignIn 
                           handleSignInUser = {props.signInUser}
-                          // handleSignInCompany = {signInCompany} 
+                          handleSignInCompany = {props.signInCompany} 
                           /> :
-                      <SignUp 
-                          // handleSignUpUser = {props.signUpUser} 
-                          // handleSignUpCompany ={ signUpCompany}
-                          />
+                      <SignUp/>
                     } 
                     </div>
                     </div>

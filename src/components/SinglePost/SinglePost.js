@@ -62,11 +62,6 @@ const  SinglePost = props => {
                   <span>{ country }</span>
                 </li>
               </ul>
-              <ul className="bk-links">
-                <li>
-                  <a href="/" ><i className="la la-envelope"></i></a>
-                </li>
-              </ul>
             </div>
             <div className="job_descp">
               <h3> {title} </h3>

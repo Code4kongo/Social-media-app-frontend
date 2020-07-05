@@ -15,15 +15,21 @@ const  ApplyJobSideBar = (props) => {
         return newString
     }	
 
-    const {jobId, country,total_employee, email, overview, phone, address } = props
+    const style = {
+        color: "#fff",
+        backgroundColor: "#17a2b8",
+        borderColor: "#17a2b8"
+      }
+
+    const {title, country,total_employee, email, overview, phone, address } = props
     return ( 
         <div className="col-xl-3 col-lg-3 col-md-12">
             <div className="right-sidebar">
                 <div className="widget widget-about bid-place">
-                    <button type="button" className="btn btn-primary" >Send email </button>
+                    <button type="button" style={style}>Send email </button>
                 </div>
                 <div className="widget widget-projectid">
-                    <h3>Job ID  {jobId}</h3>
+                    <h3>Job Position  {title}</h3>
                     <span></span>
                     <p>Report Job</p>
                 </div>
@@ -32,7 +38,6 @@ const  ApplyJobSideBar = (props) => {
                         <h3>About the Company</h3>
                         <p> {textLimit(overview)} </p>
                         <i className="la la-ellipsis-v"></i>
-
                     </div>
                 
                     <div className="sd-title">

@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-// import { Link } from "react-router-dom";
 import AsComapny from './AsComapny'
 import AsUser from './AsUser'
 
@@ -28,12 +27,8 @@ const SignUp = (props) => {
                     </ul>
                 </div>
                 { toggleAccount ? 
-                      <AsUser 
-                          handleSignUpUser={props.handleSignUpUser}
-                      /> : 
-                      <AsComapny 
-                          handleSignUpCompany={props.handleSignUpCompany} 
-                      />}
+                      <AsUser/> : 
+                      <AsComapny/>}
             </div>
      );
 }

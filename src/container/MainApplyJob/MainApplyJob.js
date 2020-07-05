@@ -105,7 +105,7 @@ const MainApplyJob = (props) => {
                                 </div>
                             </div>      
                             <ApplyJobSideBar
-                                jobId={jobId}
+                                title={job.title}
                                 country={job.country}
                                 total_employee={job.total_employee}
                                 socialmedialink={job.socialmedialink}

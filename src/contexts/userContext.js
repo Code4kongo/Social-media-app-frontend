@@ -29,39 +29,7 @@ const UserContextProvider = props => {
     const [ userSkills, setUserSkills] = useState([])
     const [ userPortfolio, setUserPortfolio] = useState([])
     const [ userSocialmedialink, setUserSocialmedialink] = useState([])
-    const [isAuthUser, setAuth ] = useState(false)
     
-
-    const signInUser = (email, password ) => {
-
-        axios.post('http://localhost:8080/user/login', {email, password})
-             .then(res => {
-                let user = res.data.user[0]
-                const {  _id, username,password,picture, country , age ,name,gender, company,email,phone,address, about,registered,education } = user
-                const { overview, experience } = user.info
-                const { skills } = user
-                const { portfolio } = user
-                const { socialmedialink } = user
-
-                    setUserDetails(prevState => {
-                        return { ...prevState, _id, username,password,picture, country , age ,name,gender, company,email,phone,address, about,registered}
-                    })
-                    setUserInfo(prevState => {
-                        return {...prevState,overview,experience}
-                    }) 
-                    setUserEducation(education)
-                    setUserSkills([...userSkills, skills])
-                    setUserPortfolio([...userPortfolio, portfolio]) 
-                    setUserSocialmedialink([...userSocialmedialink,socialmedialink]) 
-                    setAuth(true)
-                    
-
-             })
-             .catch(error => console.log(error))
-    }
-
-    // console.log(isAuthUser, "user Aurh")
-
 
     const signUpUser = (email,country, gender, password) => {
 
@@ -124,7 +92,7 @@ const UserContextProvider = props => {
     }
 
     return (
-        <UserContext.Provider value={{userDetails, userInfo, userEducation, userSkills, userPortfolio, userSocialmedialink, isAuthUser , signInUser, signUpUser, updateUser, deleteUser }}>
+        <UserContext.Provider value={{userDetails, userInfo, userEducation, userSkills, userPortfolio, userSocialmedialink, signUpUser, updateUser, deleteUser }}>
             {props.children}
         </UserContext.Provider>
     )
