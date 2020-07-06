@@ -6,6 +6,7 @@ import { JobContext } from "../../contexts/jobContext";
 Modal.setAppElement("#root");
 
 const MainPostJob = (props) => {
+    
   const [title, setTitile] = useState("");
   const [applicants, setApplicants] = useState(0);
   const [jobType, setJobType] = useState("");

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from 'axios'
 import UsersSocialMediaLinks from "../../components/UserSocialMediaLink/SocialMediaLink";
-import UserFeed from "../../components/AnyUserFeed/AnyUserFeed";
+import UserFeed from "../../components/UserFeed/UserFeed";
 import UserInfo from "../../components/AnyUserInfo/AnyUserInfo";
 import UserJob from "../../components/UserJob/UserJob";
 import UserNotification from "../../components/UserNotification/UserNotification";
@@ -17,7 +17,8 @@ import JobIcon from '../../images/ic6.png'
 
 const MainUserProfil = ({userDetails}) => {
 
-    const userId = userDetails._id
+    // const userId = userDetails._id
+    const userId = '5eddcb2ed45871082f32d358'
     
     const [ userInfo, setUserInfo ] = useState({
         overview : "",
@@ -167,7 +168,8 @@ const MainUserProfil = ({userDetails}) => {
                                                         
                                                         /> : 
                                     feedToggle ? <UserFeed 
-                                                    email = { userDetails.email } /> : 
+                                                    email = { userDetails.email }
+                                                     /> : 
                                     portfolioToggle ? <UserPortfolio 
                                                     userPortfolio = {userPortfolio}
                                                     /> :

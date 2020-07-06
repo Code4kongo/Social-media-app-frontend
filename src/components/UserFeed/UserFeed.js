@@ -5,12 +5,13 @@ import IconLike from '../../images/liked-img.png'
 import IconUs from '../../images/resources/us-pc2.png'
 import IconClock from '../../images/clock.png'
 import PostCommments from "../PostComments/PostComments";
+import UpdatePostModal from '../../modals/UpdatePostModal/UpdatePostModal'
 import axios from 'axios'
-// import { Link } from "react-router-dom";
 
-const AnyUserFeed = (props) => {
+const UserFeed = (props) => {
 
-  const { email } = props
+//   const { email } = props
+const email = 'jordy@test.com'
   
   const [posts, setPosts] = useState([
     {
@@ -28,6 +29,15 @@ const AnyUserFeed = (props) => {
   const [loading , setLoading] = useState(true)
 
   const [ showComment, setShowComment ] = useState(false)
+  const [showModal, setShowModal] = useState(false)
+
+
+const openModal = () => {
+      setShowModal(true)
+    }
+const closeModal = () => {
+      setShowModal(false)
+    }
 
   const toggleShowComment = () => {
     setShowComment(!showComment)
@@ -62,11 +72,24 @@ const AnyUserFeed = (props) => {
                         <img src={IconUs} alt=""/>
                         <div className="usy-name">
                           <h3>{ post.author }</h3>
-                          <span>
-                            <img src={IconClock} alt="" />{post.date}
-                          </span>
+                          <span><img src={IconClock} alt="" />{post.date}</span>
                         </div>
                       </div>
+                    <div className="ed-opts">
+                        <button className="btn btn-info" style={{borderRadius : '100%'}} onClick={openModal}><i className="fa fa-pencil fa-fw"></i> </button>
+                        <button className="btn btn-danger" style={{borderRadius : '100%'}}><i className="fa fa-trash-o fa-lg"></i></button>
+                        <UpdatePostModal  
+                            showModal={showModal} 
+                            closeModal={closeModal}
+                            postId={post._id}
+                            title={post.title}
+                            country={post.country}
+                            author={post.author}
+                            email={post.email}
+                            content={post.content}
+                            postImage={post.postImage}
+                            />
+                    </div>
                     </div>
                     <div className="epi-sec">
                       <ul className="descp">
@@ -123,4 +146,4 @@ const AnyUserFeed = (props) => {
   
 }
  
-export default AnyUserFeed;
+export default UserFeed;

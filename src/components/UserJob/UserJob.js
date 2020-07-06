@@ -4,11 +4,13 @@ import IconLike from '../../images/liked-img.png'
 import IconClock from '../../images/clock.png'
 import { Link } from 'react-router-dom'
 import IconUser from '../../images/resources/us-pc2.png'
+import UpdateJobModal from '../../modals/UpdateJobModal/UpdateJobModal'
 import axios from 'axios'
 
 const Userjobs = (props) => {
 
- const { email } = props 
+//  const { email } = props 
+const email = 'jordy@test.com'
  
 const [jobs, setJobs] = useState([
     {
@@ -30,7 +32,16 @@ const [jobs, setJobs] = useState([
       socialmedialink: [],
     }
   ])
-  const [loading , setLoading] = useState(true)
+const [loading , setLoading] = useState(true)
+const [showModal, setShowModal] = useState(false)
+
+
+const openModal = () => {
+      setShowModal(true)
+    }
+const closeModal = () => {
+      setShowModal(false)
+    }
 
   useEffect(() => {
 
@@ -62,14 +73,26 @@ const [jobs, setJobs] = useState([
                           </div>
                       </div>
                       <div className="ed-opts">
-                          <a href="/" title="" className="ed-opts-open"><i className="la la-ellipsis-v"></i></a>
-                          <ul className="ed-options">
-                              <li><a href="/" title="">Edit Post</a></li>
-                              <li><a href="/" title="">Unsaved</a></li>
-                              <li><a href="/" title="">Unbid</a></li>
-                              <li><a href="/" title="">Close</a></li>
-                              <li><a href="/" title="">Hide</a></li>
-                          </ul>
+                            <button className="btn btn-info" style={{borderRadius : '100%'}} onClick={openModal}><i className="fa fa-pencil fa-fw"></i> </button>
+                            <button className="btn btn-danger" style={{borderRadius : '100%'}}><i className="fa fa-trash-o fa-lg"></i></button>
+                            <UpdateJobModal  
+                                showModal={showModal} 
+                                closeModal={closeModal}
+                                jobId={job._id}
+                                title={job.title} 
+                                applicants={job.applicants} 
+                                jobType={job.jobType}
+                                salary={job.salary}
+                                views={job.views} 
+                                country={job.country} 
+                                author={job.author} 
+                                email={job.email} 
+                                phone={job.phone} 
+                                content={job.content} 
+                                address={job.address}
+                                overview ={job.overview} 
+                                total_employee={job.total_employee}
+                            />
                       </div>
                   </div>
                   <div className="epi-sec">
