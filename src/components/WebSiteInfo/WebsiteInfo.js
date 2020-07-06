@@ -1,6 +1,6 @@
 import React from "react";
 import "./WebsiteInfo.css";
-import AboutImage from "../../images/forum.png";
+import AboutImage from "../../images/CPN1.png";
 //import WebsiteInfoContainer from "../../container/WebSiteInfoContainer/WebSiteInfoContainer";
 export default function WebsiteInfo() {
   return (
@@ -17,7 +17,8 @@ export default function WebsiteInfo() {
                 professionals originally from Congo that have been going through
                 the same challenges without necessarily having people to consult
                 or get advice from, or good connections that could assist them
-                in their growing careers. The goal of the platform is to identify the skills and service offering of the young
+                in their growing careers. The goal of the platform is to
+                identify the skills and service offering of the young
                 professionals within the community, connect them with other
                 professionals within similar fields and also with those having
                 similar interests in order to promote collaboration and
