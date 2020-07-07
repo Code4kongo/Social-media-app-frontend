@@ -1,6 +1,7 @@
 import React from "react";
 import "./WebsiteInfo.css";
 import AboutImage from "../../images/CPN1.png";
+
 //import WebsiteInfoContainer from "../../container/WebSiteInfoContainer/WebSiteInfoContainer";
 export default function WebsiteInfo() {
   return (
@@ -62,6 +63,18 @@ export default function WebsiteInfo() {
             </div>
             <div className="col-md-6 col-sm-12">
               <img src={AboutImage} alt="img" className="aboutImg" />
+            </div>
+          </div>
+        </div>
+      </section>
+      <section>
+        <div className="container">
+          <div className="row">
+            <div className="col-md-4 col-sm-12">
+              <div className="blog">
+                <h2>Contact 243Netowork via C2</h2>
+                <a href="/">Write to us </a>
+              </div>
             </div>
           </div>
         </div>

@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import CopyIcon2 from "../../images/copy-icon2.png";
-import Logo2 from "../../images/CPN Transparent Background White Font1.png";
+import Logo2 from "../../images/c212.jpg";
 
 const Footer = () => {
   return (
