@@ -42,12 +42,13 @@ const AnyUserInfo = (props) => {
     </div>
     <div className="user-profile-ov">
       <h3>
-        <a href="/" title="" className="skills-open">Skills</a>
+        <a href="/" title="" className="skills-open">Skills ..</a>
         <a href="/" title="" className="skills-open"><i className="fa fa-pencil"></i></a>
         <a href="/"><i className="fa fa-plus-square"></i></a>
       </h3>
       <ul>
           {
+            
             skills.map((skill,index) => {
               return ( <li key={index}><a href="/" title="">{ skill }</a></li>)
             })

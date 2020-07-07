@@ -46,7 +46,7 @@ const MainAnyUser = (props) => {
             .then(res => {
 
                 let user = res.data.user
-                const {  _id, username,picture, country , age ,name,gender, company,email,phone,address, about,registered,education } = user
+                const {  _id,picture, country , age ,name,gender, company,email,phone,address, about,registered,education } = user
                 const { overview, experience } = user.info
                 const { skills } = user
                 const { portfolio } = user
@@ -59,11 +59,13 @@ const MainAnyUser = (props) => {
                         return {...prevState,overview,experience}
                     }) 
                     setUserEducation(education)
-                    setUserSkills([...userSkills, skills])
-                    setUserPortfolio([...userPortfolio, portfolio]) 
-                    setUserSocialmedialink([...userSocialmedialink,socialmedialink])   
+                    setUserSkills(skills)
+                    setUserPortfolio([ portfolio]) 
+                    setUserSocialmedialink([socialmedialink])   
             })
     },[])
+
+    console.log(userSkills)
     
     const showFeed = () => {
         setFeedToggle(true)

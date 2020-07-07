@@ -12,6 +12,7 @@ const UpdateUserModal = (props) => {
     const { updateJob } = useContext(JobContext)
 
     const { showModal, closeModal, jobId, title, jobType, salary, country, author, email, phone, content, address, overview , total_employee} = props
+    console.log(jobId)
 
     const [job_title, setTitile] = useState(title);
     const [job_jobType, setJobType] = useState(jobType);
@@ -27,7 +28,7 @@ const UpdateUserModal = (props) => {
   
     const handleSubmit = (event) => {
           event.preventDefault()
-          updateJob(jobId,title, jobType, salary, country, author, email, phone, content, address,overview , total_employee)
+          updateJob(jobId,job_title, job_jobType, job_salary, job_country, job_author, job_email, job_phone, job_content, job_address,job_overview , job_total_employee)
     }
   
     const style = {

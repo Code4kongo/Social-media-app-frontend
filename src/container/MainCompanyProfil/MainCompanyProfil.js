@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import axios from 'axios'
 import CompanySocialmedialink from "../../components/UserSocialMediaLink/SocialMediaLink";
-import CompanyFeed from "../../components/AnyCompanyFeed/AnyCompanyFeed";
+import CompanyFeed from "../../components/UserFeed/UserFeed";
 import CompanyInfo from "../../components/AnyCompanyInfo/AnyCompanyInfo";
 import CompanyJob from "../../components/UserJob/UserJob";
 import CompanyNotification from "../../components/UserNotification/UserNotification";
 import CompanyPortfolio from "../../components/UserPortfolio/UserPortfolio";
-import UpdateUserModal from '../../modals/UpdateUserModal/UpdateUserModal'
+import UpdateCompanyModal from "../../modals/UpdateCompany/UpdateCompany"
 import UserCover from '../../images/resources/cover-network.jpeg'
 import FeedIcon from '../../images/ic1.png'
 import InfoIcon from '../../images/ic2.png'
@@ -57,7 +57,7 @@ const MainCompanyProfil = ({companyDetails}) => {
                     setCompanyInfo(prevState => {
                         return {...prevState,overview,awards}
                     }) 
-                    setCompanySkills([...companySkills, skills])
+                    setCompanySkills(skills)
                     setCompanyPortfolio([...companyPortfolio, portfolio]) 
                     setCompanySocialmedialink([...companySocialmedialink,socialmedialink])   
             })
@@ -181,28 +181,20 @@ const MainCompanyProfil = ({companyDetails}) => {
                                     <button className="btn btn-info" onClick={openModal}>
                                         <i className="fa fa-pencil"></i> Edit Profil 
                                     </button>
-                                    <UpdateUserModal
+                                    <UpdateCompanyModal
                                         showModal={showModal}
                                         closeModal={closeModal}
-                                        // companyId = { userDetails._id}
-                                        // overview={ userInfo.overview }
-                                        // experiences = { userInfo.experience }
-                                        // skills = { userSkills }
-                                        // location = { userDetails.address }
-                                        // country = { userDetails.country}
-                                        // education = { userEducation}
-                                        // email = { userDetails.email } 
-                                        // socialmedialink = { userDetails.companySocialmedialink } 
-                                        // picture = { userDetails.picture }
-                                        // phone = { userDetails.phone }
-                                        // address = { userDetails.address }
-                                        // username = { userDetails.username}
-                                        // age = { userDetails.age}
-                                        // name = { userDetails.name}
-                                        // gender = { userDetails.gender}
-                                        // company = { userDetails.company}
-                                        // about = { userDetails.about}
-                                        // registered = { userDetails.registered}
+                                        companyId = { companyDetails._id}
+                                        overview  = { companyInfo.overview}
+                                        country ={ companyDetails.company_country}
+                                        awards = { companyInfo.awards}
+                                        email  ={companyDetails.company_email}
+                                        phone = {companyDetails.company_phone}
+                                        address = {companyDetails.company_address}
+                                        createdAt = {companyDetails.createdAt}
+                                        company = { companyDetails.company_name}
+                                        about = { companyDetails.company_about}
+                                        total_number_employee = {companyDetails.total_number_employee}
                                         />
 									</div>
                                     <CompanyPortfolio/>

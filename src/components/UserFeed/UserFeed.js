@@ -54,8 +54,6 @@ const closeModal = () => {
 
   }, [])
 
-  console.log(posts)
-  console.log(loading)
   if(loading){
     return <div>loading ...</div>
   }else {
@@ -63,6 +61,7 @@ const closeModal = () => {
       <div>
         {
           posts.map((post, index) => {
+            console.log(post)
             return (
               <div className="posts-section" key={index}>
                 <div className="posty">

@@ -18,6 +18,15 @@ const  AddPostModal = (props) => {
         content,
         postImage
      } = props
+     const object = {
+        postId,
+        title,
+        country,
+        author,
+        email,
+        content,
+     }
+    //  console.log(object)
 
     const [post_title, setTitile ] = useState(title) 
     const [post_country, setCountry ] = useState(country) 

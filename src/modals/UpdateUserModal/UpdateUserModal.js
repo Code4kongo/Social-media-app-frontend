@@ -5,17 +5,17 @@ import "./UpdateUserModal.css";
 
 Modal.setAppElement("#root");
 
-const UpdateUserModal = (props) => {
+const UpdateUserModal = props => {
 
     const { showModal,closeModal, userId, overview   ,country ,education, email   ,phone ,
-                address ,
-                username,
-                age,
-                name,
-                gender,
-                company,
-                about,
-                 } = props
+            address ,
+            username,
+            age,
+            name,
+            gender,
+            company,
+            about,
+        } = props
 
     const [ user_username, setUsername ] = useState(username)
     const [ user_country, setUserCountry ] = useState(country)
@@ -27,8 +27,6 @@ const UpdateUserModal = (props) => {
     const [ user_phone, setUserPhone ] = useState(phone)
     const [ user_address, setUserAddress ] = useState(address)
     const [ user_about, setUserAbout ] = useState(about)
-    
-
         
     const [ user_overview, setUserOverview ] = useState(overview) 
     const [ userEducation, setUserEducation] = useState(education)

@@ -54,6 +54,7 @@ const  App = () => {
     company_address : "",
     company_about : "",
     company_registered : "",
+    total_number_employee : 0
   })
   const [isAuth, setAuth ] = useState(false)
   const signInUser = (email, password ) => {
@@ -77,7 +78,8 @@ const  App = () => {
     axios.post('http://localhost:8080/company/login', {email, password})
          .then(res => {
             let ExistingCompany = res.data.company[0]
-            const {  _id, company,password,picture, country , createdAt, email, phone, address, about,registered } = ExistingCompany
+            console.log(ExistingCompany)
+            const {  _id, company,password,picture, country , createdAt, email, phone, address, about,registered, total_number_employee } = ExistingCompany
                 
                 setCompanyDetails(prevState => {
                     return { ...prevState, _id, password,createdAt ,
@@ -88,6 +90,7 @@ const  App = () => {
                               company_phone :  phone,
                               company_address :  address, 
                               company_about:  about,
+                              total_number_employee : total_number_employee,
                               company_registered :  registered}
                 })
                 setAuth(true)

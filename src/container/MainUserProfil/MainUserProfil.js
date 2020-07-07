@@ -33,7 +33,7 @@ const MainUserProfil = ({userDetails}) => {
     const [ infoToggle, setInfoToggle ] = useState(true)
     const [ portfolioToggle, setPortfolioeedToggle ] = useState(false)
     const [ notificationToggle, setNotificationToggle ] = useState(false)
-    const [ jobToggle, setJobToggle ] = useState(false)
+    
 
     const [showModal, setShowModal] = useState(false)
 
@@ -61,9 +61,9 @@ const MainUserProfil = ({userDetails}) => {
                         return {...prevState,overview,experience}
                     }) 
                     setUserEducation(education)
-                    setUserSkills([...userSkills, skills])
-                    setUserPortfolio([...userPortfolio, portfolio]) 
-                    setUserSocialmedialink([...userSocialmedialink,socialmedialink])   
+                    setUserSkills(skills)
+                    setUserPortfolio([ portfolio]) 
+                    setUserSocialmedialink([socialmedialink])   
             })
     },[])
 
@@ -72,35 +72,27 @@ const MainUserProfil = ({userDetails}) => {
         setInfoToggle(false)
         setPortfolioeedToggle(false)
         setNotificationToggle(false)
-        setJobToggle(false)
+        
     }
     const showInfo = () => {
         setFeedToggle(false)
         setInfoToggle(true)
         setPortfolioeedToggle(false)
         setNotificationToggle(false)
-        setJobToggle(false)
+        
     }
     const showPortfolio = () => {
         setFeedToggle(false)
         setInfoToggle(false)
         setPortfolioeedToggle(true)
         setNotificationToggle(false)
-        setJobToggle(false)
+        
     }
     const showNotification = () => {
         setFeedToggle(false)
         setInfoToggle(false)
         setPortfolioeedToggle(false)
         setNotificationToggle(true)
-        setJobToggle(false)
-    }
-    const showJob = () => {
-        setFeedToggle(false)
-        setInfoToggle(false)
-        setPortfolioeedToggle(false)
-        setNotificationToggle(false)
-        setJobToggle(true)
     }
     
     return (
@@ -150,10 +142,6 @@ const MainUserProfil = ({userDetails}) => {
                                                 <img src={NotificationIcon} alt="" />
                                                 <span>Notificatio</span>
                                             </li>
-                                            <li  onClick={showJob}>
-                                                <img src={JobIcon} alt="" />
-                                                <span>Job</span>
-                                            </li>
                                         </ul>
                                     </div>
                                     </div>
@@ -174,8 +162,6 @@ const MainUserProfil = ({userDetails}) => {
                                                     userPortfolio = {userPortfolio}
                                                     /> :
                                     notificationToggle ? <UserNotification /> : 
-                                    jobToggle ? <UserJob 
-                                                    email = { userDetails.email }/> : 
                                     <UserFeed  email = { userDetails.email }/>
                                 }
                             </div>

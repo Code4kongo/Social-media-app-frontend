@@ -58,26 +58,29 @@ const JobContextProvider = (props) => {
                 console.log(res)
             })
     }
-    const updateJob = (jobId,title, jobType,salary, country, author, email, phone, content, address,overview , total_employee) => {
-
+    const updateJob = (jobId,job_title, job_jobType, job_salary, job_country, job_author, job_email, job_phone, job_content, job_address,job_overview , job_total_employee) => {
+        
+        
         const updatedJob = { 
-            title, 
-            jobType, 
-            salary, 
-            country,
-            author,
-            email,
-            phone,
-            content,
-            address,
-            overview,
-            total_employee
+            title : job_title, 
+            jobType : job_jobType, 
+            salary : job_salary, 
+            country : job_country,
+            author : job_author,
+            email : job_email,
+            phone : job_phone,
+            content : job_content,
+            address : job_address,
+            overview : job_overview,
+            total_employee : job_total_employee
         }
+        console.log(updatedJob)
 
         axios.patch(`http://localhost:8080/jobs/${jobId}`, updatedJob)
              .then(res => {
-                const message = res.data
+                const message = res.data.job
                 console.log(message)
+                
              })
              .catch(error => {
                  console.log(error)

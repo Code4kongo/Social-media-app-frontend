@@ -3,7 +3,6 @@ import React from "react";
 const AnyCompanyInfo = (props) => {
 
     const { overview ,awards ,skills ,location, country  } = props 
-
   return ( 
     <React.Fragment>
         <div className="product-feed-tab current">
