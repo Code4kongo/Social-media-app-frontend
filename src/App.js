@@ -74,11 +74,10 @@ const  App = () => {
           })
   }
   const signInCompany= (email, password ) => {
-    console.log(email, password)
+  
     axios.post('http://localhost:8080/company/login', {email, password})
          .then(res => {
             let ExistingCompany = res.data.company[0]
-            console.log(ExistingCompany)
             const {  _id, company,password,picture, country , createdAt, email, phone, address, about,registered, total_number_employee } = ExistingCompany
                 
                 setCompanyDetails(prevState => {
@@ -102,8 +101,6 @@ const  App = () => {
 
 }
 
-
-console.log(isAuth)
   return (
     <React.Fragment>
       <div className="wrapper">

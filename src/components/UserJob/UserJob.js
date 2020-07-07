@@ -47,7 +47,6 @@ const closeModal = () => {
 
     axios.get(`http://localhost:8080/jobs/my-jobs?email=${email}`) 
           .then(res => {
-            console.log(res)
             const fetchedJobs = res.data.jobs
             setJobs(fetchedJobs)
             setLoading(false)

@@ -39,8 +39,6 @@ const CompanyContextProvider = props => {
                 const { portfolio } = ExistingCompany
                 const { socialmedialink } = ExistingCompany
 
-                console.log(ExistingCompany)
-
                     setCompanyDetails(prevState => {
                         return { ...prevState, _id, company,password,picture, country , createdAt ,email,phone,address, about,registered}
                     })
@@ -76,12 +74,10 @@ const CompanyContextProvider = props => {
             portfolio: [],
             socialmedialink: []   
           }
-        console.log(newCompany)
         
         axios.post('http://localhost:8080/company/signup', newCompany)
             .then(res => {
                 let existingCompany = res.data.createdCompany
-                console.log(existingCompany)
                 const {  _id, company, password,picture, country , createdAt ,email, phone, address, about, registered } = existingCompany
                 const { overview, awards } = existingCompany.info
                 const { skills } = existingCompany

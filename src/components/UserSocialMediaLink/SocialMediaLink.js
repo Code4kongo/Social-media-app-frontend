@@ -95,7 +95,6 @@ const UserSocialMediaLink = props => {
             </div>
         </div>      
     )
-    console.log(email)
     if(email === undefined){
         return companySocialMediaLink
     }else {

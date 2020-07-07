@@ -74,7 +74,6 @@ const JobContextProvider = (props) => {
             overview : job_overview,
             total_employee : job_total_employee
         }
-        console.log(updatedJob)
 
         axios.patch(`http://localhost:8080/jobs/${jobId}`, updatedJob)
              .then(res => {

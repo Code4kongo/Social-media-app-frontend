@@ -41,7 +41,6 @@ export default function AsUser(props) {
         portfolio: [],
         socialmedialink: []
       }
-console.log(newUser)
     
     axios.post('http://localhost:8080/user/signup', newUser)
         .then(res => {

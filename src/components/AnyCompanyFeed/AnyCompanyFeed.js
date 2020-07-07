@@ -44,8 +44,6 @@ const AnyCompanyFeed = (props) => {
 
   }, [])
 
-  console.log(posts)
-  console.log(loading)
   if(loading){
     return <div>loading ...</div>
   }else {
