@@ -1,28 +1,29 @@
 import React from "react";
+import icno8 from '../../images/resources/bg-img3.png'
+import icno9 from '../../images/icon8.png'
+import icno10 from '../../images/icon9.png'
 
 export default function UserNotification() {
   return (
     
-    <div className="product-feed-tab" id="rewivewdata">
-    <section></section>
-
+    <div className="product-feed-tab current">
     <div className="posts-section">
       <div className="post-bar reviewtitle">
-        <h2>Reviews</h2>
+        <h2>Notification</h2>
       </div>
       <div className="post-bar">
         <div className="post_topbar">
           <div className="usy-dt">
-            <img src="images/resources/bg-img3.png" alt="" />
+            <img src={icno8} alt="" />
             <div className="usy-name">
-              <h3>Rock William</h3>
+              <h3>CONGOLESE NETWORK 243</h3>
               <div className="epi-sec epi2">
                 <ul className="descp review-lt">
                   <li>
-                    <img src="images/icon8.png" alt="" /><span>Epic Coder</span>
+                    <img src={icno9} alt="" /><span>Congolese Network 243</span>
                   </li>
                   <li>
-                    <img src="images/icon9.png" alt="" /><span>India</span>
+                    <img src={icno10} alt="" /><span>Congo</span>
                   </li>
                 </ul>
               </div>
@@ -42,34 +43,13 @@ export default function UserNotification() {
             <a href="/" title="">5.0 of 5 Reviews</a>
           </div>
           <div className="reviewtext">
-            <p>
-              Lorem ipsum dolor sit amet, adipiscing elit.
-              Nulla luctus mi et porttitor ultrices
+            <p> We always work to make the future bright, Congo needs You, Africa needs You, The World needs You
+              because we believe you are great and you can do amazing things with use 
+              The Congolese Network encourages initiatives and supports them
+              Together We Are Stronger 
+              Together We Are The World 
             </p>
             <hr />
-          </div>
-
-          <div className="post_topbar post-reply">
-            <div className="usy-dt">
-              <img src="images/resources/bg-img4.png"alt=""/>
-              <div className="usy-name">
-                <h3>John Doe</h3>
-                <div className="epi-sec epi2">
-                  <p>
-                    <i className="la la-clock-o"></i>3 min ago
-                  </p>
-                  <p className="tahnks">Thanks :)</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="post_topbar rep-post rep-thanks">
-            <hr />
-            <div className="usy-dt">
-              <img src="images/resources/bg-img4.png" alt="" />
-              <input  className="reply" type="text"  placeholder="Reply"/>
-              <a className="replybtn" href="/">Send</a>
-            </div>
           </div>
         </div>
       </div>

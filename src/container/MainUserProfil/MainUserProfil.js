@@ -3,7 +3,6 @@ import axios from 'axios'
 import UsersSocialMediaLinks from "../../components/UserSocialMediaLink/SocialMediaLink";
 import UserFeed from "../../components/UserFeed/UserFeed";
 import UserInfo from "../../components/AnyUserInfo/AnyUserInfo";
-import UserJob from "../../components/UserJob/UserJob";
 import UserNotification from "../../components/UserNotification/UserNotification";
 import UserPortfolio from "../../components/UserPortfolio/UserPortfolio";
 import UpdateUserModal from '../../modals/UpdateUserModal/UpdateUserModal'
@@ -12,7 +11,6 @@ import FeedIcon from '../../images/ic1.png'
 import InfoIcon from '../../images/ic2.png'
 import PortfolioIcon from '../../images/ic3.png'
 import NotificationIcon from '../../images/review.png'
-import JobIcon from '../../images/ic6.png'
 
 
 const MainUserProfil = ({userDetails}) => {

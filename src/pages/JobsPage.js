@@ -3,11 +3,11 @@ import Header from '../container/Header/Header'
 import MainJobs from '../container/MainJobs/MainJobs'
 import Footer from '../container/Footer/Footer'
 
-const Jobs = () => {
+const Jobs = props => {
     return ( 
         <div>
             <Header/>
-            <MainJobs/>
+            <MainJobs {...props}/>
             <Footer/>
         </div>
      );

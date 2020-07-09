@@ -40,9 +40,9 @@ const UpdateUserModal = (props) => {
             address: company_address,
             about:  company_about,
             total_number_employee : company_totalNumberEmployee,
-            // info: {
-            //     overview : company_overview,
-            // }
+            info: {
+                overview : company_overview,
+            }
           }
           console.log(updatedCompany.total_number_employee)
           console.log(typeof(updatedCompany.total_number_employee))

@@ -91,7 +91,7 @@ const  AddPostModal = (props) => {
     
         <Modal isOpen={showModal} onRequestClose={closeModal} className="modal-wrapper-post">
         <div className="post-project">
-            <h3>Add a Post </h3>
+            <h3>Edit a Post </h3>
             <div className="post-project-fields">
                 <form onSubmit={handleSubmit}>
                     <div className="row">

@@ -8,8 +8,15 @@ import { JobContext } from '../../contexts/jobContext'
 import UserPic from "../../images/resources/user-pic.png";
 
 
-function MainJobs() {
+const  MainJobs = props => {
 
+    const { email } = props.userDetails
+    const { company_email } = props.companyDetails
+    let  postingAuth = ""
+  
+    if(email === ""){
+        postingAuth = company_email
+    }
     const [showModal, setShowModal] = useState(false)
     const  { jobs, topJobs, mostViewed } = useContext(JobContext)
 
@@ -31,7 +38,7 @@ function MainJobs() {
                             <div className="col-lg-6">
                                 <div className="main-ws-sec">
                                     
-                                <div className="post-topbar">
+                                { postingAuth !== "" ? <div className="post-topbar">
                                     <div className="user-picy">
                                         <img src={UserPic} alt="" />
                                     </div>
@@ -43,8 +50,8 @@ function MainJobs() {
                                                 </button>
                                             </li>
                                         </ul>
-                                    </div>
-                                </div>
+                                    </div> 
+                                </div> : null}
                                 <PostJobModal 
                                     showModal={showModal}
                                     closeModal={closeModal}

@@ -1,11 +1,12 @@
+import React from "react";
 import { Link } from "react-router-dom";
 import IconUser from "../../images/resources/us-pc2.png";
 import IconClock from "../../images/clock.png";
 import IconEmai from "../../images/icon8.png";
 import IconCountry from "../../images/icon9.png";
 import IconLike from "../../images/liked-img.png";
-import EmailModal from "../../modals/EmailModal/EmailModal";
-import React, { useState, useContext } from "react";
+
+
 
 const SingleJob = (props) => {
   let {
@@ -21,14 +22,7 @@ const SingleJob = (props) => {
     title,
     views,
   } = props;
-  const [showModal, setShowModal] = useState(false);
 
-  const openModal = () => {
-    setShowModal(true);
-  };
-  const closeModal = () => {
-    setShowModal(false);
-  };
   return (
     <div>
       <div className="posty">
@@ -47,33 +41,6 @@ const SingleJob = (props) => {
               <a href="/" title="" className="ed-opts-open">
                 <i className="la la-ellipsis-v"></i>
               </a>
-              <ul className="ed-options">
-                <li>
-                  <a href="/" title="">
-                    Edit Post
-                  </a>
-                </li>
-                <li>
-                  <a href="/" title="">
-                    Unsaved
-                  </a>
-                </li>
-                <li>
-                  <a href="/" title="">
-                    Unbid
-                  </a>
-                </li>
-                <li>
-                  <a href="/" title="">
-                    Close
-                  </a>
-                </li>
-                <li>
-                  <a href="/" title="">
-                    Hide
-                  </a>
-                </li>
-              </ul>
             </div>
           </div>
           <div className="epi-sec">
@@ -115,7 +82,7 @@ const SingleJob = (props) => {
                   state: { fromDashboard: true },
                 }}
               >
-                view more
+                ...
               </Link>
             </p>
             <ul className="skill-tags">

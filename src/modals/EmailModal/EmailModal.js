@@ -12,7 +12,12 @@ const EmailModal = (props) => {
   const [email, setEmail] = useState(applicantEmail);
 
   const [content, setContent] = useState(
-    "GOOD DAY, I AM APPLYING FOR THIS POSITION"
+     `Good day\n 
+      I hope this message finds you well ! \n
+      I am applying for this position ! \n
+      Thanks \n
+      Regards
+      ` 
   );
   console.log(authorEmail);
   const handleSubmit = (event) => {
@@ -38,6 +43,7 @@ const EmailModal = (props) => {
             <div className="row">
               <div className="col-lg-12">
                 <input
+                  className="form-control form-control-sm"
                   type="email"
                   placeholder="To"
                   value={authorEmail}
@@ -48,8 +54,9 @@ const EmailModal = (props) => {
 
               <div className="col-lg-12">
                 <input
+                  className="form-control form-control-sm"
                   type="email"
-                  placeholder="Subject"
+                  placeholder="From"
                   value={email}
                   onChange={(event) => {
                     setEmail(event.target.value);
@@ -59,8 +66,9 @@ const EmailModal = (props) => {
               </div>
               <div className="col-lg-12">
                 <input
+                  className="form-control form-control-sm"
                   type="text"
-                  placeholder="From"
+                  placeholder="Subject"
                   value={title}
                   onChange={(event) => {
                     setTitile(event.target.value);
@@ -71,6 +79,7 @@ const EmailModal = (props) => {
               <div className="col-lg-12">
                 <textarea
                   name="description"
+                  className="form-control"
                   placeholder="Message"
                   value={content}
                   onChange={(event) => {

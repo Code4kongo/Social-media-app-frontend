@@ -64,8 +64,6 @@ const MainAnyUser = (props) => {
                     setUserSocialmedialink([socialmedialink])   
             })
     },[])
-
-    console.log(userSkills)
     
     const showFeed = () => {
         setFeedToggle(true)

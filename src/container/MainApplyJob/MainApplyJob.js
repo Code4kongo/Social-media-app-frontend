@@ -10,6 +10,17 @@ import IconCountry from "../../images/icon9.png";
 import EmailModal from "../../modals/EmailModal/EmailModal";
 
 const MainApplyJob = (props) => {
+  
+  const { email } = props.userDetails
+  const { company_email } = props.companyDetails
+  let  applicantEmail = ""
+
+  if(email === ""){
+        applicantEmail = company_email
+  }else {
+        applicantEmail = email
+  }
+
   let jobId = props.jobId;
   const [job, setJob] = useState({
     _id: "",
@@ -82,7 +93,6 @@ const MainApplyJob = (props) => {
   const closeModal = () => {
     setShowModal(false);
   };
-  console.log(job);
   return (
     <main>
       <div className="main-section">
@@ -131,7 +141,7 @@ const MainApplyJob = (props) => {
                           <i className="la la-envelope" onClick={openModal}></i>
                           <EmailModal
                             authorEmail={job.email}
-                            applicantEmail={"anyEmail@SpeechGrammarList.com"}
+                            applicantEmail={applicantEmail}
                             showModal={showModal}
                             closeModal={closeModal}
                           />
@@ -170,7 +180,7 @@ const MainApplyJob = (props) => {
               </div>
               <ApplyJobSideBar
                 authorEmail={job.email}
-                applicantEmail={"anyEmail@SpeechGrammarList.com"}
+                applicantEmail={applicantEmail}
                 title={job.title}
                 country={job.country}
                 total_employee={job.total_employee}

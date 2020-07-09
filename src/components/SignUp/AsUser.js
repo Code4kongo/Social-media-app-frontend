@@ -5,6 +5,7 @@ import { Redirect } from 'react-router-dom'
 export default function AsUser(props) {
 
   const [email, setEmail] = useState('')
+  const [name, setName] = useState('')
   const [country, setCountry] = useState('')
   const [gender, setGender] = useState('')
   const [password, setPassword] = useState('')
@@ -16,7 +17,7 @@ export default function AsUser(props) {
   const handleSubmit = event => {
 
     event.preventDefault()
-    if(password !== repeatPassword && agreeTermCondition){
+    if(password !== repeatPassword && !agreeTermCondition){
       return alert("Your password must match and agree term and conditon")
     }     
     const newUser =  {
@@ -25,7 +26,7 @@ export default function AsUser(props) {
         picture: "",
         country,
         age: 0,
-        name: "",
+        name,
         gender,
         company: "",
         email,
@@ -41,6 +42,7 @@ export default function AsUser(props) {
         portfolio: [],
         socialmedialink: []
       }
+    console.log(newUser)
     
     axios.post('http://localhost:8080/user/signup', newUser)
         .then(res => {
@@ -68,6 +70,12 @@ export default function AsUser(props) {
               <div className="col-lg-12 no-pdd">
                 <div className="sn-field">
                   <input type="email"  placeholder="email " value={email} onChange={event => setEmail(event.target.value)}/>
+                  <i className="la la-user"></i>
+                </div>
+              </div>
+              <div className="col-lg-12 no-pdd">
+                <div className="sn-field">
+                  <input type="text"  placeholder="Full-name " value={name} onChange={event => setName(event.target.value)}/>
                   <i className="la la-user"></i>
                 </div>
               </div>

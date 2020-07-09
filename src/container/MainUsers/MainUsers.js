@@ -4,7 +4,7 @@ import axios from 'axios'
 
 const MainCompaniesAndJobs = (props) => {
 
-    const [ usersDetails, setCompaniesDetails ] = useState([
+    const [ usersDetails, setUsersDetails ] = useState([
         {
             _id: "",
             name:"" ,
@@ -18,7 +18,7 @@ const MainCompaniesAndJobs = (props) => {
         axios.get('http://localhost:8080/user')
             .then(res => {
                 const usersList = res.data.users
-                setCompaniesDetails(usersList)
+                setUsersDetails(usersList)
             })
     }, [])
 

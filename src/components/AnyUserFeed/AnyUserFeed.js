@@ -6,7 +6,6 @@ import IconUs from '../../images/resources/us-pc2.png'
 import IconClock from '../../images/clock.png'
 import PostCommments from "../PostComments/PostComments";
 import axios from 'axios'
-// import { Link } from "react-router-dom";
 
 const AnyUserFeed = (props) => {
 

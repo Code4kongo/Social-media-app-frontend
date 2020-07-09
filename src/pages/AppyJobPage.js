@@ -9,7 +9,7 @@ const AppyJob = props => {
     return ( 
         <div>
             <Header/>
-            <MainApplyJob jobId={jobId}/>
+            <MainApplyJob jobId={jobId} {...props}/>
             <Footer/>
         </div>
      );
