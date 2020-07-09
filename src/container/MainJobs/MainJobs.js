@@ -6,6 +6,7 @@ import TopJob from '../../components/TopJobs/TopJobs'
 import MostViewed from '../../components/MostViewd/MostView'
 import { JobContext } from '../../contexts/jobContext'
 import UserPic from "../../images/resources/user-pic.png";
+import LoadingSpinner from '../../feedback/LoadingSpinner/LoadingSpinner'
 
 
 const  MainJobs = props => {
@@ -18,7 +19,7 @@ const  MainJobs = props => {
         postingAuth = company_email
     }
     const [showModal, setShowModal] = useState(false)
-    const  { jobs, topJobs, mostViewed } = useContext(JobContext)
+    const  { jobs, loadingJobs, topJobs, mostViewed , loadingTopJobs, loadingMostViewed } = useContext(JobContext)
 
     const openModal = () => {
         setShowModal(true)
@@ -59,7 +60,7 @@ const  MainJobs = props => {
 
                                     <div className="posts-section">
                                         {
-                                            jobs.map(job => {
+                                           !loadingJobs ? <LoadingSpinner/>: jobs.map(job => {
                                                 
                                                 let { _id, address, applicants, author, content, country, date,email, jobType, overview, phone, salary, socialmedialink, title, total_employee, views  } = job
                                                 return (
@@ -91,8 +92,8 @@ const  MainJobs = props => {
                             
                             <div className="col-lg-3">
                             <div className="right-sidebar">
-                                <TopJob topJobs={topJobs}/>
-                                <MostViewed mostViewed={mostViewed}/>
+                                <TopJob topJobs={topJobs} loadingTopJobs={loadingTopJobs}/>
+                                <MostViewed mostViewed={mostViewed} loadingMostViewed={loadingMostViewed}/>
                             </div>
                             </div>
                         </div>

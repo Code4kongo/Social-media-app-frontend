@@ -8,12 +8,13 @@ import MostViewed from "../../components/MostViewd/MostView";
 import { JobContext } from '../../contexts/jobContext'
 import { PostContext } from "../../contexts/postContext";
 import UserPic from "../../images/resources/user-pic.png";
+import LoadingSpinner from "../../feedback/LoadingSpinner/LoadingSpinner";
 
 
 const Main = ({userDetails, companyDetails}) => {
 
-  const  { topJobs, mostViewed } = useContext(JobContext)
-  const { posts } = useContext(PostContext)
+  const  { topJobs, mostViewed, loadingTopJobs, loadingMostViewed } = useContext(JobContext)
+  const { posts, loadingPost } = useContext(PostContext)
 
   const [showModal, setShowModal] = useState(false)
 
@@ -57,7 +58,7 @@ const Main = ({userDetails, companyDetails}) => {
                                     closeModal={closeModal}
                                 />
                 {
-                  posts.map(post => {
+                 !loadingPost ? <LoadingSpinner/> :  posts.map(post => {
                     let {  _id, title, country, author, content, date, likes, comments, postImage } = post
                     return (
                       <SinglePost 
@@ -79,8 +80,8 @@ const Main = ({userDetails, companyDetails}) => {
             </div>
             <div className="col-lg-3 pd-right-none no-pd">
               <div className="right-sidebar">
-                  <TopJobs topJobs={topJobs}/>
-                  <MostViewed mostViewed={mostViewed}/>
+                  <TopJobs topJobs={topJobs} loadingTopJobs={loadingTopJobs}/>
+                  <MostViewed mostViewed={mostViewed} loadingMostViewed={loadingMostViewed}/>
               </div>
             </div>
           </div>

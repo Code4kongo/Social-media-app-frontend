@@ -1,7 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import LoadingSpinner from '../../feedback/LoadingSpinner/LoadingSpinner'
 
-const MostView = ({mostViewed}) => {
+const MostView = ({mostViewed, loadingMostViewed}) => {
 
     let textLimit = (string= "sometext") => {
 		let arrayTransform = string.split('')
@@ -19,7 +20,7 @@ const MostView = ({mostViewed}) => {
             </div>
             <div className="jobs-list">
                 {
-                    mostViewed.map(job => {
+                   !loadingMostViewed? <LoadingSpinner/>  : mostViewed.map(job => {
                         const filterOverview = textLimit(job.overview)
                         return (
                                 <div className="job-info" key={job._id}>

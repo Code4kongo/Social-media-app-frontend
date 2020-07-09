@@ -23,23 +23,30 @@ let jobObject = {
 }
 
 const JobContextProvider = (props) => {
-    const [jobs, setJobs] = useState([jobObject])
-    const [topJobs , setTopJobs] = useState([jobObject])
-    const [mostViewed, setMostViewed] = useState([jobObject])
+
+    const [ jobs, setJobs ] = useState([jobObject])
+    const [ topJobs , setTopJobs ] = useState([jobObject])
+    const [ loadingJobs , setLoadingJobs ] = useState(false)
+    const [ mostViewed, setMostViewed ] = useState([jobObject])
+    const [ loadingTopJobs , setLoadingTopJobs ] = useState(false)
+    const [ loadingMostViewed , setLoadingMostViewed] = useState(false)
 
     useEffect(() => {
         axios.get('http://localhost:8080/jobs')
             .then(res => {
                     const jobList = res.data.jobs
                     setJobs(jobList)
+                    setLoadingJobs(true)
 
                     const sortedTopJobs = jobList.sort((a, b) => (a.salary < b.salary) ? 1 : -1)
                     const topJobsList = sortedTopJobs.slice(0, 5)
                     setTopJobs(topJobsList)
+                    setLoadingTopJobs(true)
 
                     const sortedMostViewed = jobList.sort((a, b) => (a.views < b.views) ? 1 : -1)
                     const MostViewedJobsList = sortedMostViewed.slice(0, 5)
                     setMostViewed(MostViewedJobsList)
+                    setLoadingMostViewed(true)
             })
 
     }, [])
@@ -90,7 +97,7 @@ const JobContextProvider = (props) => {
     }
     
     return ( 
-        <JobContext.Provider value={{jobs, topJobs, mostViewed, addJob, updateJob, deleteJob }}> 
+        <JobContext.Provider value={{jobs, loadingJobs, topJobs, loadingTopJobs, mostViewed,loadingMostViewed, addJob, updateJob, deleteJob }}> 
             {props.children}
         </JobContext.Provider>
      );

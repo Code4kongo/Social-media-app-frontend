@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import SingleCompany from '../../components/SingleCompany/SingleCompany'
+import LoadingSpinner from '../../feedback/LoadingSpinner/LoadingSpinner'
 import axios from 'axios'
 
 const MainCompaniesAndJobs = (props) => {
@@ -13,12 +14,14 @@ const MainCompaniesAndJobs = (props) => {
             email : ""
         }
     ])
+    const [ loading, setLoading ] = useState(false)
 
     useEffect(() => {
         axios.get('http://localhost:8080/company')
             .then(res => {
                 const companiesList = res.data.company
                 setCompaniesDetails(companiesList)
+                setLoading(true)
             })
     }, [])
 
@@ -26,7 +29,7 @@ const MainCompaniesAndJobs = (props) => {
     return ( 
         <section className="companies-info">
             <div className="container">
-                <SingleCompany companiesDetails={companiesDetails}/>
+                { !loading ? <LoadingSpinner /> : <SingleCompany companiesDetails={companiesDetails}/>}
             </div>
         </section>
      );

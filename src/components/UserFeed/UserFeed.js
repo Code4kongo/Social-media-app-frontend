@@ -6,6 +6,7 @@ import IconUs from '../../images/resources/us-pc2.png'
 import IconClock from '../../images/clock.png'
 import PostCommments from "../PostComments/PostComments";
 import UpdatePostModal from '../../modals/UpdatePostModal/UpdatePostModal'
+import LoadingSpinner from '../../feedback/LoadingSpinner/LoadingSpinner'
 import axios from 'axios'
 
 const UserFeed = (props) => {
@@ -29,7 +30,9 @@ const email = 'jordy@test.com'
   const [loading , setLoading] = useState(true)
 
   const [ showComment, setShowComment ] = useState(false)
-  const [showModal, setShowModal] = useState(false)
+  const [ showModal, setShowModal] = useState(false)
+  
+  
 
 
 const openModal = () => {
@@ -55,13 +58,12 @@ const closeModal = () => {
   }, [])
 
   if(loading){
-    return <div>loading ...</div>
+    return <LoadingSpinner/>
   }else {
     return (
       <div>
         {
           posts.map((post, index) => {
-            console.log(post)
             return (
               <div className="posts-section" key={index}>
                 <div className="posty">

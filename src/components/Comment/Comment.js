@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React from "react";
 import IconClock from '../../images/clock.png'
 import Icon from '../../images/resources/bg-img3.png'
 

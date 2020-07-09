@@ -5,6 +5,7 @@ import IconClock from '../../images/clock.png'
 import { Link } from 'react-router-dom'
 import IconUser from '../../images/resources/us-pc2.png'
 import UpdateJobModal from '../../modals/UpdateJobModal/UpdateJobModal'
+import LoadingSpinner from '../../feedback/LoadingSpinner/LoadingSpinner'
 import axios from 'axios'
 
 const Userjobs = (props) => {
@@ -55,7 +56,7 @@ const closeModal = () => {
   }, [])
 
   if(loading){
-    return <div>loading ...</div>
+    return <LoadingSpinner />
   }else {
     return (
       jobs.map(job => {

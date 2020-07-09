@@ -4,6 +4,7 @@ import axios from 'axios';
 export const PostContext = createContext()
 
 const PostContextProvider = (props) => {
+
     const [posts, setPosts] = useState([
         {
             _id:"",
@@ -17,12 +18,14 @@ const PostContextProvider = (props) => {
             postImage: ""
         }
     ])
+    const [ loadingPost, setLoadingPost ] = useState(false)
 
     useEffect(() => {
         axios.get('http://localhost:8080/posts')
             .then(res => {
                 const postsList = res.data.posts
                 setPosts(postsList)
+                setLoadingPost(true)
             })
     }, [])
 
@@ -34,7 +37,7 @@ const PostContextProvider = (props) => {
     }
     
     return ( 
-        <PostContext.Provider value={{posts, updatePost, deletePost}}>
+        <PostContext.Provider value={{posts,loadingPost, updatePost, deletePost}}>
             {props.children}
         </PostContext.Provider>
      );

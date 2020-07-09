@@ -8,6 +8,7 @@ import IconClock from "../../images/clock.png";
 import IconEmai from "../../images/icon8.png";
 import IconCountry from "../../images/icon9.png";
 import EmailModal from "../../modals/EmailModal/EmailModal";
+import LoadingSpinner from '../../feedback/LoadingSpinner/LoadingSpinner'
 
 const MainApplyJob = (props) => {
   
@@ -40,6 +41,7 @@ const MainApplyJob = (props) => {
     overview: "",
     total_employee: 0,
   });
+  const [ loading, setLoading ] = useState(true)
 
   useEffect(() => {
     axios.get(`http://localhost:8080/jobs/${jobId}`).then((res) => {
@@ -83,6 +85,7 @@ const MainApplyJob = (props) => {
           total_employee,
         };
       });
+      setLoading(false)
     });
   }, []);
   const [showModal, setShowModal] = useState(false);
@@ -100,7 +103,7 @@ const MainApplyJob = (props) => {
           <div className="main-section-data">
             <div className="row">
               <div className="col-xl-9 col-lg-9 col-md-12">
-                <ApplyJobHeader
+                { loading ? <LoadingSpinner /> : <ApplyJobHeader
                   applicants={job.applicants}
                   jobType={job.jobType}
                   salary={job.salary}
@@ -109,9 +112,9 @@ const MainApplyJob = (props) => {
                   total_employee={job.total_employee}
                   address={job.address}
                   overview={job.overviewoverview}
-                />
+                />}
                 <div className="posty">
-                  <div className="post-bar no-margin">
+                  { loading ? <LoadingSpinner/> : <div className="post-bar no-margin">
                     <div className="post_topbar">
                       <div className="usy-dt">
                         <img src={IconUser} alt="" />
@@ -175,20 +178,21 @@ const MainApplyJob = (props) => {
                         {job.views}
                       </Link>
                     </div>
-                  </div>
+                  </div> }
                 </div>
               </div>
-              <ApplyJobSideBar
-                authorEmail={job.email}
-                applicantEmail={applicantEmail}
-                title={job.title}
-                country={job.country}
-                total_employee={job.total_employee}
-                socialmedialink={job.socialmedialink}
-                email={job.email}
-                address={job.address}
-                phone={job.phone}
-              />
+             { loading ? <LoadingSpinner/> : 
+                          <ApplyJobSideBar
+                              authorEmail={job.email}
+                              applicantEmail={applicantEmail}
+                              title={job.title}
+                              country={job.country}
+                              total_employee={job.total_employee}
+                              socialmedialink={job.socialmedialink}
+                              email={job.email}
+                              address={job.address}
+                              phone={job.phone}
+                            />}
             </div>
           </div>
         </div>

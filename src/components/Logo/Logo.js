@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./Logo.css";
-import Logoimage from "../../images/CPN Transparent Background White Font1.png";
+import Logoimage from "../../images/c212.jpg";
 
 export default function Logo() {
   return (
