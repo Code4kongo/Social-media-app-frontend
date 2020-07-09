@@ -105,8 +105,6 @@ const SearchModal = (props) => {
        }
         
     }
-
-    
     
     return (
     <Modal isOpen={showModal} onRequestClose={closeModal} className="modal-wrapping">

@@ -10,41 +10,31 @@ const AnyUserInfo = (props) => {
     <div className="user-profile-ov">
       <h3>
         <a href="/" title="" className="overview-open">Overview</a>
-        <a href="/" title="" className="overview-open"
-          ><i className="fa fa-pencil"></i></a>
       </h3>
       <p>{overview}</p>
     </div>
     <div className="user-profile-ov">
       <h3>
         <a href="/" title="" className="overview-open">Education</a>
-        <a href="/" title="" className="overview-open"><i className="fa fa-pencil"></i></a>
       </h3>
       <p>{education}</p>
     </div>
     <div className="user-profile-ov">
       <h3>
         <a href="/" title="" className="ed-box-open"> Experience </a>
-        <a href="/" title="" className="ed-box-open"
-          ><i className="fa fa-pencil"></i></a>
-        <a href="/" title=""><i className="fa fa-plus-square"></i></a>
       </h3>
         <p>{experiences}</p>
     </div>
     <div className="user-profile-ov">
       <h3>
         <a href="/" title="" className="lct-box-open">Location</a>
-        <a href="/" title="" className="lct-box-open"><i className="fa fa-pencil"></i></a>
-        <a href="/" title=""><i className="fa fa-plus-square"></i></a>
       </h3>
       <h4>{ country }</h4>
       <p>{ location }</p>
     </div>
     <div className="user-profile-ov">
       <h3>
-        <a href="/" title="" className="skills-open">Skills ..</a>
-        <a href="/" title="" className="skills-open"><i className="fa fa-pencil"></i></a>
-        <a href="/"><i className="fa fa-plus-square"></i></a>
+        <a href="/" title="" className="skills-open">Skills </a>
       </h3>
       <ul>
           {
