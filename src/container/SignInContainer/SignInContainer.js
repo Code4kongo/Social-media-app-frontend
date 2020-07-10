@@ -34,8 +34,13 @@ const SignInContainer  = (props) => {
                       <SignIn 
                           handleSignInUser = {props.signInUser}
                           handleSignInCompany = {props.signInCompany} 
+                          onSuccess={props.onSuccess}
+                          onFailure={props.onFailure}
                           /> :
-                      <SignUp/>
+                      <SignUp
+                          onSuccess={props.onSuccess}
+                          onFailure={props.onFailure}
+                      />
                     } 
                     </div>
                     </div>

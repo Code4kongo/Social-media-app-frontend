@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import axios from 'axios'
 import { Redirect } from 'react-router-dom'
+import OnSuccessMessage from '../../feedback/SuccessMeesgae/SuccessMeesgae'
+import OnFailureMessage from '../../feedback/FailureMeesage/FailureMeesage'
 
 export default function AsUser(props) {
 
@@ -12,6 +14,8 @@ export default function AsUser(props) {
   const [repeatPassword, setRepeatPassword] = useState('')
   const [ agreeTermCondition, setAgreeTermCondition ] = useState(false)
   const [ userCreated, setUserCreated ] = useState(false)
+  const [onSuccess, setOnSuccess ] = useState(false)
+  const [onFailure, setOnFailure ] = useState(false)
 
 
   const handleSubmit = event => {
@@ -42,16 +46,19 @@ export default function AsUser(props) {
         portfolio: [],
         socialmedialink: []
       }
-    console.log(newUser)
     
     axios.post('http://localhost:8080/user/signup', newUser)
         .then(res => {
+            setOnSuccess(true)
             let user = res.data.createduser
             setUserCreated(true)
-            console.log(user)
+            
             
         })
-         .catch(error => console.log(error))
+         .catch(error => {
+            setOnFailure(true)
+            console.log(error)
+          })
     
 }
     const style = {
@@ -111,6 +118,12 @@ export default function AsUser(props) {
                 </div>
               </div>
               <div className="col-lg-12 no-pdd">
+              { 
+                  onSuccess ? <OnSuccessMessage message = "Great! Succesfully Signed In" /> : null
+              }
+              {
+                  onFailure ? <OnFailureMessage message = "Email or Password wrong" /> : null 
+              }
                 <div className="checky-sec st2">
                   <div className="fgt-sec">
                     <input type="checkbox" name="cc" id="c3" value={agreeTermCondition} onChange={event => {setAgreeTermCondition(true)}}/>

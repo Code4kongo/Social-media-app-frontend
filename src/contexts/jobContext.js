@@ -30,6 +30,8 @@ const JobContextProvider = (props) => {
     const [ mostViewed, setMostViewed ] = useState([jobObject])
     const [ loadingTopJobs , setLoadingTopJobs ] = useState(false)
     const [ loadingMostViewed , setLoadingMostViewed] = useState(false)
+    const [onSuccess, setOnSuccess ] = useState(false)
+    const [onFailure, setOnFailure ] = useState(false)
 
     useEffect(() => {
         axios.get('http://localhost:8080/jobs')
@@ -62,7 +64,9 @@ const JobContextProvider = (props) => {
         }
         axios.post('http://localhost:8080/jobs', newJob)
             .then(res => {
-                console.log(res)
+                setOnSuccess(true)
+            }).catch(error => {
+                setOnFailure(true)
             })
     }
     const updateJob = (jobId,job_title, job_jobType, job_salary, job_country, job_author, job_email, job_phone, job_content, job_address,job_overview , job_total_employee) => {
@@ -84,12 +88,14 @@ const JobContextProvider = (props) => {
 
         axios.patch(`http://localhost:8080/jobs/${jobId}`, updatedJob)
              .then(res => {
+                 setOnSuccess(true)
                 const message = res.data.job
                 console.log(message)
                 
              })
              .catch(error => {
                  console.log(error)
+                 setOnFailure(true)
              })
     }
     const deleteJob = () => {
@@ -97,7 +103,7 @@ const JobContextProvider = (props) => {
     }
     
     return ( 
-        <JobContext.Provider value={{jobs, loadingJobs, topJobs, loadingTopJobs, mostViewed,loadingMostViewed, addJob, updateJob, deleteJob }}> 
+        <JobContext.Provider value={{jobs, loadingJobs, topJobs, loadingTopJobs, mostViewed,loadingMostViewed, addJob, onSuccess, onFailure, updateJob, deleteJob }}> 
             {props.children}
         </JobContext.Provider>
      );

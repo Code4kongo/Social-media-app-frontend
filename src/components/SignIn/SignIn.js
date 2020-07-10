@@ -1,13 +1,19 @@
 import React, {useState} from "react";
 import { Link } from "react-router-dom";
+import OnSuccessMessage from '../../feedback/SuccessMeesgae/SuccessMeesgae'
+import OnFailureMessage from '../../feedback/FailureMeesage/FailureMeesage'
 
 
 
 const SignIn = props => {
 
+
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   let  [toggle, setToggle] = useState(true)
+
+  const  onSuccess = props.onSuccess
+  const  onFailure = props.onFailure
 
   const handleToggleStateUser = () => {
     setToggle(toggle = true)
@@ -122,6 +128,12 @@ const SignIn = props => {
         </div>
   
     <div className="login-resources">
+          { 
+              onSuccess ? <OnSuccessMessage message = "Great! Succesfully Signed In" /> : null
+          }
+          {
+               onFailure ? <OnFailureMessage message = "Email or Password wrong" /> : null 
+          }
       <h4>Login Via Social Account</h4>
       <ul>
         <li>

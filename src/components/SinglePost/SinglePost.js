@@ -7,7 +7,6 @@ import IconUs from '../../images/resources/us-pc2.png'
 import IconClock from '../../images/clock.png'
 import PostCommments from "../PostComments/PostComments";
 import axios from 'axios'
-// import { Link } from "react-router-dom";
 
 const  SinglePost = props => {
   let { _id, title, country, author, content, date, likes } = props
@@ -26,7 +25,6 @@ const  SinglePost = props => {
     const newPostObject = {
       likes : likeAction
     }
-    console.log(newPostObject)
     axios.patch(`http://localhost:8080/posts/${postId}`, newPostObject)
           .then(res => {
             console.log(res.data)

@@ -2,6 +2,8 @@ import React, {  useState, useContext } from "react";
 import Modal from "react-modal";
 import "./UpdateJobModal.css";
 import { JobContext } from "../../contexts/jobContext";
+import OnSuccessMessage from '../../feedback/UpdateMessage/UpdateMessage'
+import OnFailureMessage from '../../feedback/FailureMeesage/FailureMeesage'
 
 
 
@@ -9,10 +11,9 @@ Modal.setAppElement("#root");
 
 const UpdateUserModal = (props) => {
 
-    const { updateJob } = useContext(JobContext)
+    const { updateJob, onSuccess, onFailure } = useContext(JobContext)
 
     const { showModal, closeModal, jobId, title, jobType, salary, country, author, email, phone, content, address, overview , total_employee} = props
-    console.log(jobId)
 
     const [job_title, setTitile] = useState(title);
     const [job_jobType, setJobType] = useState(jobType);
@@ -85,10 +86,21 @@ const UpdateUserModal = (props) => {
                           <div className="col-lg-6">
                               <textarea name="description" placeholder="Description" value={job_content }  onChange={(event)=>{setContent(event.target.value)}} required></textarea>
                           </div>
+                          <div className="col-lg-12">
+                            { 
+                                onSuccess ? <OnSuccessMessage message = "Your Job was updated" /> : null
+                            }
+                            {
+                                onFailure ? <OnFailureMessage message = "Oupss, something went wrong" /> : null 
+                            }
+                        </div>
                           <div className="col-lg-6">
                               <ul>
                                   <li><button style={style} type="submit" value="post">Post</button></li>
-                                  <li><button className= "btn btn-primary danger" onClick={closeModal}>Cancel</button></li>
+                                {
+                                    onSuccess ?  <li><button className= "btn btn-primary danger" onClick={closeModal}>Close</button></li> : 
+                                                    <li><button className= "btn btn-primary danger" onClick={closeModal}>Cancel</button></li>
+                                }
                               </ul>
                           </div>
                       </div>

@@ -1,6 +1,8 @@
 import React, {useState } from 'react'
 import axios from 'axios'
 import { Redirect } from 'react-router-dom'
+import OnSuccessMessage from '../../feedback/SuccessMeesgae/SuccessMeesgae'
+import OnFailureMessage from '../../feedback/FailureMeesage/FailureMeesage'
 
 export default function AsComapny(props) {
 
@@ -11,6 +13,8 @@ export default function AsComapny(props) {
   const [repeatPassword, setRepeatPassword] = useState('')
   const [ agreeTermCondition, setAgreeTermCondition ] = useState(false)
   const [ companyCreated, setCompanyCreated ] = useState(false)
+  const [onSuccess, setOnSuccess ] = useState(false)
+  const [onFailure, setOnFailure ] = useState(false)
 
   const handleSubmit = event => {
     event.preventDefault()
@@ -37,18 +41,17 @@ export default function AsComapny(props) {
       portfolio: [],
       socialmedialink: [] ,  
     }
-    console.log(newCompany)
     axios.post('http://localhost:8080/company/signup', newCompany)
         .then(res => {
             let user = res.data
+            setOnSuccess(true)
             setCompanyCreated(true)
-            console.log(user)
-            
         })
-         .catch(error => console.log(error))
-    
+        .catch(error =>{ 
+                console.log(error)
+                setOnFailure(true)
+        })    
   }
-
 
   if(companyCreated){
     return  <Redirect to="/" />
@@ -89,6 +92,12 @@ export default function AsComapny(props) {
                 </div>
               </div>
               <div className="col-lg-12 no-pdd">
+              { 
+                  onSuccess ? <OnSuccessMessage message = "Great! Succesfully Signed Up" /> : null
+              }
+              {
+                  onFailure ? <OnFailureMessage message = "Email or Password wrong" /> : null 
+              }
                 <div className="checky-sec st2">
                   <div className="fgt-sec">
                     <input type="checkbox" name="cc" id="c3" value={agreeTermCondition} onChange={event => {setAgreeTermCondition(true)}}/>

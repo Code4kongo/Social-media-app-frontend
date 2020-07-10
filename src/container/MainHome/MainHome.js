@@ -15,6 +15,7 @@ const Main = ({userDetails, companyDetails}) => {
 
   const  { topJobs, mostViewed, loadingTopJobs, loadingMostViewed } = useContext(JobContext)
   const { posts, loadingPost } = useContext(PostContext)
+  const postsLists = posts.reverse()
 
   const [showModal, setShowModal] = useState(false)
 
@@ -56,9 +57,11 @@ const Main = ({userDetails, companyDetails}) => {
                                 <PostJob 
                                     showModal={showModal}
                                     closeModal={closeModal}
+                                    userDetails={userDetails}
+                                    companyDetails={companyDetails}
                                 />
                 {
-                 !loadingPost ? <LoadingSpinner/> :  posts.map(post => {
+                 !loadingPost ? <LoadingSpinner/> :  postsLists.map(post => {
                     let {  _id, title, country, author, content, date, likes, comments, postImage } = post
                     return (
                       <SinglePost 

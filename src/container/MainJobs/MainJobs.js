@@ -12,7 +12,8 @@ import LoadingSpinner from '../../feedback/LoadingSpinner/LoadingSpinner'
 const  MainJobs = props => {
 
     const { email } = props.userDetails
-    const { company_email } = props.companyDetails
+    const { company_email, company_about, company_address, company_country, company_name, company_phone, total_number_employee} = props.companyDetails
+    
     let  postingAuth = ""
   
     if(email === ""){
@@ -20,6 +21,7 @@ const  MainJobs = props => {
     }
     const [showModal, setShowModal] = useState(false)
     const  { jobs, loadingJobs, topJobs, mostViewed , loadingTopJobs, loadingMostViewed } = useContext(JobContext)
+    const jobsLists = jobs.reverse()
 
     const openModal = () => {
         setShowModal(true)
@@ -56,11 +58,18 @@ const  MainJobs = props => {
                                 <PostJobModal 
                                     showModal={showModal}
                                     closeModal={closeModal}
+                                    company_email = { company_email}
+                                    company_country = { company_country}
+                                    company_name = { company_name }
+                                    company_phone = { company_phone}
+                                    numberOfEmployee = { total_number_employee }
+                                    company_address = { company_address}
+                                    company_about = { company_about}
                                 />
 
                                     <div className="posts-section">
                                         {
-                                           !loadingJobs ? <LoadingSpinner/>: jobs.map(job => {
+                                           !loadingJobs ? <LoadingSpinner/>: jobsLists.map(job => {
                                                 
                                                 let { _id, address, applicants, author, content, country, date,email, jobType, overview, phone, salary, socialmedialink, title, total_employee, views  } = job
                                                 return (

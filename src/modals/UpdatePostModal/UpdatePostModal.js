@@ -3,6 +3,8 @@ import './UpdatePostModal.css'
 import Modal from 'react-modal'
 import axios from 'axios'
 import UploadBar from '../../components/FeedBack/UploadBar/UploadBar'
+import OnSuccessMessage from '../../feedback/UpdateMessage/UpdateMessage'
+import OnFailureMessage from '../../feedback/FailureMeesage/FailureMeesage'
 
 
 Modal.setAppElement('#root')
@@ -21,8 +23,6 @@ const  AddPostModal = (props) => {
 
     const [post_title, setTitile ] = useState(title) 
     const [post_country, setCountry ] = useState(country) 
-    const [post_author, setAuthor ] = useState(author) 
-    const [post_email, setEmail ] = useState(email) 
    
     const [post_content, setContent ] = useState(content)
 
@@ -30,6 +30,9 @@ const  AddPostModal = (props) => {
     const [filename, setFilename] = useState("choose file")
     const [uploadedFile, setUploadedFile ] = useState({})
     const [uploadPourcentage, setUploadPourcentage ] = useState(0)
+
+    const [ onSuccess, setOnSuccess] = useState(false)
+    const [ onFailure, setOnFailure] = useState(false)
     
 
     const { showModal, closeModal } = props
@@ -48,9 +51,9 @@ const  AddPostModal = (props) => {
         formData.append('postImage', post_postImage)
         formData.append('title',post_title)
         formData.append('country',post_country)
-        formData.append('author',post_author)
+        formData.append('author',author)
         formData.append('content',post_content)
-        formData.append('email',post_email)
+        formData.append('email',email)
 
         try {
             
@@ -65,6 +68,7 @@ const  AddPostModal = (props) => {
                                 
                                 setTimeout(() => setUploadPourcentage(0),50000)}  
                         })
+                    setOnSuccess(true)
             fetch(`http://localhost:8080/${result.data.createdPost.post_postImage}`).then(res => {
             console.log(res)
         })
@@ -79,6 +83,7 @@ const  AddPostModal = (props) => {
 
         } catch(error){
             console.log(error)
+            setOnFailure(true)
         }   
     }
     
@@ -95,34 +100,39 @@ const  AddPostModal = (props) => {
             <div className="post-project-fields">
                 <form onSubmit={handleSubmit}>
                     <div className="row">
-                        <div className="col-lg-9">
-                            <div className="custom-file">
+                        <div className="col-lg-12">
+                            <div className="custom-file" style={{marginBottom : "20px"}}>
                                 <label className="custom-file-label" htmlFor="customFile" onChange={onChange} >{filename}</label>
                                 <input type="file" id="customFile" onChange={onChange}/>
                             </div>
                         </div>
-                        <div className="col-lg-3">
+                        <div className="col-lg-6">
                             <input type="text"  placeholder="Title" value={post_title} onChange={(event)=>{setTitile(event.target.value)}} required/>
                         </div>
                         <div className="col-lg-6">
                             <input type="text"  placeholder="Country" value={post_country} onChange={(event)=>{setCountry(event.target.value)}} required/>
                         </div>
-                        <div className="col-lg-6">
-                            <input type="text"  placeholder="Author" value={post_author} onChange={(event)=>{setAuthor(event.target.value)}} required/>
-                        </div>
-                        <div className="col-lg-6">
-                            <input type="email"  placeholder="Email" value={post_email} onChange={(event)=>{setEmail(event.target.value)}} required/>
-                        </div>
-                        <div className="col-lg-6">
+                        <div className="col-lg-12">
                             <textarea name="description" placeholder="What's in your mind" value={post_content }  onChange={(event)=>{setContent(event.target.value)}} required></textarea>
                         </div>
+                        <div className="col-lg-12" style={{marginBottom : "20px"}}>
+                            <UploadBar percentage={uploadPourcentage} />
+                        </div>
                         <div className="col-lg-12">
-                        <UploadBar percentage={uploadPourcentage} />
-                    </div>
+                            { 
+                                onSuccess ? <OnSuccessMessage message = "Your Post was posted" /> : null
+                            }
+                            {
+                                onFailure ? <OnFailureMessage message = "Oupss, something went wrong" /> : null 
+                            }
+                        </div>
                         <div className="col-lg-6">
                             <ul>
                                 <li><button style={style} type="submit" value="post">Post</button></li>
-                                <li><button className= "btn btn-primary danger" onClick={closeModal}>Cancel</button></li>
+                                {
+                                    onSuccess ?  <li><button className= "btn btn-primary danger" onClick={closeModal}>Close</button></li> : 
+                                            <li><button className= "btn btn-primary danger" onClick={closeModal}>Cancel</button></li>
+                                }
                             </ul>
                         </div>
                     </div>

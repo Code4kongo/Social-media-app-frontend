@@ -2,6 +2,8 @@ import React, {  useState } from "react";
 import Modal from "react-modal";
 import axios from 'axios'
 import "./UpdateUserModal.css";
+import OnSuccessMessage from '../../feedback/UpdateMessage/UpdateMessage'
+import OnFailureMessage from '../../feedback/FailureMeesage/FailureMeesage'
 
 Modal.setAppElement("#root");
 
@@ -30,6 +32,9 @@ const UpdateUserModal = props => {
         
     const [ user_overview, setUserOverview ] = useState(overview) 
     const [ userEducation, setUserEducation] = useState(education)
+
+    const [ onSuccess, setOnSuccess] = useState(false)
+    const [ onFailure, setOnFailure] = useState(false)
     
 
     const handleSubmit = (event) => {
@@ -54,11 +59,13 @@ const UpdateUserModal = props => {
 
         axios.patch(`http://localhost:8080/user/${userId}`, updateduser)
              .then(res => {
-                 const data = res.data
-                 console.log(data)
+                 setOnSuccess(true)
+                //  const data = res.data
+                //  console.log(data)
              })
              .catch(error => {
                  console.log(error)
+                 setOnFailure(true)
              })
         
     }
@@ -140,10 +147,21 @@ const UpdateUserModal = props => {
                             </div>
                         </div>        
                     </div>
+                    <div className="col-lg-12">
+                                    { 
+                                        onSuccess ? <OnSuccessMessage message = "Your Information were Updated" /> : null
+                                    }
+                                    {
+                                        onFailure ? <OnFailureMessage message = "Oupss, something went wrong" /> : null 
+                                    }
+                    </div>
                     <div className="col-lg-6">
                             <ul>
                                 <li> <button style={style} type="submit">  <i className="fa fa-pencil"></i> Edit User</button></li>
-                                <li><button className= "btn btn-primary danger" onClick={closeModal}>Cancel</button></li>
+                                {
+                                  onSuccess ?  <li><button className= "btn btn-primary danger" onClick={closeModal}>Close</button></li> : 
+                                                <li><button className= "btn btn-primary danger" onClick={closeModal}>Cancel</button></li>
+                                }
                             </ul>
                         </div>
                 </form>

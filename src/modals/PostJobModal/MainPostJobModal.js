@@ -2,30 +2,30 @@ import React, { useContext, useState } from "react";
 import Modal from "react-modal";
 import "./MainPostJob.css";
 import { JobContext } from "../../contexts/jobContext";
+import OnSuccessMessage from '../../feedback/SuccessMeesgae/SuccessMeesgae'
+import OnFailureMessage from '../../feedback/FailureMeesage/FailureMeesage'
 
 Modal.setAppElement("#root");
 
 const MainPostJob = (props) => {
-    
+
+    const { addJob, onSuccess, onFailure } = useContext(JobContext);
+    const { showModal, closeModal, company_email , company_country,  company_name,  company_phone,  numberOfEmployee,  company_address,  company_about} = props;
+
   const [title, setTitile] = useState("");
   const [applicants, setApplicants] = useState(0);
   const [jobType, setJobType] = useState("");
   const [salary, setSalary] = useState("");
   const [views, setViews] = useState(0);
-  const [country, setCountry] = useState("");
-  const [author, setAuthor] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
+  const [country, setCountry] = useState(company_country);
+  const [author, setAuthor] = useState(company_name);
+  const [email, setEmail] = useState(company_email);
+  const [phone, setPhone] = useState(company_phone);
   const [content, setContent] = useState("");
 
-  const [address, setAddress] = useState("");
-  const [overview, setOverview] = useState("");
-  const [total_employee, setTotal_employee] = useState("");
-
-  const { showModal, closeModal } = props;
-
-  const { addJob } = useContext(JobContext);
-
+  const [address, setAddress] = useState(company_address);
+  const [overview, setOverview] = useState(company_about);
+  const [total_employee, setTotal_employee] = useState(numberOfEmployee);  
  
     const handleSubmit = (event) => {
         event.preventDefault()
@@ -42,7 +42,7 @@ const MainPostJob = (props) => {
     
         <Modal isOpen={showModal} onRequestClose={closeModal} className="modal-wrapper">
         <div className="post-project">
-            <h3>Post a project</h3>
+            <h3>Post a Job</h3>
             <div className="post-project-fields">
                 <form onSubmit={handleSubmit}>
                     <div className="row">
@@ -69,10 +69,10 @@ const MainPostJob = (props) => {
                             <input type="text"  placeholder="Country" value={country} onChange={(event)=>{setCountry(event.target.value)}} required/>
                         </div>
                         <div className="col-lg-6">
-                            <input type="text"  placeholder="Author" value={author} onChange={(event)=>{setAuthor(event.target.value)}} required/>
+                            <input type="text"  placeholder="Author" value={author} onChange={(event)=>{setAuthor(event.target.value)}} required readOnly/>
                         </div>
                         <div className="col-lg-6">
-                            <input type="email"  placeholder="Email" value={email} onChange={(event)=>{setEmail(event.target.value)}} required/>
+                            <input type="email"  placeholder="Email" value={email} onChange={(event)=>{setEmail(event.target.value)}} required readOnly/>
                         </div>
                         <div className="col-lg-6">
                             <input type="text"  placeholder="Phone" value={phone} onChange={(event)=>{setPhone(event.target.value)}} required/>
@@ -87,10 +87,21 @@ const MainPostJob = (props) => {
                         <div className="col-lg-6">
                             <textarea name="description" placeholder="Description" value={content }  onChange={(event)=>{setContent(event.target.value)}} required></textarea>
                         </div>
+                        <div className="col-lg-12">
+                            { 
+                                onSuccess ? <OnSuccessMessage message = "Your Job was posted" /> : null
+                            }
+                            {
+                                onFailure ? <OnFailureMessage message = "Oupss, something went wrong" /> : null 
+                            }
+                        </div>
                         <div className="col-lg-6">
                             <ul>
                                 <li><button style={style} type="submit" value="post">Post</button></li>
-                                <li><button className= "btn btn-primary danger" onClick={closeModal}>Cancel</button></li>
+                                {
+                                  onSuccess ?  <li><button className= "btn btn-primary danger" onClick={closeModal}>Close</button></li> : 
+                                                <li><button className= "btn btn-primary danger" onClick={closeModal}>Cancel</button></li>
+                                }
                             </ul>
                         </div>
                     </div>

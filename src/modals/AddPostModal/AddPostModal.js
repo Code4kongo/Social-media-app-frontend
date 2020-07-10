@@ -3,43 +3,53 @@ import './AddPostModal.css'
 import Modal from 'react-modal'
 import axios from 'axios'
 import UploadBar from '../../components/FeedBack/UploadBar/UploadBar'
-
+import OnSuccessMessage from '../../feedback/SuccessMeesgae/SuccessMeesgae'
+import OnFailureMessage from '../../feedback/FailureMeesage/FailureMeesage'
 
 Modal.setAppElement('#root')
 
 const  AddPostModal = (props) => {
 
-    const [title, setTitile ] = useState("") 
-    const [country, setCountry ] = useState("") 
-    const [author, setAuthor ] = useState("") 
-    const [email, setEmail ] = useState("") 
+    let { showModal, closeModal, userDetails, companyDetails  } = props
+
+    let emailForm = ""
+    let countryForm = ""
+    let authorForm = ""
+
+    if(userDetails.email === ""){
+        emailForm = companyDetails.company_email
+        countryForm = companyDetails.company_country
+        authorForm = companyDetails.company_name
+    }else {
+        emailForm = userDetails.email
+        countryForm = userDetails.country
+        authorForm = userDetails.name
+    }
+    const [title, setTitile ] = useState("")
     const [content, setContent ] = useState("")
     const [postImage, setPostImage] = useState("") 
     const [filename, setFilename] = useState("choose file")
     const [uploadedFile, setUploadedFile ] = useState({})
     const [uploadPourcentage, setUploadPourcentage ] = useState(0)
+    const [onSuccess, setOnSuccess ] = useState(false)
+    const [onFailure, setOnFailure ] = useState(false)
     
-
-    const { showModal, closeModal } = props
-
     const onChange = event => {
 
         setFilename(event.target.files[0].name)
         setPostImage(event.target.files[0])
     }
 
-    
-
     const handleSubmit = async (event) => {
         event.preventDefault()
 
         const formData = new FormData()
         formData.append('postImage', postImage)
-        formData.append('title',title)
-        formData.append('country',country)
-        formData.append('author',author)
-        formData.append('content',content)
-        formData.append('email',email)
+        formData.append('title', title)
+        formData.append('country', countryForm)
+        formData.append('author', authorForm)
+        formData.append('content', content)
+        formData.append('email', emailForm)
 
         try {
             
@@ -51,9 +61,11 @@ const  AddPostModal = (props) => {
                                     onUploadProgress: (progressEvent) => {
                                         let percentCompleted = Math.round((progressEvent.loaded * 100) / progressEvent.total)
                                         setUploadPourcentage(percentCompleted)
-                                        
-                                        setTimeout(() => setUploadPourcentage(0),50000)}  
+                                        setTimeout(() => setUploadPourcentage(0),50000)} 
                                 })
+
+            setOnSuccess(true)
+
   fetch(`http://localhost:8080/${result.data.createdPost.postImage}`).then(res => {
       console.log(res)
   })
@@ -68,6 +80,7 @@ const  AddPostModal = (props) => {
 
         } catch(error){
             console.log(error)
+            setOnFailure(true)
         }   
     }
     
@@ -76,52 +89,54 @@ const  AddPostModal = (props) => {
         backgroundColor: "#17a2b8",
         borderColor: "#17a2b8"
       }
-    return (
-    
-        <Modal isOpen={showModal} onRequestClose={closeModal} className="modal-wrapper-post">
-        <div className="post-project">
-            <h3>Add a Post </h3>
-            <div className="post-project-fields">
-                <form onSubmit={handleSubmit}>
-                    <div className="row">
-                        <div className="col-lg-6">
-                            <div className="custom-file">
-                                <label className="custom-file-label" htmlFor="customFile" onChange={onChange} >{filename}</label>
-                                <input type="file" id="customFile" onChange={onChange}/>
+  
+        return (
+            <Modal isOpen={showModal} onRequestClose={closeModal} className="modal-wrapper-post">
+                <div className="post-project">
+                    <h3>Add a Post </h3>
+                    <div className="post-project-fields">
+                        <form onSubmit={handleSubmit}>
+                            <div className="row justify-content-center">
+                                <div className="col-lg-12">
+                                    <div className="custom-file" style={{marginBottom : "20px"}}>
+                                        <label className="custom-file-label" htmlFor="customFile" onChange={onChange} >{filename}</label>
+                                        <input type="file" id="customFile" onChange={onChange}/>
+                                    </div>
+                                </div>
+                                
+                                <div className="col-lg-9">
+                                    <input type="text"  placeholder="Title" value={title} onChange={(event)=>{setTitile(event.target.value)}} required/>
+                                </div>
+                                <div className="col-lg-12">
+                                    <textarea name="description" placeholder="What's in your mind" value={content }  onChange={(event)=>{setContent(event.target.value)}} required></textarea>
+                                </div>
+                                <div className="col-lg-12" style={{marginBottom : "20px"}}>
+                                    <UploadBar percentage={uploadPourcentage} />
+                                </div>
+                                <div className="col-lg-12">
+                                    { 
+                                        onSuccess ? <OnSuccessMessage message = "Your Post was posted" /> : null
+                                    }
+                                    {
+                                        onFailure ? <OnFailureMessage message = "Oupss, something went wrong" /> : null 
+                                    }
+                                </div>
+                                <div className="col-lg-6">
+                                    <ul>
+                                        <li><button style={style} type="submit" value="post">Post</button></li>
+                                    {
+                                        onSuccess ?  <li><button className= "btn btn-primary danger" onClick={closeModal}>Close</button></li> : 
+                                                <li><button className= "btn btn-primary danger" onClick={closeModal}>Cancel</button></li>
+                                    }
+                                    </ul>
+                                </div>
                             </div>
-                        </div>
-                        <div className="col-lg-6">
-                            <input type="text"  placeholder="Title" value={title} onChange={(event)=>{setTitile(event.target.value)}} required/>
-                        </div>
-                        <div className="col-lg-6">
-                            <input type="text"  placeholder="Country" value={country} onChange={(event)=>{setCountry(event.target.value)}} required/>
-                        </div>
-                        <div className="col-lg-6">
-                            <input type="text"  placeholder="Author" value={author} onChange={(event)=>{setAuthor(event.target.value)}} required/>
-                        </div>
-                        <div className="col-lg-6">
-                            <input type="email"  placeholder="Email" value={email} onChange={(event)=>{setEmail(event.target.value)}} required/>
-                        </div>
-                        <div className="col-lg-6">
-                            <textarea name="description" placeholder="What's in your mind" value={content }  onChange={(event)=>{setContent(event.target.value)}} required></textarea>
-                        </div>
-                        <div className="col-lg-12">
-                        <UploadBar percentage={uploadPourcentage} />
+                        </form>
                     </div>
-                        <div className="col-lg-6">
-                            <ul>
-                                <li><button style={style} type="submit" value="post">Post</button></li>
-                                <li><button className= "btn btn-primary danger" onClick={closeModal}>Cancel</button></li>
-                            </ul>
-                        </div>
-                    </div>
-                </form>
-               
-                
-            </div>
-        </div>
-    </Modal>
-    )
+                </div>
+            </Modal>
+        )
+    
 }
 
 export default AddPostModal

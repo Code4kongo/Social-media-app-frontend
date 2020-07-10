@@ -24,6 +24,7 @@ import ProtectedRoute from './ProtectedRoutes'
 import Unauthorized from './Unauthorized'
 
 
+
 const  App = () => {
 
   const [ userDetails, setUserDetails ] = useState({
@@ -57,9 +58,13 @@ const  App = () => {
     total_number_employee : 0
   })
   const [isAuth, setAuth ] = useState(false)
+  const [onSuccess, setOnSuccess ] = useState(false)
+  const [onFailure, setOnFailure ] = useState(false)
+
   const signInUser = (email, password ) => {
       axios.post('http://localhost:8080/user/login', {email, password})
          .then(res => {
+              setOnSuccess(true)
             let user = res.data.user[0]
             const {  _id, username,password,picture, country , age ,name,gender, company,email,phone,address, about,registered } = user
               setAuth(true)
@@ -70,6 +75,7 @@ const  App = () => {
          })
          .catch(error => {
                 setAuth(false)
+                setOnFailure(true)
                 console.log(error)
           })
   }
@@ -77,6 +83,7 @@ const  App = () => {
   
     axios.post('http://localhost:8080/company/login', {email, password})
          .then(res => {
+            setOnSuccess(true)
             let ExistingCompany = res.data.company[0]
             const {  _id, company,password,picture, country , createdAt, email, phone, address, about,registered, total_number_employee } = ExistingCompany
                 
@@ -93,9 +100,11 @@ const  App = () => {
                               company_registered :  registered}
                 })
                 setAuth(true)
+                
          })
          .catch(error => {
           setAuth(false)
+          setOnFailure(true)
           console.log(error)
     })
 
@@ -115,7 +124,9 @@ const  App = () => {
                     signInCompany={signInCompany} companyDetails={companyDetails} 
                     render = {  props => <SignInPage 
                                               {...props} signInUser={signInUser} 
-                                                         signInCompany={signInCompany}/>}  
+                                                         signInCompany={signInCompany}
+                                                         onSuccess={onSuccess}
+                                                         onFailure={onFailure}/>}  
           />
 
           <ProtectedRoute exact path="/home" isAuth = {isAuth}   userDetails = {userDetails} companyDetails={companyDetails} component={Home} />

@@ -1,11 +1,12 @@
 import React from 'react'
 
-const OnFailureMessage = props => {
+const DeleteMessage = props => {
     return (
         <div className="alert alert-danger" role="alert">
-           {props.message}
+            {props.message}
         </div>
+        
     )
 }
 
-export default OnFailureMessage
+export default DeleteMessage
