@@ -9,7 +9,19 @@ import PostCommments from "../PostComments/PostComments";
 import axios from 'axios'
 
 const  SinglePost = props => {
-  let { _id, title, country, author, content, date, likes } = props
+  let { _id, title, country, author, content, date, likes, userDetails, companyDetails  } = props
+
+  let commentAuthor = ""
+  let commentEmail = ""
+
+  if(userDetails.email === ""){
+    commentAuthor = companyDetails.company_name
+    commentEmail = companyDetails.company_email
+  }else {
+    commentAuthor = userDetails.name
+    commentEmail = userDetails.email
+  }
+  
   const postId = _id
   
   const [ showComment, setShowComment ] = useState(false)
@@ -93,7 +105,11 @@ const  SinglePost = props => {
             </form>
           </div>
           {
-            showComment ? <PostCommments postId={ postId} /> : null
+            showComment ? <PostCommments 
+                              postId={ postId} 
+                              commentEmail = { commentEmail}
+                              commentAuthor = { commentAuthor}
+                          /> : null
           }
         </div>
 

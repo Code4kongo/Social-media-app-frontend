@@ -3,7 +3,7 @@ import axios from "axios";
 import Comment from '../Comment/Comment'
 const  PostCommments = props => {
   
-  const { postId } = props 
+  const { postId, commentEmail, commentAuthor } = props 
   const [ comments, setComments ] = useState([
             {
               _id : "",
@@ -14,8 +14,8 @@ const  PostCommments = props => {
               post : ""
             }
         ])
-  const [commentAuthor, setCommentAuthor ] = useState("code4kongo") // to be set by the connected user
-  const [commentEmail, setCommentEmail ] = useState("code4kongo@gmail.com")
+        // console.log(postId, commentAuthor, commentEmail)
+
   const [commentContent, setCommentContent ] = useState("")
   
   
@@ -31,7 +31,9 @@ const  PostCommments = props => {
 
     axios.post('http://localhost:8080/comments', newObject)
           .then(res => {
-            console.log(res.data.createdcomment, "Comment added")
+           
+            const newComment = res.data.createdcomment
+            setComments([...comments, newComment])
           })
           .catch(error => {
             console.log(error)

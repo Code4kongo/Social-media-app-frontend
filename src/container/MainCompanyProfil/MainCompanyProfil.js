@@ -16,7 +16,7 @@ import NotificationIcon from '../../images/review.png'
 import JobIcon from '../../images/ic6.png'
 
 
-const MainCompanyProfil = ({companyDetails}) => {
+const MainCompanyProfil = ({companyDetails, userDetails }) => {
 
     const companyId = companyDetails._id
     
@@ -170,14 +170,20 @@ const MainCompanyProfil = ({companyDetails}) => {
                                                         
                                                         /> : 
                                     feedToggle ? <CompanyFeed 
-                                                    email = { companyDetails.company_email } /> : 
+                                                    email = { companyDetails.company_email }
+                                                    companyDetails = { companyDetails }
+                                                    userDetails = { userDetails} /> : 
                                     portfolioToggle ? <CompanyPortfolio 
                                                         companyPortfolio = {companyPortfolio}
                                                     /> :
                                     notificationToggle ? <CompanyNotification /> : 
                                     jobToggle ? <CompanyJob 
                                                     email = { companyDetails.company_email }/> : 
-                                    <CompanyFeed  email = { companyDetails.company_email }/>
+                                                <CompanyFeed  
+                                                    email = { companyDetails.company_email }
+                                                    companyDetails = { companyDetails }
+                                                    userDetails = { userDetails}
+                                                />
                                 }
                             </div>
                             </div>

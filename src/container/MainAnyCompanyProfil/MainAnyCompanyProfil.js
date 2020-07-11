@@ -131,9 +131,17 @@ const MainCompanyProfil = (props) => {
                                                         location = { companyDetails.address }
                                                         country = { companyDetails.country}
                                                         /> : 
-                                    feedToggle ? <CompanyFeed email = { companyDetails.email } /> : 
+                                    feedToggle ? <CompanyFeed 
+                                                    email = { companyDetails.email }
+                                                    userDetails = { props.userDetails } 
+                                                    companyDetails = { props.companyDetails }
+                                                    /> : 
                                     portfolioToggle ? <CompanyPortfolio companyPortfolio={companyPortfolio}/> :
-                                    <CompanyFeed  email = { companyDetails.email }/>
+                                                <CompanyFeed  
+                                                    email = { companyDetails.email }
+                                                    userDetails = { props.userDetails } 
+                                                    companyDetails = { props.companyDetails }
+                                                    />
                                 }
                                 
                                 </div>

@@ -12,7 +12,18 @@ import axios from 'axios'
 
 const UserFeed = (props) => {
 
-  const { email } = props
+  const { email , userDetails, companyDetails } = props
+
+  let commentAuthor = ""
+  let commentEmail = ""
+
+  if(userDetails.email === ""){
+    commentAuthor = companyDetails.company_name
+    commentEmail = companyDetails.company_email
+  }else {
+    commentAuthor = userDetails.name
+    commentEmail = userDetails.email
+  }
   
   const [posts, setPosts] = useState([
     {
@@ -142,7 +153,11 @@ const closeModal = () => {
                     </div>
                   </div>
                   {
-                    showComment ? <PostCommments postId={post._id} /> : null
+                    showComment ? <PostCommments 
+                                      postId={post._id}
+                                      commentAuthor = { commentAuthor }
+                                      commentEmail = { commentEmail }
+                                      /> : null
                   }
                 </div>
         

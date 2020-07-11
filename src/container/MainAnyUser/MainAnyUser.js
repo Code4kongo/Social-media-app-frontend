@@ -146,9 +146,17 @@ const MainAnyUser = (props) => {
                                                         education = { userEducation}
                                                         
                                                         /> : 
-                                    feedToggle ? <UserFeed email = { userDetails.email } /> : 
+                                    feedToggle ? <UserFeed 
+                                                    email = { userDetails.email } 
+                                                    userDetails = { props.userDetails } 
+                                                    companyDetails = { props.companyDetails }
+                                                /> : 
                                     portfolioToggle ? <UserPortfolio userPortfolio={userPortfolio}/> :
-                                    <UserFeed  email = { userDetails.email }/>
+                                                <UserFeed  
+                                                    email = { userDetails.email }
+                                                    userDetails = { props.userDetails } 
+                                                    companyDetails = { props.companyDetails }
+                                                    />
                                 }
                                 
                                 </div>

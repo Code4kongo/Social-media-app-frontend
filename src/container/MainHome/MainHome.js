@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import "./MainHome.css";
 import UserProfiction from "../../components/UserProfiction/UserProfiction";
-import PostJob from "../../modals/AddPostModal/AddPostModal"
+import AddPost from "../../modals/AddPostModal/AddPostModal"
 import SinglePost from "../../components/SinglePost/SinglePost";
 import TopJobs from "../../components/TopJobs/TopJobs";
 import MostViewed from "../../components/MostViewd/MostView";
@@ -54,7 +54,7 @@ const Main = ({userDetails, companyDetails}) => {
                                 </ul>
                             </div>
                     </div>
-                                <PostJob 
+                                <AddPost 
                                     showModal={showModal}
                                     closeModal={closeModal}
                                     userDetails={userDetails}
@@ -75,6 +75,8 @@ const Main = ({userDetails, companyDetails}) => {
                             likes = { likes}
                             comments = {comments}
                             postImage = {postImage}
+                            userDetails = { userDetails}
+                            companyDetails = { companyDetails}
                       />
                     )
                   })

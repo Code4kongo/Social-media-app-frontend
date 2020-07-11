@@ -11,8 +11,19 @@ import axios from 'axios'
 
 const AnyCompanyFeed = (props) => {
 
-  const { email } = props
-  
+  const { email, userDetails, companyDetails } = props
+
+  let commentAuthor = ""
+  let commentEmail = ""
+
+  if(userDetails.email === ""){
+    commentAuthor = companyDetails.company_name
+    commentEmail = companyDetails.company_email
+  }else {
+    commentAuthor = userDetails.name
+    commentEmail = userDetails.email
+  }
+
   const [posts, setPosts] = useState([
     {
         _id:"",
@@ -78,11 +89,6 @@ const AnyCompanyFeed = (props) => {
                           <span>{ post.country }</span>
                         </li>
                       </ul>
-                      <ul className="bk-links">
-                        <li>
-                          <a href="/" ><i className="la la-envelope"></i></a>
-                        </li>
-                      </ul>
                     </div>
                     <div className="job_descp">
                       <h3> {post.title} </h3>
@@ -108,7 +114,11 @@ const AnyCompanyFeed = (props) => {
                     </div>
                   </div>
                   {
-                    showComment ? <PostCommments postId={post._id} /> : null
+                    showComment ? <PostCommments 
+                                      postId={post._id} 
+                                      commentAuthor = { commentAuthor }
+                                      commentEmail = { commentEmail }
+                                      /> : null
                   }
                 </div>
         

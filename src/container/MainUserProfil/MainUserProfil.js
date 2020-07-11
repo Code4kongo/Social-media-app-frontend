@@ -14,7 +14,7 @@ import PortfolioIcon from '../../images/ic3.png'
 import NotificationIcon from '../../images/review.png'
 
 
-const MainUserProfil = ({userDetails}) => {
+const MainUserProfil = ({userDetails, companyDetails}) => {
 
     const userId = userDetails._id
     
@@ -156,16 +156,21 @@ const MainUserProfil = ({userDetails}) => {
                                                         location = { userDetails.address }
                                                         country = { userDetails.country}
                                                         education = { userEducation}
-                                                        
                                                         /> : 
                                     feedToggle ? <UserFeed 
                                                     email = { userDetails.email }
+                                                    companyDetails = { companyDetails }
+                                                    userDetails = { userDetails}
                                                      /> : 
                                     portfolioToggle ? <UserPortfolio 
-                                                    userPortfolio = {userPortfolio}
+                                                        userPortfolio = {userPortfolio}
                                                     /> :
                                     notificationToggle ? <UserNotification /> : 
-                                    <UserFeed  email = { userDetails.email }/>
+                                                    <UserFeed  
+                                                        email = { userDetails.email }
+                                                        companyDetails = { companyDetails }
+                                                        userDetails = { userDetails}
+                                                    />
                                 }
                             </div>
                             </div>
