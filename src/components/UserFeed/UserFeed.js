@@ -62,13 +62,15 @@ const closeModal = () => {
 
   }, [])
 
+  const postsList = posts.reverse()
+
   if(loading){
     return <LoadingSpinner/>
   }else {
     return (
       <div>
         {
-          posts.map((post, index) => {
+          postsList.map((post, index) => {
             return (
               <div className="posts-section" key={index}>
                 <div className="posty">
