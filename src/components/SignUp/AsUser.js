@@ -21,6 +21,8 @@ export default function AsUser(props) {
   const handleSubmit = event => {
 
     event.preventDefault()
+
+    console.log(agreeTermCondition)
     if(password !== repeatPassword && !agreeTermCondition){
       return alert("Your password must match and agree term and conditon")
     }     
@@ -126,8 +128,8 @@ export default function AsUser(props) {
               }
                 <div className="checky-sec st2">
                   <div className="fgt-sec">
-                    <input type="checkbox" name="cc" id="c3" value={agreeTermCondition} onChange={event => {setAgreeTermCondition(true)}}/>
-                    <label htmlFor="c2">
+                  <input type="checkbox" name="cc" id="c3" value={agreeTermCondition} onChange={event => {setAgreeTermCondition(!agreeTermCondition)}}/>
+                    <label htmlFor="c3">
                       <span></span>
                     </label>
                     <small>

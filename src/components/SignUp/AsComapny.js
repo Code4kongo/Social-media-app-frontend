@@ -18,7 +18,8 @@ export default function AsComapny(props) {
 
   const handleSubmit = event => {
     event.preventDefault()
-    if(password !== repeatPassword && agreeTermCondition){
+    console.log(agreeTermCondition)
+    if(password !== repeatPassword && !agreeTermCondition){
       alert("Your password must match and agree term and conditon")
     }
     const newCompany = {
@@ -51,6 +52,12 @@ export default function AsComapny(props) {
                 console.log(error)
                 setOnFailure(true)
         })    
+  }
+
+  const style = {
+    color: "#fff",
+    backgroundColor: "#17a2b8",
+    borderColor: "#17a2b8"
   }
 
   if(companyCreated){
@@ -100,7 +107,7 @@ export default function AsComapny(props) {
               }
                 <div className="checky-sec st2">
                   <div className="fgt-sec">
-                    <input type="checkbox" name="cc" id="c3" value={agreeTermCondition} onChange={event => {setAgreeTermCondition(true)}}/>
+                    <input type="checkbox" name="cc" id="c3" value={agreeTermCondition} onChange={event => {setAgreeTermCondition(!agreeTermCondition)}}/>
                     <label htmlFor="c3">
                       <span></span>
                     </label>
@@ -112,7 +119,7 @@ export default function AsComapny(props) {
                 </div>
               </div>
               <div className="col-lg-12 no-pdd">
-                <button type="submit" value="submit"> Get Started </button>
+                <button type="submit" value="submit" style={style}> Get Started </button>
               </div>
             </div>
           </form>
