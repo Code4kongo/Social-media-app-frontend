@@ -30,7 +30,7 @@ const  AddPostModal = (props) => {
     const [content, setContent ] = useState("")
     const [postImage, setPostImage] = useState("") 
     const [filename, setFilename] = useState("choose file")
-    const [uploadedFile, setUploadedFile ] = useState({})
+    const [uploadedFile, setUploadedFile ] = useState('')
     const [uploadPourcentage, setUploadPourcentage ] = useState(0)
     const [onSuccess, setOnSuccess ] = useState(false)
     const [onFailure, setOnFailure ] = useState(false)
@@ -53,6 +53,8 @@ const  AddPostModal = (props) => {
         formData.append('content', content)
         formData.append('email', emailForm)
 
+        
+
         try {
             
             const result = await axios.post('http://localhost:8080/posts', formData, {
@@ -65,20 +67,10 @@ const  AddPostModal = (props) => {
                                         setUploadPourcentage(percentCompleted)
                                         setTimeout(() => setUploadPourcentage(0),5000)} 
                                 })
-
-            setOnSuccess(true)
-
-  fetch(`http://localhost:8080/${result.data.createdPost.postImage}`).then(res => {
-      console.log(res)
-  })
-
-            const newImageUrl = await axios.get(`http://localhost:8080/${result.data.createdPost.postImage}`)
-            const ImageFetched = result.data.createdPost.postImage
+            const newImage = result.data.createdPost.postImage
+            setUploadedFile(`http://localhost:8080/${newImage}`)
             
-            let newData = newImageUrl.data
-            console.log(newData)
-
-            setUploadedFile({newData, ImageFetched })
+            setOnSuccess(true)
 
         } catch(error){
             console.log(error)
@@ -108,7 +100,9 @@ const  AddPostModal = (props) => {
                                         <input type="file" id="customFile" onChange={onChange}/>
                                     </div>
                                 </div>
-                                
+                                <div className="col-lg-9">
+                                        <img src={uploadedFile} alt="image"/>
+                                </div>
                                 <div className="col-lg-9">
                                     <input type="text"  placeholder="Title" value={title} onChange={(event)=>{setTitile(event.target.value)}} required/>
                                 </div>

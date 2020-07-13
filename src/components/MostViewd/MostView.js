@@ -4,51 +4,30 @@ import LoadingSpinner from '../../feedback/LoadingSpinner/LoadingSpinner'
 
 const MostView = ({mostViewed, loadingMostViewed}) => {
 
-    let textLimit = (string= "sometext") => {
-		let arrayTransform = string.split('')
-		let filterText = arrayTransform.slice(0, 100)
-		let resultText = filterText.join('')
-		let newString = resultText.toString()
-		return newString
-    }	
-
-    return ( 
-        <div className="widget widget-jobs">
-            <div className="sd-title">
-                <h3>Most Viewed This Week</h3>
-                <i className="la la-ellipsis-v"></i>
-            </div>
-            <div className="jobs-list">
-                {
-                   !loadingMostViewed? <LoadingSpinner/>  : mostViewed.map(job => {
-                        const filterOverview = textLimit(job.overview)
-                        return (
-                                <div className="job-info" key={job._id}>
-                                        <div className="job-details">
-                                            <h3> {job.title} </h3>
-                                                <p>{filterOverview} ...
-                                                    <Link
-															to={{
-																pathname: `/apply-job/${job._id}`,
-																state: { fromDashboard: true }
-															}}>
-														view more
-													</Link>
-                                                </p>
-                                        </div>
-                                    <div className="hr-rate">
-                                        <span>R{job.salary}</span>
-                                    </div>
-                                </div>
-                        )
-                    })
-                }
-
-
-
-            </div>
+return ( 
+    <div className="widget widget-jobs">
+        <div className="sd-title">
+            <h3>Most Viewed This Week</h3>
         </div>
-     );
+            {
+                !loadingMostViewed? <LoadingSpinner/>  : mostViewed.map(job => {
+                    return (
+                        <div className="card  mb-3" style={{maxWidth: '18rem'}} key={job._id}>
+                        <div className="card-header">{job.title}</div>
+                        <div className="card-body text-secondary">
+                            <h5 className="card-title">
+                            <Link to={`/apply-job/${job._id}`}>
+                                view job
+                            </Link>
+                            </h5>
+                            <p className="card-text">{job.overview} </p>
+                        </div>
+                    </div>
+                    )
+                })
+            }
+    </div>
+    );
 }
  
 export default MostView;

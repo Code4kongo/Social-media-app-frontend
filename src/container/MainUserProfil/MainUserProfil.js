@@ -54,6 +54,10 @@ const MainUserProfil = ({userDetails, companyDetails}) => {
 
                 let user = res.data.user
                 const { education } = user
+
+                if (education === undefined){
+                    setUserEducation("")
+                }
                 const { overview, experience } = user.info
                 const { skills } = user
                 const { portfolio } = user

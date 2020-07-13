@@ -14,7 +14,7 @@ import LoadingSpinner from "../../feedback/LoadingSpinner/LoadingSpinner";
 const Main = ({userDetails, companyDetails}) => {
 
   const  { topJobs, mostViewed, loadingTopJobs, loadingMostViewed } = useContext(JobContext)
-  const { posts, loadingPost } = useContext(PostContext)
+  const { posts, loadingPost  } = useContext(PostContext)
   const postsLists = posts.reverse()
 
   const [showModal, setShowModal] = useState(false)
@@ -25,7 +25,7 @@ const Main = ({userDetails, companyDetails}) => {
   const closeModal = () => {
     setShowModal(false)
   }
-  
+
   return (
     <main className="main-section">
       <div className="container">

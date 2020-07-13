@@ -9,7 +9,11 @@ import PostCommments from "../PostComments/PostComments";
 import axios from 'axios'
 
 const  SinglePost = props => {
-  let { _id, title, country, author, content, date, likes, userDetails, companyDetails  } = props
+  let { _id, title, country, author, content, date, likes, userDetails, companyDetails, postImage  } = props
+
+  const image = `http://localhost:8080/${postImage}`
+
+  console.log(image)
 
   let commentAuthor = ""
   let commentEmail = ""
@@ -76,6 +80,7 @@ const  SinglePost = props => {
             <div className="job_descp">
               <h3> {title} </h3>
               <p>{content}</p>
+              <img src={image} alt="image" width="100%" height="30%" style={{ margin : 'auto', marginBottom : '8%'}}/>
               <ul className="skill-tags">
                 <li><a href="/" > HTML </a></li>
                 <li><a href="/" > PHP </a></li>
