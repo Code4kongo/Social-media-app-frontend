@@ -30,7 +30,7 @@ const  AddPostModal = (props) => {
     const [content, setContent ] = useState("")
     const [postImage, setPostImage] = useState("") 
     const [filename, setFilename] = useState("choose file")
-    const [uploadedFile, setUploadedFile ] = useState('')
+    let [ uploadedFile, setUploadedFile ] = useState("")
     const [uploadPourcentage, setUploadPourcentage ] = useState(0)
     const [onSuccess, setOnSuccess ] = useState(false)
     const [onFailure, setOnFailure ] = useState(false)
@@ -52,8 +52,6 @@ const  AddPostModal = (props) => {
         formData.append('author', authorForm)
         formData.append('content', content)
         formData.append('email', emailForm)
-
-        
 
         try {
             
@@ -88,7 +86,7 @@ const  AddPostModal = (props) => {
       }
   
         return (
-            <Modal isOpen={showModal} onRequestClose={closeModal} className="modal-wrapper-post">
+            <Modal isOpen={showModal} onRequestClose={closeModal} className="modal-wrapper">
                 <div className="post-project">
                     <h3>Add a Post </h3>
                     <div className="post-project-fields">
@@ -101,7 +99,9 @@ const  AddPostModal = (props) => {
                                     </div>
                                 </div>
                                 <div className="col-lg-9">
-                                        <img src={uploadedFile} alt="image"/>
+                                       { 
+                                          uploadedFile === "" ? null :  <img src={uploadedFile} alt="image"/>
+                                       }
                                 </div>
                                 <div className="col-lg-9">
                                     <input type="text"  placeholder="Title" value={title} onChange={(event)=>{setTitile(event.target.value)}} required/>

@@ -44,6 +44,9 @@ const Main = ({userDetails, companyDetails}) => {
                             <div className="user-picy">
                                 <img src={UserPic} alt="" />
                             </div>
+                            <div style={{ textAlign : 'center'}}>
+                              <h1> <em>What's on your mind </em></h1>
+                            </div>
                             <div className="post-st">
                                 <ul>
                                     <li>
@@ -62,7 +65,7 @@ const Main = ({userDetails, companyDetails}) => {
                                 />
                 {
                  !loadingPost ? <LoadingSpinner/> :  postsLists.map(post => {
-                    let {  _id, title, country, author, content, date, likes, comments, postImage } = post
+                    let {  _id, title, country, author, email, content, date, likes, comments, postImage } = post
                     return (
                       <SinglePost 
                             key={post._id}
@@ -77,6 +80,7 @@ const Main = ({userDetails, companyDetails}) => {
                             postImage = {postImage}
                             userDetails = { userDetails}
                             companyDetails = { companyDetails}
+                            email= {email}
                       />
                     )
                   })

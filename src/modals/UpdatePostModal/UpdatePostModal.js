@@ -96,7 +96,7 @@ const  AddPostModal = (props) => {
       }
     return (
     
-        <Modal isOpen={showModal} onRequestClose={closeModal} className="modal-wrapper-post">
+        <Modal isOpen={showModal} onRequestClose={closeModal} className="modal-wrapper">
         <div className="post-project">
             <h3>Edit a Post </h3>
             <div className="post-project-fields">

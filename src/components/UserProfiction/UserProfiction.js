@@ -6,8 +6,11 @@ import { Link } from 'react-router-dom'
 
 const UserProfiction = ({userDetails, companyDetails}) => {
 
-    const { name, company, email, registered } = userDetails
-    const { company_name, company_email, company_registered } = companyDetails
+    const { name, company, email, registered , picture } = userDetails
+    const { company_name, company_email, company_registered , company_picture} = companyDetails
+
+    const user_profil = `http://localhost:8080/${picture}`
+    const company_profil = `http://localhost:8080/${company_picture}`
     
     const style = {
         color: "#17a2b8"
@@ -17,7 +20,9 @@ const UserProfiction = ({userDetails, companyDetails}) => {
             <div className="user-profile">
                 <div className="username-dt">
                     <div className="usr-pic">
-                        <img src={ImageProfil} alt="myprofil"/>
+                        {
+                           picture === "" ? <img src={ImageProfil} alt="myprofil"/> :  <img src={user_profil} alt="myprofil"/>
+                        }
                     </div>
                 </div>
                 <div className="user-specs">
@@ -47,7 +52,9 @@ const UserProfiction = ({userDetails, companyDetails}) => {
                 <div className="user-profile">
                 <div className="username-dt">
                     <div className="usr-pic">
-                        <img src={ImageProfil} alt="myprofil"/>
+                        {
+                           company_picture === "" ? <img src={ImageProfil} alt="myprofil"/> : <img src={company_profil} alt="myprofil"/>
+                        }
                     </div>
                 </div>
                 <div className="user-specs">

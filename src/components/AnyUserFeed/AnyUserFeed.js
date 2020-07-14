@@ -61,6 +61,7 @@ const AnyUserFeed = (props) => {
       <div>
         {
           posts.map((post, index) => {
+            console.log(post)
             return (
               <div className="posts-section" key={index}>
                 <div className="posty">
@@ -93,6 +94,14 @@ const AnyUserFeed = (props) => {
                     <div className="job_descp">
                       <h3> {post.title} </h3>
                       <p>{post.content}</p>
+                        {
+                            post.postImage === "" ? null : 
+                                      <img  
+                                        src={`http://localhost:8080/${post.postImage}`} 
+                                        alt="post image" width="50%" 
+                                        height="20%" style={{ margin : 'auto', marginBottom : '8%'}}
+                                      />
+                        }
                       <ul className="skill-tags">
                         <li><a href="/" > HTML </a></li>
                         <li><a href="/" > PHP </a></li>

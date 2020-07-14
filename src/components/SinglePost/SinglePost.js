@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./SinglePost.css";
 import IconMeedia from '../../images/icon8.png'
 import IconCountry from '../../images/icon9.png'
@@ -9,11 +9,11 @@ import PostCommments from "../PostComments/PostComments";
 import axios from 'axios'
 
 const  SinglePost = props => {
-  let { _id, title, country, author, content, date, likes, userDetails, companyDetails, postImage  } = props
+
+  let { _id, title, country, author, email, content, date, likes, userDetails, companyDetails, postImage  } = props
 
   const image = `http://localhost:8080/${postImage}`
-
-  console.log(image)
+  const postId = _id
 
   let commentAuthor = ""
   let commentEmail = ""
@@ -25,11 +25,22 @@ const  SinglePost = props => {
     commentAuthor = userDetails.name
     commentEmail = userDetails.email
   }
-  
-  const postId = _id
+
   
   const [ showComment, setShowComment ] = useState(false)
   const [likeAction, setLikeAction ] = useState(likes)
+  const [ userpic , setUserpic ] = useState("")
+
+  useEffect(() => {
+    axios.get(`http://localhost:8080/user/profil-pic?email=${email}`) 
+          .then(res => {
+            const userImage = res.data.users_pictures[0].picture // to fix
+            setUserpic(`http://localhost:8080/${userImage}`)
+          })
+          .catch(error => {
+            console.log(error)
+          })
+}, [])
 
   const toggleShowComment = () => {
     setShowComment(!showComment)
@@ -56,7 +67,7 @@ const  SinglePost = props => {
           <div className="post-bar no-margin">
             <div className="post_topbar">
               <div className="usy-dt">
-                <img src={IconUs} alt=""/>
+                <img src={userpic} alt="" width="10%" height="5%"/>
                 <div className="usy-name">
                   <h3>{ author }</h3>
                   <span>

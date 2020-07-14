@@ -120,6 +120,8 @@ const MainUserProfil = ({userDetails, companyDetails}) => {
                                         email = { userDetails.email }
                                         phone = { userDetails.phone }
                                         address = { userDetails.address }
+                                        _id = { userDetails._id}
+                                        company_id = { companyDetails.company_id}
                                 />
                                 <div className="col-lg-6">
                         <div className="main-ws-sec">

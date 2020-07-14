@@ -70,6 +70,7 @@ const  App = () => {
               
             let user = res.data.user[0]
             const {  _id, username,password,picture, country , age ,name,gender, company,email,phone,address, about,registered } = user
+
               setUserDetails(prevState => {
                   return { ...prevState, _id, username,password,picture, country , age ,name,gender, company,email,phone,address, about,registered}
               })
@@ -97,7 +98,9 @@ const  App = () => {
             const {  _id, company,password,picture, country , createdAt, email, phone, address, about,registered, total_number_employee } = ExistingCompany
                 
                 setCompanyDetails(prevState => {
-                    return { ...prevState, _id, password,createdAt ,
+                    return { ...prevState,
+                              company_id : _id, 
+                              password,createdAt ,
                               company_name:  company,
                               company_picture: picture, 
                               company_country:  country , 
