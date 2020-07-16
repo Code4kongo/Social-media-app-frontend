@@ -8,6 +8,7 @@ import UserCover from '../../images/resources/cover-img.jpg'
 import FeedIcon from '../../images/ic1.png'
 import InfoIcon from '../../images/ic2.png'
 import PortfolioIcon from '../../images/ic3.png'
+import SendEmailModal from '../../modals/SendEmailModal/SendEmailModal'
 
 
 const MainAnyUser = (props) => {
@@ -40,6 +41,16 @@ const MainAnyUser = (props) => {
     const [ feedToggle, setFeedToggle ] = useState(false)
     const [ infoToggle, setInfoToggle ] = useState(true)
     const [ portfolioToggle, setPortfolioeedToggle ] = useState(false)
+
+    const [showModal, setShowModal] = useState(false)
+    
+    const openModal = () => {
+      setShowModal(true)
+    }
+
+    const closeModal = () => {
+      setShowModal(false)
+    }
 
     useEffect(() => {
         axios.get(`http://localhost:8080/user/${userId}`)
@@ -109,7 +120,7 @@ const MainAnyUser = (props) => {
                                         address = { userDetails.address }
                                 />
     
-                            <div className="col-lg-9">
+                            <div className="col-lg-7">
                             <div className="main-ws-sec">
     
                                 <div className="user-tab-sec rewivew">
@@ -159,6 +170,21 @@ const MainAnyUser = (props) => {
                                                     />
                                 }
                                 
+                                </div>
+                                </div>
+                                <div className="col-lg-2">
+								<div className="right-sidebar">
+									<div className="message-btn">
+                                        <button className="btn btn-info" onClick={openModal}>
+                                            <i className="fa fa-envelope"></i> Send Email 
+                                        </button>
+                                        <SendEmailModal
+                                                closeModal={closeModal}
+                                                showModal = { showModal}
+                                                senderEmail = { "jordytshibss@gmail.com"}
+                                                recipientEmail = { userDetails.email}
+                                        />
+                                    </div>
                                 </div>
                                 </div>
                             </div>

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Modal from "react-modal";
-import "./EmailModal.css";
+import "./SendEmailModal.css";
 import OnSuccessMessage from '../../feedback/UpdateMessage/UpdateMessage'
 import OnFailureMessage from '../../feedback/FailureMeesage/FailureMeesage'
 import axios from 'axios'
@@ -8,14 +8,13 @@ import axios from 'axios'
 Modal.setAppElement("#root");
 
 const EmailModal = (props) => {
-  const { showModal, closeModal, authorEmail, applicantEmail } = props;
-
-  const [title, setTitile] = useState("JOB APPLICATION");
-  const [email, setEmail] = useState(applicantEmail);
+  const { showModal, closeModal, senderEmail, recipientEmail} = props;
+  const [title, setTitile] = useState("");
+  const [email, setEmail] = useState(senderEmail);
   const [content, setContent] = useState(
      `Good day\n 
       I hope this message finds you well ! \n
-      I am applying for this position ! \n
+      ...! \n
       Thanks \n
       Regards
       ` 
@@ -23,16 +22,18 @@ const EmailModal = (props) => {
   const [ onSuccess, setOnSuccess] = useState(false)
   const [ onFailure, setOnFailure] = useState(false)
 
+
   const handleSubmit = (event) => {
     event.preventDefault();
+
     const emailObject = {
       senderemail : email,
-      recipientEmail : authorEmail,
+      recipientEmail,
       title,
       content 
     }
 
-    axios.post('http://localhost:8080/apply-job', emailObject)
+    axios.post('http://localhost:8080/send-email', emailObject)
           .then(res => {
             setOnSuccess(true)
             setTimeout(() => setOnSuccess(false), 15000)
@@ -66,7 +67,7 @@ const EmailModal = (props) => {
                   className="form-control form-control-sm"
                   type="email"
                   placeholder="To"
-                  value={authorEmail}
+                  value={recipientEmail}
                   readOnly
                   required
                 />
