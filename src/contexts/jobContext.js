@@ -37,6 +37,7 @@ const JobContextProvider = (props) => {
         axios.get('http://localhost:8080/jobs')
             .then(res => {
                     const jobList = res.data.jobs
+                    
                     setJobs(jobList)
                     setLoadingJobs(true)
 
@@ -52,6 +53,61 @@ const JobContextProvider = (props) => {
             })
 
     }, [])
+
+    const handleTitle = (event) => {
+        event.preventDefault()
+        const value = event.target.value
+
+        const searchValue = value.toLowerCase()
+        const filteredCharacters = jobs.filter(character => {
+            return (
+              character.title.toLowerCase().includes(searchValue) 
+            );
+          });
+          setJobs(filteredCharacters)
+
+
+    }
+    const handlePartTime = (event) => {
+        event.preventDefault()
+        const filteredCharacters = jobs.filter(character => {
+            return (
+              character.jobType.toLocaleLowerCase() === 'part-time'
+            );
+          });
+          setJobs(filteredCharacters)
+    }
+    const handleFullTime = (event) => {
+        event.preventDefault()
+        const value = event.target.value
+        const filteredCharacters = jobs.filter(character => {
+            return (
+              character.jobType.toLocaleLowerCase() === 'full-time'
+            );
+          });
+          setJobs(filteredCharacters)
+    }
+    const handlePostDuration = (event) => {
+        event.preventDefault()
+        const value = event.target.value
+        
+        if(value === 'recent'){
+            console.log(value === 'recent')
+            const sortedRecentJobs = jobs
+            console.log(jobs)
+            setJobs(sortedRecentJobs)
+        } else if(value === 'old'){
+            console.log(value === 'old')
+            let sortedOldJobs = (jobs) => [...jobs].map(jobs.pop, jobs);
+            console.log(sortedOldJobs)
+            setJobs(sortedOldJobs)
+        }
+
+    }
+    const handleCountry = (event) => {
+        event.preventDefault()
+        console.log(event.target.value)
+    }
 
     const addJob = (title, applicants, jobType,salary,views, country, author, email, phone, content, address,overview , total_employee) => {
 
@@ -107,7 +163,11 @@ const JobContextProvider = (props) => {
     }
     
     return ( 
-        <JobContext.Provider value={{jobs, loadingJobs, topJobs, loadingTopJobs, mostViewed,loadingMostViewed, addJob, onSuccess, onFailure, updateJob, deleteJob }}> 
+        <JobContext.Provider value={{
+                                        jobs, loadingJobs, topJobs, loadingTopJobs,  mostViewed,
+                                        loadingMostViewed, addJob, onSuccess, onFailure, 
+                                        updateJob, deleteJob,
+                                        handleTitle, handleCountry, handleFullTime, handlePartTime, handlePostDuration }}> 
             {props.children}
         </JobContext.Provider>
      );

@@ -57,7 +57,7 @@ const SearchModal = (props) => {
     const lists = [...companiesNames, ...userNames]
 
     const handleSearch = (event) => {
-
+        
         event.preventDefault()
         setInputValue(event.target.value)
 

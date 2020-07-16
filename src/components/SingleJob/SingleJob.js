@@ -76,13 +76,8 @@ const SingleJob = (props) => {
             </ul>
             <p>
               {content}
-              <Link
-                to={{
-                  pathname: `/apply-job/${id}`,
-                  state: { fromDashboard: true },
-                }}
-              >
-                ...
+              <Link to={`/apply-job/${id}`} style={{color : 'black'}}>
+                ...read more
               </Link>
             </p>
             <ul className="skill-tags">

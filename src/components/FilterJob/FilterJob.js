@@ -1,45 +1,57 @@
-import React from 'react'
+import React, { useState } from 'react'
 
-const FilterJob = () => {
+const FilterJob = props => {
+
+	const {
+		handleTitle,
+		handlePartTime ,
+		handleFullTime ,
+		handlePostDuration ,
+		handleCountry
+	 } = props
+
+	const [ title, setTitle ] = useState("") 
+
 	return ( 
 		<div className="col-lg-3">
 			<div className ="filter-secs">
 				<div className ="filter-heading">
-					<h3>Filters</h3>
-					<a href="/" title="">Clear all filters</a>
+					<h2>Filters</h2>
+					<a href="/jobs">Clear all filters</a>
 				</div>
 				<div className ="paddy">
 					<div className ="filter-dd">
 						<div className ="filter-ttl">
-							<h3>Skills</h3>
-							<a href="/" title="">Clear</a>
+							<h3>Title</h3>
+							<a href="/jobs">Clear</a>
 						</div>
 						<form>
-							<input type="text" name="search-skills" placeholder="Search skills"/>
+							<input 
+								type="text" 
+								placeholder="Search title" 
+								value={title} 
+								onChange = { event => { 
+									setTitle(event.target.value)
+									handleTitle(event) 
+								}}/>
 						</form>
 					</div>
 					<div className ="filter-dd">
 						<div className ="filter-ttl">
-							<h3>Availabilty</h3>
-							<a href="/" title="">Clear</a>
+							<h3>Job Type</h3>
+							<a href="/jobs">Clear</a>
 						</div>
 						<ul className ="avail-checks">
 							<li>
-								<input type="radio" name="cc" id="c1"/>
-								<label htmlFor="c1">
-									<span></span>
-								</label>
-								<small>Hourly</small>
-							</li>
-							<li>
-								<input type="radio" name="cc" id="c2"/>
+								<input type="radio" name="cc" id="c2" value="part-time" onChange={event => { handlePartTime(event)}}/>
 								<label htmlFor="c2">
 									<span></span>
 								</label>
 								<small>Part Time</small>
 							</li>
 							<li>
-								<input type="radio" name="cc" id="c3"/>
+							
+								<input type="radio" name="cc" id="c3" value="full-time" onChange={event => { handleFullTime(event)}}/>
 								<label htmlFor="c3">
 									<span></span>
 								</label>
@@ -49,51 +61,31 @@ const FilterJob = () => {
 					</div>
 					<div className ="filter-dd">
 						<div className ="filter-ttl">
-							<h3>Job Type</h3>
-							<a href="/" title="">Clear</a>
+							<h3>Time stamp </h3>
+							<a href="/jobs">Clear</a>
 						</div>
 						<form className ="job-tp">
-							<select>
-								<option>Select a job type</option>
-								<option>Select a job type</option>
-								<option>Select a job type</option>
-								<option>Select a job type</option>
+							<select onChange = { event => handlePostDuration(event) }>
+								<option value = "recent" >Select a duration</option>
+								<option value = "recent" >Recently posted jobs</option>
+								<option value = "old" >Old posted jobs</option>
 							</select>
-							<i className ="fa fa-ellipsis-v" aria-hidden="true"></i>
-						</form>
-					</div>
-					<div className ="filter-dd">
-						
-						
-					</div>
-					<div className ="filter-dd">
-						<div className ="filter-ttl">
-							<h3>Experience Level</h3>
-							<a href="/" title="">Clear</a>
-						</div>
-						<form className ="job-tp">
-							<select>
-								<option>Select a experience level</option>
-								<option>3 years</option>
-								<option>4 years</option>
-								<option>5 years</option>
-							</select>
-							<i className ="fa fa-ellipsis-v" aria-hidden="true"></i>
+							<i className ="fa fa-ellipsis-v"></i>
 						</form>
 					</div>
 					<div className ="filter-dd">
 						<div className ="filter-ttl">
 							<h3>Countries</h3>
-							<a href="/" title="">Clear</a>
+							<a href="/jobs">Clear</a>
 						</div>
 						<form className ="job-tp">
-							<select>
-								<option>Select a country</option>
-								<option>United Kingdom</option>
-								<option>United States</option>
-								<option>Russia</option>
+							<select onChange = { event => handleCountry(event)}>
+								<option value = "Congo">Select a country</option>
+								<option value = "Congo">Congo</option>
+								<option value = "South Africa">South Africa</option>
+								<option value = "Gabon">Gabon</option>
 							</select>
-							<i className ="fa fa-ellipsis-v" aria-hidden="true"></i>
+							<i className ="fa fa-ellipsis-v"></i>
 						</form>
 					</div>
 				</div>

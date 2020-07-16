@@ -19,16 +19,27 @@ const  MainJobs = props => {
     if(email === ""){
         postingAuth = company_email
     }
-    const [showModal, setShowModal] = useState(false)
-    const  { jobs, loadingJobs, topJobs, mostViewed , loadingTopJobs, loadingMostViewed } = useContext(JobContext)
-    const jobsLists = jobs.reverse()
+    
+    const  { 
+            jobs, loadingJobs, 
+            topJobs, mostViewed , 
+            loadingTopJobs, 
+            loadingMostViewed,
+            handleTitle, handleCountry, 
+            handleFullTime, handlePartTime, 
+            handlePostDuration
 
+    } = useContext(JobContext)
+
+
+    const [ showModal, setShowModal ] = useState(false)
+    
     const openModal = () => {
         setShowModal(true)
     }
     const closeModal = () => {
         setShowModal(false)
-    }
+    }    
     
     return (
 
@@ -37,7 +48,13 @@ const  MainJobs = props => {
                 <div className="container">
                     <div className="main-section-data">
                         <div className="row">
-                            <FilterJob/>
+                            <FilterJob 
+                                    handleTitle = { handleTitle }
+                                    handlePartTime = { handlePartTime }
+                                    handleFullTime = { handleFullTime }
+                                    handlePostDuration = { handlePostDuration }
+                                    handleCountry = { handleCountry }
+                            />
                             <div className="col-lg-6">
                                 <div className="main-ws-sec">
                                     
@@ -66,10 +83,9 @@ const  MainJobs = props => {
                                     company_address = { company_address}
                                     company_about = { company_about}
                                 />
-
                                     <div className="posts-section">
                                         {
-                                           !loadingJobs ? <LoadingSpinner/>: jobsLists.map(job => {
+                                           !loadingJobs ? <LoadingSpinner/>: jobs.map(job => {
                                                 
                                                 let { _id, address, applicants, author, content, country, date,email, jobType, overview, phone, salary, socialmedialink, title, total_employee, views  } = job
                                                 return (
