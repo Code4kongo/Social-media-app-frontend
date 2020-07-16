@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { CountryDropdown } from 'react-country-region-selector';
 
 const FilterJob = props => {
 
@@ -11,6 +12,9 @@ const FilterJob = props => {
 	 } = props
 
 	const [ title, setTitle ] = useState("") 
+	const [ country, setCountry ] = useState("") 
+
+	console.log(country)
 
 	return ( 
 		<div className="col-lg-3">
@@ -79,12 +83,10 @@ const FilterJob = props => {
 							<a href="/jobs">Clear</a>
 						</div>
 						<form className ="job-tp">
-							<select onChange = { event => handleCountry(event)}>
-								<option value = "Congo">Select a country</option>
-								<option value = "Congo">Congo</option>
-								<option value = "South Africa">South Africa</option>
-								<option value = "Gabon">Gabon</option>
-							</select>
+							<CountryDropdown
+								value={country}
+								onChange={event => handleCountry(event)} 
+							/>
 							<i className ="fa fa-ellipsis-v"></i>
 						</form>
 					</div>

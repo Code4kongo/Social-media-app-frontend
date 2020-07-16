@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import axios from 'axios'
+import { CountryDropdown } from 'react-country-region-selector';
 import { Redirect } from 'react-router-dom'
 import OnSuccessMessage from '../../feedback/SuccessMeesgae/SuccessMeesgae'
 import OnFailureMessage from '../../feedback/FailureMeesage/FailureMeesage'
@@ -90,7 +91,10 @@ export default function AsUser(props) {
               </div>
               <div className="col-lg-12 no-pdd">
                 <div className="sn-field">
-                  <input type="text" placeholder="Country" value={country} onChange={event => setCountry(event.target.value)}/>
+                <CountryDropdown
+                      value={country}
+                      onChange={(val) => setCountry(val)} 
+                />
                   <i className="la la-globe"></i>
                 </div>
               </div>

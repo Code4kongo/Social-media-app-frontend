@@ -105,10 +105,16 @@ const JobContextProvider = (props) => {
 
     }
     const handleCountry = (event) => {
-        event.preventDefault()
-        console.log(event.target.value)
+        
+        const country = event 
+        const searchValue = country.toLowerCase()
+        const filteredCharacters = jobs.filter(character => {
+            return (
+              character.country.toLowerCase().includes(searchValue) 
+            );
+          });
+          setJobs(filteredCharacters)
     }
-
     const addJob = (title, applicants, jobType,salary,views, country, author, email, phone, content, address,overview , total_employee) => {
 
         const newJob = { 
@@ -159,7 +165,6 @@ const JobContextProvider = (props) => {
              })
     }
     const deleteJob = () => {
-        
     }
     
     return ( 

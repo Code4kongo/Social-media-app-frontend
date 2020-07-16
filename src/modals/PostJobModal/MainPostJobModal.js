@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import Modal from "react-modal";
+import { CountryDropdown, RegionDropdown } from 'react-country-region-selector';
 import "./MainPostJob.css";
 import { JobContext } from "../../contexts/jobContext";
 import OnSuccessMessage from '../../feedback/SuccessMeesgae/SuccessMeesgae'
@@ -10,14 +11,15 @@ Modal.setAppElement("#root");
 const MainPostJob = (props) => {
 
     const { addJob, onSuccess, onFailure } = useContext(JobContext);
-    const { showModal, closeModal, company_email , company_country,  company_name,  company_phone,  numberOfEmployee,  company_address,  company_about} = props;
+    const { showModal, closeModal, company_email, company_name,  company_phone,  numberOfEmployee,  company_address,  company_about} = props;
 
   const [title, setTitile] = useState("");
   const [applicants, setApplicants] = useState(0);
   const [jobType, setJobType] = useState("");
   const [salary, setSalary] = useState("");
   const [views, setViews] = useState(0);
-  const [country, setCountry] = useState(company_country);
+  const [country, setCountry] = useState("");
+  const [region, setRegion] = useState("");
   const [author, setAuthor] = useState(company_name);
   const [email, setEmail] = useState(company_email);
   const [phone, setPhone] = useState(company_phone);
@@ -29,7 +31,8 @@ const MainPostJob = (props) => {
  
     const handleSubmit = (event) => {
         event.preventDefault()
-        addJob(title, applicants, jobType,salary,views, country, author, email, phone, content, address,overview , total_employee)
+        const newCountry = `${country}  ${region}`
+        addJob(title, applicants, jobType,salary,views, newCountry, author, email, phone, content, address,overview , total_employee)
     }
 
     const style = {
@@ -64,9 +67,16 @@ const MainPostJob = (props) => {
                         <div className="col-lg-6">
                             <input type="text"  placeholder="Salary in ZAR" value={salary} onChange={(event)=>{setSalary(event.target.value)}} required/>
                         </div>
-
                         <div className="col-lg-6">
-                            <input type="text"  placeholder="Country" value={country} onChange={(event)=>{setCountry(event.target.value)}} required/>
+                        <CountryDropdown
+                            value={country}
+                            onChange={(val) => setCountry(val)} 
+                        />
+                            <RegionDropdown
+                            country={country}
+                            value={region}
+                            onChange={(val) => setRegion(val)} 
+                        />
                         </div>
                         <div className="col-lg-6">
                             <input type="text"  placeholder="Author" value={author} onChange={(event)=>{setAuthor(event.target.value)}} required readOnly/>

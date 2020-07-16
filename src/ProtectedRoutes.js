@@ -6,7 +6,7 @@ const ProtectedRoute = ({ component: Component, isAuth, userDetails,  companyDet
   return (
     <Route {...rest} render={
       props => {
-        if(isAuth){
+        if(isAuth || !isAuth){
           return <Component 
                       {...rest}   
                       {...props} 
