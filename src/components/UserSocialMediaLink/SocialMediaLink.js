@@ -47,7 +47,8 @@ const UserSocialMediaLink = props => {
                     <div className="user-pro-img" 
                          style= {{ 
                                     marginBottom : '20%', 
-                                    alignContent: 'center'
+                                    alignContent: 'center',
+                                    backgroundColor : '#f4f4f4'
                     }}>
                             <Avatar
                                 width={230}
@@ -110,12 +111,15 @@ const UserSocialMediaLink = props => {
 								
                 <div className="main-left-sidebar">
                 
-                <div className="user_profile">
+                <div className="user_profile" style= {{ 
+                                    backgroundColor : '#050505'
+                            }}>
                     
                     <div className="user-pro-img"
                          style= {{ 
                                     marginBottom : '20%', 
-                                    alignContent: 'center'
+                                    alignContent: 'center',
+                                    backgroundColor : '#050505'
                             }}>
                             <Avatar
                                 width={230}

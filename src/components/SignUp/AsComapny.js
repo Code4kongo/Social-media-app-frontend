@@ -21,6 +21,7 @@ export default function AsComapny(props) {
     event.preventDefault()
     console.log(agreeTermCondition)
     if(password !== repeatPassword && !agreeTermCondition){
+      setOnFailure(true)
       alert("Your password must match and agree term and conditon")
     }
     const newCompany = {
@@ -111,7 +112,7 @@ export default function AsComapny(props) {
               }
                 <div className="checky-sec st2">
                   <div className="fgt-sec">
-                    <input type="checkbox" name="cc" id="c3" value={agreeTermCondition} onChange={event => {setAgreeTermCondition(!agreeTermCondition)}}/>
+                    <input type="checkbox" name="cc" id="c3" value={agreeTermCondition} onChange={event => {setAgreeTermCondition(event.target.value)}}/>
                     <label htmlFor="c3">
                       <span></span>
                     </label>

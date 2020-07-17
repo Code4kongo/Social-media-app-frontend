@@ -121,7 +121,77 @@ const  App = () => {
           console.log(error)
     })
 
-}
+  }
+  // const signInWithFacebook = (email, name, picturefb) => {
+
+  //   console.log(email, name, picturefb)
+
+  //   axios.post('http://localhost:8080/user/login-social-account', {email})
+  //   .then(res => {
+  //        setOnSuccess(true)
+  //        setTimeout(() => setOnFailure(false), 1000)
+         
+  //      let user = res.data.user[0]
+       
+  //      const {  _id, username,password,picture, country , age ,name,gender, company,email,phone,address, about,registered } = user
+       
+  //      let profilPicture = picture
+  //      if(picture === ""){
+  //         profilPicture = picturefb
+  //      }
+
+  //        setUserDetails(prevState => {
+  //            return { ...prevState, _id, username,password,picture, country , age ,name,gender, company,email,phone,address, about,registered}
+  //        })
+  //        setAuth(true)
+  //        setRedirect(true)
+  //        setTimeout(() => {
+  //          setRedirect(true)
+
+  //        }, 5000)
+           
+  //   })
+  //   .catch(error => {
+  //          setAuth(false)
+  //          setOnFailure(true)
+  //          console.log(error)
+  //          setTimeout(() => setOnFailure(false), 15000)
+  //    })
+  // }
+  const signInWithGoogle = (email, name, picturefb) => {
+
+    axios.post('http://localhost:8080/user/login-social-account', {email})
+    .then(res => {
+         setOnSuccess(true)
+         setTimeout(() => setOnFailure(false), 1000)
+         
+       let user = res.data.user[0]
+       
+       const {  _id, username,password,picture, country , age ,name,gender, company,email,phone,address, about,registered } = user
+       
+       let profilPicture = picture
+       if(picture === ""){
+          profilPicture = picturefb
+       }
+
+         setUserDetails(prevState => {
+             return { ...prevState, _id, username,password,picture, country , age ,name,gender, company,email,phone,address, about,registered}
+         })
+         setAuth(true)
+         setRedirect(true)
+         setTimeout(() => {
+           setRedirect(true)
+
+         }, 5000)
+           
+    })
+    .catch(error => {
+           setAuth(false)
+           setOnFailure(true)
+           console.log(error)
+           setTimeout(() => setOnFailure(false), 15000)
+     })
+  }
 
   return (
     <React.Fragment>
@@ -138,6 +208,8 @@ const  App = () => {
                     render = {  props => <SignInPage 
                                               {...props} signInUser={signInUser} 
                                                          signInCompany={signInCompany}
+                                                        //  signInWithFacebook={signInWithFacebook}
+                                                         signInWithGoogle={signInWithGoogle}
                                                          onSuccess={onSuccess}
                                                          onFailure={onFailure}/>}  
           />

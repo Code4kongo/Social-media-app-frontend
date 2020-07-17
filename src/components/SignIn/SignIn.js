@@ -1,16 +1,21 @@
 import React, {useState} from "react";
-import { Link } from "react-router-dom";
+import FacebookLogin from 'react-facebook-login'
+import GoogleLogin from 'react-google-login';
 import OnSuccessMessage from '../../feedback/SuccessMeesgae/SuccessMeesgae'
 import OnFailureMessage from '../../feedback/FailureMeesage/FailureMeesage'
-
 
 
 const SignIn = props => {
 
 
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  let  [toggle, setToggle] = useState(true)
+  const [ email, setEmail ] = useState('')
+  const [ password, setPassword ] = useState('')
+  let  [ toggle, setToggle ] = useState(true)
+
+  const [ isAuth, setIsAuth ] = useState(false)
+  const [ name, setName ] = useState("")
+  const [ picture, setPicture ] = useState("") 
+
 
   const  onSuccess = props.onSuccess
   const  onFailure = props.onFailure
@@ -18,11 +23,9 @@ const SignIn = props => {
   const handleToggleStateUser = () => {
     setToggle(toggle = true)
   }
-
   const handleToggleStateCompany = () => {
     setToggle(toggle = false)
   }
-
   const handleSubmitUser = (event) => {
     event.preventDefault()
     props.handleSignInUser(email, password)
@@ -33,6 +36,23 @@ const SignIn = props => {
     props.handleSignInCompany(email, password)
 
   }
+  const responseFacebook = response => {
+    let emailfb = response.email
+    let namefb = response.name
+    let picturefb = response.picture.data.url
+
+    // props.signInWithFacebook(emailfb, namefb, picturefb)
+  }
+  const componentClicked = () => console.log("clicked")
+  const responseGoogle = response => {
+    let emailgoogle = response.profileObj.email
+    let namegoogle = response.profileObj.name
+    let picturegoogle = response.profileObj.imageUrl
+
+    props.signInWithGoogle(emailgoogle, namegoogle, picturegoogle)
+    
+  }
+  
 
   const style = {
     color: "#fff",
@@ -57,11 +77,6 @@ const SignIn = props => {
               </div>
               <div className="col-lg-12 no-pdd">
                 <div className="checky-sec">
-                  <div className="fgt-sec">
-                    <input type="checkbox"/>
-                    <label htmlFor="c1">  <span></span> </label>
-                    <small>Remember me</small>
-                  </div>
                   <a href="/"> Forgot Password? </a>
                 </div>
               </div>
@@ -92,11 +107,6 @@ const SignIn = props => {
               </div>
               <div className="col-lg-12 no-pdd">
                 <div className="checky-sec">
-                  <div className="fgt-sec">
-                    <input type="checkbox"/>
-                    <label htmlFor="c1">  <span></span> </label>
-                    <small>Remember me</small>
-                  </div>
                   <a href="/"> Forgot Password? </a>
                 </div>
               </div>
@@ -137,10 +147,22 @@ const SignIn = props => {
       <h4>Login Via Social Account</h4>
       <ul>
         <li>
-          <a href="/" className="fb">  <i className="fa fa-facebook"></i>Login Via Facebook </a>
+          <FacebookLogin
+              appId="908794306285469"
+              autoLoad={true}
+              fields="name,email,picture"
+              onClick={componentClicked}
+              callback={responseFacebook} 
+          />
         </li>
         <li>
-          <a href="/" className="tw"> <i className="fa fa-twitter"></i>Login Via Twitter  </a>
+        <GoogleLogin
+            clientId="783580502123-gjnqmvrlgheq85um1piigofdb0bm0baf.apps.googleusercontent.com"
+            buttonText="Login with google"
+            onSuccess={responseGoogle}
+            onFailure={responseGoogle}
+            cookiePolicy={'single_host_origin'}
+          />
         </li>
       </ul>
     </div>
