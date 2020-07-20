@@ -61,7 +61,6 @@ const AnyUserFeed = (props) => {
       <div>
         {
           posts.map((post, index) => {
-            console.log(post)
             return (
               <div className="posts-section" key={index}>
                 <div className="posty">

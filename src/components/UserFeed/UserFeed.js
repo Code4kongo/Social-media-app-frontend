@@ -1,4 +1,5 @@
 import React, { useState, useEffect} from 'react'
+import { useConfirm } from "material-ui-confirm";
 import IconMeedia from '../../images/icon8.png'
 import IconCountry from '../../images/icon9.png'
 import IconLike from '../../images/liked-img.png'
@@ -6,11 +7,12 @@ import IconUs from '../../images/resources/us-pc2.png'
 import IconClock from '../../images/clock.png'
 import PostCommments from "../PostComments/PostComments";
 import UpdatePostModal from '../../modals/UpdatePostModal/UpdatePostModal'
-import DeletePostModal from '../../modals/DeleteConfirmModal/Post/DeletePostConfirmModal'
 import LoadingSpinner from '../../feedback/LoadingSpinner/LoadingSpinner'
 import axios from 'axios'
 
 const UserFeed = (props) => {
+
+  const confirm = useConfirm();
 
   const { email , userDetails, companyDetails } = props
 
@@ -42,28 +44,19 @@ const UserFeed = (props) => {
 
   const [ showComment, setShowComment ] = useState(false)
   const [ showModal, setShowModal] = useState(false)
-  const [ showDeleteModal, setShowDeleteModal] = useState(false)
   
-  
-
 
 const openModal = () => {
       setShowModal(true)
-    }
-const openDeleteModal = () => {
-  setShowDeleteModal(true)
 }
 const closeModal = () => {
       setShowModal(false)
-      setShowDeleteModal(false)
-    }
-
-  const toggleShowComment = () => {
+}
+const toggleShowComment = () => {
     setShowComment(!showComment)
-  }
+}
 
-  useEffect(() => {
-
+useEffect(() => {
     axios.get(`http://localhost:8080/posts/users/${email}`)
           .then(res => {
             const fetchedPosts = res.data.posts
@@ -75,15 +68,30 @@ const closeModal = () => {
 
   const postsList = posts.reverse()
 
+  const handleDelete = (postId, title) => {
+    confirm({ description: `This will permanently delete ${title} post.` })
+      .then(() => {
+            axios.delete(`http://localhost:8080/posts/${postId}`)
+            .then(res => {
+                const newPostList = posts.filter(post => post._id !== postId)
+                setPosts(newPostList)
+            })
+            .catch(error => {
+                console.log(error)
+            })
+      })
+      .catch(() => console.log("Deletion cancelled."));
+  };
+
   if(loading){
     return <LoadingSpinner/>
   }else {
     return (
       <div>
         {
-          postsList.map((post, index) => {
+          postsList.map((post) => {
             return (
-              <div className="posts-section" key={index}>
+              <div className="posts-section" key={post._id}>
                 <div className="posty">
                   <div className="post-bar no-margin">
                     <div className="post_topbar">
@@ -91,15 +99,16 @@ const closeModal = () => {
                         <img src={IconUs} alt=""/>
                         <div className="usy-name">
                           <h3>{ post.author }</h3>
-                          <span><img src={IconClock} alt="" />{post.date}</span>
+                            <span><img src={IconClock} alt="" />{post.date}</span>
                         </div>
                       </div>
                     <div className="ed-opts">
                         <button className="btn btn-info" style={{borderRadius : '100%'}} onClick={openModal}><i className="fa fa-pencil fa-fw"></i> </button>
-                        <button className="btn btn-danger" style={{borderRadius : '100%'}} onClick={openDeleteModal}><i className="fa fa-trash-o fa-lg"></i></button>
+                        <button className="btn btn-danger" style={{borderRadius : '100%'}} onClick={() => handleDelete(post._id, post.title)}><i className="fa fa-trash-o fa-lg"></i></button>
                         <UpdatePostModal  
                             showModal={showModal} 
                             closeModal={closeModal}
+                            post = { post }
                             postId={post._id}
                             title={post.title}
                             country={post.country}
@@ -108,11 +117,6 @@ const closeModal = () => {
                             content={post.content}
                             postImage={post.postImage}
                             />
-                        <DeletePostModal 
-                            showModal={showDeleteModal}
-                            closeModal={closeModal}
-                            postId={post._id}
-                        />
                     </div>
                     </div>
                     <div className="epi-sec">

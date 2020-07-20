@@ -1,5 +1,6 @@
 import React , { useState } from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
+import { ConfirmProvider } from "material-ui-confirm";
 import axios from 'axios'
 import "./App.css";
 import Home from "./pages/HomePage";
@@ -93,8 +94,10 @@ const  App = () => {
   
     axios.post('http://localhost:8080/company/login', {email, password})
          .then(res => {
+           
             setOnSuccess(true)
             let ExistingCompany = res.data.company[0]
+            
             const {  _id, company,password,picture, country , createdAt, email, phone, address, about,registered, total_number_employee } = ExistingCompany
                 
                 setCompanyDetails(prevState => {
@@ -124,8 +127,7 @@ const  App = () => {
   }
   // const signInWithFacebook = (email, name, picturefb) => {
 
-  //   console.log(email, name, picturefb)
-
+    
   //   axios.post('http://localhost:8080/user/login-social-account', {email})
   //   .then(res => {
   //        setOnSuccess(true)
@@ -197,6 +199,7 @@ const  App = () => {
     <React.Fragment>
       <div className="wrapper">
         <Switch>
+        <ConfirmProvider>
         <CompanyContextProvider>
         <UserContextProvider>
         <PostContextProvider>
@@ -235,7 +238,8 @@ const  App = () => {
         </PostContextProvider>
         </UserContextProvider>
         </CompanyContextProvider>
-          <Route component={ErrorPage} />  
+        </ConfirmProvider>
+        <Route component={ErrorPage} />  
         </Switch>
       </div>
     </React.Fragment>

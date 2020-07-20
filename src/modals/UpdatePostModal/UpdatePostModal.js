@@ -41,19 +41,16 @@ const  AddPostModal = (props) => {
         setFilename(event.target.files[0].name)
         setPostImage(event.target.files[0])
     }
-
-    
-
-    const handleSubmit = async (event) => {
+    const handleUpdate = async (event) => {
         event.preventDefault()
 
         const formData = new FormData()
         formData.append('postImage', post_postImage)
-        formData.append('title',post_title)
-        formData.append('country',post_country)
-        formData.append('author',author)
-        formData.append('content',post_content)
-        formData.append('email',email)
+        formData.append('title', post_title)
+        formData.append('country', post_country)
+        formData.append('author', author)
+        formData.append('content', post_content)
+        formData.append('email', email)
 
         try {
             
@@ -88,19 +85,17 @@ const  AddPostModal = (props) => {
             setTimeout(() => setOnFailure(false), 15000)
         }   
     }
-    
     const style = {
         color: "#fff",
         backgroundColor: "#17a2b8",
         borderColor: "#17a2b8"
-      }
+    }
     return (
-    
-        <Modal isOpen={showModal} onRequestClose={closeModal} className="modal-wrapper">
+      <Modal isOpen={showModal} onRequestClose={closeModal} className="modal-wrapper">
         <div className="post-project">
             <h3>Edit a Post </h3>
             <div className="post-project-fields">
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={handleUpdate}>
                     <div className="row">
                         <div className="col-lg-12">
                             <div className="custom-file" style={{marginBottom : "20px"}}>
@@ -133,7 +128,7 @@ const  AddPostModal = (props) => {
                                 <li><button style={style} type="submit" value="post">Post</button></li>
                                 {
                                     onSuccess ?  <li><button className= "btn btn-primary danger" onClick={closeModal}>Close</button></li> : 
-                                            <li><button className= "btn btn-primary danger" onClick={closeModal}>Cancel</button></li>
+                                                 <li><button className= "btn btn-primary danger" onClick={closeModal}>Cancel</button></li>
                                 }
                             </ul>
                         </div>

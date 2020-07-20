@@ -34,7 +34,6 @@ const SignInContainer  = (props) => {
                       <SignIn 
                           handleSignInUser = {props.signInUser}
                           handleSignInCompany = {props.signInCompany}
-                          // signInWithFacebook = { props.signInWithFacebook} 
                           signInWithGoogle = { props.signInWithGoogle} 
                           onSuccess={props.onSuccess}
                           onFailure={props.onFailure}

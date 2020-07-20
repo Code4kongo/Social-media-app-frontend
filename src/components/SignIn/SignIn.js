@@ -1,5 +1,4 @@
 import React, {useState} from "react";
-import FacebookLogin from 'react-facebook-login'
 import GoogleLogin from 'react-google-login';
 import OnSuccessMessage from '../../feedback/SuccessMeesgae/SuccessMeesgae'
 import OnFailureMessage from '../../feedback/FailureMeesage/FailureMeesage'
@@ -11,11 +10,6 @@ const SignIn = props => {
   const [ email, setEmail ] = useState('')
   const [ password, setPassword ] = useState('')
   let  [ toggle, setToggle ] = useState(true)
-
-  const [ isAuth, setIsAuth ] = useState(false)
-  const [ name, setName ] = useState("")
-  const [ picture, setPicture ] = useState("") 
-
 
   const  onSuccess = props.onSuccess
   const  onFailure = props.onFailure
@@ -36,14 +30,6 @@ const SignIn = props => {
     props.handleSignInCompany(email, password)
 
   }
-  const responseFacebook = response => {
-    let emailfb = response.email
-    let namefb = response.name
-    let picturefb = response.picture.data.url
-
-    // props.signInWithFacebook(emailfb, namefb, picturefb)
-  }
-  const componentClicked = () => console.log("clicked")
   const responseGoogle = response => {
     let emailgoogle = response.profileObj.email
     let namegoogle = response.profileObj.name
@@ -146,15 +132,6 @@ const SignIn = props => {
           }
       <h4>Login Via Social Account</h4>
       <ul>
-        <li>
-          <FacebookLogin
-              appId="908794306285469"
-              autoLoad={true}
-              fields="name,email,picture"
-              onClick={componentClicked}
-              callback={responseFacebook} 
-          />
-        </li>
         <li>
         <GoogleLogin
             clientId="783580502123-gjnqmvrlgheq85um1piigofdb0bm0baf.apps.googleusercontent.com"

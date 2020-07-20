@@ -10,7 +10,9 @@ const AnyCompanyInfo = (props) => {
       <h3>
         <a href="/" title="" className="overview-open">Overview</a>
       </h3>
-      <p>{overview}</p>
+      <p>{ 
+            overview === undefined ? null : overview
+          }</p>
     </div>
     <div className="user-profile-ov">
       <h3>
