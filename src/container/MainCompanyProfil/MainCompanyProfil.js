@@ -200,7 +200,7 @@ const MainCompanyProfil = ({companyDetails, userDetails }) => {
                                     <UpdateCompanyModal
                                         showModal={showModal}
                                         closeModal={closeModal}
-                                        companyId = { companyDetails._id}
+                                        companyId = { companyDetails.company_id}
                                         overview  = { companyInfo.overview}
                                         country ={ companyDetails.company_country}
                                         awards = { companyInfo.awards}

@@ -7,7 +7,7 @@ const UserSocialMediaLink = props => {
     const user_image = `http://localhost:8080/${picture}`
 
     const [userpic, setUserpic] = useState("") 
-    const [filename, setFilename] = useState("choose file")
+    const [filename, setFilename] = useState("")
     let [ uploadedFile, setUploadedFile ] = useState("")
 
     const onChange = event => {
@@ -47,13 +47,13 @@ const UserSocialMediaLink = props => {
                                }
                             </div>
                             <div className="col-lg-12">
-                                <div className="custom-file">
+                                <div className="custom-file" style={{marginBottom : "5px"}}>
                                     <label className="custom-file-label" htmlFor="customFile" onChange={onChange} >{filename}</label>
                                     <input type="file" id="customFile" onChange={onChange}/>
                                 </div>
                             </div>
                             <div className="col-lg-12">
-                                <button type="submit" className="btn btn-info">Change profil picture</button>
+                                <button type="submit" className="btn btn-info">Change profil</button>
                             </div>
                         </div>
                    </form>
@@ -92,7 +92,7 @@ const UserSocialMediaLink = props => {
 
     const company_image = `http://localhost:8080/${company_picture}`
     const [companypic, setCompanypic] = useState("") 
-    const [filenameComp, setFilenameComp] = useState("choose file")
+    const [filenameComp, setFilenameComp] = useState("")
     let [ uploadedFileComp, setUploadedFileComp ] = useState("")
 
     const onChangeComp = event => {
@@ -125,17 +125,25 @@ const UserSocialMediaLink = props => {
                         <div className="user-pro-img">
                             <div className="col-lg-12">
                                { 
-                                !uploadedFileComp ? <img src={company_image} alt="image"/> : <img src={uploadedFileComp} alt="image"/>
+                                !uploadedFileComp ? 
+                                    <img src={company_image} 
+                                                width="50%" 
+                                                height="20%" style={{ margin : 'auto', marginBottom : '8%'}}
+                                            /> : 
+                                    <img src={uploadedFileComp} 
+                                                width="50%" 
+                                                height="20%" style={{ margin : 'auto', marginBottom : '8%'}}
+                                    />
                                }
                             </div>
                             <div className="col-lg-12">
-                                <div className="custom-file">
+                                <div className="custom-file" style={{marginBottom : "5px"}}>
                                     <label className="custom-file-label" htmlFor="customFile" onChange={onChangeComp} >{filenameComp}</label>
                                     <input type="file" id="customFile" onChange={onChangeComp}/>
                                 </div>
                             </div>
                             <div className="col-lg-12">
-                                <button type="submit" className="btn btn-info">Change profil picture</button>
+                                <button type="submit" className="btn btn-info">Change profil</button>
                             </div>
                         </div>
                         </div>

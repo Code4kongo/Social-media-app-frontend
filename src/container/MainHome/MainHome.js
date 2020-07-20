@@ -1,5 +1,6 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import "./MainHome.css";
+import axios from 'axios'
 import UserProfiction from "../../components/UserProfiction/UserProfiction";
 import AddPost from "../../modals/AddPostModal/AddPostModal"
 import SinglePost from "../../components/SinglePost/SinglePost";
@@ -13,11 +14,20 @@ import LoadingSpinner from "../../feedback/LoadingSpinner/LoadingSpinner";
 
 const Main = ({userDetails, companyDetails}) => {
 
+  let email 
+  if(userDetails.email === ""){
+    email = companyDetails.company_email
+  }else {
+    email = userDetails.email
+  }
+  
+
   const  { topJobs, mostViewed, loadingTopJobs, loadingMostViewed } = useContext(JobContext)
   const { posts, loadingPost  } = useContext(PostContext)
   const postsLists = posts.reverse()
 
   const [showModal, setShowModal] = useState(false)
+  const [ userpic , setUserpic ] = useState(UserPic)
 
   const openModal = () => {
     setShowModal(true)
@@ -25,6 +35,23 @@ const Main = ({userDetails, companyDetails}) => {
   const closeModal = () => {
     setShowModal(false)
   }
+
+  useEffect(() => {
+    axios.get(`http://localhost:8080/posts/profil/${email}`) 
+          .then(res => {
+            if(res.data.user_picture !== ""){
+                  const userImage = res.data.picture
+                setUserpic(`http://localhost:8080/${userImage}`)
+              }
+            else if(res.data.company_picture !== ""){
+                  const companyImage = res.data.picture
+                  setUserpic(`http://localhost:8080/${companyImage}`)
+              }
+          })
+          .catch(error => {
+            console.log(error)
+          })
+}, [])
 
   return (
     <main className="main-section">
@@ -42,7 +69,7 @@ const Main = ({userDetails, companyDetails}) => {
               <div className="main-ws-sec">
                   <div className="post-topbar">
                             <div className="user-picy">
-                                <img src={UserPic} alt="" />
+                                <img src={userpic} alt="" />
                             </div>
                             <div style={{ textAlign : 'center'}}>
                               <h1> <em>What's on your mind </em></h1>

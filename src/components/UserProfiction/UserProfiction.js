@@ -53,7 +53,13 @@ const UserProfiction = ({userDetails, companyDetails}) => {
                 <div className="username-dt">
                     <div className="usr-pic">
                         {
-                           company_picture === "" ? <img src={ImageProfil} alt="myprofil"/> : <img src={company_profil} alt="myprofil"/>
+                           company_picture === "" ? 
+                                    <img src={ImageProfil} alt=""/> : 
+                                    <img src={company_profil} 
+                                            alt=""
+                                            width="70%" 
+                                            height="70%" style={{ margin : 'auto', marginBottom : '8%'}}
+                                    />
                         }
                     </div>
                 </div>

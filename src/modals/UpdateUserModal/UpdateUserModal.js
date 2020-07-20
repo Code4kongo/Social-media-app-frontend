@@ -1,6 +1,7 @@
 import React, {  useState } from "react";
 import Modal from "react-modal";
 import axios from 'axios'
+import DatePicker from 'react-date-picker';
 import "./UpdateUserModal.css";
 import OnSuccessMessage from '../../feedback/UpdateMessage/UpdateMessage'
 import OnFailureMessage from '../../feedback/FailureMeesage/FailureMeesage'
@@ -21,7 +22,7 @@ const UpdateUserModal = props => {
 
     const [ user_username, setUsername ] = useState(username)
     const [ user_country, setUserCountry ] = useState(country)
-    const [ user_age, setUserAge ] = useState(age)
+    const [ user_age, setUserAge ] = useState("")
     const [ user_name, setUserName ] = useState(name)
     const [ user_gender, setUserGender ] = useState(gender)
     const [ user_company, setUserCompany ] = useState(company)
@@ -99,7 +100,10 @@ const UpdateUserModal = props => {
                     <div className="form-row">
                         <div className="col-md-6">
                             <div className="md-form form-group">
-                                <input type="text" className="form-control" value={user_age} onChange={(event) => setUserAge(event.target.value)} placeholder="Age"/>
+                                <DatePicker
+                                    onChange={(date) => setUserAge(date)}
+                                    value={user_age}
+                                />
                             </div>
                         </div>
                         <div className="col-md-6">

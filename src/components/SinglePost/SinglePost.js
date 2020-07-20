@@ -26,16 +26,23 @@ const  SinglePost = props => {
     commentEmail = userDetails.email
   }
 
-  
+  console.log(email)
+
   const [ showComment, setShowComment ] = useState(false)
   const [likeAction, setLikeAction ] = useState(likes)
   const [ userpic , setUserpic ] = useState("")
 
   useEffect(() => {
-    axios.get(`http://localhost:8080/user/profil-pic?email=${email}`) 
+    axios.get(`http://localhost:8080/posts/profil/${email}`) 
           .then(res => {
-            const userImage = res.data.users_pictures[0].picture // to fix
-            setUserpic(`http://localhost:8080/${userImage}`)
+            if(res.data.user_picture !== ""){
+                  const userImage = res.data.picture
+                setUserpic(`http://localhost:8080/${userImage}`)
+              }
+            else if(res.data.company_picture !== ""){
+                  const companyImage = res.data.picture
+                  setUserpic(`http://localhost:8080/${companyImage}`)
+              }
           })
           .catch(error => {
             console.log(error)

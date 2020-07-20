@@ -1,5 +1,6 @@
 import React, {  useState } from "react";
 import Modal from "react-modal";
+import DatePicker from 'react-date-picker';
 import axios from 'axios'
 import "./UpdateCompany.css"
 import OnSuccessMessage from '../../feedback/UpdateMessage/UpdateMessage'
@@ -19,7 +20,7 @@ const UpdateUserModal = (props) => {
 
     const [ company_name, setCompanyName ] = useState(company) 
     const [ company_country, setCompanyCountry ] = useState(country) 
-    const [ company_createdAt, setCompanyCreated ] = useState(createdAt) 
+    const [ company_createdAt, setCompanyCreated ] = useState("") 
     const [ company_email, setCompanyEmail ] = useState(email) 
     const [ company_phone, setCompanyPhone ] = useState(phone) 
     const [ company_address, setCompanyAddress ] = useState(address) 
@@ -92,7 +93,10 @@ const UpdateUserModal = (props) => {
                     <div className="form-row">
                         <div className="col-md-6">
                             <div className="md-form form-group">
-                                <input type="text" className="form-control" value={company_createdAt} onChange={(event) => setCompanyCreated(event.target.value)} placeholder="Created At"/>
+                                    <DatePicker
+                                        onChange={(date) => setCompanyCreated(date)}
+                                        value={company_createdAt}
+                                    />
                             </div>
                         </div>
                     </div>
