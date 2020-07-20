@@ -7,8 +7,8 @@ import axios from 'axios'
 
 Modal.setAppElement("#root");
 
-const EmailModal = (props) => {
-  const { showModal, closeModal, authorEmail, applicantEmail } = props;
+const EmailModal = props => {
+  const { showModal, closeModal, authorEmail, applicantEmail, jobId , jobViews, jobApplicants} = props;
 
   const [title, setTitile] = useState("JOB APPLICATION");
   const [email, setEmail] = useState(applicantEmail);
@@ -22,6 +22,10 @@ const EmailModal = (props) => {
   );
   const [ onSuccess, setOnSuccess] = useState(false)
   const [ onFailure, setOnFailure] = useState(false)
+  const [ views , setViews ] = useState(jobViews)
+  const [ applicants , setApplicants ] = useState(jobApplicants)
+
+  console.log(views, applicants, jobId, authorEmail, applicantEmail)
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -32,10 +36,25 @@ const EmailModal = (props) => {
       content 
     }
 
+    setViews(() => views + 1)
+    setApplicants(() => views + 1)
+
+    const updatedJob = {
+      views, applicants
+    }
+
     axios.post('http://localhost:8080/apply-job', emailObject)
           .then(res => {
             setOnSuccess(true)
             setTimeout(() => setOnSuccess(false), 15000)
+          })
+          .then(res => {
+              axios.patch(`http://localhost:8080/jobs/${jobId}`, updatedJob)
+              .then(res => {
+                  setOnSuccess(true)
+                  setTimeout(() => setOnSuccess(false), 15000)
+                const message = res.data.job
+                console.log(message)})
           })
           .catch(error => {
             console.log(error)
@@ -43,7 +62,6 @@ const EmailModal = (props) => {
             setTimeout(() => setOnFailure(false), 15000)
           })
   };
-
   const style = {
     color: "#fff",
     backgroundColor: "#17a2b8",

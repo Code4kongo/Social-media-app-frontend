@@ -6,22 +6,8 @@ import IconEmai from "../../images/icon8.png";
 import IconCountry from "../../images/icon9.png";
 import IconLike from "../../images/liked-img.png";
 
-
-
 const SingleJob = (props) => {
-  let {
-    id,
-    author,
-    content,
-    country,
-    date,
-    email,
-    jobType,
-    salary,
-    socialmedialink,
-    title,
-    views,
-  } = props;
+  let { id, author, content, country, date, email, jobType, salary, socialmedialink, title } = props;
 
   return (
     <div>
@@ -77,7 +63,7 @@ const SingleJob = (props) => {
             <p>
               {content}
               <Link to={`/apply-job/${id}`} style={{color : 'black'}}>
-                ...read more
+                <span> ...read more  </span>
               </Link>
             </p>
             <ul className="skill-tags">
@@ -96,21 +82,11 @@ const SingleJob = (props) => {
                 <img src={IconLike} alt="liked" />
               </li>
               <li>
-                <Link
-                  to={{
-                    pathname: `/apply-job/${id}`,
-                    state: { fromDashboard: true },
-                  }}
-                  className="com"
-                >
+                <Link to={`/apply-job/${id}`}  className="com">
                   <i className="fas fa-eye"></i> view job
                 </Link>
               </li>
             </ul>
-            <Link to={"/jobs"}>
-              <i className="fas fa-eye"></i>
-              {views}
-            </Link>
           </div>
         </div>
       </div>
@@ -120,3 +96,6 @@ const SingleJob = (props) => {
 };
 
 export default SingleJob;
+
+
+  

@@ -12,7 +12,7 @@ import LoadingSpinner from '../../feedback/LoadingSpinner/LoadingSpinner'
 const  MainJobs = props => {
 
     const { email } = props.userDetails
-    const { company_email, company_about, company_address, company_country, company_name, company_phone, total_number_employee} = props.companyDetails
+    const { company_email, company_about, company_address, company_country, company_name, company_phone, total_number_employee, company_picture} = props.companyDetails
     
     let  postingAuth = ""
   
@@ -60,7 +60,7 @@ const  MainJobs = props => {
                                     
                                 { postingAuth !== "" ? <div className="post-topbar">
                                     <div className="user-picy">
-                                        <img src={UserPic} alt="" />
+                                        <img src={company_picture} alt="" />
                                     </div>
                                     <div className="post-st">
                                         <ul>

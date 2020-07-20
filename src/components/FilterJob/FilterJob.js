@@ -14,7 +14,6 @@ const FilterJob = props => {
 	const [ title, setTitle ] = useState("") 
 	const [ country, setCountry ] = useState("") 
 
-	console.log(country)
 
 	return ( 
 		<div className="col-lg-3">

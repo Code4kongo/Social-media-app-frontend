@@ -74,7 +74,11 @@ const  SinglePost = props => {
           <div className="post-bar no-margin">
             <div className="post_topbar">
               <div className="usy-dt">
-                <img src={userpic} alt="" width="10%" height="5%"/>
+              { 
+                userpic === "" ? 
+                      <img src={IconUs} alt="" width="10%" height="5%"/> : 
+                      <img src={userpic} alt="" width="10%" height="5%"/>
+              }
                 <div className="usy-name">
                   <h3>{ author }</h3>
                   <span>

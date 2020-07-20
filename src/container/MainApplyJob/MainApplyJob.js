@@ -46,44 +46,13 @@ const MainApplyJob = (props) => {
   useEffect(() => {
     axios.get(`http://localhost:8080/jobs/${jobId}`).then((res) => {
       const fetchedJob = res.data.job;
-      const {
-        _id,
-        title,
-        applicants,
-        jobType,
-        salary,
-        views,
-        country,
-        author,
-        email,
-        phone,
-        content,
-        date,
-        address,
-        socialmedialink,
-        overview,
-        total_employee,
+      const { _id, title, applicants, jobType, salary, views, country, author, email,
+              phone, content, date, address, socialmedialink, overview, total_employee,
       } = fetchedJob;
+
       setJob((job) => {
-        return {
-          ...job,
-          _id,
-          title,
-          applicants,
-          jobType,
-          salary,
-          views,
-          country,
-          author,
-          email,
-          phone,
-          content,
-          date,
-          address,
-          socialmedialink,
-          overview,
-          total_employee,
-        };
+        return { ...job, _id, title, applicants, jobType, salary, views, country, author, email, phone, content, date, address,
+                  socialmedialink, overview,total_employee };
       });
       setLoading(false)
     });
@@ -140,13 +109,15 @@ const MainApplyJob = (props) => {
                       </ul>
                       <ul className="bk-links">
                         <li>
-                          {" "}
                           <i className="la la-envelope" onClick={openModal}></i>
                           <EmailModal
-                            authorEmail={job.email}
-                            applicantEmail={applicantEmail}
-                            showModal={showModal}
-                            closeModal={closeModal}
+                                jobId = { job._id }
+                                jobViews = { job.views }
+                                jobApplicants = { job.applicants }
+                                authorEmail={job.email}
+                                applicantEmail={applicantEmail}
+                                showModal={showModal}
+                                closeModal={closeModal}
                           />
                         </li>
                       </ul>
@@ -192,7 +163,8 @@ const MainApplyJob = (props) => {
                               email={job.email}
                               address={job.address}
                               phone={job.phone}
-                            />}
+                            />
+              }
             </div>
           </div>
         </div>

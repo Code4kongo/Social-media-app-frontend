@@ -92,14 +92,10 @@ const JobContextProvider = (props) => {
         const value = event.target.value
         
         if(value === 'recent'){
-            console.log(value === 'recent')
             const sortedRecentJobs = jobs
-            console.log(jobs)
             setJobs(sortedRecentJobs)
         } else if(value === 'old'){
-            console.log(value === 'old')
             let sortedOldJobs = (jobs) => [...jobs].map(jobs.pop, jobs);
-            console.log(sortedOldJobs)
             setJobs(sortedOldJobs)
         }
 
