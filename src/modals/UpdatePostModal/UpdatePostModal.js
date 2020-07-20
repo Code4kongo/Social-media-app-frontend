@@ -18,7 +18,8 @@ const  AddPostModal = (props) => {
         author,
         email,
         content,
-        postImage
+        postImage,
+        handleUpdate
      } = props
 
     const [post_title, setTitile ] = useState(title) 
@@ -40,50 +41,6 @@ const  AddPostModal = (props) => {
     const onChange = event => {
         setFilename(event.target.files[0].name)
         setPostImage(event.target.files[0])
-    }
-    const handleUpdate = async (event) => {
-        event.preventDefault()
-
-        const formData = new FormData()
-        formData.append('postImage', post_postImage)
-        formData.append('title', post_title)
-        formData.append('country', post_country)
-        formData.append('author', author)
-        formData.append('content', post_content)
-        formData.append('email', email)
-
-        try {
-            
-            const result = await axios.patch(`http://localhost:8080/posts/${postId}`, formData, {
-                            headers : {
-                                'Accept': 'application/json',
-                                'Content-Type': 'multipart/form-data',
-                            },
-                            onUploadProgress: (progressEvent) => {
-                                let percentCompleted = Math.round((progressEvent.loaded * 100) / progressEvent.total)
-                                setUploadPourcentage(percentCompleted)
-                                
-                                setTimeout(() => setUploadPourcentage(0),50000)}  
-                        })
-                    setOnSuccess(true)
-                    setTimeout(() => setOnSuccess(false), 15000)
-            fetch(`http://localhost:8080/${result.data.createdPost.post_postImage}`).then(res => {
-            console.log(res)
-        })
-
-            const newImageUrl = await axios.get(`http://localhost:8080/${result.data.createdPost.postImage}`)
-            const ImageFetched = result.data.createdPost.postImage
-            
-            let newData = newImageUrl.data
-            console.log(newData)
-
-            setUploadedFile({newData, ImageFetched })
-
-        } catch(error){
-            console.log(error)
-            setOnFailure(true)
-            setTimeout(() => setOnFailure(false), 15000)
-        }   
     }
     const style = {
         color: "#fff",
