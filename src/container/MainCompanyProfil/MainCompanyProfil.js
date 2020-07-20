@@ -127,6 +127,7 @@ const MainCompanyProfil = ({companyDetails, userDetails }) => {
                                         company_email = { companyDetails.company_email }
                                         company_phone = { companyDetails.company_phone }
                                         company_address = { companyDetails.company_address }
+                                        company_id = { companyDetails.company_id}
                                 />
                                 <div className="col-lg-6">
                         <div className="main-ws-sec">

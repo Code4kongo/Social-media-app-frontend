@@ -67,50 +67,52 @@ useEffect(() => {
   }, [])
 
   const postsList = posts.reverse()
-  // const handleUpdate = async (event) => {
-  //   event.preventDefault()
 
-  //   const formData = new FormData()
-  //   formData.append('postImage', post_postImage)
-  //   formData.append('title', post_title)
-  //   formData.append('country', post_country)
-  //   formData.append('author', author)
-  //   formData.append('content', post_content)
-  //   formData.append('email', email)
+  const handleUpdate = async (postid) => {
+    // event.preventDefault()
+    console.log('clicked', postid)
 
-  //   try {
+    // const formData = new FormData()
+    // formData.append('postImage', post_postImage)
+    // formData.append('title', post_title)
+    // formData.append('country', post_country)
+    // formData.append('author', author)
+    // formData.append('content', post_content)
+    // formData.append('email', email)
+
+    // try {
         
-  //       const result = await axios.patch(`http://localhost:8080/posts/${postId}`, formData, {
-  //                       headers : {
-  //                           'Accept': 'application/json',
-  //                           'Content-Type': 'multipart/form-data',
-  //                       },
-  //                       onUploadProgress: (progressEvent) => {
-  //                           let percentCompleted = Math.round((progressEvent.loaded * 100) / progressEvent.total)
-  //                           setUploadPourcentage(percentCompleted)
+    //     const result = await axios.patch(`http://localhost:8080/posts/${postId}`, formData, {
+    //                     headers : {
+    //                         'Accept': 'application/json',
+    //                         'Content-Type': 'multipart/form-data',
+    //                     },
+    //                     onUploadProgress: (progressEvent) => {
+    //                         let percentCompleted = Math.round((progressEvent.loaded * 100) / progressEvent.total)
+    //                         setUploadPourcentage(percentCompleted)
                             
-  //                           setTimeout(() => setUploadPourcentage(0),50000)}  
-  //                   })
-  //               setOnSuccess(true)
-  //               setTimeout(() => setOnSuccess(false), 15000)
-  //       fetch(`http://localhost:8080/${result.data.createdPost.post_postImage}`).then(res => {
-  //       console.log(res)
-  //   })
+    //                         setTimeout(() => setUploadPourcentage(0),50000)}  
+    //                 })
+    //             setOnSuccess(true)
+    //             setTimeout(() => setOnSuccess(false), 15000)
+    //     fetch(`http://localhost:8080/${result.data.createdPost.post_postImage}`).then(res => {
+    //     console.log(res)
+    // })
 
-  //       const newImageUrl = await axios.get(`http://localhost:8080/${result.data.createdPost.postImage}`)
-  //       const ImageFetched = result.data.createdPost.postImage
+    //     const newImageUrl = await axios.get(`http://localhost:8080/${result.data.createdPost.postImage}`)
+    //     const ImageFetched = result.data.createdPost.postImage
         
-  //       let newData = newImageUrl.data
-  //       console.log(newData)
+    //     let newData = newImageUrl.data
+    //     console.log(newData)
 
-  //       setUploadedFile({newData, ImageFetched })
+    //     setUploadedFile({newData, ImageFetched })
 
-  //   } catch(error){
-  //       console.log(error)
-  //       setOnFailure(true)
-  //       setTimeout(() => setOnFailure(false), 15000)
-  //   }   
-  // } 
+    // } catch(error){
+    //     console.log(error)
+    //     setOnFailure(true)
+    //     setTimeout(() => setOnFailure(false), 15000)
+    // }   
+  } 
   const handleDelete = (postId, title) => {
     confirm({ description: `This will permanently delete ${title} post.` })
       .then(() => {
@@ -146,7 +148,13 @@ useEffect(() => {
                         </div>
                       </div>
                     <div className="ed-opts">
-                        <button className="btn btn-info" style={{borderRadius : '100%'}} onClick={openModal}><i className="fa fa-pencil fa-fw"></i> </button>
+                        <button className="btn btn-info" 
+                                style={{borderRadius : '100%'}} 
+                                onClick={() => { 
+                                  openModal()
+                                  handleUpdate(post._id)}
+                                }>
+                          <i className="fa fa-pencil fa-fw"></i> </button>
                         <button className="btn btn-danger" style={{borderRadius : '100%'}} onClick={() => handleDelete(post._id, post.title)}><i className="fa fa-trash-o fa-lg"></i></button>
                         <UpdatePostModal  
                             showModal={showModal} 
