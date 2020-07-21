@@ -10,7 +10,7 @@ import axios from 'axios'
 
 const  SinglePost = props => {
 
-  let { _id, title, country, author, email, content, date, likes, userDetails, companyDetails, postImage  } = props
+  let { _id, title, country, author, email, content, date, likes, userDetails, companyDetails, postImage } = props
 
   const image = `http://localhost:8080/${postImage}`
   const postId = _id
@@ -26,7 +26,6 @@ const  SinglePost = props => {
     commentEmail = userDetails.email
   }
 
-  console.log(email)
 
   const [ showComment, setShowComment ] = useState(false)
   const [likeAction, setLikeAction ] = useState(likes)
@@ -35,13 +34,13 @@ const  SinglePost = props => {
   useEffect(() => {
     axios.get(`http://localhost:8080/posts/profil/${email}`) 
           .then(res => {
-            if(res.data.user_picture !== ""){
-                  const userImage = res.data.picture
-                setUserpic(`http://localhost:8080/${userImage}`)
+              if(res.data.user_picture !== "" && res.data.user_picture !== undefined){
+                    const userImage = res.data.user_picture
+                    setUserpic(`http://localhost:8080/${userImage}`)
               }
-            else if(res.data.company_picture !== ""){
-                  const companyImage = res.data.picture
-                  setUserpic(`http://localhost:8080/${companyImage}`)
+              if(res.data.company_picture !== "" && res.data.company_picture !== undefined){
+                    const companyImage = res.data.company_picture
+                    setUserpic(`http://localhost:8080/${companyImage}`)
               }
           })
           .catch(error => {

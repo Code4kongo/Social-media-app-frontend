@@ -8,12 +8,11 @@ const ProtectedRoute = ({
   companyDetails,
   ...rest
 }) => {
-  var variable = true;
   return (
     <Route
       {...rest}
       render={(props) => {
-        if (variable) {
+        if (isAuth) {
           return (
             <Component
               {...rest}
