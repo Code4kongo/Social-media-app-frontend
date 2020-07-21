@@ -1,9 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import "./WebsiteInfo.css";
 import AboutImage from "../../images/CPN1.png";
-
+import ContactModal from "../../modals/ContactModal/ContactModal";
+import { Button } from "@material-ui/core";
 //import WebsiteInfoContainer from "../../container/WebSiteInfoContainer/WebSiteInfoContainer";
 export default function WebsiteInfo() {
+  const [showModal, setShowModal] = useState(false);
+
+  const openModal = () => {
+    setShowModal(true);
+  };
+  const closeModal = () => {
+    setShowModal(false);
+  };
+
   return (
     <div>
       <section className="Company-overview">
@@ -73,7 +83,16 @@ export default function WebsiteInfo() {
             <div className="col-md-4 col-sm-12">
               <div className="blog">
                 <h2>Contact 243Netowork via C2</h2>
-                <a href="/">Write to us </a>
+                <button className="btn btn-info" onClick={openModal}>
+                    Write to us  <i className="la la-envelope"></i>
+                </button>
+
+                <ContactModal
+                  authorEmail={"diurkabwit@hotmail.com"}
+                  applicantEmail={"kashmirger@gmail.com"}
+                  showModal={showModal}
+                  closeModal={closeModal}
+                />
               </div>
             </div>
           </div>
