@@ -10,14 +10,16 @@ Modal.setAppElement("#root");
 const ContactModal = (props) => {
   const { showModal, closeModal, authorEmail, applicantEmail } = props;
 
-  const [name, setName] = useState(" ");
+  const [name, setName] = useState("");
   const [email, setEmail] = useState(applicantEmail);
-  const [subject, setSubject] = useState(" ");
-  const [content, setContent] = useState(" ");
+  const [subject, setSubject] = useState("");
+  const [content, setContent] = useState("");
+
   const [onSuccess, setOnSuccess] = useState(false);
   const [onFailure, setOnFailure] = useState(false);
 
-  const handleSubmit = (event) => {
+  const handleSubmit = event => {
+    
     event.preventDefault();
     const emailObject = {
       senderemail: email,
@@ -42,15 +44,7 @@ const ContactModal = (props) => {
     >
       <div className="modal-content">
         <div className="modal-header text-center">
-          <h4 className="modal-title w-100 font-weight-bold">Write to us</h4>
-          <button
-            type="button"
-            className="close"
-            data-dismiss="modal"
-            aria-label="Close"
-          >
-            <span aria-hidden="true">&times;</span>
-          </button>
+          <h3>Write to us</h3>
         </div>
         <div className="modal-body mx-3">
           <div class="input-group mb-3">
