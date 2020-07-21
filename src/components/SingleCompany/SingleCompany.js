@@ -10,13 +10,16 @@ const  SingleCompany = ({companiesDetails}) => {
             <div className="row">
                {
                    companiesDetails.map(companyDetails => {
-                       const { _id, company, createdAt, phone, email  } = companyDetails
+                       const { _id, company, createdAt, phone, email, picture  } = companyDetails
+                       const company_profile = `http://localhost:8080/${picture}`
                        const company_id = _id
                        return (
                                 <div className="col-lg-3 col-md-4 col-sm-6" key={_id}>
                                         <div className="company_profile_info">
                                             <div className="company-up-info">
-                                                <img src={Icon} alt=""/>
+                                            {
+                                                company_profile === "" || company_profile === undefined ? <img src={Icon} alt=""/> :  <img src={company_profile} alt=""/>
+                                            }
                                                 <h3>{company}</h3>
                                                     <h4>Establish { createdAt }</h4>
                                                     <h4>Phone { phone }</h4>

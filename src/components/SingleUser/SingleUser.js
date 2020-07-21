@@ -9,13 +9,17 @@ const SingleUser = ({ usersDetails }) => {
         <div className="row">
            {
                usersDetails.map(usersDetail => {
-                   const {  _id, name, company, email, phone } = usersDetail
+
+                   const {  _id, name, company, email, phone, picture } = usersDetail
+                   const user_profile = `http://localhost:8080/${picture}`
                    const user_id = _id
                    return (
                             <div className="col-lg-3 col-md-4 col-sm-6" key={_id}>
                                     <div className="company_profile_info">
                                         <div className="company-up-info">
-                                            <img src={Icon} alt=""/>
+                                            {
+                                                user_profile === "" || user_profile === undefined ? <img src={Icon} alt=""/> :  <img src={user_profile} alt=""/>
+                                            }
                                             <h3>{name}</h3>
                                                 <h4>Company { company }</h4>
                                                 <h4>Phone { phone }</h4>

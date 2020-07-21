@@ -11,7 +11,8 @@ const MainCompaniesAndJobs = (props) => {
             name:"" ,
             company:"" ,
             email: "",
-            phone: ""
+            phone: "",
+            picture : ""
         }
     ])
     const [ loading, setLoading ] = useState(true)

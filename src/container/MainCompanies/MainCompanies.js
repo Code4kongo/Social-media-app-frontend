@@ -11,7 +11,8 @@ const MainCompaniesAndJobs = (props) => {
             company : "",
             createdAt : "",
             phone : "",
-            email : ""
+            email : "",
+            picture : ""
         }
     ])
     const [ loading, setLoading ] = useState(false)
@@ -21,7 +22,7 @@ const MainCompaniesAndJobs = (props) => {
             .then(res => {
                 const companiesList = res.data.company
                 setCompaniesDetails(companiesList)
-                setLoading(true)
+                setLoading(false)
             })
     }, [])
 
@@ -29,7 +30,7 @@ const MainCompaniesAndJobs = (props) => {
     return ( 
         <section className="companies-info">
             <div className="container">
-                { !loading ? <LoadingSpinner /> : <SingleCompany companiesDetails={companiesDetails}/>}
+                { loading ? <LoadingSpinner /> : <SingleCompany companiesDetails={companiesDetails}/>}
             </div>
         </section>
      );
