@@ -134,7 +134,7 @@ useEffect(() => {
     return (
       <div>
         {
-          postsList.map((post) => {
+          postsList.map( post => {
             return (
               <div className="posts-section" key={post._id}>
                 <div className="posty">
@@ -167,7 +167,9 @@ useEffect(() => {
                             email={post.email}
                             content={post.content}
                             postImage={post.postImage} 
-                            // handleUpdate={handleUpdate}
+                            hello="hello"
+                            handleUpdate={handleUpdate}
+
                             />
                     </div>
                     </div>
@@ -197,11 +199,11 @@ useEffect(() => {
                                       />
                         }
                       <ul className="skill-tags">
-                        <li><a href="/" > HTML </a></li>
-                        <li><a href="/" > PHP </a></li>
-                        <li><a href="/" > CSS </a></li>
-                        <li><a href="/" > Javascript </a></li>
-                        <li><a href="/" > Wordpress </a></li>
+                        <li><a href="/my-profile" > HTML </a></li>
+                        <li><a href="/my-profile" > PHP </a></li>
+                        <li><a href="/my-profile" > CSS </a></li>
+                        <li><a href="/my-profile" > Javascript </a></li>
+                        <li><a href="/my-profile" > Wordpress </a></li>
                       </ul>
                     </div>
                     <div className="job-status-bar">

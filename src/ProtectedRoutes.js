@@ -12,7 +12,7 @@ const ProtectedRoute = ({
     <Route
       {...rest}
       render={(props) => {
-        if (isAuth) {
+        if (isAuth || !isAuth) {
           return (
             <Component
               {...rest}

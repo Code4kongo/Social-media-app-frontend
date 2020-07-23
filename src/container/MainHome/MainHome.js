@@ -3,6 +3,7 @@ import "./MainHome.css";
 import axios from 'axios'
 import UserProfiction from "../../components/UserProfiction/UserProfiction";
 import AddPost from "../../modals/AddPostModal/AddPostModal"
+import UsersAndCompanies from '../../components/UsersTopProfil/UsersTopProfil'
 import SinglePost from "../../components/SinglePost/SinglePost";
 import TopJobs from "../../components/TopJobs/TopJobs";
 import MostViewed from "../../components/MostViewd/MostView";
@@ -36,10 +37,14 @@ const Main = ({userDetails, companyDetails}) => {
     setShowModal(false)
   }
 
-  useEffect(() => {
-    axios.get(`http://localhost:8080/posts/profil/${email}`) 
-          .then(res => {
-            if(res.data.user_picture !== "" && res.data.user_picture !== undefined){
+  useEffect( () => {
+
+    try {
+
+      async function fetchMyPosts(){
+        const res = await axios.get(`http://localhost:8080/posts/profil/${email}`) 
+
+        if(res.data.user_picture !== "" && res.data.user_picture !== undefined){
               const userImage = res.data.user_picture
               setUserpic(`http://localhost:8080/${userImage}`)
         }
@@ -47,10 +52,13 @@ const Main = ({userDetails, companyDetails}) => {
               const companyImage = res.data.company_picture
               setUserpic(`http://localhost:8080/${companyImage}`)
         }
-          })
-          .catch(error => {
-            console.log(error)
-          })
+      }
+      fetchMyPosts()
+
+
+    }catch(error){
+          console.log(error)
+    }
 }, [])
 
   return (
@@ -90,6 +98,8 @@ const Main = ({userDetails, companyDetails}) => {
                                     userDetails={userDetails}
                                     companyDetails={companyDetails}
                                 />
+                <UsersAndCompanies />
+                 
                 {
                  !loadingPost ? <LoadingSpinner/> :  postsLists.map(post => {
                     let {  _id, title, country, author, email, content, date, likes, comments, postImage } = post

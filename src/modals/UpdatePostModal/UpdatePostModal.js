@@ -1,7 +1,6 @@
 import React, {  useState } from 'react'
 import './UpdatePostModal.css'
 import Modal from 'react-modal'
-import axios from 'axios'
 import UploadBar from '../../components/FeedBack/UploadBar/UploadBar'
 import OnSuccessMessage from '../../feedback/UpdateMessage/UpdateMessage'
 import OnFailureMessage from '../../feedback/FailureMeesage/FailureMeesage'
@@ -12,28 +11,22 @@ Modal.setAppElement('#root')
 const  AddPostModal = (props) => {
 
     const {
-        postId,
-        title,
-        country,
-        author,
-        email,
-        content,
-        postImage,
         handleUpdate
      } = props
 
-    const [post_title, setTitile ] = useState(title) 
-    const [post_country, setCountry ] = useState(country) 
-   
-    const [post_content, setContent ] = useState(content)
 
-    const [post_postImage, setPostImage] = useState(postImage) 
+    const [post_title, setTitile ] = useState("") 
+    const [post_country, setCountry ] = useState("") 
+   
+    const [post_content, setContent ] = useState("")
+
+    const [post_postImage, setPostImage] = useState("") 
     const [filename, setFilename] = useState("choose file")
     const [uploadedFile, setUploadedFile ] = useState({})
     const [uploadPourcentage, setUploadPourcentage ] = useState(0)
 
-    const [ onSuccess, setOnSuccess] = useState(false)
-    const [ onFailure, setOnFailure] = useState(false)
+    const [ onSuccess, setOnSuccess ] = useState(false)
+    const [ onFailure, setOnFailure ] = useState(false)
     
 
     const { showModal, closeModal } = props
@@ -47,12 +40,17 @@ const  AddPostModal = (props) => {
         backgroundColor: "#17a2b8",
         borderColor: "#17a2b8"
     }
+    const handleSubmit = event => {
+        event.preventDefault()
+        console.log(post_postImage, post_title, post_country, post_content)
+        handleUpdate(post_postImage, post_title, post_country, post_content)
+    }
     return (
       <Modal isOpen={showModal} onRequestClose={closeModal} className="modal-wrapper">
         <div className="post-project">
             <h3>Edit a Post </h3>
             <div className="post-project-fields">
-                <form onSubmit={handleUpdate}>
+                <form onSubmit={handleSubmit}>
                     <div className="row">
                         <div className="col-lg-12">
                             <div className="custom-file" style={{marginBottom : "20px"}}>
@@ -85,14 +83,12 @@ const  AddPostModal = (props) => {
                                 <li><button style={style} type="submit" value="post">Post</button></li>
                                 {
                                     onSuccess ?  <li><button className= "btn btn-primary danger" onClick={closeModal}>Close</button></li> : 
-                                                 <li><button className= "btn btn-primary danger" onClick={closeModal}>Cancel</button></li>
+                                                <li><button className= "btn btn-primary danger" onClick={closeModal}>Cancel</button></li>
                                 }
                             </ul>
                         </div>
                     </div>
                 </form>
-               
-                
             </div>
         </div>
     </Modal>

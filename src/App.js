@@ -14,6 +14,7 @@ import AnyCompanyProfilPage from "./pages/AnyCompanyProfilPage";
 import ErrorPage from "./pages/ErrorPage";
 import JobsPage from "./pages/JobsPage";
 import PrivacyPolicyPage from "./pages/PrivacyPolicyPage";
+import MessagePage from "./pages/MessagePage";
 import SignInPage from "./container/SignInContainer/SignInContainer";
 import UserProfilPage from "./pages/UserProfilPage";
 import UsersPage from "./pages/UsersPage";
@@ -232,6 +233,9 @@ const  App = () => {
           <ProtectedRoute exact path="/about" isAuth = {isAuth}  userDetails = {userDetails} companyDetails={companyDetails}  component={AboutPage} />
           <ProtectedRoute exact path="/privacy-policy" isAuth = {isAuth} userDetails = {userDetails} companyDetails={companyDetails}  component={PrivacyPolicyPage} />
           <ProtectedRoute exact path="/community-guide-line" isAuth = {isAuth} userDetails = {userDetails} companyDetails={companyDetails}  component={CommunityGuideLinePage}/>
+          {
+            //<ProtectedRoute exact path="/messages" isAuth = {isAuth} userDetails = {userDetails} companyDetails={companyDetails}  component={MessagePage}/>
+          }
           <Route exact path='/unauthorized' component={Unauthorized} />
 
         </JobContextProvider>  

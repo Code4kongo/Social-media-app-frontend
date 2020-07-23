@@ -8,7 +8,7 @@ import axios from 'axios'
 Modal.setAppElement("#root");
 
 const EmailModal = props => {
-  const { showModal, closeModal, authorEmail, applicantEmail, jobId , jobViews, jobApplicants} = props;
+  const { showModal, closeModal, authorEmail, applicantEmail, jobId , jobApplicants} = props;
 
   const [title, setTitile] = useState("JOB APPLICATION");
   const [email, setEmail] = useState(applicantEmail);
@@ -22,12 +22,12 @@ const EmailModal = props => {
   );
   const [ onSuccess, setOnSuccess] = useState(false)
   const [ onFailure, setOnFailure] = useState(false)
-  const [ views , setViews ] = useState(jobViews)
-  const [ applicants , setApplicants ] = useState(jobApplicants)
+  
+  console.log(jobApplicants)
 
-  console.log(views, applicants, jobId, authorEmail, applicantEmail)
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
+
     event.preventDefault();
     const emailObject = {
       senderemail : email,
@@ -36,31 +36,21 @@ const EmailModal = props => {
       content 
     }
 
-    setViews(() => views + 1)
-    setApplicants(() => views + 1)
+    const applicants = jobApplicants + 1
+    
+    const updatedJob = { applicants }
 
-    const updatedJob = {
-      views, applicants
-    }
-
-    axios.post('http://localhost:8080/apply-job', emailObject)
-          .then(res => {
-            setOnSuccess(true)
-            setTimeout(() => setOnSuccess(false), 15000)
-          })
-          .then(res => {
-              axios.patch(`http://localhost:8080/jobs/${jobId}`, updatedJob)
-              .then(res => {
-                  setOnSuccess(true)
-                  setTimeout(() => setOnSuccess(false), 15000)
-                const message = res.data.job
-                console.log(message)})
-          })
-          .catch(error => {
-            console.log(error)
-            setOnFailure(true)
-            setTimeout(() => setOnFailure(false), 15000)
-          })
+   try {
+          await axios.post('http://localhost:8080/apply-job', emailObject)
+          await axios.patch(`http://localhost:8080/jobs/${jobId}`, updatedJob)
+          setOnSuccess(true)
+          setTimeout(() => setOnSuccess(false), 15000)
+    
+   }catch(error) {
+        console.log(error)
+        setOnFailure(true)
+        setTimeout(() => setOnFailure(false), 15000)
+   }
   };
   const style = {
     color: "#fff",

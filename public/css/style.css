@@ -696,7 +696,7 @@ nav > ul > li > a:hover {
 .search_form form button {
   color: #f2f2f2;
   font-size: 14px;
-  background-color: #e44d3a;
+  background-color: #17a2b8;
   padding: 0 10px;
   height: 100%;
   position: absolute;
@@ -874,7 +874,7 @@ main {
   font-size: 20px;
 }
 .user-fw-status li a {
-  color: #e44d3a;
+  color: #17a2b8;
   font-size: 14px;
   font-weight: 600;
 }
@@ -951,7 +951,7 @@ main {
   cursor: pointer;
 }
 .suggestion-usd > span i:hover {
-  background-color: #e44d3a;
+  background-color: #17a2b8;
   color: #fff;
   border-radius: 3px;
 }
@@ -962,12 +962,12 @@ main {
   padding-top: 10px;
 }
 .view-more > a {
-  color: #e44d3a;
+  color: #17a2b8;
   font-size: 14px;
   font-weight: 700;
 }
 .view-more > a:hover {
-  color: #e44d3a;
+  color: #17a2b8;
 }
 
 /* ============== tags-sec ============= */

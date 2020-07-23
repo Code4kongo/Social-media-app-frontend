@@ -16,13 +16,11 @@ const MainApplyJob = (props) => {
   const { company_email } = props.companyDetails
   let  applicantEmail = ""
 
-  if(email === ""){
-        applicantEmail = company_email
-  }else {
-        applicantEmail = email
-  }
+  if(email === ""){ applicantEmail = company_email}
+  else { applicantEmail = email }
 
   let jobId = props.jobId;
+
   const [job, setJob] = useState({
     _id: "",
     title: "",
@@ -42,13 +40,16 @@ const MainApplyJob = (props) => {
     total_employee: 0,
   });
   const [ loading, setLoading ] = useState(true)
+  const [ showModal, setShowModal] = useState(false);
+
 
   useEffect(() => {
     axios.get(`http://localhost:8080/jobs/${jobId}`).then((res) => {
-      const fetchedJob = res.data.job;
-      const { _id, title, applicants, jobType, salary, views, country, author, email,
-              phone, content, date, address, socialmedialink, overview, total_employee,
-      } = fetchedJob;
+
+          const fetchedJob = res.data.job;
+          const { _id, title, applicants, jobType, salary, views, country, author, email,
+                  phone, content, date, address, socialmedialink, overview, total_employee,
+          } = fetchedJob;
 
       setJob((job) => {
         return { ...job, _id, title, applicants, jobType, salary, views, country, author, email, phone, content, date, address,
@@ -57,10 +58,24 @@ const MainApplyJob = (props) => {
       setLoading(false)
     });
   }, []);
-  const [showModal, setShowModal] = useState(false);
+  
 
   const openModal = () => {
+
+    const views= job.views + 1
+
+    const newObject = { views }
     setShowModal(true);
+
+    axios.patch(`http://localhost:8080/jobs/${jobId}`, newObject)
+          .then(res => {
+            const message = res.data.job
+            console.log(message)
+            
+          })
+          .catch(error => {
+              console.log(error)
+          })
   };
   const closeModal = () => {
     setShowModal(false);

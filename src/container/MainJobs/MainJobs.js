@@ -93,20 +93,20 @@ const  MainJobs = props => {
                                                             key={job._id}
                                                             id = { _id}
                                                             address = { address }
-                                                            applicants = { applicants}
-                                                            author = { author}
-                                                            content = { content}
-                                                            country = { country}
-                                                            date = { date}
-                                                            email = { email}
-                                                            jobType  = { jobType}
-                                                            overview = { overview}
-                                                            phone = { phone}
-                                                            salary = { salary}
-                                                            socialmedialink = { socialmedialink}
-                                                            title = { title}
-                                                            total_employee = { total_employee}
-                                                            views = { views}
+                                                            applicants = { applicants }
+                                                            author = { author }
+                                                            content = { content }
+                                                            country = { country }
+                                                            date = { date }
+                                                            email = { email }
+                                                            jobType  = { jobType }
+                                                            overview = { overview }
+                                                            phone = { phone }
+                                                            salary = { salary }
+                                                            socialmedialink = { socialmedialink }
+                                                            title = { title }
+                                                            total_employee = { total_employee }
+                                                            views = { views }
                                                         />
                                                 )
                                             })

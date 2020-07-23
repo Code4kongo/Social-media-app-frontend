@@ -1,0 +1,56 @@
+  
+  @media (min-width: 1440px) and (max-width: 1280px) {
+    .user-list {
+        padding-left: 30%;
+    }
+    .user-card {
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+  }
+
+  @media (min-width: 1025px) and (max-width: 1440px) {
+    .user-list {
+        padding-left: 30%;
+    }
+    .user-card {
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+  }
+  
+  @media (min-width: 768px) and (max-width: 1024px) {
+    .user-list {
+        padding-left: 22%;
+    }
+    .user-card {
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+  }
+
+  
+  @media (min-width: 375px) and (max-width: 480px) {
+    .user-list {
+        padding-left: 19%;
+    }
+    .user-card {
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+  }
+  
+  @media (min-width: 375px) and (max-width: 410px) {
+    .user-list {
+        padding-left: 16%;
+    }
+    .user-card {
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+  }
