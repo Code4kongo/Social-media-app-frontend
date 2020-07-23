@@ -16,8 +16,13 @@ import NotificationIcon from '../../images/review.png'
 import JobIcon from '../../images/ic6.png'
 
 
-const MainCompanyProfil = ({companyDetails, userDetails }) => {
-    console.log(companyDetails)
+const MainCompanyProfil = () => {
+
+    const userInformation = localStorage.getItem('user')
+    const userDetails = JSON.parse(userInformation)
+  
+    const companyInformation = localStorage.getItem('company')
+    const companyDetails = JSON.parse(companyInformation)
 
     const companyId = companyDetails.company_id
     
@@ -51,12 +56,10 @@ const MainCompanyProfil = ({companyDetails, userDetails }) => {
 
 
     useEffect(() => {
-        console.log(companyId, "...id")
         axios.get(`http://localhost:8080/company/${companyId}`)
             .then(res => {
                         
                 let company = res.data.company
-                console.log(company, "tesr")
                 const { overview, awards } = company.info
                 const { skills } = company
                 const { portfolio } = company
@@ -69,6 +72,9 @@ const MainCompanyProfil = ({companyDetails, userDetails }) => {
                     setCompanySkills(skills)
                     setCompanyPortfolio([...companyPortfolio, portfolio]) 
                     setCompanySocialmedialink([...companySocialmedialink,socialmedialink])   
+            })
+            .catch(error => {
+                console.log(error)
             })
     },[])
 

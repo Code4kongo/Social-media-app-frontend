@@ -24,22 +24,22 @@ const MainApplyJob = (props) => {
 
   let jobId = props.jobId;
   const [job, setJob] = useState({
-    _id: "",
-    title: "",
-    applicants: 0,
-    jobType: "",
-    salary: 0,
-    views: 0,
-    country: "",
-    author: "",
-    email: "",
-    phone: "",
-    content: "",
-    date: " ",
-    address: "",
-    socialmedialink: [],
-    overview: "",
-    total_employee: 0,
+          _id: "",
+          title: "",
+          applicants: 0,
+          jobType: "",
+          salary: 0,
+          views: 0,
+          country: "",
+          author: "",
+          email: "",
+          phone: "",
+          content: "",
+          date: " ",
+          address: "",
+          socialmedialink: [],
+          overview: "",
+          total_employee: 0,
   });
   const [ loading, setLoading ] = useState(true)
 
@@ -74,7 +74,7 @@ const MainApplyJob = (props) => {
     .catch(error => {
         console.log(error)
     })
-    
+
     setShowModal(true);
   };
   const closeModal = () => {

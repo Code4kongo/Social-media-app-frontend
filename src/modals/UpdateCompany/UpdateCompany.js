@@ -50,13 +50,35 @@ const UpdateUserModal = (props) => {
                 overview : company_overview,
             }
           }
-          console.log(updatedCompany.total_number_employee)
-          console.log(typeof(updatedCompany.total_number_employee))
 
         axios.patch(`http://localhost:8080/company/${companyId}`, updatedCompany)
              .then(res => {
                 setOnSuccess(true)
                 setTimeout(() => setOnSuccess(false), 15000)
+
+            axios.get(`http://localhost:8080/company/${companyId}`)
+            .then((res) => {
+
+                const existingCompany = res.data.company
+
+                const {  _id, company,password,picture, country , createdAt, email, phone, address, about,registered, total_number_employee } = existingCompany
+
+                const companyLocalStorage ={
+                    company_id : _id, 
+                    password,createdAt ,
+                    company_name:  company,
+                    company_picture: picture, 
+                    company_country:  country , 
+                    company_email :  email,
+                    company_phone :  phone,
+                    company_address :  address, 
+                    company_about:  about,
+                    total_number_employee : total_number_employee,
+                    company_registered :  registered
+                  }
+
+                localStorage.setItem('company', JSON.stringify(companyLocalStorage))
+            }) 
              })
              .catch(error => {
                  console.log(error)

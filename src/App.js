@@ -31,7 +31,6 @@ const  App = () => {
   const [ userDetails, setUserDetails ] = useState({
     _id : "",
     username : "",
-    password : "",
     picture : "",
     country : "",
     age : 0,
@@ -70,15 +69,18 @@ const  App = () => {
               setTimeout(() => setOnFailure(false), 1000)
               
             let user = res.data.user[0]
-            const {  _id, username,password,picture, country , age ,name,gender, company,email,phone,address, about,registered } = user
+            const {  _id, username,picture, country , age ,name,gender, company,email,phone,address, about,registered } = user
 
               setUserDetails(prevState => {
-                  return { ...prevState, _id, username,password,picture, country , age ,name,gender, company,email,phone,address, about,registered}
+                  return { ...prevState, _id, username,picture, country , age ,name,gender, company,email,phone,address, about,registered}
               })
+              localStorage.setItem('user', JSON.stringify(user))
+              localStorage.setItem('auth', true)
+              localStorage.setItem('company', JSON.stringify(companyDetails))
               setAuth(true)
               setRedirect(true)
               setTimeout(() => {
-                setRedirect(true)
+              setRedirect(true)
 
               }, 5000)
                 
@@ -96,9 +98,9 @@ const  App = () => {
          .then(res => {
            
             setOnSuccess(true)
-            let ExistingCompany = res.data.company[0]
+            let existingCompany = res.data.company[0]
             
-            const {  _id, company,password,picture, country , createdAt, email, phone, address, about,registered, total_number_employee } = ExistingCompany
+            const {  _id, company,password,picture, country , createdAt, email, phone, address, about,registered, total_number_employee } = existingCompany
                 
                 setCompanyDetails(prevState => {
                     return { ...prevState,
@@ -114,6 +116,25 @@ const  App = () => {
                               total_number_employee : total_number_employee,
                               company_registered :  registered}
                 })
+
+                const companyLocalStorage ={
+                  company_id : _id, 
+                  password,createdAt ,
+                  company_name:  company,
+                  company_picture: picture, 
+                  company_country:  country , 
+                  company_email :  email,
+                  company_phone :  phone,
+                  company_address :  address, 
+                  company_about:  about,
+                  total_number_employee : total_number_employee,
+                  company_registered :  registered
+                }
+
+                localStorage.setItem('company', JSON.stringify(companyLocalStorage))
+                localStorage.setItem('auth', true)
+                localStorage.setItem('user', JSON.stringify(userDetails))
+                
                 setAuth(true)
                 setRedirect(true)
                 
@@ -125,41 +146,6 @@ const  App = () => {
     })
 
   }
-  // const signInWithFacebook = (email, name, picturefb) => {
-
-    
-  //   axios.post('http://localhost:8080/user/login-social-account', {email})
-  //   .then(res => {
-  //        setOnSuccess(true)
-  //        setTimeout(() => setOnFailure(false), 1000)
-         
-  //      let user = res.data.user[0]
-       
-  //      const {  _id, username,password,picture, country , age ,name,gender, company,email,phone,address, about,registered } = user
-       
-  //      let profilPicture = picture
-  //      if(picture === ""){
-  //         profilPicture = picturefb
-  //      }
-
-  //        setUserDetails(prevState => {
-  //            return { ...prevState, _id, username,password,picture, country , age ,name,gender, company,email,phone,address, about,registered}
-  //        })
-  //        setAuth(true)
-  //        setRedirect(true)
-  //        setTimeout(() => {
-  //          setRedirect(true)
-
-  //        }, 5000)
-           
-  //   })
-  //   .catch(error => {
-  //          setAuth(false)
-  //          setOnFailure(true)
-  //          console.log(error)
-  //          setTimeout(() => setOnFailure(false), 15000)
-  //    })
-  // }
   const signInWithGoogle = (email, name, picturefb) => {
 
     axios.post('http://localhost:8080/user/login-social-account', {email})
@@ -179,10 +165,15 @@ const  App = () => {
          setUserDetails(prevState => {
              return { ...prevState, _id, username,password,picture, country , age ,name,gender, company,email,phone,address, about,registered}
          })
+
+         localStorage.setItem('user', JSON.stringify(user))
+         localStorage.setItem('auth', true)
+         localStorage.setItem('company', JSON.stringify(companyDetails))
+         
          setAuth(true)
          setRedirect(true)
          setTimeout(() => {
-           setRedirect(true)
+          setRedirect(true)
 
          }, 5000)
            

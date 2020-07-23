@@ -4,10 +4,17 @@ import './UserProfiction.css'
 import { Link } from 'react-router-dom'
 
 
-const UserProfiction = ({userDetails, companyDetails}) => {
+const UserProfiction = () => {
+
+    const companyInformation = localStorage.getItem('company')
+    const companyDetails = JSON.parse(companyInformation)
+
+    const userInformation = localStorage.getItem('user')
+    const userDetails = JSON.parse(userInformation)
 
     const { name, company, email, registered , picture } = userDetails
     const { company_name, company_email, company_registered , company_picture} = companyDetails
+    
 
     const user_profil = `http://localhost:8080/${picture}`
     const company_profil = `http://localhost:8080/${company_picture}`
@@ -47,6 +54,8 @@ const UserProfiction = ({userDetails, companyDetails}) => {
             </ul>
         </div>
     )
+
+
     const companyProfiction = (
         <div className="user-data full-width">
                 <div className="user-profile">

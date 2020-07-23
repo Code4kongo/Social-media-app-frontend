@@ -8,6 +8,12 @@ import NotificationIcon from '../../images/icon7.png'
 import UserAccount from '../UserAccount/UserAccount'
 
 const  NavBar = () => {
+
+    const userInformation = localStorage.getItem('user')
+    const userDetails = JSON.parse(userInformation)
+
+    const { email} = userDetails
+
     return ( 
         <div>
             <nav>
@@ -33,9 +39,12 @@ const  NavBar = () => {
                         </Link>
                     </li>
                     <li>
-                        <Link to="/my-profile" className="">
-                            <span><img src={NotificationIcon} alt="NotifictaionIcon"/></span> Notification
-                        </Link>
+                       {
+                           email !== "" ? 
+                           <Link to="/my-profile" className="">
+                                <span><img src={NotificationIcon} alt="NotifictaionIcon"/></span> Notification
+                            </Link> : null
+                       }
                     </li>
                 </ul>
             </nav>
