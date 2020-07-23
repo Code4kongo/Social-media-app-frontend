@@ -14,7 +14,13 @@ import PortfolioIcon from '../../images/ic3.png'
 import NotificationIcon from '../../images/review.png'
 
 
-const MainUserProfil = ({userDetails, companyDetails}) => {
+const MainUserProfil = () => {
+
+    const userInformation = localStorage.getItem('user')
+    const userDetails = JSON.parse(userInformation)
+  
+    const companyInformation = localStorage.getItem('company')
+    const companyDetails = JSON.parse(companyInformation)
 
     const userId = userDetails._id
     

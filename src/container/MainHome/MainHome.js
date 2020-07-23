@@ -12,8 +12,14 @@ import UserPic from "../../images/resources/user-pic.png";
 import LoadingSpinner from "../../feedback/LoadingSpinner/LoadingSpinner";
 
 
-const Main = ({userDetails, companyDetails}) => {
+const Main = () => {
 
+  const userInformation = localStorage.getItem('user')
+  const userDetails = JSON.parse(userInformation)
+
+  const companyInformation = localStorage.getItem('company')
+  const companyDetails = JSON.parse(companyInformation)
+  
   let email 
   if(userDetails.email === ""){
     email = companyDetails.company_email

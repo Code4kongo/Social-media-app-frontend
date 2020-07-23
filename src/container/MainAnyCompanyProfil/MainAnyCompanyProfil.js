@@ -54,6 +54,7 @@ const MainCompanyProfil = (props) => {
             .then(res => {
                 const result = res.data.company
                 const { _id, company, picture, country, createdAt, email,  phone,  address,  about, registered, info, skills,portfolio,socialmedialink} = result
+                
                 const { overview, awards } = info
                 
                 setCompanyDetails(() => ( { ...companyDetails, _id,company, picture,country,createdAt,email, phone, address, about, registered}))

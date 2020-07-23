@@ -8,11 +8,13 @@ const ProtectedRoute = ({
   companyDetails,
   ...rest
 }) => {
+
+  const authenticationLocal = localStorage.getItem('auth')
   return (
     <Route
       {...rest}
       render={(props) => {
-        if (isAuth) {
+        if (isAuth || authenticationLocal) {
           return (
             <Component
               {...rest}

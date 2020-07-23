@@ -59,17 +59,22 @@ const UpdateUserModal = props => {
         }
 
         axios.patch(`http://localhost:8080/user/${userId}`, updateduser)
-             .then(res => {
-                 setOnSuccess(true)
-                 setTimeout(() => setOnSuccess(false), 15000)
-                //  const data = res.data
-                //  console.log(data)
-             })
-             .catch(error => {
-                 console.log(error)
-                 setOnFailure(true)
-                 setTimeout(() => setOnFailure(false), 15000)
-             })
+            .then(res => {
+                setOnSuccess(true)
+                setTimeout(() => setOnSuccess(false), 15000)
+
+            axios.get(`http://localhost:8080/user/${userId}`)
+                    .then((res) => {
+                        console.log(res)
+                        const user = res.data.user
+                        localStorage.setItem('user', JSON.stringify(user))
+            }) 
+            })
+            .catch(error => {
+                console.log(error)
+                setOnFailure(true)
+                setTimeout(() => setOnFailure(false), 15000)
+            })
         
     }
 
