@@ -27,7 +27,7 @@ const EmailModal = props => {
 
   console.log(views, applicants, jobId, authorEmail, applicantEmail)
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async(event) => {
     event.preventDefault();
     const emailObject = {
       senderemail : email,
@@ -36,32 +36,23 @@ const EmailModal = props => {
       content 
     }
 
-    setViews(() => views + 1)
-    setApplicants(() => views + 1)
+    const applicants = jobApplicants + 1
 
-    const updatedJob = {
-      views, applicants
-    }
+    const updatedJob = { applicants }
 
-    axios.post('http://localhost:8080/apply-job', emailObject)
-          .then(res => {
+          try {
+            await axios.post('http://localhost:8080/apply-job', emailObject)
+
+            await axios.patch(`http://localhost:8080/jobs/${jobId}`, updatedJob)
+
             setOnSuccess(true)
             setTimeout(() => setOnSuccess(false), 15000)
-          })
-          .then(res => {
-              axios.patch(`http://localhost:8080/jobs/${jobId}`, updatedJob)
-              .then(res => {
-                  setOnSuccess(true)
-                  setTimeout(() => setOnSuccess(false), 15000)
-                const message = res.data.job
-                console.log(message)})
-          })
-          .catch(error => {
-            console.log(error)
-            setOnFailure(true)
-            setTimeout(() => setOnFailure(false), 15000)
-          })
-  };
+            }catch(error) {
+              console.log(error)
+              setOnFailure(true)
+              setTimeout(() => setOnFailure(false), 15000)
+        };
+    }
   const style = {
     color: "#fff",
     backgroundColor: "#17a2b8",

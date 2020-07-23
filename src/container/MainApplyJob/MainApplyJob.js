@@ -60,6 +60,21 @@ const MainApplyJob = (props) => {
   const [showModal, setShowModal] = useState(false);
 
   const openModal = () => {
+
+    const views= job.views + 1
+
+    const newObject = { views }
+
+    axios.patch(`http://localhost:8080/jobs/${jobId}`, newObject)
+    .then(res => {
+      const message = res.data.job
+      console.log(message)
+
+    })
+    .catch(error => {
+        console.log(error)
+    })
+    
     setShowModal(true);
   };
   const closeModal = () => {
