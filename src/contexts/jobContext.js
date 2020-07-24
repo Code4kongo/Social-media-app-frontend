@@ -39,8 +39,9 @@ const JobContextProvider = (props) => {
                     const jobList = res.data.jobs
                     
                     setJobs(jobList)
-                    setLoadingJobs(true)
 
+                    setLoadingJobs(true)
+                    
                     const sortedTopJobs = jobList.sort((a, b) => (a.salary < b.salary) ? 1 : -1)
                     const topJobsList = sortedTopJobs.slice(0, 5)
                     setTopJobs(topJobsList)
