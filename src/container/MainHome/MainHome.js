@@ -2,6 +2,7 @@ import React, { useState, useContext, useEffect } from "react";
 import "./MainHome.css";
 import axios from 'axios'
 import UserProfiction from "../../components/UserProfiction/UserProfiction";
+import UsersTopProfil from '../../components/UsersTopProfil/UsersTopProfil'
 import AddPost from "../../modals/AddPostModal/AddPostModal"
 import SinglePost from "../../components/SinglePost/SinglePost";
 import TopJobs from "../../components/TopJobs/TopJobs";
@@ -96,6 +97,7 @@ const Main = () => {
                                     userDetails={userDetails}
                                     companyDetails={companyDetails}
                                 />
+                    <UsersTopProfil />
                 {
                  !loadingPost ? <LoadingSpinner/> :  postsLists.map(post => {
                     let {  _id, title, country, author, email, content, date, likes, comments, postImage } = post

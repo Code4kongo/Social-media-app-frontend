@@ -21,6 +21,7 @@ const MainCompaniesAndJobs = (props) => {
         axios.get('http://localhost:8080/user')
             .then(res => {
                 const usersList = res.data.users
+                localStorage.setItem('users', JSON.stringify(usersList))
                 setUsersDetails(usersList)
                 setLoading(false)
             })
