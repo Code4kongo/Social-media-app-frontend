@@ -27,6 +27,7 @@ const UsersAndCompanies = (props) => {
                 
                     <div className="profiles-slider user-list">
                         {
+                            topUsers.length < 1 ? null : 
                             topUsers.map((user, index ) => {
                                 const userpic = `http://localhost:8080/${user.picture}`
                                 return ( 

@@ -38,14 +38,11 @@ const UserSocialMediaLink = props => {
                     </ul>
                 </div>
                 <ul className="social_links">
-                    <li><a href="/" title=""><i className="la la-globe"></i> www.example.com</a></li>
-                    <li><a href="/" title=""><i className="fa fa-facebook-square"></i> Http://www.facebook.com/john...</a></li>
-                    <li><a href="/" title=""><i className="fa fa-twitter"></i> Http://www.Twitter.com/john...</a></li>
-                    <li><a href="/" title=""><i className="fa fa-google-plus-square"></i> Http://www.googleplus.com/john...</a></li>
-                    <li><a href="/" title=""><i className="fa fa-behance-square"></i> Http://www.behance.com/john...</a></li>
-                    <li><a href="/" title=""><i className="fa fa-pinterest"></i> Http://www.pinterest.com/john...</a></li>
-                    <li><a href="/" title=""><i className="fa fa-instagram"></i> Http://www.instagram.com/john...</a></li>
-                    <li><a href="/" title=""><i className="fa fa-youtube"></i> Http://www.youtube.com/john...</a></li>
+                        <li><a href="https://www.facebook.com/243pronetwork/" title=""><i className="fa fa-facebook-square"></i> https://www.facebook.com/243pronetwork/</a></li>
+                        <li><a href=" https://twitter.com/243_pro_network" title=""><i className="fa fa-twitter"></i> https://twitter.com/243_pro_network</a></li>
+                        <li><a href="https://www.linkedin.com/company/243pronetwork/" title=""><i className="fa fa-linkedin"></i> https://www.linkedin.com/company/243pronetwork/</a></li>
+                        <li><a href="https://www.instagram.com/243_pro_network/" title=""><i className="fa fa-instagram"></i> https://www.instagram.com/243_pro_network/</a></li>
+                        <li><a href=" https://www.youtube.com/channel/UChvASvzvS8N-UkLoA7WVO5g" title=""><i className="fa fa-youtube"></i> https://www.youtube.com/channel/UChvASvzvS8N-UkLoA7WVO5g</a></li>
                 </ul>
             </div>
         </div>

@@ -21,7 +21,6 @@ const  SingleCompany = ({companiesDetails}) => {
                                                 company_profile === "" || company_profile === undefined ? <img src={Icon} alt=""/> :  <img src={company_profile} alt=""/>
                                             }
                                                 <h3>{company}</h3>
-                                                    <h4>Establish { createdAt }</h4>
                                                     <h4>Phone { phone }</h4>
                                                     <h4>Email { email }</h4>
                                                 <ul>

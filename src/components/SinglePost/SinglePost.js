@@ -103,11 +103,11 @@ const  SinglePost = props => {
               <p>{content}</p>
               <img src={image} alt="image" width="100%" height="30%" style={{ margin : 'auto', marginBottom : '8%'}}/>
               <ul className="skill-tags">
-                <li><a href="/" > HTML </a></li>
-                <li><a href="/" > PHP </a></li>
-                <li><a href="/" > CSS </a></li>
-                <li><a href="/" > Javascript </a></li>
-                <li><a href="/" > Wordpress </a></li>
+                <li><a href="/home" > HTML </a></li>
+                <li><a href="/home" > PHP </a></li>
+                <li><a href="/home" > CSS </a></li>
+                <li><a href="/home" > Javascript </a></li>
+                <li><a href="/home" > Wordpress </a></li>
               </ul>
             </div>
             <form className="job-status-bar" onSubmit={updateLike}>
