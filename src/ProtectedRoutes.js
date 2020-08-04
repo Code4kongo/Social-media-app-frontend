@@ -8,8 +8,8 @@ const ProtectedRoute = ({
   companyDetails,
   ...rest
 }) => {
-
-  const authenticationLocal = localStorage.getItem('auth')
+  const authenticationLocal = localStorage.getItem("auth");
+  // var variable = true;
   return (
     <Route
       {...rest}
