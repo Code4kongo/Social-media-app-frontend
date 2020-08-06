@@ -9,7 +9,7 @@ import UpdateJobModal from '../../modals/UpdateJobModal/UpdateJobModal'
 import LoadingSpinner from '../../feedback/LoadingSpinner/LoadingSpinner'
 import axios from 'axios'
 
-const Userjobs = (props) => {
+const Userjobs = props => {
 
 const confirm = useConfirm();
 const { email } = props 
@@ -65,11 +65,7 @@ useEffect(() => {
           const newJobsList = jobs.filter(job => job._id !== jobId)
           setJobs(newJobsList)
         })
-        .catch(error => {
-            console.log(error)
-        })
       })
-      .catch(() => console.log("Deletion cancelled."));
   };
 
   if(loading){

@@ -23,7 +23,6 @@ export default function AsUser(props) {
 
     event.preventDefault()
 
-    console.log(agreeTermCondition)
     if(password !== repeatPassword && !agreeTermCondition){
       return alert("Your password must match and agree term and conditon")
     }     
@@ -53,14 +52,11 @@ export default function AsUser(props) {
     axios.post('http://localhost:8080/user/signup', newUser)
         .then(res => {
             setOnSuccess(true)
-            let user = res.data.createduser
             setUserCreated(true)
-            
             
         })
          .catch(error => {
             setOnFailure(true)
-            console.log(error)
           })
     
 }

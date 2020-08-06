@@ -10,7 +10,7 @@ import IconCountry from "../../images/icon9.png";
 import EmailModal from "../../modals/EmailModal/EmailModal";
 import LoadingSpinner from '../../feedback/LoadingSpinner/LoadingSpinner'
 
-const MainApplyJob = (props) => {
+const MainApplyJob = props => {
   
   const { email } = props.userDetails
   const { company_email } = props.companyDetails
@@ -66,15 +66,6 @@ const MainApplyJob = (props) => {
     const newObject = { views }
 
     axios.patch(`http://localhost:8080/jobs/${jobId}`, newObject)
-    .then(res => {
-      const message = res.data.job
-      console.log(message)
-
-    })
-    .catch(error => {
-        console.log(error)
-    })
-
     setShowModal(true);
   };
   const closeModal = () => {

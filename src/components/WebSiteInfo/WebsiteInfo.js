@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import "./WebsiteInfo.css";
 import AboutImage from "../../images/CPN1.png";
 import ContactModal from "../../modals/ContactModal/ContactModal";
-import { Button } from "@material-ui/core";
-//import WebsiteInfoContainer from "../../container/WebSiteInfoContainer/WebSiteInfoContainer";
+
+
 export default function WebsiteInfo() {
   const [showModal, setShowModal] = useState(false);
 

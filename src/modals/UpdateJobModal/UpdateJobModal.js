@@ -9,7 +9,7 @@ import OnFailureMessage from '../../feedback/FailureMeesage/FailureMeesage'
 
 Modal.setAppElement("#root");
 
-const UpdateUserModal = (props) => {
+const UpdateUserModal = props => {
 
     const { updateJob, onSuccess, onFailure } = useContext(JobContext)
 

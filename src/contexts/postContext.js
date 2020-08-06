@@ -29,15 +29,8 @@ const PostContextProvider = (props) => {
             })
     }, [])
 
-    const updatePost = () => {
-        
-    }
-    const deletePost = () => {
-        
-    }
-    
     return ( 
-        <PostContext.Provider value={{posts,loadingPost, updatePost, deletePost}}>
+        <PostContext.Provider value={{posts,loadingPost}}>
             {props.children}
         </PostContext.Provider>
      );

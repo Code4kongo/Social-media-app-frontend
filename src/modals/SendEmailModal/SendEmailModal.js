@@ -7,7 +7,7 @@ import axios from 'axios'
 
 Modal.setAppElement("#root");
 
-const EmailModal = (props) => {
+const EmailModal = props => {
   const { showModal, closeModal, senderEmail, recipientEmail} = props;
   const [title, setTitile] = useState("");
   const [email, setEmail] = useState(senderEmail);
@@ -39,7 +39,6 @@ const EmailModal = (props) => {
             setTimeout(() => setOnSuccess(false), 15000)
           })
           .catch(error => {
-            console.log(error)
             setOnFailure(true)
             setTimeout(() => setOnFailure(false), 15000)
           })

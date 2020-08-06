@@ -11,7 +11,7 @@ import PortfolioIcon from '../../images/ic3.png'
 import SendEmailModal from '../../modals/SendEmailModal/SendEmailModal'
 
 
-const MainAnyUser = (props) => {
+const MainAnyUser = props => {
 
     const userId = props.match.params.userId
 
@@ -36,7 +36,6 @@ const MainAnyUser = (props) => {
     const [ userEducation, setUserEducation] = useState("")
     const [ userSkills, setUserSkills] = useState([])
     const [ userPortfolio, setUserPortfolio] = useState([])
-    const [ userSocialmedialink, setUserSocialmedialink] = useState([])
 
     const [ feedToggle, setFeedToggle ] = useState(false)
     const [ infoToggle, setInfoToggle ] = useState(true)
@@ -61,7 +60,6 @@ const MainAnyUser = (props) => {
                 const { overview, experience } = user.info
                 const { skills } = user
                 const { portfolio } = user
-                const { socialmedialink } = user
 
                     setUserDetails(prevState => {
                         return { ...prevState, _id, picture, country , age ,name,gender, company,email,phone,address, about, registered }
@@ -72,7 +70,6 @@ const MainAnyUser = (props) => {
                     setUserEducation(education)
                     setUserSkills(skills)
                     setUserPortfolio([ portfolio]) 
-                    setUserSocialmedialink([socialmedialink])   
             })
     },[])
     

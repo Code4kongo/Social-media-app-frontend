@@ -3,7 +3,7 @@ import axios from 'axios'
 
 const UserSocialMediaLink = props => {
 
-    const { _id, picture , country , email, phone, address, company_id, company_name, company_email, company_country, company_phone, company_address, company_picture } = props
+    const { _id, picture , country , email, phone, address, company_id,  company_email, company_country, company_phone, company_address, company_picture } = props
     const user_image = `http://localhost:8080/${picture}`
 
     const [userpic, setUserpic] = useState("") 
@@ -14,25 +14,25 @@ const UserSocialMediaLink = props => {
         setFilename(event.target.files[0].name)
         setUserpic(event.target.files[0])
     }
-    const handleChangeProfil = (event) => {
+    const handleChangeProfil = async(event) => {
         event.preventDefault()
-        console.log('submitted')
 
         const formData = new FormData()
         formData.append('picture', userpic)
-        for (var value of formData.values()) {
-            console.log(value); 
-         }
 
-        axios.patch(`http://localhost:8080/user/picture/${_id}`, formData, {
-                                    headers : {
-                                        'Accept': 'application/json',
-                                        'Content-Type': 'multipart/form-data',
-                                    }
-        }).then(res => {
-            const newImage = res.data.path
-            setUploadedFile(`http://localhost:8080/${newImage}`)
-        }).catch(error => console.log(error))
+        try {
+            const res = await axios.patch(`http://localhost:8080/user/picture/${_id}`, formData, {
+                headers : {
+                    'Accept': 'application/json',
+                    'Content-Type': 'multipart/form-data',
+                                }
+                })
+                const newImage = res.data.path
+                setUploadedFile(`http://localhost:8080/${newImage}`)
+
+        }catch(error){
+
+        }
         
     }
     const userSocialMediaLink = (
@@ -43,7 +43,7 @@ const UserSocialMediaLink = props => {
                         <div className="user-pro-img">
                             <div className="col-lg-12">
                                { 
-                                !uploadedFile ? <img src={user_image} alt="image"/> : <img src={uploadedFile} alt="image"/>
+                                !uploadedFile ? <img src={user_image} alt="img"/> : <img src={uploadedFile} alt="img"/>
                                }
                             </div>
                             <div className="col-lg-12">
@@ -96,21 +96,20 @@ const UserSocialMediaLink = props => {
         setFilenameComp(event.target.files[0].name)
         setCompanypic(event.target.files[0])
     }
-    const handleChangeProfilComp = (event) => {
+    const handleChangeProfilComp = async(event) => {
         event.preventDefault()
         
         const formData = new FormData()
         formData.append('picture', companypic)
 
-        axios.patch(`http://localhost:8080/company/picture/${company_id}`, formData, {
-                                    headers : {
-                                        'Accept': 'application/json',
-                                        'Content-Type': 'multipart/form-data',
-                                    }
-        }).then(res => {
-            const newImage = res.data.path
-            setUploadedFileComp(`http://localhost:8080/${newImage}`)
-        }).catch(error => console.log(error))
+        const res = await axios.patch(`http://localhost:8080/company/picture/${company_id}`, formData, {
+                                                                                                headers : {
+                                                                                                    'Accept': 'application/json',
+                                                                                                    'Content-Type': 'multipart/form-data',
+                                                                                                }
+        })
+        const newImage = res.data.path
+        setUploadedFileComp(`http://localhost:8080/${newImage}`)
         
     }
     const companySocialMediaLink = (
@@ -126,10 +125,12 @@ const UserSocialMediaLink = props => {
                                     <img src={company_image} 
                                                 width="50%" 
                                                 height="20%" style={{ margin : 'auto', marginBottom : '8%'}}
+                                                alt="img"
                                             /> : 
                                     <img src={uploadedFileComp} 
                                                 width="50%" 
                                                 height="20%" style={{ margin : 'auto', marginBottom : '8%'}}
+                                                alt="img"
                                     />
                                }
                             </div>

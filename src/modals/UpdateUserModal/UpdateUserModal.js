@@ -13,7 +13,6 @@ const UpdateUserModal = props => {
     const { showModal,closeModal, userId, overview   ,country ,education, email   ,phone ,
             address ,
             username,
-            age,
             name,
             gender,
             company,
@@ -24,7 +23,6 @@ const UpdateUserModal = props => {
     const [ user_country, setUserCountry ] = useState(country)
     const [ user_age, setUserAge ] = useState("")
     const [ user_name, setUserName ] = useState(name)
-    const [ user_gender, setUserGender ] = useState(gender)
     const [ user_company, setUserCompany ] = useState(company)
     const [ user_email, setUserEmail ] = useState(email)
     const [ user_phone, setUserPhone ] = useState(phone)
@@ -46,7 +44,7 @@ const UpdateUserModal = props => {
             country: user_country,
             age: user_age,
             name: user_name,
-            gender: user_gender,
+            gender,
             company: user_company,
             email: user_email,
             phone: user_phone, 
@@ -65,13 +63,11 @@ const UpdateUserModal = props => {
 
             axios.get(`http://localhost:8080/user/${userId}`)
                     .then((res) => {
-                        console.log(res)
                         const user = res.data.user
                         localStorage.setItem('user', JSON.stringify(user))
             }) 
             })
             .catch(error => {
-                console.log(error)
                 setOnFailure(true)
                 setTimeout(() => setOnFailure(false), 15000)
             })

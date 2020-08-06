@@ -3,7 +3,7 @@ import SignIn from "../../components/SignIn/SignIn";
 import SignUp from '../../components/SignUp/SignUp'
 import CompanyIntroDetails from '../../components/CompanyIntroDetails/CompanyIntroDetails'
 
-const SignInContainer  = (props) => {
+const SignInContainer  = props => {
   
   let [toggle, setToggle ] = useState(true)
 

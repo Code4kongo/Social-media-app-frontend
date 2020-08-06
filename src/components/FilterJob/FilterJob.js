@@ -84,7 +84,10 @@ const FilterJob = props => {
 						<form className ="job-tp">
 							<CountryDropdown
 								value={country}
-								onChange={event => handleCountry(event)} 
+								onChange={event => {
+									handleCountry(event)
+									setCountry(event)
+								}} 
 							/>
 							<i className ="fa fa-ellipsis-v"></i>
 						</form>

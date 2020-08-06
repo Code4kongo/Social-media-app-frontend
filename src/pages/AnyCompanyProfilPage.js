@@ -3,7 +3,7 @@ import Header from '../container/Header/Header'
 import MainAnyCopmany from "../container/MainAnyCompanyProfil/MainAnyCompanyProfil";
 import Footer from '../container/Footer/Footer'
 
-const UserProfil = (props) => {
+const UserProfil = props => {
     
     return ( 
         <div>

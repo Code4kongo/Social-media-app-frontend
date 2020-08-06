@@ -1,7 +1,7 @@
 import React, {  useState } from 'react'
 import './UpdatePostModal.css'
 import Modal from 'react-modal'
-import axios from 'axios'
+// import axios from 'axios'
 import UploadBar from '../../components/FeedBack/UploadBar/UploadBar'
 import OnSuccessMessage from '../../feedback/UpdateMessage/UpdateMessage'
 import OnFailureMessage from '../../feedback/FailureMeesage/FailureMeesage'
@@ -9,16 +9,16 @@ import OnFailureMessage from '../../feedback/FailureMeesage/FailureMeesage'
 
 Modal.setAppElement('#root')
 
-const  AddPostModal = (props) => {
+const  AddPostModal = props => {
 
     const {
-        postId,
+        // postId,
         title,
         country,
-        author,
-        email,
+        // author,
+        // email,
         content,
-        postImage,
+        // postImage,
         handleUpdate
      } = props
 
@@ -27,20 +27,19 @@ const  AddPostModal = (props) => {
    
     const [post_content, setContent ] = useState(content)
 
-    const [post_postImage, setPostImage] = useState(postImage) 
+    // const [post_postImage, setPostImage] = useState(postImage) 
     const [filename, setFilename] = useState("choose file")
-    const [uploadedFile, setUploadedFile ] = useState({})
-    const [uploadPourcentage, setUploadPourcentage ] = useState(0)
-
-    const [ onSuccess, setOnSuccess] = useState(false)
-    const [ onFailure, setOnFailure] = useState(false)
+    // const [uploadedFile, setUploadedFile ] = useState({})
+    const uploadPourcentage = 0
+    const onSuccess = false
+    const onFailure = false
     
 
     const { showModal, closeModal } = props
 
     const onChange = event => {
         setFilename(event.target.files[0].name)
-        setPostImage(event.target.files[0])
+        // setPostImage(event.target.files[0])
     }
     const style = {
         color: "#fff",

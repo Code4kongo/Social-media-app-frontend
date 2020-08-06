@@ -5,7 +5,6 @@ import PostJobModal from '../../modals/PostJobModal/MainPostJobModal'
 import TopJob from '../../components/TopJobs/TopJobs'
 import MostViewed from '../../components/MostViewd/MostView'
 import { JobContext } from '../../contexts/jobContext'
-import UserPic from "../../images/resources/user-pic.png";
 import LoadingSpinner from '../../feedback/LoadingSpinner/LoadingSpinner'
 
 

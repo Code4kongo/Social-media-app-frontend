@@ -19,7 +19,6 @@ export default function AsComapny(props) {
 
   const handleSubmit = event => {
     event.preventDefault()
-    console.log(agreeTermCondition)
     if(password !== repeatPassword && !agreeTermCondition){
       setOnFailure(true)
       alert("Your password must match and agree term and conditon")
@@ -46,14 +45,9 @@ export default function AsComapny(props) {
     }
     axios.post('http://localhost:8080/company/signup', newCompany)
         .then(res => {
-            let user = res.data
             setOnSuccess(true)
             setCompanyCreated(true)
-        })
-        .catch(error =>{ 
-                console.log(error)
-                setOnFailure(true)
-        })    
+        })   
   }
 
   const style = {

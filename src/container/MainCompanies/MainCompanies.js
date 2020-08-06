@@ -3,7 +3,7 @@ import SingleCompany from '../../components/SingleCompany/SingleCompany'
 import LoadingSpinner from '../../feedback/LoadingSpinner/LoadingSpinner'
 import axios from 'axios'
 
-const MainCompaniesAndJobs = (props) => {
+const MainCompaniesAndJobs = () => {
 
     const [ companiesDetails, setCompaniesDetails ] = useState([
         {

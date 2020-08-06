@@ -19,7 +19,7 @@ const  PostCommments = props => {
   const [commentContent, setCommentContent ] = useState("")
   
   
-  const hanldeCommentSubmit = event => {
+  const hanldeCommentSubmit = async(event) => {
     event.preventDefault()
 
     const newObject =  {
@@ -28,16 +28,14 @@ const  PostCommments = props => {
             email : commentEmail,
             post : postId
     }
+    try{
+      const res = await axios.post('http://localhost:8080/comments', newObject)
 
-    axios.post('http://localhost:8080/comments', newObject)
-          .then(res => {
-           
-            const newComment = res.data.createdcomment
-            setComments([...comments, newComment])
-          })
-          .catch(error => {
-            console.log(error)
-          })
+      const newComment = res.data.createdcomment
+      setComments([...comments, newComment])
+    }catch(error){
+      
+    }        
 }
 
   useEffect(() =>{ 

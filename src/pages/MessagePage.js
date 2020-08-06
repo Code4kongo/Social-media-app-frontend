@@ -3,7 +3,7 @@ import Header from '../container/Header/Header'
 import MessageContainer from '../container/MessagesContainer/MessagesContainer'
 import Footer from '../container/Footer/Footer'
 
-const Companies = () => {
+const MessagePage = () => {
     
     return ( 
         <div>
@@ -14,5 +14,5 @@ const Companies = () => {
      );
 }
  
-export default Companies;
+export default MessagePage;
 

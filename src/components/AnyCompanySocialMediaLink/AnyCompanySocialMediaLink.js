@@ -3,7 +3,7 @@ import UserIcon from '../../images/resources/user.png'
 
 const UserSocialMediaLink = (props) => {
 
-    const {   socialmedialink , picture , country , email, phone, address } = props
+    const {  picture , country , email, phone, address } = props
 
     const company_profil = `http://localhost:8080/${picture}`
 

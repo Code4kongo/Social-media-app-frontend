@@ -16,23 +16,20 @@ const DeleteAccount = props => {
     const [ onSuccess, setOnSuccess] = useState(false)
     const [ onFailure, setOnFailure] = useState(false)
     
-    const deleteAccount = () => {
+    const deleteAccount = async () => {
           
-            axios.delete(`http://localhost:8080/user/${companyId}`)
-                    .then(res => {
-                    console.log("Delete  ")
-                    setOnSuccess(true)
-                    setTimeout(() => {
-                        setRedirect(true)
-                    }, 3000)
-                        
-                    })
-                    .catch(error => {
-                        console.log(error)
-                        setOnFailure(true)
-                    })
-            }
-        
+        try {
+            const res = await axios.delete(`http://localhost:8080/company/${companyId}`)
+            
+                setOnSuccess(true)
+                setTimeout(() => {
+                    setRedirect(true)
+                }, 3000)
+
+        }catch(error){
+            setOnFailure(true)
+        }
+    }
             return (
                 <Modal isOpen={showModal} onRequestClose={closeModal} className="modal-wrapper-company">
                         <div className="modal-header">

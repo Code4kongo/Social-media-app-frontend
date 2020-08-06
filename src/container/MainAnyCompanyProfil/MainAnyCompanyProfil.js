@@ -11,7 +11,7 @@ import PortfolioIcon from '../../images/ic3.png'
 import SendEmailModal from '../../modals/SendEmailModal/SendEmailModal'
 
 
-const MainCompanyProfil = (props) => {
+const MainCompanyProfil = props => {
 
     const companyId = props.match.params.companyId
 
@@ -33,7 +33,6 @@ const MainCompanyProfil = (props) => {
     }) 
     const [ companySkills, setCompanySkills] = useState([])
     const [ companyPortfolio, setCompanyPortfolio] = useState([])
-    const [ companySocialmedialink, setCompanySocialmedialink] = useState([])
 
     const [ feedToggle, setFeedToggle ] = useState(false)
     const [ infoToggle, setInfoToggle ] = useState(true)
@@ -53,7 +52,7 @@ const MainCompanyProfil = (props) => {
         axios.get(`http://localhost:8080/company/${companyId}`)
             .then(res => {
                 const result = res.data.company
-                const { _id, company, picture, country, createdAt, email,  phone,  address,  about, registered, info, skills,portfolio,socialmedialink} = result
+                const { _id, company, picture, country, createdAt, email,  phone,  address,  about, registered, info, skills,portfolio} = result
                 
                 const { overview, awards } = info
                 
@@ -61,7 +60,7 @@ const MainCompanyProfil = (props) => {
                 setCompanyInfo(() => ( { ...companyInfo, overview, awards } ))
                 setCompanyPortfolio(portfolio)
                 setCompanySkills(skills)
-                setCompanySocialmedialink(socialmedialink)    
+                  
             })
     },[])
     const showFeed = () => {

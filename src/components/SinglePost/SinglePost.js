@@ -43,9 +43,6 @@ const  SinglePost = props => {
                     setUserpic(`http://localhost:8080/${companyImage}`)
               }
           })
-          .catch(error => {
-            console.log(error)
-          })
 }, [])
 
   const toggleShowComment = () => {
@@ -59,12 +56,7 @@ const  SinglePost = props => {
       likes : likeAction
     }
     axios.patch(`http://localhost:8080/posts/${postId}`, newPostObject)
-          .then(res => {
-            console.log(res.data)
-          })
-          .catch(error => {
-            console.log(error)
-          })
+
   }
   return (
     <div>

@@ -6,7 +6,7 @@ import { Redirect } from "react-router-dom";
 
 Modal.setAppElement("#root");
 
-const SearchModal = (props) => {
+const SearchModal = props => {
 
     const { showModal,closeModal } = props
 

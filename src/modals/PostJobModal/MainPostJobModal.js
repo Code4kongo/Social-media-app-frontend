@@ -8,16 +8,16 @@ import OnFailureMessage from '../../feedback/FailureMeesage/FailureMeesage'
 
 Modal.setAppElement("#root");
 
-const MainPostJob = (props) => {
+const MainPostJob = props => {
 
     const { addJob, onSuccess, onFailure } = useContext(JobContext);
     const { showModal, closeModal, company_email, company_name,  company_phone,  numberOfEmployee,  company_address,  company_about} = props;
 
+  const  views = 0;  
+  const applicants = 0;
   const [title, setTitile] = useState("");
-  const [applicants, setApplicants] = useState(0);
   const [jobType, setJobType] = useState("");
   const [salary, setSalary] = useState("");
-  const [views, setViews] = useState(0);
   const [country, setCountry] = useState("");
   const [region, setRegion] = useState("");
   const [author, setAuthor] = useState(company_name);
@@ -29,7 +29,7 @@ const MainPostJob = (props) => {
   const [overview, setOverview] = useState(company_about);
   const [total_employee, setTotal_employee] = useState(numberOfEmployee);  
  
-    const handleSubmit = (event) => {
+    const handleSubmit = event => {
         event.preventDefault()
         const newCountry = `${country}  ${region}`
         addJob(title, applicants, jobType,salary,views, newCountry, author, email, phone, content, address,overview , total_employee)

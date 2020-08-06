@@ -8,7 +8,7 @@ import axios from 'axios'
 Modal.setAppElement("#root");
 
 const EmailModal = props => {
-  const { showModal, closeModal, authorEmail, applicantEmail, jobId , jobViews, jobApplicants} = props;
+  const { showModal, closeModal, authorEmail, applicantEmail, jobId, jobApplicants } = props;
 
   const [title, setTitile] = useState("JOB APPLICATION");
   const [email, setEmail] = useState(applicantEmail);
@@ -22,10 +22,6 @@ const EmailModal = props => {
   );
   const [ onSuccess, setOnSuccess] = useState(false)
   const [ onFailure, setOnFailure] = useState(false)
-  const [ views , setViews ] = useState(jobViews)
-  const [ applicants , setApplicants ] = useState(jobApplicants)
-
-  console.log(views, applicants, jobId, authorEmail, applicantEmail)
 
   const handleSubmit = async(event) => {
     event.preventDefault();
@@ -48,7 +44,6 @@ const EmailModal = props => {
             setOnSuccess(true)
             setTimeout(() => setOnSuccess(false), 15000)
             }catch(error) {
-              console.log(error)
               setOnFailure(true)
               setTimeout(() => setOnFailure(false), 15000)
         };

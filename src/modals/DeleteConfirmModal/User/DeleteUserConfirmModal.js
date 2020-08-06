@@ -16,21 +16,19 @@ const DeleteAccount = props => {
     const [ onSuccess, setOnSuccess] = useState(false)
     const [ onFailure, setOnFailure] = useState(false)
     
-    const deleteAccount = () => {
-        
-        axios.delete(`http://localhost:8080/user/${userId}`)
-             .then(res => {
-                console.log("Delete  ")
+    const deleteAccount = async() => {
+
+        try {
+            const res = await axios.delete(`http://localhost:8080/user/${userId}`)
+            
                 setOnSuccess(true)
                 setTimeout(() => {
                     setRedirect(true)
                 }, 3000)
-                    
-             })
-             .catch(error => {
-                 console.log(error)
+
+        } catch(error){
                  setOnFailure(true)
-             })
+        }
     }
 
     return (

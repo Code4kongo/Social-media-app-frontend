@@ -31,7 +31,6 @@ const MainUserProfil = () => {
     const [ userEducation, setUserEducation] = useState("")
     const [ userSkills, setUserSkills] = useState([])
     const [ userPortfolio, setUserPortfolio] = useState([])
-    const [ userSocialmedialink, setUserSocialmedialink] = useState([])
 
     const [ feedToggle, setFeedToggle ] = useState(false)
     const [ infoToggle, setInfoToggle ] = useState(true)
@@ -67,7 +66,6 @@ const MainUserProfil = () => {
                 const { overview, experience } = user.info
                 const { skills } = user
                 const { portfolio } = user
-                const { socialmedialink } = user
 
                  
                     setUserInfo(prevState => {
@@ -76,7 +74,6 @@ const MainUserProfil = () => {
                     setUserEducation(education)
                     setUserSkills(skills)
                     setUserPortfolio([ portfolio]) 
-                    setUserSocialmedialink([socialmedialink])   
             })
     },[])
 

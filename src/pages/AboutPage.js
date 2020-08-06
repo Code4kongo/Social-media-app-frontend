@@ -4,7 +4,7 @@ import WebsiteInfoContainer from "../container/WebSiteInfoContainer/WebSiteInfoC
 import Footer from "../container/Footer/Footer";
 
 
-function AboutPage() {
+const AboutPage = () => {
     return (
         <div>
             <Header/>

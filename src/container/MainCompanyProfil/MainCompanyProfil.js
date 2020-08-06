@@ -73,9 +73,6 @@ const MainCompanyProfil = () => {
                     setCompanyPortfolio([...companyPortfolio, portfolio]) 
                     setCompanySocialmedialink([...companySocialmedialink,socialmedialink])   
             })
-            .catch(error => {
-                console.log(error)
-            })
     },[])
 
     const showFeed = () => {

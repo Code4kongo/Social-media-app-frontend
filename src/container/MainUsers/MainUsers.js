@@ -3,7 +3,7 @@ import SingleUser from '../../components/SingleUser/SingleUser'
 import LoadingSpinner from '../../feedback/LoadingSpinner/LoadingSpinner'
 import axios from 'axios'
 
-const MainCompaniesAndJobs = (props) => {
+const MainCompaniesAndJobs = () => {
 
     const [ usersDetails, setUsersDetails ] = useState([
         {

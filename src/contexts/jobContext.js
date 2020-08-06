@@ -80,7 +80,6 @@ const JobContextProvider = (props) => {
     }
     const handleFullTime = (event) => {
         event.preventDefault()
-        const value = event.target.value
         const filteredCharacters = jobs.filter(character => {
             return (
               character.jobType.toLocaleLowerCase() === 'full-time'
@@ -130,7 +129,7 @@ const JobContextProvider = (props) => {
                 setTimeout(() => setOnFailure(false), 15000)
             })
     }
-    const updateJob = (jobId,job_title, job_jobType, job_salary, job_country, job_author, job_email, job_phone, job_content, job_address,job_overview , job_total_employee) => {
+    const updateJob = async(jobId,job_title, job_jobType, job_salary, job_country, job_author, job_email, job_phone, job_content, job_address,job_overview , job_total_employee) => {
         
         
         const updatedJob = { 
@@ -146,29 +145,23 @@ const JobContextProvider = (props) => {
             overview : job_overview,
             total_employee : job_total_employee
         }
+            try{
+                const res = await axios.patch(`http://localhost:8080/jobs/${jobId}`, updatedJob)
 
-        axios.patch(`http://localhost:8080/jobs/${jobId}`, updatedJob)
-             .then(res => {
-                 setOnSuccess(true)
-                 setTimeout(() => setOnSuccess(false), 15000)
-                const message = res.data.job
-                console.log(message)
-                
-             })
-             .catch(error => {
-                 console.log(error)
+                setOnSuccess(true)
+                setTimeout(() => setOnSuccess(false), 15000)
+
+            }catch(error){
                  setOnFailure(true)
                  setTimeout(() => setOnFailure(false), 15000)
-             })
-    }
-    const deleteJob = () => {
+             }
     }
     
     return ( 
         <JobContext.Provider value={{
                                         jobs, loadingJobs, topJobs, loadingTopJobs,  mostViewed,
                                         loadingMostViewed, addJob, onSuccess, onFailure, 
-                                        updateJob, deleteJob,
+                                        updateJob,
                                         handleTitle, handleCountry, handleFullTime, handlePartTime, handlePostDuration }}> 
             {props.children}
         </JobContext.Provider>

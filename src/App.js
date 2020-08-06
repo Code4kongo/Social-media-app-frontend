@@ -18,7 +18,6 @@ import SignInPage from "./container/SignInContainer/SignInContainer";
 import UserProfilPage from "./pages/UserProfilPage";
 import UsersPage from "./pages/UsersPage";
 import UserContextProvider from "./contexts/userContext";
-import CompanyContextProvider from "./contexts/companyContext";
 import JobContextProvider from "./contexts/jobContext";
 import PostContextProvider from "./contexts/postContext";
 import ProtectedRoute from './ProtectedRoutes'
@@ -88,7 +87,6 @@ const  App = () => {
          .catch(error => {
                 setAuth(false)
                 setOnFailure(true)
-                console.log(error)
                 setTimeout(() => setOnFailure(false), 15000)
           })
   }
@@ -142,11 +140,10 @@ const  App = () => {
          .catch(error => {
           setAuth(false)
           setOnFailure(true)
-          console.log(error)
     })
 
   }
-  const signInWithGoogle = (email, name, picturefb) => {
+  const signInWithGoogle = (email) => {
 
     axios.post('http://localhost:8080/user/login-social-account', {email})
     .then(res => {
@@ -157,10 +154,7 @@ const  App = () => {
        
        const {  _id, username,password,picture, country , age ,name,gender, company,email,phone,address, about,registered } = user
        
-       let profilPicture = picture
-       if(picture === ""){
-          profilPicture = picturefb
-       }
+       
 
          setUserDetails(prevState => {
              return { ...prevState, _id, username,password,picture, country , age ,name,gender, company,email,phone,address, about,registered}
@@ -181,7 +175,6 @@ const  App = () => {
     .catch(error => {
            setAuth(false)
            setOnFailure(true)
-           console.log(error)
            setTimeout(() => setOnFailure(false), 15000)
      })
   }
@@ -191,7 +184,6 @@ const  App = () => {
       <div className="wrapper">
         <Switch>
         <ConfirmProvider>
-        <CompanyContextProvider>
         <UserContextProvider>
         <PostContextProvider>
         <JobContextProvider>
@@ -228,7 +220,6 @@ const  App = () => {
         </JobContextProvider>  
         </PostContextProvider>
         </UserContextProvider>
-        </CompanyContextProvider>
         </ConfirmProvider>
         <Route component={ErrorPage} />  
         </Switch>

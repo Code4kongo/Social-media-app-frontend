@@ -8,11 +8,10 @@ import OnFailureMessage from '../../feedback/FailureMeesage/FailureMeesage'
 
 Modal.setAppElement("#root");
 
-const UpdateUserModal = (props) => {
+const UpdateUserModal = props => {
 
     const { showModal,closeModal, companyId, overview   ,country ,awards, email   ,phone ,
                 address ,
-                createdAt,
                 company,
                 about,
                 total_number_employee
@@ -34,7 +33,7 @@ const UpdateUserModal = (props) => {
     const [ onFailure, setOnFailure] = useState(false)
     
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async(event) => {
         event.preventDefault()
 
         const updatedCompany =  {
@@ -51,13 +50,13 @@ const UpdateUserModal = (props) => {
             }
           }
 
-        axios.patch(`http://localhost:8080/company/${companyId}`, updatedCompany)
-             .then(res => {
+        try {
+
+                await axios.patch(`http://localhost:8080/company/${companyId}`, updatedCompany)
                 setOnSuccess(true)
                 setTimeout(() => setOnSuccess(false), 15000)
 
-            axios.get(`http://localhost:8080/company/${companyId}`)
-            .then((res) => {
+                const res = await axios.get(`http://localhost:8080/company/${companyId}`)
 
                 const existingCompany = res.data.company
 
@@ -75,16 +74,14 @@ const UpdateUserModal = (props) => {
                     company_about:  about,
                     total_number_employee : total_number_employee,
                     company_registered :  registered
-                  }
+                }
 
                 localStorage.setItem('company', JSON.stringify(companyLocalStorage))
-            }) 
-             })
-             .catch(error => {
-                 console.log(error)
-                 setOnFailure(true)
-                 setTimeout(() => setOnFailure(false), 15000)
-             })
+
+        }catch(error){
+            setOnFailure(true)
+            setTimeout(() => setOnFailure(false), 15000)
+        }
         
     }
 

@@ -10,7 +10,7 @@ import UpdatePostModal from '../../modals/UpdatePostModal/UpdatePostModal'
 import LoadingSpinner from '../../feedback/LoadingSpinner/LoadingSpinner'
 import axios from 'axios'
 
-const UserFeed = (props) => {
+const UserFeed = props => {
 
   const confirm = useConfirm();
 
@@ -70,7 +70,7 @@ useEffect(() => {
 
   const handleUpdate = async (postid) => {
     // event.preventDefault()
-    console.log('clicked', postid)
+    
 
     // const formData = new FormData()
     // formData.append('postImage', post_postImage)
@@ -96,19 +96,19 @@ useEffect(() => {
     //             setOnSuccess(true)
     //             setTimeout(() => setOnSuccess(false), 15000)
     //     fetch(`http://localhost:8080/${result.data.createdPost.post_postImage}`).then(res => {
-    //     console.log(res)
+    
     // })
 
     //     const newImageUrl = await axios.get(`http://localhost:8080/${result.data.createdPost.postImage}`)
     //     const ImageFetched = result.data.createdPost.postImage
         
     //     let newData = newImageUrl.data
-    //     console.log(newData)
+    
 
     //     setUploadedFile({newData, ImageFetched })
 
     // } catch(error){
-    //     console.log(error)
+    
     //     setOnFailure(true)
     //     setTimeout(() => setOnFailure(false), 15000)
     // }   
@@ -121,11 +121,8 @@ useEffect(() => {
                 const newPostList = posts.filter(post => post._id !== postId)
                 setPosts(newPostList)
             })
-            .catch(error => {
-                console.log(error)
-            })
       })
-      .catch(() => console.log("Deletion cancelled."));
+
   };
 
   if(loading){
@@ -141,10 +138,10 @@ useEffect(() => {
                   <div className="post-bar no-margin">
                     <div className="post_topbar">
                       <div className="usy-dt">
-                        <img src={IconUs} alt=""/>
+                        <img src={IconUs} alt="img"/>
                         <div className="usy-name">
                           <h3>{ post.author }</h3>
-                            <span><img src={IconClock} alt="" />{post.date}</span>
+                            <span><img src={IconClock} alt="img" />{post.date}</span>
                         </div>
                       </div>
                     <div className="ed-opts">
@@ -174,11 +171,11 @@ useEffect(() => {
                     <div className="epi-sec">
                       <ul className="descp">
                         <li>
-                          <img src={IconMeedia} alt="" />
+                          <img src={IconMeedia} alt="img" />
                           <span>243CongoNetwork</span>
                         </li>
                         <li>
-                          <img src={IconCountry} alt="" />
+                          <img src={IconCountry} alt="img" />
                           <span>{ post.country }</span>
                         </li>
                       </ul>
@@ -208,7 +205,7 @@ useEffect(() => {
                       <ul className="like-com">
                         <li>
                            <p><i className="fas fa-heart"></i> Like {post.likes}
-                            <img src={IconLike} alt="" /> </p>
+                            <img src={IconLike} alt="img" /> </p>
                         </li>
                         <li >
                             <p onClick={toggleShowComment}><i className="fas fa-comment-alt"></i> show Comment </p>

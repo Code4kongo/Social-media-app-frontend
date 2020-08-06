@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import FacebookIcon from "../../images/social1.png";
 import InstagramIcon from "../../images/social2.png";
 import GoogleIcon from "../../images/social3.png";

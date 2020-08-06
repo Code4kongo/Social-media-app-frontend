@@ -71,7 +71,6 @@ const  AddPostModal = (props) => {
             setOnSuccess(true)
 
         } catch(error){
-            console.log(error)
             setTimeout(() => setUploadPourcentage(0),5000)
             setOnFailure(true)
             setTimeout(() => setOnFailure(false), 10000)
@@ -100,7 +99,7 @@ const  AddPostModal = (props) => {
                                 </div>
                                 <div className="col-lg-9">
                                        { 
-                                          uploadedFile === "" ? null :  <img src={uploadedFile} alt="image"/>
+                                          uploadedFile === "" ? null :  <img src={uploadedFile} alt="img"/>
                                        }
                                 </div>
                                 <div className="col-lg-9">
