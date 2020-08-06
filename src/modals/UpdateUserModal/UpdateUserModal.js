@@ -36,7 +36,7 @@ const UpdateUserModal = props => {
     const [ onFailure, setOnFailure] = useState(false)
     
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async(event) => {
         event.preventDefault()
 
         const updateduser = {
@@ -56,21 +56,20 @@ const UpdateUserModal = props => {
             education: userEducation
         }
 
-        axios.patch(`http://localhost:8080/user/${userId}`, updateduser)
-            .then(res => {
+        try {
+
+            await axios.patch(`http://localhost:8080/user/${userId}`, updateduser)
                 setOnSuccess(true)
                 setTimeout(() => setOnSuccess(false), 15000)
 
-            axios.get(`http://localhost:8080/user/${userId}`)
-                    .then((res) => {
-                        const user = res.data.user
-                        localStorage.setItem('user', JSON.stringify(user))
-            }) 
-            })
-            .catch(error => {
-                setOnFailure(true)
-                setTimeout(() => setOnFailure(false), 15000)
-            })
+            const res = await axios.get(`http://localhost:8080/user/${userId}`)
+            const user = res.data.user
+            localStorage.setItem('user', JSON.stringify(user))
+
+        }catch(error){
+            setOnFailure(true)
+            setTimeout(() => setOnFailure(false), 15000)
+        }
         
     }
 

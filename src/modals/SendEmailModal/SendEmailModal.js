@@ -23,7 +23,7 @@ const EmailModal = props => {
   const [ onFailure, setOnFailure] = useState(false)
 
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async(event) => {
     event.preventDefault();
 
     const emailObject = {
@@ -32,16 +32,16 @@ const EmailModal = props => {
       title,
       content 
     }
+      try {
+          const res = await axios.post('http://localhost:8080/send-email', emailObject)
 
-    axios.post('http://localhost:8080/send-email', emailObject)
-          .then(res => {
-            setOnSuccess(true)
-            setTimeout(() => setOnSuccess(false), 15000)
-          })
-          .catch(error => {
-            setOnFailure(true)
-            setTimeout(() => setOnFailure(false), 15000)
-          })
+          setOnSuccess(true)
+          setTimeout(() => setOnSuccess(false), 15000)
+
+      }catch(error){
+          setOnFailure(true)
+          setTimeout(() => setOnFailure(false), 15000)
+      }
   };
 
   const style = {

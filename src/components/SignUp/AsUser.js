@@ -19,7 +19,7 @@ export default function AsUser(props) {
   const [onFailure, setOnFailure ] = useState(false)
 
 
-  const handleSubmit = event => {
+  const handleSubmit = async(event) => {
 
     event.preventDefault()
 
@@ -49,15 +49,15 @@ export default function AsUser(props) {
         socialmedialink: []
       }
     
-    axios.post('http://localhost:8080/user/signup', newUser)
-        .then(res => {
-            setOnSuccess(true)
-            setUserCreated(true)
-            
-        })
-         .catch(error => {
+    try{
+        await axios.post('http://localhost:8080/user/signup', newUser)
+
+        setOnSuccess(true)
+        setUserCreated(true)
+
+    }catch(error){
             setOnFailure(true)
-          })
+    }
     
 }
     const style = {

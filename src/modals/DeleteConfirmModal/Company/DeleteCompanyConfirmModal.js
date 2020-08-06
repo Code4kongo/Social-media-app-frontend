@@ -16,7 +16,7 @@ const DeleteAccount = props => {
     const [ onSuccess, setOnSuccess] = useState(false)
     const [ onFailure, setOnFailure] = useState(false)
     
-    const deleteAccount = async () => {
+    const deleteAccount = async() => {
           
         try {
             const res = await axios.delete(`http://localhost:8080/company/${companyId}`)

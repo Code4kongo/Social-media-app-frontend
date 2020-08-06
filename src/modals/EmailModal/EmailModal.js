@@ -36,17 +36,19 @@ const EmailModal = props => {
 
     const updatedJob = { applicants }
 
-          try {
-            await axios.post('http://localhost:8080/apply-job', emailObject)
+        try {
+              await axios.post('http://localhost:8080/apply-job', emailObject)
 
-            await axios.patch(`http://localhost:8080/jobs/${jobId}`, updatedJob)
+              await axios.patch(`http://localhost:8080/jobs/${jobId}`, updatedJob)
 
-            setOnSuccess(true)
-            setTimeout(() => setOnSuccess(false), 15000)
-            }catch(error) {
-              setOnFailure(true)
-              setTimeout(() => setOnFailure(false), 15000)
-        };
+              setOnSuccess(true)
+              setTimeout(() => setOnSuccess(false), 15000)
+              
+        }catch(error) {
+           
+            setOnFailure(true)
+            setTimeout(() => setOnFailure(false), 15000)
+        }
     }
   const style = {
     color: "#fff",

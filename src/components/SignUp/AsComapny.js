@@ -17,7 +17,7 @@ export default function AsComapny(props) {
   const [onSuccess, setOnSuccess ] = useState(false)
   const [onFailure, setOnFailure ] = useState(false)
 
-  const handleSubmit = event => {
+  const handleSubmit = async(event) => {
     event.preventDefault()
     if(password !== repeatPassword && !agreeTermCondition){
       setOnFailure(true)
@@ -43,11 +43,16 @@ export default function AsComapny(props) {
       portfolio: [],
       socialmedialink: [] ,  
     }
-    axios.post('http://localhost:8080/company/signup', newCompany)
-        .then(res => {
-            setOnSuccess(true)
-            setCompanyCreated(true)
-        })   
+    try{
+          await axios.post('http://localhost:8080/company/signup', newCompany)
+          
+          setOnSuccess(true)
+          setCompanyCreated(true)
+
+    }catch(error){
+
+    }
+      
   }
 
   const style = {

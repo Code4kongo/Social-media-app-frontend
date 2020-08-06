@@ -111,7 +111,7 @@ const JobContextProvider = (props) => {
           });
           setJobs(filteredCharacters)
     }
-    const addJob = (title, applicants, jobType,salary,views, country, author, email, phone, content, address,overview , total_employee) => {
+    const addJob = async(title, applicants, jobType,salary,views, country, author, email, phone, content, address,overview , total_employee) => {
 
         const newJob = { 
             title, 
@@ -120,17 +120,19 @@ const JobContextProvider = (props) => {
             views, 
             country, author, email, phone, content, address, overview , total_employee,
         }
-        axios.post('http://localhost:8080/jobs', newJob)
-            .then(res => {
-                setOnSuccess(true)
-                setTimeout(() => setOnSuccess(false), 15000)
-            }).catch(error => {
+        try {
+
+            await axios.post('http://localhost:8080/jobs', newJob)
+
+            setOnSuccess(true)
+            setTimeout(() => setOnSuccess(false), 15000)
+
+        }catch(error){
                 setOnFailure(true)
                 setTimeout(() => setOnFailure(false), 15000)
-            })
+        }
     }
     const updateJob = async(jobId,job_title, job_jobType, job_salary, job_country, job_author, job_email, job_phone, job_content, job_address,job_overview , job_total_employee) => {
-        
         
         const updatedJob = { 
             title : job_title, 
