@@ -62,7 +62,7 @@ const  App = () => {
   const [redirect, setRedirect ] = useState(false)
 
   const signInUser = (email, password ) => {
-      axios.post('http://localhost:8080/user/login', {email, password})
+      axios.post('/user/login', {email, password})
          .then(res => {
               setOnSuccess(true)
               setTimeout(() => setOnFailure(false), 1000)
@@ -92,7 +92,7 @@ const  App = () => {
   }
   const signInCompany= (email, password ) => {
   
-    axios.post('http://localhost:8080/company/login', {email, password})
+    axios.post('/company/login', {email, password})
          .then(res => {
            
             setOnSuccess(true)
@@ -145,7 +145,7 @@ const  App = () => {
   }
   const signInWithGoogle = (email) => {
 
-    axios.post('http://localhost:8080/user/login-social-account', {email})
+    axios.post('/user/login-social-account', {email})
     .then(res => {
          setOnSuccess(true)
          setTimeout(() => setOnFailure(false), 1000)

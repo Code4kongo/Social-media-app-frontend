@@ -58,11 +58,11 @@ const UpdateUserModal = props => {
 
         try {
 
-            await axios.patch(`http://localhost:8080/user/${userId}`, updateduser)
+            await axios.patch(`/user/${userId}`, updateduser)
                 setOnSuccess(true)
                 setTimeout(() => setOnSuccess(false), 15000)
 
-            const res = await axios.get(`http://localhost:8080/user/${userId}`)
+            const res = await axios.get(`/user/${userId}`)
             const user = res.data.user
             localStorage.setItem('user', JSON.stringify(user))
 

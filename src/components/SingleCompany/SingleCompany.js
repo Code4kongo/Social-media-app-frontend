@@ -11,7 +11,7 @@ const  SingleCompany = ({companiesDetails}) => {
                {
                    companiesDetails.map(companyDetails => {
                        const { _id, company, phone, email, picture  } = companyDetails
-                       const company_profile = `http://localhost:8080/${picture}`
+                       const company_profile = `/${picture}`
                        const company_id = _id
                        return (
                                 <div className="col-lg-3 col-md-4 col-sm-6" key={_id}>

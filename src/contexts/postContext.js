@@ -21,7 +21,7 @@ const PostContextProvider = (props) => {
     const [ loadingPost, setLoadingPost ] = useState(false)
 
     useEffect(() => {
-        axios.get('http://localhost:8080/posts')
+        axios.get('/posts')
             .then(res => {
                 const postsList = res.data.posts
                 setPosts(postsList)

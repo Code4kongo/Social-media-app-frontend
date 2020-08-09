@@ -4,7 +4,7 @@ import axios from 'axios'
 const UserSocialMediaLink = props => {
 
     const { _id, picture , country , email, phone, address, company_id,  company_email, company_country, company_phone, company_address, company_picture } = props
-    const user_image = `http://localhost:8080/${picture}`
+    const user_image = `/${picture}`
 
     const [userpic, setUserpic] = useState("") 
     const [filename, setFilename] = useState("")
@@ -21,14 +21,14 @@ const UserSocialMediaLink = props => {
         formData.append('picture', userpic)
 
         try {
-            const res = await axios.patch(`http://localhost:8080/user/picture/${_id}`, formData, {
+            const res = await axios.patch(`/user/picture/${_id}`, formData, {
                 headers : {
                     'Accept': 'application/json',
                     'Content-Type': 'multipart/form-data',
                                 }
                 })
                 const newImage = res.data.path
-                setUploadedFile(`http://localhost:8080/${newImage}`)
+                setUploadedFile(`/${newImage}`)
 
         }catch(error){
 
@@ -87,7 +87,7 @@ const UserSocialMediaLink = props => {
 
 
 
-    const company_image = `http://localhost:8080/${company_picture}`
+    const company_image = `/${company_picture}`
     const [companypic, setCompanypic] = useState("") 
     const [filenameComp, setFilenameComp] = useState("")
     let [ uploadedFileComp, setUploadedFileComp ] = useState("")
@@ -102,14 +102,14 @@ const UserSocialMediaLink = props => {
         const formData = new FormData()
         formData.append('picture', companypic)
 
-        const res = await axios.patch(`http://localhost:8080/company/picture/${company_id}`, formData, {
+        const res = await axios.patch(`/company/picture/${company_id}`, formData, {
                                                                                                 headers : {
                                                                                                     'Accept': 'application/json',
                                                                                                     'Content-Type': 'multipart/form-data',
                                                                                                 }
         })
         const newImage = res.data.path
-        setUploadedFileComp(`http://localhost:8080/${newImage}`)
+        setUploadedFileComp(`/${newImage}`)
         
     }
     const companySocialMediaLink = (

@@ -29,7 +29,7 @@ const  PostCommments = props => {
             post : postId
     }
     try{
-      const res = await axios.post('http://localhost:8080/comments', newObject)
+      const res = await axios.post('/comments', newObject)
 
       const newComment = res.data.createdcomment
       setComments([...comments, newComment])
@@ -39,7 +39,7 @@ const  PostCommments = props => {
 }
 
   useEffect(() =>{ 
-        axios.get(`http://localhost:8080/posts/comments/${postId}`)
+        axios.get(`/posts/comments/${postId}`)
              .then(res => {
                   const newComments = res.data.comments
                   setComments(newComments)

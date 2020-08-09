@@ -18,7 +18,7 @@ const MainCompaniesAndJobs = () => {
     const [ loading, setLoading ] = useState(true)
 
     useEffect(() => {
-        axios.get('http://localhost:8080/user')
+        axios.get('/user')
             .then(res => {
                 const usersList = res.data.users
                 localStorage.setItem('users', JSON.stringify(usersList))

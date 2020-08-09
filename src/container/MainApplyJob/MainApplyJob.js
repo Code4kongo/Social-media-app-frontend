@@ -44,7 +44,7 @@ const MainApplyJob = props => {
   const [ loading, setLoading ] = useState(true)
 
   useEffect(() => {
-    axios.get(`http://localhost:8080/jobs/${jobId}`).then((res) => {
+    axios.get(`/jobs/${jobId}`).then((res) => {
       const fetchedJob = res.data.job;
       const { _id, title, applicants, jobType, salary, views, country, author, email,
               phone, content, date, address, socialmedialink, overview, total_employee,
@@ -65,7 +65,7 @@ const MainApplyJob = props => {
 
     const newObject = { views }
 
-    axios.patch(`http://localhost:8080/jobs/${jobId}`, newObject)
+    axios.patch(`/jobs/${jobId}`, newObject)
     setShowModal(true);
   };
   const closeModal = () => {

@@ -54,7 +54,7 @@ const MainUserProfil = () => {
 
 
     useEffect(() => {
-        axios.get(`http://localhost:8080/user/${userId}`)
+        axios.get(`/user/${userId}`)
             .then(res => {
 
                 let user = res.data.user

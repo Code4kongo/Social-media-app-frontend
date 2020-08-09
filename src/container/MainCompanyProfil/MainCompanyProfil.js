@@ -56,7 +56,7 @@ const MainCompanyProfil = () => {
 
 
     useEffect(() => {
-        axios.get(`http://localhost:8080/company/${companyId}`)
+        axios.get(`/company/${companyId}`)
             .then(res => {
                         
                 let company = res.data.company

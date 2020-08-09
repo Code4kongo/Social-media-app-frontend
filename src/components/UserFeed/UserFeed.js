@@ -57,7 +57,7 @@ const toggleShowComment = () => {
 }
 
 useEffect(() => {
-    axios.get(`http://localhost:8080/posts/users/${email}`)
+    axios.get(`/posts/users/${email}`)
           .then(res => {
             const fetchedPosts = res.data.posts
             setPosts(fetchedPosts)
@@ -82,7 +82,7 @@ useEffect(() => {
 
     // try {
         
-    //     const result = await axios.patch(`http://localhost:8080/posts/${postId}`, formData, {
+    //     const result = await axios.patch(`/posts/${postId}`, formData, {
     //                     headers : {
     //                         'Accept': 'application/json',
     //                         'Content-Type': 'multipart/form-data',
@@ -95,11 +95,11 @@ useEffect(() => {
     //                 })
     //             setOnSuccess(true)
     //             setTimeout(() => setOnSuccess(false), 15000)
-    //     fetch(`http://localhost:8080/${result.data.createdPost.post_postImage}`).then(res => {
+    //     fetch(`/${result.data.createdPost.post_postImage}`).then(res => {
     
     // })
 
-    //     const newImageUrl = await axios.get(`http://localhost:8080/${result.data.createdPost.postImage}`)
+    //     const newImageUrl = await axios.get(`/${result.data.createdPost.postImage}`)
     //     const ImageFetched = result.data.createdPost.postImage
         
     //     let newData = newImageUrl.data
@@ -116,7 +116,7 @@ useEffect(() => {
   const handleDelete = (postId, title) => {
     confirm({ description: `This will permanently delete ${title} post.` })
       .then(() => {
-            axios.delete(`http://localhost:8080/posts/${postId}`)
+            axios.delete(`/posts/${postId}`)
             .then(res => {
                 const newPostList = posts.filter(post => post._id !== postId)
                 setPosts(newPostList)
@@ -188,7 +188,7 @@ useEffect(() => {
                       {
                             post.postImage === "" ? null : 
                                       <img  
-                                        src={`http://localhost:8080/${post.postImage}`} 
+                                        src={`/${post.postImage}`} 
                                         alt="post image" width="50%" 
                                         height="20%" style={{ margin : 'auto', marginBottom : '8%'}}
                                       />

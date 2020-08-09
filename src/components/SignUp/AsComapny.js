@@ -44,7 +44,7 @@ export default function AsComapny(props) {
       socialmedialink: [] ,  
     }
     try{
-          await axios.post('http://localhost:8080/company/signup', newCompany)
+          await axios.post('/company/signup', newCompany)
           
           setOnSuccess(true)
           setCompanyCreated(true)

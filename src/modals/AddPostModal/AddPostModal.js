@@ -55,7 +55,7 @@ const  AddPostModal = (props) => {
 
         try {
             
-            const result = await axios.post('http://localhost:8080/posts', formData, {
+            const result = await axios.post('/posts', formData, {
                                     headers : {
                                         'Accept': 'application/json',
                                         'Content-Type': 'multipart/form-data',
@@ -66,7 +66,7 @@ const  AddPostModal = (props) => {
                                         setTimeout(() => setUploadPourcentage(0),5000)} 
                                 })
             const newImage = result.data.createdPost.postImage
-            setUploadedFile(`http://localhost:8080/${newImage}`)
+            setUploadedFile(`/${newImage}`)
             
             setOnSuccess(true)
 

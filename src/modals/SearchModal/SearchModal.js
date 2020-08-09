@@ -36,7 +36,7 @@ const SearchModal = props => {
     const [ user, setUser ] = useState("")
 
     useEffect(() => {
-        axios.get('http://localhost:8080/company')
+        axios.get('/company')
             .then(res => {
                 const companiesList = res.data.company
                 setCompaniesDetails(companiesList)
@@ -44,7 +44,7 @@ const SearchModal = props => {
     }, [])
 
     useEffect(() => {
-        axios.get('http://localhost:8080/user')
+        axios.get('/user')
             .then(res => {
                 const usersList = res.data.users
                 setUsersDetails(usersList)

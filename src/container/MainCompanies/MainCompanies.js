@@ -18,7 +18,7 @@ const MainCompaniesAndJobs = () => {
     const [ loading, setLoading ] = useState(false)
 
     useEffect(() => {
-        axios.get('http://localhost:8080/company')
+        axios.get('/company')
             .then(res => {
                 const companiesList = res.data.company
                 setCompaniesDetails(companiesList)

@@ -34,7 +34,7 @@ const JobContextProvider = (props) => {
     const [onFailure, setOnFailure ] = useState(false)
 
     useEffect(() => {
-        axios.get('http://localhost:8080/jobs')
+        axios.get('/jobs')
             .then(res => {
                     const jobList = res.data.jobs
                     
@@ -122,7 +122,7 @@ const JobContextProvider = (props) => {
         }
         try {
 
-            await axios.post('http://localhost:8080/jobs', newJob)
+            await axios.post('/jobs', newJob)
 
             setOnSuccess(true)
             setTimeout(() => setOnSuccess(false), 15000)
@@ -148,7 +148,7 @@ const JobContextProvider = (props) => {
             total_employee : job_total_employee
         }
             try{
-                const res = await axios.patch(`http://localhost:8080/jobs/${jobId}`, updatedJob)
+                const res = await axios.patch(`/jobs/${jobId}`, updatedJob)
 
                 setOnSuccess(true)
                 setTimeout(() => setOnSuccess(false), 15000)

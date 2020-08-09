@@ -5,7 +5,7 @@ const UserSocialMediaLink = (props) => {
 
     const {  picture , country , email, phone, address } = props
 
-    const company_profil = `http://localhost:8080/${picture}`
+    const company_profil = `/${picture}`
 
     return ( 
         <div className="col-lg-3">

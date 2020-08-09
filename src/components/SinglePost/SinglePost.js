@@ -12,7 +12,7 @@ const  SinglePost = props => {
 
   let { _id, title, country, author, email, content, date, likes, userDetails, companyDetails, postImage } = props
 
-  const image = `http://localhost:8080/${postImage}`
+  const image = `/${postImage}`
   const postId = _id
 
   let commentAuthor = ""
@@ -32,15 +32,15 @@ const  SinglePost = props => {
   const [ userpic , setUserpic ] = useState("")
 
   useEffect(() => {
-    axios.get(`http://localhost:8080/posts/profil/${email}`) 
+    axios.get(`/posts/profil/${email}`) 
           .then(res => {
               if(res.data.user_picture !== "" && res.data.user_picture !== undefined){
                     const userImage = res.data.user_picture
-                    setUserpic(`http://localhost:8080/${userImage}`)
+                    setUserpic(`/${userImage}`)
               }
               if(res.data.company_picture !== "" && res.data.company_picture !== undefined){
                     const companyImage = res.data.company_picture
-                    setUserpic(`http://localhost:8080/${companyImage}`)
+                    setUserpic(`/${companyImage}`)
               }
           })
 }, [])
@@ -55,7 +55,7 @@ const  SinglePost = props => {
     const newPostObject = {
       likes : likeAction
     }
-    axios.patch(`http://localhost:8080/posts/${postId}`, newPostObject)
+    axios.patch(`/posts/${postId}`, newPostObject)
 
   }
   return (

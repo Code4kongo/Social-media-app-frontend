@@ -50,7 +50,7 @@ export default function AsUser(props) {
       }
     
     try{
-        await axios.post('http://localhost:8080/user/signup', newUser)
+        await axios.post('/user/signup', newUser)
 
         setOnSuccess(true)
         setUserCreated(true)

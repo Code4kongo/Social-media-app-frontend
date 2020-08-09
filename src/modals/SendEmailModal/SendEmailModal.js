@@ -33,7 +33,7 @@ const EmailModal = props => {
       content 
     }
       try {
-          const res = await axios.post('http://localhost:8080/send-email', emailObject)
+          const res = await axios.post('/send-email', emailObject)
 
           setOnSuccess(true)
           setTimeout(() => setOnSuccess(false), 15000)

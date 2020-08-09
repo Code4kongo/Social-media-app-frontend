@@ -4,7 +4,7 @@ import UserIcon from '../../images/resources/user.png'
 const UserSocialMediaLink = props => {
     const {  picture , country , email, phone, address } = props
 
-    const user_profil = `http://localhost:8080/${picture}`
+    const user_profil = `h/${picture}`
 
     return ( 
         <div className="col-lg-3">

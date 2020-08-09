@@ -47,7 +47,7 @@ const AnyCompanyFeed = (props) => {
 
   useEffect(() => {
 
-    axios.get(`http://localhost:8080/posts/users/${email}`)
+    axios.get(`/posts/users/${email}`)
           .then(res => {
             const fetchedPosts = res.data.posts
             setPosts(fetchedPosts)
@@ -96,7 +96,7 @@ const AnyCompanyFeed = (props) => {
                       {
                             post.postImage === "" ? null : 
                                       <img  
-                                        src={`http://localhost:8080/${post.postImage}`} 
+                                        src={`/${post.postImage}`} 
                                         alt="post image" width="50%" 
                                         height="20%" style={{ margin : 'auto', marginBottom : '8%'}}
                                       />

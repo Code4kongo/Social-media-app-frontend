@@ -43,15 +43,15 @@ const Main = () => {
   }
 
   useEffect(() => {
-    axios.get(`http://localhost:8080/posts/profil/${email}`) 
+    axios.get(`/posts/profil/${email}`) 
           .then(res => {
             if(res.data.user_picture !== "" && res.data.user_picture !== undefined){
               const userImage = res.data.user_picture
-              setUserpic(`http://localhost:8080/${userImage}`)
+              setUserpic(`/${userImage}`)
         }
         if(res.data.company_picture !== "" && res.data.company_picture !== undefined){
               const companyImage = res.data.company_picture
-              setUserpic(`http://localhost:8080/${companyImage}`)
+              setUserpic(`/${companyImage}`)
         }
           })
 }, [])

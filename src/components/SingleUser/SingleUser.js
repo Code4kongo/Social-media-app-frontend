@@ -11,7 +11,7 @@ const SingleUser = ({ usersDetails }) => {
                usersDetails.map(usersDetail => {
 
                    const {  _id, name, company, email, phone, picture } = usersDetail
-                   const user_profile = `http://localhost:8080/${picture}`
+                   const user_profile = `/${picture}`
                    const user_id = _id
                    return (
                             <div className="col-lg-3 col-md-4 col-sm-6" key={_id}>

@@ -52,11 +52,11 @@ const UpdateUserModal = props => {
 
         try {
 
-                await axios.patch(`http://localhost:8080/company/${companyId}`, updatedCompany)
+                await axios.patch(`/company/${companyId}`, updatedCompany)
                 setOnSuccess(true)
                 setTimeout(() => setOnSuccess(false), 15000)
 
-                const res = await axios.get(`http://localhost:8080/company/${companyId}`)
+                const res = await axios.get(`/company/${companyId}`)
 
                 const existingCompany = res.data.company
 

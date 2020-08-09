@@ -49,7 +49,7 @@ const MainCompanyProfil = props => {
     }
 
     useEffect(() => {
-        axios.get(`http://localhost:8080/company/${companyId}`)
+        axios.get(`/company/${companyId}`)
             .then(res => {
                 const result = res.data.company
                 const { _id, company, picture, country, createdAt, email,  phone,  address,  about, registered, info, skills,portfolio} = result

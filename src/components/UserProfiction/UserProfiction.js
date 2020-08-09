@@ -16,8 +16,8 @@ const UserProfiction = () => {
     const { company_name, company_email, company_registered , company_picture} = companyDetails
     
 
-    const user_profil = `http://localhost:8080/${picture}`
-    const company_profil = `http://localhost:8080/${company_picture}`
+    const user_profil = `/${picture}`
+    const company_profil = `/${company_picture}`
     
     const style = {
         color: "#17a2b8"

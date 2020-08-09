@@ -46,7 +46,7 @@ const closeModal = () => {
 }
 
 useEffect(() => {
-    axios.get(`http://localhost:8080/jobs/my-jobs?email=${email}`) 
+    axios.get(`/jobs/my-jobs?email=${email}`) 
           .then(res => {
             const fetchedJobs = res.data.jobs
             setJobs(fetchedJobs)
@@ -60,7 +60,7 @@ useEffect(() => {
   const handleDelete = (jobId, title) => {
     confirm({ description: `This will permanently delete ${title} job.` })
       .then(() => {
-        axios.delete(`http://localhost:8080/jobs/${jobId}`)
+        axios.delete(`/jobs/${jobId}`)
         .then(res => {
           const newJobsList = jobs.filter(job => job._id !== jobId)
           setJobs(newJobsList)
