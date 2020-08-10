@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { UseState} from 'react'
 import { Link } from 'react-router-dom'
 import HomeIcon from '../../images/icon1.png'
 import CompanyIcon from '../../images/icon2.png'
@@ -13,6 +13,8 @@ const  NavBar = () => {
     const userDetails = JSON.parse(userInformation)
 
     const { email} = userDetails
+
+     const [openSideDrawer, setOpenSideDrawer] = useState(initialState)
 
     return ( 
         <div>
@@ -49,7 +51,9 @@ const  NavBar = () => {
                 </ul>
             </nav>
             <div className="menu-btn">
-                <Link to="/"><i className="fa fa-bars"></i></Link>
+                <button>
+                    <i className="fa fa-bars"></i>
+                </button>
             </div>
             <div>
                 <UserAccount/>
